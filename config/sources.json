@@ -1,9 +1,26 @@
 {
-  "realms": ["fengus-ferocity", "moldars-moxie"],
-  "guilds": [
-    { "name": "Balance", "realm": "fengus-ferocity" },
-    { "name": "Unreal", "realm": "fengus-ferocity" },
-    { "name": "불타는성전", "realm": "fengus-ferocity" }
+  "realms": [
+    "fengus-ferocity",
+    "moldars-moxie"
   ],
-  "characters": []
+  "guilds": [
+    {
+      "name": "Balance",
+      "realm": "fengus-ferocity"
+    },
+    {
+      "name": "Unreal",
+      "realm": "fengus-ferocity"
+    },
+    {
+      "name": "불타는성전",
+      "realm": "fengus-ferocity"
+    }
+  ],
+  "characters": [
+    {
+      "name": "후달달",
+      "realm": "fengus-ferocity"
+    }
+  ]
 }
