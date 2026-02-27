@@ -23,7 +23,7 @@ NS_DYNAMIC = "dynamic-classicann-kr"
 LOCALE = "ko_KR"
 
 BRACKETS = ["2v2", "3v3", "5v5"]
-MIN_LEVEL = 60
+MIN_LEVEL = 70
 MAX_WORKERS = 10
 
 
