@@ -320,8 +320,19 @@ def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
             continue
         char_id = char_data[0]["id"]
 
-        # Insert rating snapshots for each bracket
         for bracket, bdata in char.get("brackets", {}).items():
+            last = supabase_request(
+                url, key, "GET",
+                f"rating_snapshots?character_id=eq.{char_id}&bracket=eq.{bracket}"
+                f"&order=recorded_at.desc&limit=1",
+            )
+            if last and isinstance(last, list) and len(last) > 0:
+                prev = last[0]
+                if (prev["rating"] == bdata["rating"]
+                        and prev["won"] == bdata["won"]
+                        and prev["lost"] == bdata["lost"]):
+                    continue
+
             snapshot = {
                 "character_id": char_id,
                 "bracket": bracket,
