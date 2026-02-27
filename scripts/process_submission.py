@@ -4,6 +4,7 @@ import json
 import os
 import re
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from urllib.parse import quote
 
@@ -14,6 +15,7 @@ import requests
 CONFIG_PATH = Path(__file__).resolve().parent.parent / "config" / "sources.json"
 
 DEFAULT_REALM = "fengus-ferocity"
+MAX_WORKERS = 20
 
 REALM_ALIASES = {
     "펜구스": "fengus-ferocity",
@@ -29,6 +31,8 @@ API_BASE = f"https://{REGION}.api.blizzard.com"
 OAUTH_URL = "https://oauth.battle.net/token"
 NS_PROFILE = "profile-classicann-kr"
 LOCALE = "ko_KR"
+
+_session = requests.Session()
 
 
 def resolve_realm(raw: str) -> str:
@@ -53,17 +57,23 @@ def get_access_token() -> str | None:
 def verify_guild(token: str, name: str, realm: str) -> bool:
     slug = quote(name.lower())
     url = f"{API_BASE}/data/wow/guild/{realm}/{slug}/roster"
-    resp = requests.get(url, headers={"Authorization": f"Bearer {token}"},
-                        params={"namespace": NS_PROFILE, "locale": LOCALE}, timeout=15)
-    return resp.status_code == 200
+    try:
+        resp = _session.get(url, headers={"Authorization": f"Bearer {token}"},
+                            params={"namespace": NS_PROFILE, "locale": LOCALE}, timeout=15)
+        return resp.status_code == 200
+    except requests.RequestException:
+        return False
 
 
 def verify_character(token: str, name: str, realm: str) -> bool:
     encoded = quote(name.lower())
     url = f"{API_BASE}/profile/wow/character/{realm}/{encoded}"
-    resp = requests.get(url, headers={"Authorization": f"Bearer {token}"},
-                        params={"namespace": NS_PROFILE, "locale": LOCALE}, timeout=15)
-    return resp.status_code == 200
+    try:
+        resp = _session.get(url, headers={"Authorization": f"Bearer {token}"},
+                            params={"namespace": NS_PROFILE, "locale": LOCALE}, timeout=15)
+        return resp.status_code == 200
+    except requests.RequestException:
+        return False
 
 
 def parse_issue_body(body: str) -> dict:
@@ -116,38 +126,79 @@ def parse_issue_body(body: str) -> dict:
     return result
 
 
+def _verify_worker(args):
+    kind, token, name, realm = args
+    if kind == "guild":
+        return kind, name, realm, verify_guild(token, name, realm)
+    else:
+        return kind, name, realm, verify_character(token, name, realm)
+
+
 def update_sources(new_entries: dict, token: str | None) -> tuple[list[str], list[str]]:
     with open(CONFIG_PATH, "r", encoding="utf-8") as f:
         sources = json.load(f)
 
-    added = []
-    skipped = []
-
     existing_guilds = {(g["name"].lower(), g["realm"]) for g in sources.get("guilds", [])}
+    existing_chars = {(c["name"].lower(), c["realm"]) for c in sources.get("characters", [])}
+
+    # Filter duplicates first (no API call needed)
+    to_verify = []
+    already_skipped = []
+
     for g in new_entries.get("guilds", []):
         key = (g["name"].lower(), g["realm"])
         if key in existing_guilds:
-            skipped.append(f"길드: {g['name']} (이미 등록됨)")
-            continue
-        if token and not verify_guild(token, g["name"], g["realm"]):
-            skipped.append(f"길드: {g['name']} (존재하지 않음)")
-            continue
-        sources.setdefault("guilds", []).append(g)
-        existing_guilds.add(key)
-        added.append(f"길드: {g['name']} ({g['realm']})")
+            already_skipped.append(f"길드: {g['name']} (이미 등록됨)")
+        else:
+            existing_guilds.add(key)
+            to_verify.append(("guild", g["name"], g["realm"]))
 
-    existing_chars = {(c["name"].lower(), c["realm"]) for c in sources.get("characters", [])}
     for c in new_entries.get("characters", []):
         key = (c["name"].lower(), c["realm"])
         if key in existing_chars:
-            skipped.append(f"캐릭터: {c['name']} (이미 등록됨)")
-            continue
-        if token and not verify_character(token, c["name"], c["realm"]):
-            skipped.append(f"캐릭터: {c['name']} (존재하지 않음)")
-            continue
-        sources.setdefault("characters", []).append(c)
-        existing_chars.add(key)
-        added.append(f"캐릭터: {c['name']} ({c['realm']})")
+            already_skipped.append(f"캐릭터: {c['name']} (이미 등록됨)")
+        else:
+            existing_chars.add(key)
+            to_verify.append(("character", c["name"], c["realm"]))
+
+    print(f"  Duplicates skipped: {len(already_skipped)}")
+    print(f"  To verify: {len(to_verify)}")
+
+    added = []
+    skipped = list(already_skipped)
+
+    if not token:
+        # No API token — add all without verification
+        for kind, name, realm in to_verify:
+            if kind == "guild":
+                sources.setdefault("guilds", []).append({"name": name, "realm": realm})
+                added.append(f"길드: {name} ({realm})")
+            else:
+                sources.setdefault("characters", []).append({"name": name, "realm": realm})
+                added.append(f"캐릭터: {name} ({realm})")
+    else:
+        # Parallel verification
+        tasks = [(kind, token, name, realm) for kind, name, realm in to_verify]
+        done = 0
+        total = len(tasks)
+
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            futures = {executor.submit(_verify_worker, t): t for t in tasks}
+            for future in as_completed(futures):
+                kind, name, realm, exists = future.result()
+                done += 1
+                if done % 100 == 0 or done == total:
+                    print(f"  Verified: {done}/{total}")
+
+                if exists:
+                    if kind == "guild":
+                        sources.setdefault("guilds", []).append({"name": name, "realm": realm})
+                        added.append(f"길드: {name} ({realm})")
+                    else:
+                        sources.setdefault("characters", []).append({"name": name, "realm": realm})
+                        added.append(f"캐릭터: {name} ({realm})")
+                else:
+                    skipped.append(f"{'길드' if kind == 'guild' else '캐릭터'}: {name} (존재하지 않음)")
 
     if added:
         with open(CONFIG_PATH, "w", encoding="utf-8") as f:
@@ -178,13 +229,17 @@ def main():
     added, skipped = update_sources(entries, token)
 
     if added:
-        print(f"Added {len(added)} new entries:")
-        for a in added:
+        print(f"\nAdded {len(added)} new entries:")
+        for a in added[:20]:
             print(f"  + {a}")
+        if len(added) > 20:
+            print(f"  ... and {len(added) - 20} more")
     if skipped:
-        print(f"Skipped {len(skipped)} entries:")
-        for s in skipped:
+        print(f"\nSkipped {len(skipped)} entries:")
+        for s in skipped[:20]:
             print(f"  - {s}")
+        if len(skipped) > 20:
+            print(f"  ... and {len(skipped) - 20} more")
     if not added:
         print("No new valid entries to add.")
 
