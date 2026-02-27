@@ -43,6 +43,7 @@ jobs:
             echo "No changes"
           else
             git commit -m "chore: add sources from issue #${{ github.event.issue.number }}"
+            git pull --rebase origin main
             git push
           fi
 
@@ -63,6 +64,7 @@ jobs:
             echo "No data changes"
           else
             git commit -m "chore: update leaderboard after adding sources from #${{ github.event.issue.number }}"
+            git pull --rebase origin main
             git push
           fi
 
