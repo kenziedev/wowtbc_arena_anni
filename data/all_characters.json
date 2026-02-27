@@ -1008,25 +1008,6 @@
     }
   },
   {
-    "name": "납치되었소",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "level": 70,
-    "class": "드루이드",
-    "race": "타우렌",
-    "faction": "HORDE",
-    "guild": "동행",
-    "brackets": {
-      "2v2": {
-        "rating": 1368,
-        "won": 4,
-        "lost": 11,
-        "played": 15,
-        "season_id": 1
-      }
-    }
-  },
-  {
     "name": "등굽은생선",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -1041,6 +1022,25 @@
         "won": 0,
         "lost": 5,
         "played": 5,
+        "season_id": 1
+      }
+    }
+  },
+  {
+    "name": "납치되었소",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "level": 70,
+    "class": "드루이드",
+    "race": "타우렌",
+    "faction": "HORDE",
+    "guild": "동행",
+    "brackets": {
+      "2v2": {
+        "rating": 1368,
+        "won": 4,
+        "lost": 11,
+        "played": 15,
         "season_id": 1
       }
     }
@@ -1301,6 +1301,51 @@
         "rating": 1502,
         "won": 5,
         "lost": 5,
+        "played": 10,
+        "season_id": 1
+      }
+    }
+  },
+  {
+    "name": "비자",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "level": 70,
+    "class": "마법사",
+    "race": "언데드",
+    "faction": "HORDE",
+    "guild": "arena",
+    "brackets": {
+      "2v2": {
+        "rating": 1518,
+        "won": 2,
+        "lost": 0,
+        "played": 2,
+        "season_id": 1
+      },
+      "5v5": {
+        "rating": 1566,
+        "won": 7,
+        "lost": 3,
+        "played": 10,
+        "season_id": 1
+      }
+    }
+  },
+  {
+    "name": "소프라",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "level": 70,
+    "class": "마법사",
+    "race": "트롤",
+    "faction": "HORDE",
+    "guild": "arena",
+    "brackets": {
+      "5v5": {
+        "rating": 1435,
+        "won": 4,
+        "lost": 6,
         "played": 10,
         "season_id": 1
       }
