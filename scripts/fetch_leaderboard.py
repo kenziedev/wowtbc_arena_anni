@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
@@ -23,7 +24,7 @@ LOCALE = "ko_KR"
 
 BRACKETS = ["2v2", "3v3", "5v5"]
 MIN_LEVEL = 60
-REQUEST_DELAY = 0.05
+MAX_WORKERS = 10
 
 
 def get_access_token(client_id: str, client_secret: str) -> str:
@@ -37,13 +38,16 @@ def get_access_token(client_id: str, client_secret: str) -> str:
     return resp.json()["access_token"]
 
 
+_session = requests.Session()
+
+
 def api_get(token: str, url: str, namespace: str, retries: int = 2) -> dict | None:
     headers = {"Authorization": f"Bearer {token}"}
     params = {"namespace": namespace, "locale": LOCALE}
 
     for attempt in range(retries + 1):
         try:
-            resp = requests.get(url, headers=headers, params=params, timeout=15)
+            resp = _session.get(url, headers=headers, params=params, timeout=15)
             if resp.status_code == 404:
                 return None
             if resp.status_code == 429:
@@ -116,7 +120,6 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
         result["realm_name"] = result["realm_name"].get("ko_KR", result["realm_name"].get("en_US", ""))
 
     for bracket in BRACKETS:
-        time.sleep(REQUEST_DELAY)
         pvp_url = f"{base_url}/pvp-bracket/{bracket}"
         pvp_data = api_get(token, pvp_url, NS_PROFILE)
         if pvp_data:
@@ -130,6 +133,13 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
             }
 
     return result
+
+
+def fetch_character_worker(args):
+    """Worker for parallel character PvP fetching."""
+    token, name, realm, idx, total = args
+    pvp = fetch_character_pvp(token, name, realm)
+    return idx, name, pvp
 
 
 def build_leaderboard(all_pvp_data: list[dict], bracket: str) -> list[dict]:
@@ -177,7 +187,6 @@ def main():
     token = get_access_token(client_id, client_secret)
     print("Authenticated.")
 
-    # Collect unique characters from guild rosters
     seen = set()
     characters = []
 
@@ -192,7 +201,6 @@ def main():
             if key not in seen:
                 seen.add(key)
                 characters.append(m)
-        time.sleep(0.5)
 
     for char in sources.get("characters", []):
         key = (char["name"].lower(), char["realm"])
@@ -200,22 +208,26 @@ def main():
             seen.add(key)
             characters.append({"name": char["name"], "realm": char["realm"], "level": 70, "id": 0})
 
-    print(f"\nTotal unique characters to query: {len(characters)}")
-
-    # Fetch PvP data for each character
-    all_pvp = []
     total = len(characters)
-    for i, char in enumerate(characters, 1):
-        if i % 25 == 0 or i == 1:
-            print(f"  Querying PvP data... ({i}/{total})")
-        pvp = fetch_character_pvp(token, char["name"], char["realm"])
-        if pvp and pvp["brackets"]:
-            all_pvp.append(pvp)
-        time.sleep(REQUEST_DELAY)
+    print(f"\nTotal unique characters to query: {total}")
+    print(f"Using {MAX_WORKERS} parallel workers...")
+
+    all_pvp = []
+    done = 0
+    tasks = [(token, c["name"], c["realm"], i, total) for i, c in enumerate(characters)]
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = {executor.submit(fetch_character_worker, t): t for t in tasks}
+        for future in as_completed(futures):
+            idx, name, pvp = future.result()
+            done += 1
+            if done % 50 == 0 or done == total:
+                print(f"  Progress: {done}/{total}")
+            if pvp and pvp["brackets"]:
+                all_pvp.append(pvp)
 
     print(f"\nCharacters with PvP data: {len(all_pvp)}")
 
-    # Build leaderboards per bracket
     meta = {
         "region": REGION,
         "namespace": NS_PROFILE,
@@ -240,7 +252,6 @@ def main():
             "file": f"{bracket}.json",
         }
 
-    # Save all character PvP data (for individual lookups)
     all_pvp_path = DATA_DIR / "all_characters.json"
     with open(all_pvp_path, "w", encoding="utf-8") as f:
         json.dump(all_pvp, f, ensure_ascii=False, indent=2)
@@ -251,14 +262,13 @@ def main():
 
     print(f"\nData saved to {DATA_DIR}")
 
-    # Store history in Supabase
     supabase_url = os.environ.get("SUPABASE_URL", "")
     supabase_key = os.environ.get("SUPABASE_SERVICE_KEY", "")
 
     if supabase_url and supabase_key:
         print("\nSyncing to Supabase...")
         synced = sync_to_supabase(supabase_url, supabase_key, all_pvp)
-        print(f"  Synced {synced} character snapshots")
+        print(f"  Synced {synced} new/changed snapshots")
     else:
         print("\nSkipping Supabase (SUPABASE_URL / SUPABASE_SERVICE_KEY not set)")
 
@@ -297,7 +307,6 @@ def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
             "updated_at": now,
         }
 
-        # Upsert character
         headers = {
             "apikey": key,
             "Authorization": f"Bearer {key}",
