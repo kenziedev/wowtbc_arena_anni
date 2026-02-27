@@ -2,7 +2,7 @@ name: Process Submission
 
 on:
   issues:
-    types: [labeled]
+    types: [opened, labeled]
 
 permissions:
   contents: write
@@ -10,7 +10,9 @@ permissions:
 
 jobs:
   process:
-    if: github.event.label.name == 'add-source'
+    if: >-
+      (github.event.action == 'labeled' && github.event.label.name == 'add-source') ||
+      (github.event.action == 'opened' && startsWith(github.event.issue.title, '[추가]'))
     runs-on: ubuntu-latest
 
     steps:
