@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>캐릭터 상세 - TBC 투기장</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-inner">
+        <a href="index.html" class="back-link">&larr; 리더보드로 돌아가기</a>
+        <h1 class="title" id="char-name">캐릭터 정보</h1>
+        <p class="subtitle" id="char-info"></p>
+      </div>
+    </header>
+
+    <div class="detail-cards" id="detail-cards"></div>
+
+    <div class="chart-section">
+      <h2 class="section-title">레이팅 변화</h2>
+      <div class="chart-tabs" id="chart-tabs"></div>
+      <div class="chart-wrap">
+        <canvas id="rating-chart"></canvas>
+      </div>
+    </div>
+
+    <div class="history-section">
+      <h2 class="section-title">기록 이력</h2>
+      <div class="table-wrap">
+        <table class="leaderboard" id="history-table">
+          <thead>
+            <tr>
+              <th>날짜</th>
+              <th>브라켓</th>
+              <th>레이팅</th>
+              <th>전적</th>
+              <th>변화</th>
+            </tr>
+          </thead>
+          <tbody id="history-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>캐릭터 정보를 불러오는 중...</p>
+    </div>
+
+    <div class="empty-state" id="empty-state" hidden>
+      <p class="empty-icon">&#128683;</p>
+      <p class="empty-text">데이터가 없습니다</p>
+      <p class="empty-sub">Supabase가 설정되지 않았거나 이 캐릭터의 이력이 아직 수집되지 않았습니다.</p>
+    </div>
+
+    <footer class="footer">
+      <p>20주년 기념서버 투기장 순위 &middot; Battle.net API + Supabase</p>
+    </footer>
+  </div>
+
+  <script src="detail.js"></script>
+</body>
+</html>

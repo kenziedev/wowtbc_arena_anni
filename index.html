@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TBC 투기장 리더보드 - 20주년 기념서버</title>
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-inner">
+        <h1 class="title">
+          <span class="title-icon">&#9876;</span>
+          투기장 리더보드
+        </h1>
+        <p class="subtitle">WoW Classic TBC &middot; 20주년 기념서버 (KR)</p>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab active" role="tab" data-bracket="2v2" aria-selected="true">2v2</button>
+      <button class="tab" role="tab" data-bracket="3v3" aria-selected="false">3v3</button>
+      <button class="tab" role="tab" data-bracket="5v5" aria-selected="false">5v5</button>
+    </nav>
+
+    <div class="toolbar">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="search" placeholder="캐릭터, 길드, 직업 검색..." autocomplete="off">
+      </div>
+      <div class="toolbar-right">
+        <div class="meta-info" id="meta-info"></div>
+        <button class="btn-add" id="btn-add" title="길드/캐릭터 추가">+ 추가</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="leaderboard" id="leaderboard">
+        <thead>
+          <tr>
+            <th class="col-rank">순위</th>
+            <th class="col-name">캐릭터</th>
+            <th class="col-class">직업</th>
+            <th class="col-guild">길드</th>
+            <th class="col-rating sortable" data-sort="rating">레이팅</th>
+            <th class="col-record">전적</th>
+            <th class="col-winrate sortable" data-sort="winrate">승률</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="empty-state" id="empty-state" hidden>
+      <p class="empty-icon">&#128683;</p>
+      <p class="empty-text">데이터가 없습니다</p>
+      <p class="empty-sub">아직 리더보드 데이터가 수집되지 않았거나 해당 브라켓에 데이터가 없습니다.</p>
+    </div>
+
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>리더보드 데이터를 불러오는 중...</p>
+    </div>
+
+    <!-- Add Source Modal -->
+    <div class="modal-overlay" id="modal-overlay" hidden>
+      <div class="modal">
+        <div class="modal-header">
+          <h2>길드 / 캐릭터 추가</h2>
+          <button class="modal-close" id="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-desc">추가할 길드명 또는 캐릭터명을 입력하면 GitHub Issue로 자동 등록됩니다.<br>등록 후 다음 업데이트 시 리더보드에 반영됩니다.</p>
+
+          <div class="form-group">
+            <label>유형</label>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="add-type" value="guild" checked> 길드</label>
+              <label class="radio-label"><input type="radio" name="add-type" value="character"> 캐릭터</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="add-name">이름</label>
+            <input type="text" id="add-name" placeholder="길드명 또는 캐릭터명">
+          </div>
+
+          <div class="form-group">
+            <label for="add-realm">서버</label>
+            <select id="add-realm">
+              <option value="fengus-ferocity">펜구스의 흉포</option>
+              <option value="moldars-moxie">몰다르의 투지</option>
+            </select>
+          </div>
+
+          <button class="btn-submit" id="btn-submit">GitHub Issue로 등록</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>20주년 기념서버 투기장 순위 &middot; 길드 로스터 기반 수집</p>
+      <p>데이터는 약 6시간마다 갱신됩니다 &middot; Battle.net API 기반</p>
+      <p class="footer-disclaimer">This site is not affiliated with or endorsed by Blizzard Entertainment.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
