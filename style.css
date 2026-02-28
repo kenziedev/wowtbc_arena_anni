@@ -583,73 +583,164 @@ td.col-rank { font-weight: 700; text-align: center; }
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-.talent-tree {
-  flex: 1;
-  min-width: 200px;
+.tree-panel {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 10px;
+  min-width: 0;
 }
 
-.talent-tree-header {
+.tree-panel-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  padding: 4px 6px 8px;
 }
 
-.talent-tree-name {
-  font-size: 0.9rem;
+.tree-panel-name {
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.talent-tree-points {
-  font-size: 0.85rem;
+.tree-panel-points {
+  font-size: 1rem;
   font-weight: 700;
   color: var(--accent-gold);
-  background: rgba(240, 171, 0, 0.12);
-  padding: 2px 8px;
-  border-radius: 4px;
 }
 
-.talent-bar-track {
-  height: 6px;
-  background: var(--bg-primary);
+.tree-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 44px);
+  gap: 3px;
+  justify-content: center;
+}
+
+.talent-node {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border: 2px solid #555;
   border-radius: 3px;
   overflow: hidden;
-  margin-bottom: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s;
 }
 
-.talent-bar-fill {
+.talent-node img {
+  width: 100%;
   height: 100%;
-  border-radius: 3px;
-  transition: width 0.4s ease;
+  display: block;
+  object-fit: cover;
 }
 
-.talent-bar-fill.tree-0 { background: var(--accent-blue); }
-.talent-bar-fill.tree-1 { background: var(--accent-green); }
-.talent-bar-fill.tree-2 { background: var(--accent-gold); }
+.talent-node.unlearned {
+  opacity: 0.3;
+  filter: grayscale(0.7);
+  border-color: #333;
+}
 
-.talent-list {
+.talent-node.partial {
+  border-color: #1eff00;
+  opacity: 1;
+}
+
+.talent-node.full {
+  border-color: #ffd100;
+  opacity: 1;
+}
+
+.talent-node:hover {
+  border-color: #fff;
+  z-index: 2;
+}
+
+.talent-rank-label {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.85);
+  font-size: 10px;
+  padding: 0 3px;
+  line-height: 14px;
+  font-weight: 700;
+  color: #1eff00;
+  pointer-events: none;
+}
+
+.talent-node.full .talent-rank-label {
+  color: #ffd100;
+}
+
+.talent-node.unlearned .talent-rank-label {
+  color: #808080;
+}
+
+/* Tooltip */
+.talent-tooltip {
+  position: fixed;
+  z-index: 9999;
+  display: none;
+  background: #1a1a2e;
+  border: 1px solid #3a3a5a;
+  border-radius: 6px;
+  padding: 10px 14px;
+  max-width: 300px;
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+  font-size: 13px;
+  color: #ddd;
+}
+
+.tt-name {
+  color: #ffd100;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.tt-rank {
+  color: #ccc;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.tt-desc {
+  color: #bbb;
+  line-height: 1.45;
+  font-size: 12px;
+}
+
+/* Fallback (no talent defs) */
+.talent-list-fallback {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 8px;
+  gap: 6px;
+  padding: 8px;
 }
 
-.talent-pill {
-  font-size: 0.75rem;
+.talent-fb-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
   color: var(--text-secondary);
   background: var(--bg-primary);
-  padding: 2px 8px;
+  padding: 3px 8px;
   border-radius: 4px;
-  white-space: nowrap;
 }
 
-.talent-pill-rank {
+.talent-fb-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+}
+
+.talent-fb-rank {
   color: var(--accent-gold);
   font-weight: 600;
 }

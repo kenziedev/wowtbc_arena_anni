@@ -5,6 +5,7 @@
   var SUPABASE_ANON_KEY = "";
   var CONFIG_PATH = "config/supabase.json";
   var ALL_CHARS_PATH = "data/all_characters.json";
+  var TALENT_DEFS_PATH = "data/talent_defs.json";
 
   var BRACKET_COLORS = {
     "2v2": { line: "#58a6ff", bg: "rgba(88,166,255,0.1)" },
@@ -172,7 +173,16 @@
     }
   }
 
-  // --- Talents (dual spec support) ---
+  // --- Talent Tree (visual grid) ---
+
+  var talentDefs = null;
+  var tooltipEl = null;
+
+  async function loadTalentDefs() {
+    try {
+      talentDefs = await fetchJSON(TALENT_DEFS_PATH);
+    } catch (e) { talentDefs = null; }
+  }
 
   function getSpecGroups(extras) {
     if (extras.spec_groups && extras.spec_groups.length > 0) return extras.spec_groups;
@@ -182,19 +192,44 @@
     return [];
   }
 
+  function findClassDef(className) {
+    if (!talentDefs) return null;
+    for (var key in talentDefs) {
+      if (talentDefs[key].ko === className) return talentDefs[key];
+    }
+    return null;
+  }
+
+  function findTreeDef(classDef, treeName) {
+    if (!classDef) return null;
+    for (var i = 0; i < classDef.trees.length; i++) {
+      if (classDef.trees[i].ko === treeName) return classDef.trees[i];
+    }
+    return null;
+  }
+
+  function buildLearnedMap(charTalents) {
+    var map = {};
+    for (var i = 0; i < charTalents.length; i++) {
+      var t = charTalents[i];
+      if (t.icon) map[t.icon] = t;
+    }
+    return map;
+  }
+
   function renderSpecTabs(specGroups) {
     var tabContainer = $("#spec-tabs");
     tabContainer.innerHTML = "";
-    if (specGroups.length <= 1) return;
 
     for (var i = 0; i < specGroups.length; i++) {
       var g = specGroups[i];
-      var label = g.active ? "활성 특성" : "이중 특성";
+      var label = "특성" + (i + 1);
+      if (g.active) label += " (active)";
       var summary = g.trees.filter(function (t) { return t.points > 0; })
         .map(function (t) { return t.points; }).join("/");
-      if (summary) label += " (" + summary + ")";
+      if (summary) label += " " + summary;
       var btn = document.createElement("button");
-      btn.className = "spec-tab" + (g.active ? " active" : "");
+      btn.className = "spec-tab" + (i === 0 ? " active" : "");
       btn.textContent = label;
       btn.dataset.idx = String(i);
       btn.addEventListener("click", onSpecTabClick);
@@ -209,7 +244,7 @@
     var idx = parseInt(this.dataset.idx, 10);
     var groups = state._specGroups;
     if (groups && groups[idx]) {
-      renderTalentTrees(groups[idx].trees);
+      renderTalentTreesGrid(groups[idx].trees);
     }
   }
 
@@ -222,40 +257,146 @@
     state._specGroups = groups;
     renderSpecTabs(groups);
 
-    var activeGroup = groups.find(function (g) { return g.active; }) || groups[0];
-    renderTalentTrees(activeGroup.trees);
+    var first = groups[0];
+    renderTalentTreesGrid(first.trees);
     section.hidden = false;
   }
 
-  function renderTalentTrees(trees) {
+  function renderTalentTreesGrid(charTrees) {
     var container = $("#talent-trees");
     container.innerHTML = "";
-    var maxPoints = 61;
 
+    var className = state._className || "";
+    var classDef = findClassDef(className);
+
+    if (!classDef) {
+      renderTalentTreesFallback(charTrees, container);
+      return;
+    }
+
+    for (var ti = 0; ti < classDef.trees.length; ti++) {
+      var treeDef = classDef.trees[ti];
+      var charTree = null;
+      for (var ci = 0; ci < charTrees.length; ci++) {
+        if (charTrees[ci].name === treeDef.ko) { charTree = charTrees[ci]; break; }
+      }
+
+      var learnedMap = charTree ? buildLearnedMap(charTree.talents) : {};
+      var points = charTree ? (charTree.points || 0) : 0;
+      var maxTier = Math.ceil(treeDef.grid.length / 4);
+
+      var panel = document.createElement("div");
+      panel.className = "tree-panel";
+
+      var header = document.createElement("div");
+      header.className = "tree-panel-header";
+      header.innerHTML = '<span class="tree-panel-name">' + esc(treeDef.ko || treeDef.name) +
+        '</span><span class="tree-panel-points">' + points + '</span>';
+      panel.appendChild(header);
+
+      var grid = document.createElement("div");
+      grid.className = "tree-grid";
+      grid.style.gridTemplateRows = "repeat(" + maxTier + ", 44px)";
+
+      for (var gi = 0; gi < treeDef.grid.length; gi++) {
+        var def = treeDef.grid[gi];
+        if (def === null) continue;
+
+        var row = Math.floor(gi / 4) + 1;
+        var col = (gi % 4) + 1;
+
+        var learned = learnedMap[def.icon] || null;
+        var curRank = learned ? learned.rank : 0;
+        var maxRank = def.max_rank || 1;
+
+        var nodeClass = "talent-node";
+        if (curRank >= maxRank) nodeClass += " full";
+        else if (curRank > 0) nodeClass += " partial";
+        else nodeClass += " unlearned";
+
+        var node = document.createElement("div");
+        node.className = nodeClass;
+        node.style.gridRow = String(row);
+        node.style.gridColumn = String(col);
+
+        node.innerHTML =
+          '<img src="icons/' + def.icon + '.jpg" alt="' + esc(def.name) + '" loading="lazy" />' +
+          '<span class="talent-rank-label">' + curRank + '/' + maxRank + '</span>';
+
+        node._talentDef = def;
+        node._curRank = curRank;
+        node._charTalent = learned;
+        node.addEventListener("mouseenter", onTalentHover);
+        node.addEventListener("mousemove", onTalentMove);
+        node.addEventListener("mouseleave", onTalentLeave);
+
+        grid.appendChild(node);
+      }
+
+      panel.appendChild(grid);
+      container.appendChild(panel);
+    }
+  }
+
+  function renderTalentTreesFallback(trees, container) {
     for (var i = 0; i < trees.length; i++) {
       var tree = trees[i];
       if (tree.points === 0) continue;
-      var pct = Math.min(100, Math.round(tree.points / maxPoints * 100));
       var div = document.createElement("div");
-      div.className = "talent-tree";
-      var html =
-        '<div class="talent-tree-header">' +
-          '<span class="talent-tree-name">' + esc(tree.name) + '</span>' +
-          '<span class="talent-tree-points">' + tree.points + '</span>' +
-        '</div>' +
-        '<div class="talent-bar-track">' +
-          '<div class="talent-bar-fill tree-' + i + '" style="width:' + pct + '%"></div>' +
-        '</div>' +
-        '<div class="talent-list">';
+      div.className = "tree-panel";
+      var html = '<div class="tree-panel-header"><span class="tree-panel-name">' +
+        esc(tree.name) + '</span><span class="tree-panel-points">' +
+        tree.points + '</span></div><div class="talent-list-fallback">';
       for (var j = 0; j < tree.talents.length; j++) {
         var t = tree.talents[j];
-        html += '<span class="talent-pill">' + esc(t.name) +
-                ' <span class="talent-pill-rank">' + t.rank + '</span></span>';
+        var iconSrc = t.icon ? 'icons/' + t.icon + '.jpg' : '';
+        html += '<div class="talent-fb-item">';
+        if (iconSrc) html += '<img src="' + iconSrc + '" class="talent-fb-icon" />';
+        html += '<span>' + esc(t.name) + '</span><span class="talent-fb-rank">' + t.rank + '</span></div>';
       }
       html += '</div>';
       div.innerHTML = html;
       container.appendChild(div);
     }
+  }
+
+  function onTalentHover(e) {
+    if (!tooltipEl) tooltipEl = $("#talent-tooltip");
+    var def = this._talentDef;
+    var curRank = this._curRank;
+    var charTalent = this._charTalent;
+    var maxRank = def.max_rank || 1;
+
+    var name = charTalent ? charTalent.name : def.name;
+    var desc = "";
+    if (def.descriptions && def.descriptions.length > 0) {
+      var ri = curRank > 0 ? Math.min(curRank, def.descriptions.length) - 1 : 0;
+      desc = def.descriptions[ri];
+    }
+
+    var html = '<div class="tt-name">' + esc(name) + '</div>' +
+      '<div class="tt-rank">랭크 ' + curRank + ' / ' + maxRank + '</div>';
+    if (desc) html += '<div class="tt-desc">' + esc(desc) + '</div>';
+
+    tooltipEl.innerHTML = html;
+    tooltipEl.style.display = "block";
+    positionTooltip(e);
+  }
+
+  function onTalentMove(e) { positionTooltip(e); }
+
+  function onTalentLeave() {
+    if (tooltipEl) tooltipEl.style.display = "none";
+  }
+
+  function positionTooltip(e) {
+    if (!tooltipEl) return;
+    var x = e.clientX + 16;
+    var y = e.clientY + 16;
+    if (x + 320 > window.innerWidth) x = e.clientX - 320;
+    if (y + 200 > window.innerHeight) y = e.clientY - 200;
+    tooltipEl.style.left = x + "px";
+    tooltipEl.style.top = y + "px";
   }
 
   // --- Equipment (icons + enchants) ---
@@ -429,8 +570,10 @@
 
     var configPromise = loadConfig();
     var extrasPromise = loadCharacterExtras(params.name, params.realm);
+    var talentDefsPromise = loadTalentDefs();
     var configured = await configPromise;
     var extras = await extrasPromise;
+    await talentDefsPromise;
 
     var char = null;
     var snapshots = [];
@@ -451,6 +594,7 @@
     state.name = char.name;
     state.realm = char.realm;
 
+    state._className = (extras && extras["class"]) || char["class"] || "";
     renderHeader(char, extras);
     renderAvatar(extras);
 
