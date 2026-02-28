@@ -165,19 +165,20 @@ def update_sources(new_entries: dict, token: str | None) -> tuple[list[str], lis
     print(f"  To verify: {len(to_verify)}")
 
     added = []
+    added_entries = {"guilds": [], "characters": []}
     skipped = list(already_skipped)
 
     if not token:
-        # No API token — add all without verification
         for kind, name, realm in to_verify:
             if kind == "guild":
                 sources.setdefault("guilds", []).append({"name": name, "realm": realm})
                 added.append(f"길드: {name} ({realm})")
+                added_entries["guilds"].append({"name": name, "realm": realm})
             else:
                 sources.setdefault("characters", []).append({"name": name, "realm": realm})
                 added.append(f"캐릭터: {name} ({realm})")
+                added_entries["characters"].append({"name": name, "realm": realm})
     else:
-        # Parallel verification
         tasks = [(kind, token, name, realm) for kind, name, realm in to_verify]
         done = 0
         total = len(tasks)
@@ -194,15 +195,21 @@ def update_sources(new_entries: dict, token: str | None) -> tuple[list[str], lis
                     if kind == "guild":
                         sources.setdefault("guilds", []).append({"name": name, "realm": realm})
                         added.append(f"길드: {name} ({realm})")
+                        added_entries["guilds"].append({"name": name, "realm": realm})
                     else:
                         sources.setdefault("characters", []).append({"name": name, "realm": realm})
                         added.append(f"캐릭터: {name} ({realm})")
+                        added_entries["characters"].append({"name": name, "realm": realm})
                 else:
                     skipped.append(f"{'길드' if kind == 'guild' else '캐릭터'}: {name} (존재하지 않음)")
 
     if added:
         with open(CONFIG_PATH, "w", encoding="utf-8") as f:
             json.dump(sources, f, ensure_ascii=False, indent=2)
+
+        added_path = CONFIG_PATH.parent / "_added.json"
+        with open(added_path, "w", encoding="utf-8") as f:
+            json.dump(added_entries, f, ensure_ascii=False, indent=2)
 
     return added, skipped
 

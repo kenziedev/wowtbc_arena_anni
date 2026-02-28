@@ -57,17 +57,18 @@ jobs:
             done
           fi
 
-      - name: Fetch leaderboard data
+      - name: Fetch new entries only (incremental)
         env:
           BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
           BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-        run: python scripts/fetch_leaderboard.py
+        run: python scripts/fetch_incremental.py
 
       - name: Commit and push leaderboard data
         run: |
           git add data/
+          git rm -f --cached config/_added.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No data changes"
           else
