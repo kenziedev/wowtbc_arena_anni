@@ -426,6 +426,10 @@
     "MAIN_HAND", "OFF_HAND", "RANGED"
   ];
 
+  function wowheadItemUrl(itemId) {
+    return "https://tbc.wowhead.com/item=" + itemId;
+  }
+
   function renderEquipment(extras) {
     var section = $("#equipment-section");
     var container = $("#equipment-grid");
@@ -445,15 +449,28 @@
       var item = items[i];
       var qualityClass = "quality-" + (item.quality_type || "COMMON");
       var borderClass = "icon-border-" + (item.quality_type || "COMMON");
+      var itemUrl = item.item_id ? wowheadItemUrl(item.item_id) : "";
 
       var div = document.createElement("div");
       div.className = "equip-item";
 
       var iconHtml = '';
-      if (item.icon) {
+      if (item.icon && itemUrl) {
+        iconHtml = '<a href="' + itemUrl + '" data-wowhead="domain=ko.tbc" target="_blank">' +
+          '<img class="equip-icon ' + borderClass + '" src="' + esc(item.icon) + '" alt="" loading="lazy" />' +
+          '</a>';
+      } else if (item.icon) {
         iconHtml = '<img class="equip-icon ' + borderClass + '" src="' + esc(item.icon) + '" alt="" loading="lazy" />';
       } else {
         iconHtml = '<div class="equip-icon equip-icon-empty ' + borderClass + '"></div>';
+      }
+
+      var nameHtml = '';
+      if (itemUrl) {
+        nameHtml = '<a class="equip-name ' + qualityClass + '" href="' + itemUrl +
+          '" data-wowhead="domain=ko.tbc" target="_blank">' + esc(item.name) + '</a>';
+      } else {
+        nameHtml = '<div class="equip-name ' + qualityClass + '">' + esc(item.name) + '</div>';
       }
 
       var enchantHtml = '';
@@ -463,7 +480,14 @@
           if (ench.type === "PERMANENT") {
             enchantHtml += '<div class="equip-enchant">' + esc(ench.text) + '</div>';
           } else if (ench.type === "GEM") {
-            enchantHtml += '<div class="equip-gem">' + esc(ench.source || ench.text) + '</div>';
+            var gemLabel = ench.source ? esc(ench.source) : '';
+            var gemEffect = esc(ench.text);
+            if (gemLabel && gemLabel !== gemEffect) {
+              enchantHtml += '<div class="equip-gem">' + gemLabel +
+                '<span class="gem-effect"> ' + gemEffect + '</span></div>';
+            } else {
+              enchantHtml += '<div class="equip-gem">' + gemEffect + '</div>';
+            }
           }
         }
       }
@@ -471,13 +495,18 @@
       div.innerHTML =
         iconHtml +
         '<div class="equip-info">' +
-          '<div class="equip-name ' + qualityClass + '">' + esc(item.name) + '</div>' +
+          nameHtml +
           '<div class="equip-slot-label">' + esc(item.slot) + '</div>' +
           enchantHtml +
         '</div>';
       container.appendChild(div);
     }
     section.hidden = false;
+
+    // Trigger Wowhead tooltip refresh
+    if (typeof $WowheadPower !== "undefined" && $WowheadPower.refreshLinks) {
+      $WowheadPower.refreshLinks();
+    }
   }
 
   // --- Chart ---
