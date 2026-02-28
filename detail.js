@@ -212,7 +212,12 @@
     var map = {};
     for (var i = 0; i < charTalents.length; i++) {
       var t = charTalents[i];
-      if (t.icon) map[t.icon] = t;
+      if (t.icon) {
+        map[t.icon] = t;
+        if (t.icon.indexOf("classic_") === 0) {
+          map[t.icon.substring(8)] = t;
+        }
+      }
     }
     return map;
   }

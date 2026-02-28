@@ -21,13 +21,13 @@ XML_BASE = (
 CLASSES = [
     {"en": "Warrior",  "ko": "전사",    "xml": "Warrior.xml",  "trees_ko": ["무기", "분노", "방어"]},
     {"en": "Paladin",  "ko": "성기사",  "xml": "Paladin.xml",  "trees_ko": ["신성", "보호", "징벌"]},
-    {"en": "Hunter",   "ko": "사냥꾼",  "xml": "Hunter.xml",   "trees_ko": ["야수 지배", "사격", "생존"]},
+    {"en": "Hunter",   "ko": "사냥꾼",  "xml": "Hunter.xml",   "trees_ko": ["야수", "사격", "생존"]},
     {"en": "Rogue",    "ko": "도적",    "xml": "Rogue.xml",    "trees_ko": ["암살", "전투", "잠행"]},
     {"en": "Priest",   "ko": "사제",    "xml": "Priest.xml",   "trees_ko": ["수양", "신성", "암흑"]},
     {"en": "Shaman",   "ko": "주술사",  "xml": "Shaman.xml",   "trees_ko": ["정기", "고양", "복원"]},
     {"en": "Mage",     "ko": "마법사",  "xml": "Mage.xml",     "trees_ko": ["비전", "화염", "냉기"]},
-    {"en": "Warlock",  "ko": "흑마법사","xml": "Warlock.xml",  "trees_ko": ["고통", "악마학", "파괴"]},
-    {"en": "Druid",    "ko": "드루이드","xml": "Druid.xml",    "trees_ko": ["조화", "야성 전투", "회복"]},
+    {"en": "Warlock",  "ko": "흑마법사","xml": "Warlock.xml",  "trees_ko": ["고통", "악마", "파괴"]},
+    {"en": "Druid",    "ko": "드루이드","xml": "Druid.xml",    "trees_ko": ["조화", "야성", "회복"]},
 ]
 
 session = requests.Session()
