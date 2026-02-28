@@ -132,13 +132,12 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
                 "season_id": pvp_data.get("season", {}).get("id"),
             }
 
-    # Specializations (talent trees)
+    # Specializations (all groups for dual spec)
     spec_data = api_get(token, f"{base_url}/specializations", NS_PROFILE)
     if spec_data:
-        trees = []
+        spec_groups = []
         for group in spec_data.get("specialization_groups", []):
-            if not group.get("is_active"):
-                continue
+            trees = []
             for spec in group.get("specializations", []):
                 tree = {
                     "name": spec.get("specialization_name", ""),
@@ -153,29 +152,49 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
                         "rank": t.get("talent_rank", 0),
                     })
                 trees.append(tree)
-        result["talents"] = trees
+            spec_groups.append({
+                "active": bool(group.get("is_active")),
+                "trees": trees,
+            })
+        result["spec_groups"] = spec_groups
 
     # Equipment
     eq_data = api_get(token, f"{base_url}/equipment", NS_PROFILE)
     if eq_data:
         items = []
+        item_ids_needed = set()
         for item in eq_data.get("equipped_items", []):
-            slot_name = item.get("slot", {}).get("name", "")
             slot_type = item.get("slot", {}).get("type", "")
-            if slot_type == "SHIRT" or slot_type == "TABARD":
+            if slot_type in ("SHIRT", "TABARD"):
                 continue
+            item_id = item.get("item", {}).get("id", 0)
             entry = {
-                "slot": slot_name,
+                "slot": item.get("slot", {}).get("name", ""),
                 "slot_type": slot_type,
                 "name": item.get("name", ""),
                 "quality": item.get("quality", {}).get("name", ""),
                 "quality_type": item.get("quality", {}).get("type", ""),
+                "item_id": item_id,
             }
-            ilvl = item.get("level", {}).get("value", 0)
-            if ilvl:
-                entry["ilvl"] = ilvl
+            enchants = []
+            for ench in item.get("enchantments", []):
+                e = {"text": ench.get("display_string", "")}
+                slot_info = ench.get("enchantment_slot", {})
+                if slot_info.get("type") == "PERMANENT":
+                    e["type"] = "PERMANENT"
+                else:
+                    e["type"] = "GEM"
+                    src = ench.get("source_item", {})
+                    if src.get("name"):
+                        e["source"] = src["name"]
+                enchants.append(e)
+            if enchants:
+                entry["enchants"] = enchants
             items.append(entry)
+            if item_id:
+                item_ids_needed.add(item_id)
         result["equipment"] = items
+        result["_item_ids"] = list(item_ids_needed)
 
     # Character media (avatar)
     media_data = api_get(token, f"{base_url}/character-media", NS_PROFILE)
@@ -193,6 +212,76 @@ def fetch_character_worker(args):
     token, name, realm, idx, total = args
     pvp = fetch_character_pvp(token, name, realm)
     return idx, name, pvp
+
+
+ICON_CACHE_PATH = DATA_DIR / "_icon_cache.json"
+NS_STATIC = "static-2.5.5_65000-classicann-kr"
+
+
+def load_icon_cache() -> dict:
+    if ICON_CACHE_PATH.exists():
+        with open(ICON_CACHE_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def save_icon_cache(cache: dict):
+    with open(ICON_CACHE_PATH, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False)
+
+
+def fetch_item_icon(token: str, item_id: int) -> str | None:
+    url = f"{API_BASE}/data/wow/media/item/{item_id}"
+    data = api_get(token, url, NS_STATIC)
+    if data:
+        for asset in data.get("assets", []):
+            if asset.get("key") == "icon":
+                return asset.get("value", "")
+    return None
+
+
+def _icon_worker(args):
+    token, item_id = args
+    icon = fetch_item_icon(token, item_id)
+    return item_id, icon
+
+
+def resolve_icons(token: str, all_pvp: list[dict]):
+    """Resolve item icons for all characters, using a persistent cache."""
+    cache = load_icon_cache()
+
+    needed = set()
+    for char in all_pvp:
+        for item_id in char.pop("_item_ids", []):
+            sid = str(item_id)
+            if sid not in cache:
+                needed.add(item_id)
+
+    if needed:
+        print(f"\nFetching {len(needed)} new item icons...")
+        tasks = [(token, iid) for iid in needed]
+        done = 0
+        total = len(tasks)
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            futures = {executor.submit(_icon_worker, t): t for t in tasks}
+            for future in as_completed(futures):
+                item_id, icon_url = future.result()
+                done += 1
+                if done % 50 == 0 or done == total:
+                    print(f"  Icons: {done}/{total}")
+                if icon_url:
+                    cache[str(item_id)] = icon_url
+                else:
+                    cache[str(item_id)] = ""
+        save_icon_cache(cache)
+    else:
+        print("\nAll item icons already cached.")
+
+    for char in all_pvp:
+        for eq in char.get("equipment", []):
+            icon = cache.get(str(eq.get("item_id", 0)), "")
+            if icon:
+                eq["icon"] = icon
 
 
 def build_leaderboard(all_pvp_data: list[dict], bracket: str) -> list[dict]:
@@ -280,6 +369,8 @@ def main():
                 all_pvp.append(pvp)
 
     print(f"\nCharacters with PvP data: {len(all_pvp)}")
+
+    resolve_icons(token, all_pvp)
 
     meta = {
         "region": REGION,

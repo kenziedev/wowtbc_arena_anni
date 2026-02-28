@@ -149,14 +149,12 @@
     var container = $("#detail-cards");
     container.innerHTML = "";
     var brackets = {};
-
     for (var i = 0; i < snapshots.length; i++) {
       var s = snapshots[i];
       if (!brackets[s.bracket] || new Date(s.recorded_at) > new Date(brackets[s.bracket].recorded_at)) {
         brackets[s.bracket] = s;
       }
     }
-
     var order = ["2v2", "3v3", "5v5"];
     for (var j = 0; j < order.length; j++) {
       var b = order[j];
@@ -164,7 +162,6 @@
       if (!data) continue;
       var total = data.won + data.lost;
       var wr = total > 0 ? (data.won / total * 100).toFixed(1) : "0.0";
-
       var card = document.createElement("div");
       card.className = "detail-card";
       card.innerHTML =
@@ -175,22 +172,72 @@
     }
   }
 
+  // --- Talents (dual spec support) ---
+
+  function getSpecGroups(extras) {
+    if (extras.spec_groups && extras.spec_groups.length > 0) return extras.spec_groups;
+    if (extras.talents && extras.talents.length > 0) {
+      return [{ active: true, trees: extras.talents }];
+    }
+    return [];
+  }
+
+  function renderSpecTabs(specGroups) {
+    var tabContainer = $("#spec-tabs");
+    tabContainer.innerHTML = "";
+    if (specGroups.length <= 1) return;
+
+    for (var i = 0; i < specGroups.length; i++) {
+      var g = specGroups[i];
+      var label = g.active ? "활성 특성" : "이중 특성";
+      var summary = g.trees.filter(function (t) { return t.points > 0; })
+        .map(function (t) { return t.points; }).join("/");
+      if (summary) label += " (" + summary + ")";
+      var btn = document.createElement("button");
+      btn.className = "spec-tab" + (g.active ? " active" : "");
+      btn.textContent = label;
+      btn.dataset.idx = String(i);
+      btn.addEventListener("click", onSpecTabClick);
+      tabContainer.appendChild(btn);
+    }
+  }
+
+  function onSpecTabClick() {
+    var tabs = document.querySelectorAll(".spec-tab");
+    for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove("active");
+    this.classList.add("active");
+    var idx = parseInt(this.dataset.idx, 10);
+    var groups = state._specGroups;
+    if (groups && groups[idx]) {
+      renderTalentTrees(groups[idx].trees);
+    }
+  }
+
   function renderTalents(extras) {
     var section = $("#talents-section");
-    var container = $("#talent-trees");
-    if (!extras || !extras.talents || extras.talents.length === 0) return;
+    if (!extras) return;
+    var groups = getSpecGroups(extras);
+    if (groups.length === 0) return;
 
+    state._specGroups = groups;
+    renderSpecTabs(groups);
+
+    var activeGroup = groups.find(function (g) { return g.active; }) || groups[0];
+    renderTalentTrees(activeGroup.trees);
+    section.hidden = false;
+  }
+
+  function renderTalentTrees(trees) {
+    var container = $("#talent-trees");
     container.innerHTML = "";
     var maxPoints = 61;
 
-    for (var i = 0; i < extras.talents.length; i++) {
-      var tree = extras.talents[i];
+    for (var i = 0; i < trees.length; i++) {
+      var tree = trees[i];
       if (tree.points === 0) continue;
-
       var pct = Math.min(100, Math.round(tree.points / maxPoints * 100));
       var div = document.createElement("div");
       div.className = "talent-tree";
-
       var html =
         '<div class="talent-tree-header">' +
           '<span class="talent-tree-name">' + esc(tree.name) + '</span>' +
@@ -200,7 +247,6 @@
           '<div class="talent-bar-fill tree-' + i + '" style="width:' + pct + '%"></div>' +
         '</div>' +
         '<div class="talent-list">';
-
       for (var j = 0; j < tree.talents.length; j++) {
         var t = tree.talents[j];
         html += '<span class="talent-pill">' + esc(t.name) +
@@ -210,32 +256,72 @@
       div.innerHTML = html;
       container.appendChild(div);
     }
-
-    section.hidden = false;
   }
+
+  // --- Equipment (icons + enchants) ---
+
+  var SLOT_ORDER = [
+    "HEAD", "NECK", "SHOULDER", "BACK", "CHEST", "WRIST",
+    "HANDS", "WAIST", "LEGS", "FEET",
+    "FINGER_1", "FINGER_2", "TRINKET_1", "TRINKET_2",
+    "MAIN_HAND", "OFF_HAND", "RANGED"
+  ];
 
   function renderEquipment(extras) {
     var section = $("#equipment-section");
     var container = $("#equipment-grid");
     if (!extras || !extras.equipment || extras.equipment.length === 0) return;
 
-    container.innerHTML = "";
+    var items = extras.equipment.slice();
+    items.sort(function (a, b) {
+      var ai = SLOT_ORDER.indexOf(a.slot_type);
+      var bi = SLOT_ORDER.indexOf(b.slot_type);
+      if (ai === -1) ai = 99;
+      if (bi === -1) bi = 99;
+      return ai - bi;
+    });
 
-    for (var i = 0; i < extras.equipment.length; i++) {
-      var item = extras.equipment[i];
+    container.innerHTML = "";
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
       var qualityClass = "quality-" + (item.quality_type || "COMMON");
+      var borderClass = "icon-border-" + (item.quality_type || "COMMON");
 
       var div = document.createElement("div");
       div.className = "equip-item";
+
+      var iconHtml = '';
+      if (item.icon) {
+        iconHtml = '<img class="equip-icon ' + borderClass + '" src="' + esc(item.icon) + '" alt="" loading="lazy" />';
+      } else {
+        iconHtml = '<div class="equip-icon equip-icon-empty ' + borderClass + '"></div>';
+      }
+
+      var enchantHtml = '';
+      if (item.enchants && item.enchants.length > 0) {
+        for (var e = 0; e < item.enchants.length; e++) {
+          var ench = item.enchants[e];
+          if (ench.type === "PERMANENT") {
+            enchantHtml += '<div class="equip-enchant">' + esc(ench.text) + '</div>';
+          } else if (ench.type === "GEM") {
+            enchantHtml += '<div class="equip-gem">' + esc(ench.source || ench.text) + '</div>';
+          }
+        }
+      }
+
       div.innerHTML =
-        '<span class="equip-slot">' + esc(item.slot) + '</span>' +
-        '<span class="equip-name ' + qualityClass + '">' + esc(item.name) + '</span>' +
-        (item.ilvl ? '<span class="equip-ilvl">ilvl ' + item.ilvl + '</span>' : '');
+        iconHtml +
+        '<div class="equip-info">' +
+          '<div class="equip-name ' + qualityClass + '">' + esc(item.name) + '</div>' +
+          '<div class="equip-slot-label">' + esc(item.slot) + '</div>' +
+          enchantHtml +
+        '</div>';
       container.appendChild(div);
     }
-
     section.hidden = false;
   }
+
+  // --- Chart ---
 
   function renderChartTabs(snapshots) {
     var container = $("#chart-tabs");
@@ -244,7 +330,6 @@
     for (var i = 0; i < snapshots.length; i++) {
       brackets[snapshots[i].bracket] = true;
     }
-
     var order = ["2v2", "3v3", "5v5"];
     var first = true;
     for (var j = 0; j < order.length; j++) {
@@ -276,12 +361,9 @@
     var filtered = snapshots.filter(function (s) { return s.bracket === bracket; });
     var labels = filtered.map(function (s) { return formatDateShort(s.recorded_at); });
     var ratings = filtered.map(function (s) { return s.rating; });
-
     var ctx = $("#rating-chart").getContext("2d");
     var colors = BRACKET_COLORS[bracket] || BRACKET_COLORS["5v5"];
-
     if (chart) chart.destroy();
-
     chart = new Chart(ctx, {
       type: "line",
       data: {
@@ -309,14 +391,8 @@
           },
         },
         scales: {
-          x: {
-            ticks: { color: "#8b949e" },
-            grid: { color: "rgba(48,54,61,0.5)" },
-          },
-          y: {
-            ticks: { color: "#8b949e" },
-            grid: { color: "rgba(48,54,61,0.5)" },
-          },
+          x: { ticks: { color: "#8b949e" }, grid: { color: "rgba(48,54,61,0.5)" } },
+          y: { ticks: { color: "#8b949e" }, grid: { color: "rgba(48,54,61,0.5)" } },
         },
       },
     });
@@ -325,17 +401,14 @@
   function renderHistory(snapshots, bracket) {
     var filtered = snapshots.filter(function (s) { return s.bracket === bracket; });
     filtered.sort(function (a, b) { return new Date(b.recorded_at) - new Date(a.recorded_at); });
-
     var body = $("#history-body");
     body.innerHTML = "";
-
     for (var i = 0; i < filtered.length; i++) {
       var s = filtered[i];
       var prev = filtered[i + 1];
       var diff = prev ? s.rating - prev.rating : 0;
       var diffClass = diff > 0 ? "winrate-high" : diff < 0 ? "winrate-low" : "";
       var diffText = diff > 0 ? "+" + diff : diff === 0 ? "-" : String(diff);
-
       var tr = document.createElement("tr");
       tr.innerHTML =
         "<td>" + formatDate(s.recorded_at) + "</td>" +
@@ -347,19 +420,15 @@
     }
   }
 
+  // --- Init ---
+
   async function init() {
     showLoading(true);
-
     var params = getParams();
-    if (!params.name || !params.realm) {
-      showEmpty();
-      return;
-    }
+    if (!params.name || !params.realm) { showEmpty(); return; }
 
-    // Load Supabase data and all_characters.json in parallel
     var configPromise = loadConfig();
     var extrasPromise = loadCharacterExtras(params.name, params.realm);
-
     var configured = await configPromise;
     var extras = await extrasPromise;
 
@@ -373,15 +442,10 @@
       }
     }
 
-    // Use extras from all_characters.json as fallback for header info
     if (!char && extras) {
       char = { name: extras.name, realm: extras.realm, race: extras.race, "class": extras["class"], guild: extras.guild, faction: extras.faction };
     }
-
-    if (!char) {
-      showEmpty();
-      return;
-    }
+    if (!char) { showEmpty(); return; }
 
     state.charId = char.id;
     state.name = char.name;
@@ -389,8 +453,6 @@
 
     renderHeader(char, extras);
     renderAvatar(extras);
-    renderTalents(extras);
-    renderEquipment(extras);
 
     if (snapshots.length > 0) {
       state.snapshots = snapshots;
@@ -399,6 +461,9 @@
       renderChart(snapshots, state.activeBracket);
       renderHistory(snapshots, state.activeBracket);
     }
+
+    renderEquipment(extras);
+    renderTalents(extras);
 
     showLoading(false);
     $("#empty-state").hidden = true;
