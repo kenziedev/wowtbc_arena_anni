@@ -166,7 +166,8 @@
   }
 
   function fetchJSON(url) {
-    return fetch(url).then(function (resp) {
+    var bustUrl = url + (url.indexOf("?") === -1 ? "?" : "&") + "_t=" + Date.now();
+    return fetch(bustUrl).then(function (resp) {
       if (!resp.ok) throw new Error("HTTP " + resp.status);
       return resp.json();
     });

@@ -51,7 +51,7 @@
 
   async function loadConfig() {
     try {
-      var resp = await fetch(CONFIG_PATH);
+      var resp = await fetch(CONFIG_PATH + "?_t=" + Date.now());
       if (!resp.ok) return false;
       var cfg = await resp.json();
       SUPABASE_URL = cfg.url || "";
