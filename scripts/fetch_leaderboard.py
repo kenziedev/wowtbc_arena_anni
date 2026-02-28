@@ -215,7 +215,9 @@ def fetch_character_worker(args):
 
 
 ICON_CACHE_PATH = DATA_DIR / "_icon_cache.json"
+ICONS_DIR = BASE_DIR / "icons"
 NS_STATIC = "static-2.5.5_65000-classicann-kr"
+WOWHEAD_ICON_CDN = "https://wow.zamimg.com/images/wow/icons/medium"
 
 
 def load_icon_cache() -> dict:
@@ -230,58 +232,98 @@ def save_icon_cache(cache: dict):
         json.dump(cache, f, ensure_ascii=False)
 
 
-def fetch_item_icon(token: str, item_id: int) -> str | None:
+def _extract_icon_name(blizzard_url: str) -> str:
+    """Extract icon filename (without extension) from a Blizzard render URL."""
+    return blizzard_url.rsplit("/", 1)[-1].replace(".jpg", "")
+
+
+def fetch_item_icon_name(token: str, item_id: int) -> str | None:
+    """Fetch the icon name for an item from the Blizzard media API."""
     url = f"{API_BASE}/data/wow/media/item/{item_id}"
     data = api_get(token, url, NS_STATIC)
     if data:
         for asset in data.get("assets", []):
             if asset.get("key") == "icon":
-                return asset.get("value", "")
+                raw = asset.get("value", "")
+                if raw:
+                    return _extract_icon_name(raw)
     return None
 
 
-def _icon_worker(args):
+def _icon_name_worker(args):
     token, item_id = args
-    icon = fetch_item_icon(token, item_id)
-    return item_id, icon
+    name = fetch_item_icon_name(token, item_id)
+    return item_id, name
+
+
+def _download_icon(icon_name: str) -> bool:
+    """Download an icon from Wowhead CDN and save to icons/ directory."""
+    dest = ICONS_DIR / f"{icon_name}.jpg"
+    if dest.exists():
+        return True
+    url = f"{WOWHEAD_ICON_CDN}/{icon_name}.jpg"
+    try:
+        resp = _session.get(url, timeout=10)
+        if resp.status_code == 200 and resp.content:
+            dest.write_bytes(resp.content)
+            return True
+    except requests.RequestException:
+        pass
+    return False
 
 
 def resolve_icons(token: str, all_pvp: list[dict]):
-    """Resolve item icons for all characters, using a persistent cache."""
+    """Resolve item icons: fetch names via Blizzard API, download from Wowhead CDN."""
+    ICONS_DIR.mkdir(parents=True, exist_ok=True)
     cache = load_icon_cache()
 
-    needed = set()
+    needed_ids = set()
     for char in all_pvp:
         for item_id in char.pop("_item_ids", []):
             sid = str(item_id)
             if sid not in cache:
-                needed.add(item_id)
+                needed_ids.add(item_id)
 
-    if needed:
-        print(f"\nFetching {len(needed)} new item icons...")
-        tasks = [(token, iid) for iid in needed]
+    if needed_ids:
+        print(f"\nFetching {len(needed_ids)} new item icon names...")
+        tasks = [(token, iid) for iid in needed_ids]
         done = 0
         total = len(tasks)
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-            futures = {executor.submit(_icon_worker, t): t for t in tasks}
+            futures = {executor.submit(_icon_name_worker, t): t for t in tasks}
             for future in as_completed(futures):
-                item_id, icon_url = future.result()
+                item_id, icon_name = future.result()
                 done += 1
                 if done % 50 == 0 or done == total:
-                    print(f"  Icons: {done}/{total}")
-                if icon_url:
-                    cache[str(item_id)] = icon_url
-                else:
-                    cache[str(item_id)] = ""
+                    print(f"  Icon names: {done}/{total}")
+                cache[str(item_id)] = icon_name or ""
         save_icon_cache(cache)
+
+    icons_to_download = set()
+    for name in cache.values():
+        if name:
+            icons_to_download.add(name)
+
+    existing = {p.stem for p in ICONS_DIR.glob("*.jpg")}
+    missing = icons_to_download - existing
+    if missing:
+        print(f"\nDownloading {len(missing)} icon images from CDN...")
+        done = 0
+        total = len(missing)
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+            futures = {executor.submit(_download_icon, n): n for n in missing}
+            for future in as_completed(futures):
+                done += 1
+                if done % 100 == 0 or done == total:
+                    print(f"  Downloads: {done}/{total}")
     else:
-        print("\nAll item icons already cached.")
+        print("\nAll icon images already downloaded.")
 
     for char in all_pvp:
         for eq in char.get("equipment", []):
-            icon = cache.get(str(eq.get("item_id", 0)), "")
-            if icon:
-                eq["icon"] = icon
+            icon_name = cache.get(str(eq.get("item_id", 0)), "")
+            if icon_name:
+                eq["icon"] = f"icons/{icon_name}.jpg"
 
 
 def build_leaderboard(all_pvp_data: list[dict], bracket: str) -> list[dict]:

@@ -86,7 +86,7 @@ GitHub 저장소 → Settings → Secrets and variables → Actions → **Reposi
 
 ## 6. 로컬 테스트
 
-### 데이터 수집 테스트
+### 전체 데이터 수집 테스트
 
 ```bash
 export BLIZZARD_CLIENT_ID="your-id"
@@ -95,6 +95,17 @@ export SUPABASE_URL="https://your-project.supabase.co"
 export SUPABASE_SERVICE_KEY="your-service-key"
 
 python scripts/fetch_leaderboard.py
+```
+
+수집되는 데이터: PvP 레이팅, 특성(이중특성), 장비(아이콘/마법부여/보석), 캐릭터 아바타
+
+### 증분 데이터 수집 테스트
+
+이슈로 새 길드/캐릭터를 추가한 후 해당 항목만 수집할 때:
+
+```bash
+# config/_added.json에 추가 항목이 있어야 함
+python scripts/fetch_incremental.py
 ```
 
 ### 웹 서버 실행

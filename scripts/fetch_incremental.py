@@ -16,6 +16,7 @@ from fetch_leaderboard import (
     fetch_character_worker,
     build_leaderboard,
     sync_to_supabase,
+    resolve_icons,
     BRACKETS,
     MAX_WORKERS,
     MIN_LEVEL,
@@ -104,6 +105,8 @@ def main():
                 new_pvp.append(pvp)
 
     print(f"\nNew characters with data: {len(new_pvp)}")
+
+    resolve_icons(token, new_pvp)
 
     # Merge into existing data
     merged = list(existing)

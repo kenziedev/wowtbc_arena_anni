@@ -33,17 +33,23 @@ wowtbc_arena_anni/
 │       └── process-submission.yml # 이슈 기반 소스 추가 처리
 ├── config/
 │   ├── sources.json               # 수집 대상 길드/캐릭터 목록
-│   └── supabase.json              # Supabase 클라이언트 설정 (URL, anon key)
+│   ├── supabase.json              # Supabase 클라이언트 설정 (URL, anon key)
+│   └── _added.json                # (임시) 증분 수집용 새 항목 목록 (.gitignore)
 ├── data/
 │   ├── 2v2.json                   # 2v2 리더보드
 │   ├── 3v3.json                   # 3v3 리더보드
 │   ├── 5v5.json                   # 5v5 리더보드
-│   ├── all_characters.json        # 전체 캐릭터 PvP 데이터
-│   └── meta.json                  # 수집 메타데이터 (시간, 통계)
+│   ├── all_characters.json        # 전체 캐릭터 PvP + 장비 + 특성 데이터
+│   ├── meta.json                  # 수집 메타데이터 (시간, 통계)
+│   └── _icon_cache.json           # 아이템 아이콘 URL 캐시 (.gitignore)
 ├── docs/
-│   └── ARCHITECTURE.md            # 이 문서
+│   ├── ARCHITECTURE.md            # 이 문서
+│   ├── CHANGELOG.md               # 변경 이력
+│   └── SETUP.md                   # 설치 및 설정 가이드
+├── icons/                          # 아이템 아이콘 이미지 (Wowhead CDN에서 다운로드)
 ├── scripts/
-│   ├── fetch_leaderboard.py       # 데이터 수집 메인 스크립트
+│   ├── fetch_leaderboard.py       # 전체 데이터 수집 스크립트
+│   ├── fetch_incremental.py       # 증분 데이터 수집 스크립트
 │   ├── process_submission.py      # 이슈 파싱 및 소스 추가 스크립트
 │   └── requirements.txt           # Python 의존성
 ├── supabase/
@@ -60,6 +66,8 @@ wowtbc_arena_anni/
 
 ## 데이터 흐름
 
+### 전체 수집 (6시간 주기)
+
 ```
 ┌─────────────┐     ┌──────────────┐     ┌────────────┐
 │ Battle.net  │────▶│ fetch_       │────▶│ data/*.json │
@@ -75,6 +83,22 @@ wowtbc_arena_anni/
 │ GitHub      │────▶│ GitHub       │────▶│ 웹 브라우저 │
 │ Actions     │     │ Pages        │     │ (사용자)    │
 └─────────────┘     └──────────────┘     └────────────┘
+```
+
+### 증분 수집 (이슈 추가 시)
+
+```
+┌───────────┐     ┌───────────────┐     ┌────────────────┐
+│ GitHub    │────▶│ process_      │────▶│ config/        │
+│ Issue     │     │ submission.py │     │ _added.json    │
+└───────────┘     └───────────────┘     └───────┬────────┘
+                                                │
+                  ┌───────────────┐     ┌───────▼────────┐
+                  │ fetch_        │◀────│ 새 항목만 조회  │
+                  │ incremental   │     └────────────────┘
+                  │ .py           │
+                  │               │────▶ data/*.json에 병합
+                  └───────────────┘────▶ Supabase 동기화
 ```
 
 ---
@@ -94,7 +118,7 @@ wowtbc_arena_anni/
   1. `process_submission.py`로 이슈 본문 파싱
   2. Battle.net API로 길드/캐릭터 존재 여부 검증 (병렬 20워커)
   3. 존재하는 항목만 `config/sources.json`에 추가
-  4. `fetch_leaderboard.py` 실행하여 즉시 데이터 수집
+  4. `fetch_incremental.py` 실행하여 **새로 추가된 항목만** 데이터 수집
   5. 이슈 자동 닫기 + 결과 코멘트
 - **동시성**: `data-update` 그룹 (Fetch와 동일, 순차 실행 보장)
 
@@ -125,6 +149,10 @@ OAuth2 Client Credentials Flow (`https://oauth.battle.net/token`)
 | `/data/wow/guild/{realm}/{guild}/roster` | 길드 멤버 목록 조회 |
 | `/profile/wow/character/{realm}/{name}` | 캐릭터 프로필 |
 | `/profile/wow/character/{realm}/{name}/pvp-bracket/{bracket}` | 브라켓별 PvP 데이터 |
+| `/profile/wow/character/{realm}/{name}/specializations` | 특성(이중특성 포함) |
+| `/profile/wow/character/{realm}/{name}/equipment` | 장착 장비 |
+| `/profile/wow/character/{realm}/{name}/character-media` | 캐릭터 아바타 |
+| `/data/wow/media/item/{id}` | 아이템 아이콘 이미지 URL |
 
 ### 제한 사항
 
@@ -176,15 +204,74 @@ OAuth2 Client Credentials Flow (`https://oauth.battle.net/token`)
 
 ---
 
+## 수집 데이터 구조 (`all_characters.json`)
+
+각 캐릭터 항목에 포함되는 정보:
+
+```json
+{
+  "name": "캐릭터명",
+  "realm": "서버slug",
+  "class": "직업",
+  "race": "종족",
+  "faction": "ALLIANCE|HORDE",
+  "guild": "길드명",
+  "level": 70,
+  "avatar": "캐릭터 아바타 이미지 URL",
+  "2v2": { "rating": 1800, "won": 50, "lost": 20, "played": 70 },
+  "3v3": { ... },
+  "5v5": { ... },
+  "spec_groups": [
+    {
+      "active": true,
+      "trees": [
+        {
+          "name": "트리명",
+          "points": 41,
+          "talents": [
+            { "name": "특성명", "rank": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "active": false,
+      "trees": [ ... ]
+    }
+  ],
+  "equipment": [
+    {
+      "slot": "머리",
+      "slot_type": "HEAD",
+      "name": "아이템명",
+      "quality": "Epic",
+      "quality_type": "EPIC",
+      "item_id": 12345,
+      "icon": "icons/inv_helmet_30.jpg",
+      "enchants": [
+        { "text": "+35 회복력", "type": "PERMANENT" },
+        { "text": "+9 치유량", "type": "GEM", "source": "밝은 생명의 루비" }
+      ]
+    }
+  ]
+}
+```
+
+---
+
 ## 성능 최적화
 
 | 영역 | 최적화 |
 |---|---|
-| 데이터 수집 | ThreadPoolExecutor 10워커 병렬 처리 |
+| 전체 데이터 수집 | ThreadPoolExecutor 10워커 병렬 처리 |
 | 이슈 검증 | ThreadPoolExecutor 20워커 병렬 검증 |
 | HTTP 연결 | `requests.Session` 재사용 (커넥션 풀링) |
 | 스냅샷 저장 | 변동분만 저장 (중복 방지) |
 | 중복 필터 | API 호출 전 로컬에서 기존 등록 여부 확인 |
+| 아이콘 캐시 | `_icon_cache.json`에 아이템ID→아이콘이름 매핑, 중복 API 호출 방지 |
+| 아이콘 로컬 호스팅 | Wowhead CDN에서 다운로드하여 `icons/`에 저장, 자체 서빙 |
+| 증분 수집 | 이슈 추가 시 전체 재스캔 대신 새 항목만 조회 |
+| 프론트엔드 캐시 | JSON fetch 시 `?_t=timestamp` 쿼리로 캐시 버스팅 |
 
 ---
 
@@ -214,6 +301,9 @@ OAuth2 Client Credentials Flow (`https://oauth.battle.net/token`)
 ### 상세 페이지 (`detail.html`)
 
 - 캐릭터 기본 정보 (이름, 종족, 직업, 길드, 진영)
+- 캐릭터 아바타 이미지
 - 브라켓별 레이팅 카드
 - Chart.js 레이팅 변화 그래프 (Supabase 히스토리 기반)
 - 기록 이력 테이블 (시간별 레이팅 변동)
+- 장착 장비 (아이콘, 품질 색상 테두리, 마법부여, 보석)
+- 특성 트리 (이중특성 탭 전환, 트리별 포인트 분배 바)
