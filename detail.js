@@ -4,6 +4,7 @@
   var SUPABASE_URL = "";
   var SUPABASE_ANON_KEY = "";
   var CONFIG_PATH = "config/supabase.json";
+  var ALL_CHARS_PATH = "data/all_characters.json";
 
   var BRACKET_COLORS = {
     "2v2": { line: "#58a6ff", bg: "rgba(88,166,255,0.1)" },
@@ -15,6 +16,12 @@
   var state = { charId: null, name: "", realm: "", snapshots: [], activeBracket: null };
 
   function $(sel) { return document.querySelector(sel); }
+
+  function esc(s) {
+    var d = document.createElement("div");
+    d.textContent = s;
+    return d.innerHTML;
+  }
 
   function getParams() {
     var params = new URLSearchParams(window.location.search);
@@ -34,26 +41,31 @@
     return (d.getMonth() + 1) + "/" + pad(d.getDate());
   }
 
+  function fetchJSON(url) {
+    var bustUrl = url + (url.indexOf("?") === -1 ? "?" : "&") + "_t=" + Date.now();
+    return fetch(bustUrl).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    });
+  }
+
   function showLoading(show) {
     $("#loading").hidden = !show;
-    $(".detail-cards").style.display = show ? "none" : "";
-    $(".chart-section").style.display = show ? "none" : "";
-    $(".history-section").style.display = show ? "none" : "";
+    var sections = [".chart-section", ".history-section"];
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      if (el) el.style.display = show ? "none" : "";
+    }
   }
 
   function showEmpty() {
     showLoading(false);
     $("#empty-state").hidden = false;
-    $(".detail-cards").style.display = "none";
-    $(".chart-section").style.display = "none";
-    $(".history-section").style.display = "none";
   }
 
   async function loadConfig() {
     try {
-      var resp = await fetch(CONFIG_PATH + "?_t=" + Date.now());
-      if (!resp.ok) return false;
-      var cfg = await resp.json();
+      var cfg = await fetchJSON(CONFIG_PATH);
       SUPABASE_URL = cfg.url || "";
       SUPABASE_ANON_KEY = cfg.anon_key || "";
       return !!(SUPABASE_URL && SUPABASE_ANON_KEY);
@@ -91,16 +103,46 @@
     return snaps || [];
   }
 
-  function renderHeader(char) {
+  async function loadCharacterExtras(name, realm) {
+    try {
+      var all = await fetchJSON(ALL_CHARS_PATH);
+      var nameLower = name.toLowerCase();
+      for (var i = 0; i < all.length; i++) {
+        if (all[i].name.toLowerCase() === nameLower && all[i].realm === realm) {
+          return all[i];
+        }
+      }
+    } catch (e) { /* ignore */ }
+    return null;
+  }
+
+  function renderHeader(char, extras) {
     $("#char-name").textContent = char.name;
     var parts = [];
-    if (char.race) parts.push(char.race);
-    if (char["class"]) parts.push(char["class"]);
-    if (char.guild) parts.push("<" + char.guild + ">");
-    var factionLabel = char.faction === "HORDE" ? "호드" : char.faction === "ALLIANCE" ? "얼라이언스" : "";
+    var race = (extras && extras.race) || char.race || "";
+    var cls = (extras && extras["class"]) || char["class"] || "";
+    var guild = (extras && extras.guild) || char.guild || "";
+    var faction = (extras && extras.faction) || char.faction || "";
+    if (race) parts.push(race);
+    if (cls) parts.push(cls);
+    if (guild) parts.push("<" + guild + ">");
+    var factionLabel = faction === "HORDE" ? "호드" : faction === "ALLIANCE" ? "얼라이언스" : "";
     if (factionLabel) parts.push(factionLabel);
     $("#char-info").textContent = parts.join(" · ");
     document.title = char.name + " - TBC 투기장";
+  }
+
+  function renderAvatar(extras) {
+    var profile = $("#char-profile");
+    var img = $("#char-avatar");
+    if (extras && extras.avatar) {
+      img.src = extras.avatar;
+      img.alt = extras.name;
+      profile.hidden = false;
+    } else {
+      img.style.display = "none";
+      profile.hidden = false;
+    }
   }
 
   function renderCards(snapshots) {
@@ -131,6 +173,68 @@
         '<div class="card-record">' + data.won + '승 ' + data.lost + '패 (' + wr + '%)</div>';
       container.appendChild(card);
     }
+  }
+
+  function renderTalents(extras) {
+    var section = $("#talents-section");
+    var container = $("#talent-trees");
+    if (!extras || !extras.talents || extras.talents.length === 0) return;
+
+    container.innerHTML = "";
+    var maxPoints = 61;
+
+    for (var i = 0; i < extras.talents.length; i++) {
+      var tree = extras.talents[i];
+      if (tree.points === 0) continue;
+
+      var pct = Math.min(100, Math.round(tree.points / maxPoints * 100));
+      var div = document.createElement("div");
+      div.className = "talent-tree";
+
+      var html =
+        '<div class="talent-tree-header">' +
+          '<span class="talent-tree-name">' + esc(tree.name) + '</span>' +
+          '<span class="talent-tree-points">' + tree.points + '</span>' +
+        '</div>' +
+        '<div class="talent-bar-track">' +
+          '<div class="talent-bar-fill tree-' + i + '" style="width:' + pct + '%"></div>' +
+        '</div>' +
+        '<div class="talent-list">';
+
+      for (var j = 0; j < tree.talents.length; j++) {
+        var t = tree.talents[j];
+        html += '<span class="talent-pill">' + esc(t.name) +
+                ' <span class="talent-pill-rank">' + t.rank + '</span></span>';
+      }
+      html += '</div>';
+      div.innerHTML = html;
+      container.appendChild(div);
+    }
+
+    section.hidden = false;
+  }
+
+  function renderEquipment(extras) {
+    var section = $("#equipment-section");
+    var container = $("#equipment-grid");
+    if (!extras || !extras.equipment || extras.equipment.length === 0) return;
+
+    container.innerHTML = "";
+
+    for (var i = 0; i < extras.equipment.length; i++) {
+      var item = extras.equipment[i];
+      var qualityClass = "quality-" + (item.quality_type || "COMMON");
+
+      var div = document.createElement("div");
+      div.className = "equip-item";
+      div.innerHTML =
+        '<span class="equip-slot">' + esc(item.slot) + '</span>' +
+        '<span class="equip-name ' + qualityClass + '">' + esc(item.name) + '</span>' +
+        (item.ilvl ? '<span class="equip-ilvl">ilvl ' + item.ilvl + '</span>' : '');
+      container.appendChild(div);
+    }
+
+    section.hidden = false;
   }
 
   function renderChartTabs(snapshots) {
@@ -252,13 +356,28 @@
       return;
     }
 
-    var configured = await loadConfig();
-    if (!configured) {
-      showEmpty();
-      return;
+    // Load Supabase data and all_characters.json in parallel
+    var configPromise = loadConfig();
+    var extrasPromise = loadCharacterExtras(params.name, params.realm);
+
+    var configured = await configPromise;
+    var extras = await extrasPromise;
+
+    var char = null;
+    var snapshots = [];
+
+    if (configured) {
+      char = await loadCharacter(params.name, params.realm);
+      if (char) {
+        snapshots = await loadSnapshots(char.id);
+      }
     }
 
-    var char = await loadCharacter(params.name, params.realm);
+    // Use extras from all_characters.json as fallback for header info
+    if (!char && extras) {
+      char = { name: extras.name, realm: extras.realm, race: extras.race, "class": extras["class"], guild: extras.guild, faction: extras.faction };
+    }
+
     if (!char) {
       showEmpty();
       return;
@@ -268,18 +387,19 @@
     state.name = char.name;
     state.realm = char.realm;
 
-    var snapshots = await loadSnapshots(char.id);
-    if (snapshots.length === 0) {
-      showEmpty();
-      return;
+    renderHeader(char, extras);
+    renderAvatar(extras);
+    renderTalents(extras);
+    renderEquipment(extras);
+
+    if (snapshots.length > 0) {
+      state.snapshots = snapshots;
+      renderCards(snapshots);
+      renderChartTabs(snapshots);
+      renderChart(snapshots, state.activeBracket);
+      renderHistory(snapshots, state.activeBracket);
     }
 
-    state.snapshots = snapshots;
-    renderHeader(char);
-    renderCards(snapshots);
-    renderChartTabs(snapshots);
-    renderChart(snapshots, state.activeBracket);
-    renderHistory(snapshots, state.activeBracket);
     showLoading(false);
     $("#empty-state").hidden = true;
   }
