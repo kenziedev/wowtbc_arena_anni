@@ -1,5 +1,68 @@
 # 변경 이력
 
+## 2026-02-28 — 장비 툴팁 및 특성 트리 수정
+
+### Wowhead 아이템 툴팁
+
+- 장비 아이템에 마우스를 올리면 Wowhead TBC 툴팁이 표시 (풀 스탯, 소켓, 세트 효과 등)
+- `detail.html`에 Wowhead `tooltips.js` 스크립트 추가
+- 아이템 이름과 아이콘을 `https://tbc.wowhead.com/item={item_id}` 링크로 변환
+- `data-wowhead="domain=ko.tbc"` 속성으로 한국어 툴팁 제공
+- 아이템 클릭 시 Wowhead 페이지로 이동 가능
+- 장비 렌더링 후 `$WowheadPower.refreshLinks()` 호출로 동적 로딩 대응
+
+### 보석 효과 상세 표시
+
+- 보석에 이름(`source`)과 효과(`text`)가 모두 있을 경우 함께 표시
+- 보석 효과 텍스트는 `.gem-effect` 스타일로 구분
+
+### 특성 트리 한국어 이름 수정
+
+- `talent_defs.json`과 블리자드 API 간 한국어 트리 이름 불일치 수정
+  - 사냥꾼: `야수 지배` → `야수`
+  - 흑마법사: `악마학` → `악마`
+  - 드루이드: `야성 전투` → `야성`
+- 이 불일치로 인해 해당 직업들의 특성 트리가 매칭되지 않아 정상 표시되지 않던 문제 해결
+- `build_talent_defs.py`의 `CLASSES` 정의도 동일하게 수정
+
+### classic_ 아이콘 접두사 대응
+
+- 블리자드 20주년 서버에서 일부 특성 아이콘에 `classic_` 접두사가 붙는 경우 대응
+- `buildLearnedMap()`에서 `classic_` 접두사를 제거한 키도 함께 등록하여 매칭율 향상
+
+---
+
+## 2026-02-28 — 아이콘 트리 특성 표시
+
+### 아이콘 기반 특성 트리 렌더링
+
+- CSS Grid 기반 시각적 특성 트리 구현 (4열 × 9행 그리드)
+- 각 특성이 아이콘으로 표시되며, 습득 상태에 따라 시각 구분:
+  - `full`: 최대 랭크 습득 (금색 테두리)
+  - `partial`: 부분 습득 (녹색 테두리)
+  - `unlearned`: 미습득 (어두운 비활성)
+- 특성에 마우스 오버 시 이름, 습득 랭크, 설명이 포함된 툴팁 표시
+
+### 특성 트리 정의 데이터 (`talent_defs.json`)
+
+- Vampyr7878의 WoW-Talent-Calculator-TBC XML 데이터에서 파싱
+- `scripts/build_talent_defs.py` 스크립트로 생성
+- 9개 직업 × 3개 트리, 각 특성의 이름/아이콘/최대 랭크/설명/선행조건 포함
+- 한국어 직업명·트리명 매핑 포함
+
+### 특성 탭 개선
+
+- 탭 라벨: "특성1", "특성2"로 표시, 활성 특성에 "(active)" 표기
+- 모든 3개 트리의 포인트를 표시 (예: "41/0/20"), 0점 트리도 포함
+
+### Wowhead 기반 특성 아이콘 해결
+
+- 블리자드 spell media API가 Classic Anniversary에서 404 반환
+- Wowhead TBC 툴팁 API (`nether.wowhead.com/tbc/tooltip/spell/{id}`)로 대체
+- `fetch_leaderboard.py`에 `spell_id` 필드 추가 및 Wowhead 아이콘 해결 로직 추가
+
+---
+
 ## 2026-02-28 — 아이템 아이콘 로컬 호스팅
 
 ### 아이콘 엑박 수정

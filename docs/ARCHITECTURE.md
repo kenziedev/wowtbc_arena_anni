@@ -11,10 +11,11 @@ Battle.net API로 캐릭터별 PvP 데이터를 수집하고, GitHub Pages 정�
 
 | 영역 | 기술 |
 |---|---|
-| 프론트엔드 | Vanilla HTML/CSS/JS, Tailwind CSS (CDN), Chart.js |
+| 프론트엔드 | Vanilla HTML/CSS/JS, Tailwind CSS (CDN), Chart.js, Wowhead Tooltips |
 | 백엔드 스크립트 | Python 3.12, requests |
 | 데이터베이스 | Supabase (PostgreSQL) |
-| 외부 API | Battle.net Game Data / Profile API |
+| 외부 API | Battle.net Game Data / Profile API, Wowhead TBC Tooltip API |
+| 외부 데이터 | Vampyr7878/WoW-Talent-Calculator-TBC (특성 트리 정의 XML) |
 | 배포 | GitHub Pages |
 | 자동화 | GitHub Actions |
 
@@ -40,17 +41,19 @@ wowtbc_arena_anni/
 │   ├── 3v3.json                   # 3v3 리더보드
 │   ├── 5v5.json                   # 5v5 리더보드
 │   ├── all_characters.json        # 전체 캐릭터 PvP + 장비 + 특성 데이터
+│   ├── talent_defs.json           # 특성 트리 정의 (9직업 × 3트리)
 │   ├── meta.json                  # 수집 메타데이터 (시간, 통계)
-│   └── _icon_cache.json           # 아이템 아이콘 URL 캐시 (.gitignore)
+│   └── _icon_cache.json           # 아이템/특성 아이콘 캐시 (.gitignore)
 ├── docs/
 │   ├── ARCHITECTURE.md            # 이 문서
 │   ├── CHANGELOG.md               # 변경 이력
 │   └── SETUP.md                   # 설치 및 설정 가이드
-├── icons/                          # 아이템 아이콘 이미지 (Wowhead CDN에서 다운로드)
+├── icons/                          # 아이템/특성 아이콘 이미지 (Wowhead CDN에서 다운로드)
 ├── scripts/
 │   ├── fetch_leaderboard.py       # 전체 데이터 수집 스크립트
 │   ├── fetch_incremental.py       # 증분 데이터 수집 스크립트
 │   ├── process_submission.py      # 이슈 파싱 및 소스 추가 스크립트
+│   ├── build_talent_defs.py       # 특성 트리 정의 생성 (XML → JSON)
 │   └── requirements.txt           # Python 의존성
 ├── supabase/
 │   └── schema.sql                 # DB 스키마 (테이블, RLS, 뷰)
@@ -159,6 +162,27 @@ OAuth2 Client Credentials Flow (`https://oauth.battle.net/token`)
 - 20주년 기념서버는 집계형 PvP 리더보드 API가 제공되지 않음
 - 개별 캐릭터 조회만 가능하여, 길드 로스터 기반 "상향식 수집" 방식 사용
 - 70레벨 미만 캐릭터는 투기장 이용 불가이므로 스캔 제외
+- 특성 트리 정의(tier/column) 엔드포인트가 Classic Anniversary에서 미지원
+- Spell media API(`/data/wow/media/spell/{id}`)가 Classic Anniversary에서 404 반환
+
+### Wowhead API 활용
+
+| API | 용도 |
+|---|---|
+| `nether.wowhead.com/tbc/tooltip/spell/{id}` | 특성 스펠 아이콘 이름 조회 |
+| `wow.zamimg.com/images/wow/icons/medium/{name}.jpg` | 아이콘 이미지 다운로드 |
+| `wow.zamimg.com/js/tooltips.js` | 프론트엔드 아이템 툴팁 라이브러리 |
+| `tbc.wowhead.com/item={id}` | 아이템 상세 페이지 링크 (툴팁 트리거) |
+
+### 특성 트리 정의 (Vampyr7878 XML)
+
+블리자드 API가 Classic Anniversary 특성 트리 구조를 제공하지 않으므로,
+[Vampyr7878/WoW-Talent-Calculator-TBC](https://github.com/Vampyr7878/WoW-Talent-Caluclator-TBC)의 XML 데이터에서 파싱합니다.
+
+- `scripts/build_talent_defs.py`가 XML을 파싱하여 `data/talent_defs.json` 생성
+- 9개 직업 × 3개 트리, 각 특성의 이름/아이콘/최대 랭크/설명/선행조건 포함
+- 4열 × 최대 9행 그리드 구조 (빈 슬롯은 `null`)
+- 한국어 직업명·트리명은 블리자드 API가 반환하는 이름과 일치하도록 수동 매핑
 
 ---
 
@@ -226,10 +250,15 @@ OAuth2 Client Credentials Flow (`https://oauth.battle.net/token`)
       "active": true,
       "trees": [
         {
-          "name": "트리명",
+          "name": "트리명 (한국어)",
           "points": 41,
           "talents": [
-            { "name": "특성명", "rank": 5 }
+            {
+              "name": "특성명",
+              "rank": 5,
+              "spell_id": 12345,
+              "icon": "spell_shadow_shadowbolt"
+            }
           ]
         }
       ]
@@ -268,8 +297,9 @@ OAuth2 Client Credentials Flow (`https://oauth.battle.net/token`)
 | HTTP 연결 | `requests.Session` 재사용 (커넥션 풀링) |
 | 스냅샷 저장 | 변동분만 저장 (중복 방지) |
 | 중복 필터 | API 호출 전 로컬에서 기존 등록 여부 확인 |
-| 아이콘 캐시 | `_icon_cache.json`에 아이템ID→아이콘이름 매핑, 중복 API 호출 방지 |
+| 아이콘 캐시 | `_icon_cache.json`에 아이템ID/스펠ID→아이콘이름 매핑, 중복 API 호출 방지 |
 | 아이콘 로컬 호스팅 | Wowhead CDN에서 다운로드하여 `icons/`에 저장, 자체 서빙 |
+| Wowhead 툴팁 | 외부 라이브러리로 아이템 툴팁 렌더링 (별도 데이터 수집 불필요) |
 | 증분 수집 | 이슈 추가 시 전체 재스캔 대신 새 항목만 조회 |
 | 프론트엔드 캐시 | JSON fetch 시 `?_t=timestamp` 쿼리로 캐시 버스팅 |
 
@@ -305,5 +335,7 @@ OAuth2 Client Credentials Flow (`https://oauth.battle.net/token`)
 - 브라켓별 레이팅 카드
 - Chart.js 레이팅 변화 그래프 (Supabase 히스토리 기반)
 - 기록 이력 테이블 (시간별 레이팅 변동)
-- 장착 장비 (아이콘, 품질 색상 테두리, 마법부여, 보석)
-- 특성 트리 (이중특성 탭 전환, 트리별 포인트 분배 바)
+- 장착 장비 (아이콘, 품질 색상 테두리, 마법부여, 보석, Wowhead 마우스오버 툴팁)
+- 아이콘 기반 특성 트리 (CSS Grid 4×9 그리드, 습득 상태 시각 표시, 마우스오버 툴팁)
+- 이중특성 탭 전환 ("특성1 41/0/20", "특성2 0/21/40 (active)")
+- `talent_defs.json`과 캐릭터 데이터를 아이콘 이름으로 매칭하여 렌더링

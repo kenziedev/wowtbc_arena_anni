@@ -97,7 +97,17 @@ export SUPABASE_SERVICE_KEY="your-service-key"
 python scripts/fetch_leaderboard.py
 ```
 
-수집되는 데이터: PvP 레이팅, 특성(이중특성), 장비(아이콘/마법부여/보석), 캐릭터 아바타
+수집되는 데이터: PvP 레이팅, 특성(이중특성, spell_id, 아이콘), 장비(아이콘/마법부여/보석), 캐릭터 아바타
+
+### 특성 트리 정의 생성
+
+특성 트리 시각화에 필요한 정의 파일을 생성합니다 (최초 1회 또는 데이터 갱신 시):
+
+```bash
+python scripts/build_talent_defs.py
+```
+
+생성 결과: `data/talent_defs.json` (9직업 × 3트리 특성 정의) 및 특성 아이콘 다운로드
 
 ### 증분 데이터 수집 테스트
 
