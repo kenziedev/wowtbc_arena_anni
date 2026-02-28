@@ -326,40 +326,40 @@ def resolve_icons(token: str, all_pvp: list[dict]):
             if icon_name:
                 eq["icon"] = f"icons/{icon_name}.jpg"
 
-    # Resolve talent spell icons (reuse same cache with "spell_" prefix)
+    # Resolve talent spell icons via Wowhead TBC tooltip API
     talent_spell_ids = set()
     for char in all_pvp:
         for group in char.get("spec_groups", []):
             for tree in group.get("trees", []):
                 for t in tree.get("talents", []):
                     sid = t.get("spell_id", 0)
-                    if sid and f"spell_{sid}" not in cache:
+                    if sid and not cache.get(f"spell_{sid}"):
                         talent_spell_ids.add(sid)
 
     if talent_spell_ids:
-        print(f"\nFetching {len(talent_spell_ids)} talent spell icons...")
+        print(f"\nFetching {len(talent_spell_ids)} talent spell icons from Wowhead...")
+        WOWHEAD_TOOLTIP = "https://nether.wowhead.com/tbc/tooltip/spell"
 
-        def _spell_icon_worker(args):
-            _token, spell_id = args
-            url = f"{API_BASE}/data/wow/media/spell/{spell_id}"
-            data = api_get(_token, url, NS_STATIC)
-            if data:
-                for asset in data.get("assets", []):
-                    if asset.get("key") == "icon":
-                        raw = asset.get("value", "")
-                        if raw:
-                            return spell_id, _extract_icon_name(raw)
+        def _spell_icon_worker_wh(spell_id):
+            try:
+                resp = _session.get(f"{WOWHEAD_TOOLTIP}/{spell_id}", timeout=10)
+                if resp.status_code == 200:
+                    icon = resp.json().get("icon", "")
+                    if icon:
+                        return spell_id, icon.lower()
+            except Exception:
+                pass
             return spell_id, ""
 
-        tasks = [(token, sid) for sid in talent_spell_ids]
         done = 0
-        total = len(tasks)
-        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-            futures = {executor.submit(_spell_icon_worker, t): t for t in tasks}
+        total = len(talent_spell_ids)
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            futures = {executor.submit(_spell_icon_worker_wh, sid): sid
+                       for sid in talent_spell_ids}
             for future in as_completed(futures):
                 sid, icon_name = future.result()
                 done += 1
-                if done % 100 == 0 or done == total:
+                if done % 50 == 0 or done == total:
                     print(f"  Talent icons: {done}/{total}")
                 cache[f"spell_{sid}"] = icon_name
         save_icon_cache(cache)
