@@ -132,6 +132,59 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
                 "season_id": pvp_data.get("season", {}).get("id"),
             }
 
+    # Specializations (talent trees)
+    spec_data = api_get(token, f"{base_url}/specializations", NS_PROFILE)
+    if spec_data:
+        trees = []
+        for group in spec_data.get("specialization_groups", []):
+            if not group.get("is_active"):
+                continue
+            for spec in group.get("specializations", []):
+                tree = {
+                    "name": spec.get("specialization_name", ""),
+                    "points": spec.get("spent_points", 0),
+                    "talents": [],
+                }
+                for t in spec.get("talents", []):
+                    tooltip = t.get("spell_tooltip", {})
+                    spell = tooltip.get("spell", {})
+                    tree["talents"].append({
+                        "name": spell.get("name", ""),
+                        "rank": t.get("talent_rank", 0),
+                    })
+                trees.append(tree)
+        result["talents"] = trees
+
+    # Equipment
+    eq_data = api_get(token, f"{base_url}/equipment", NS_PROFILE)
+    if eq_data:
+        items = []
+        for item in eq_data.get("equipped_items", []):
+            slot_name = item.get("slot", {}).get("name", "")
+            slot_type = item.get("slot", {}).get("type", "")
+            if slot_type == "SHIRT" or slot_type == "TABARD":
+                continue
+            entry = {
+                "slot": slot_name,
+                "slot_type": slot_type,
+                "name": item.get("name", ""),
+                "quality": item.get("quality", {}).get("name", ""),
+                "quality_type": item.get("quality", {}).get("type", ""),
+            }
+            ilvl = item.get("level", {}).get("value", 0)
+            if ilvl:
+                entry["ilvl"] = ilvl
+            items.append(entry)
+        result["equipment"] = items
+
+    # Character media (avatar)
+    media_data = api_get(token, f"{base_url}/character-media", NS_PROFILE)
+    if media_data:
+        for asset in media_data.get("assets", []):
+            if asset.get("key") == "avatar":
+                result["avatar"] = asset.get("value", "")
+                break
+
     return result
 
 

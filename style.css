@@ -517,6 +517,165 @@ td.col-rank { font-weight: 700; text-align: center; }
 
 .char-link:hover { text-decoration: underline; color: var(--accent-gold); }
 
+/* ── Character Profile ───────────────── */
+.char-profile {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 20px 0;
+}
+
+.profile-avatar-wrap {
+  flex-shrink: 0;
+}
+
+.profile-avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  object-fit: cover;
+  background: var(--bg-secondary);
+}
+
+.profile-summary {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-summary .detail-cards {
+  padding: 0;
+}
+
+/* ── Talents ─────────────────────────── */
+.talents-section {
+  margin-top: 24px;
+}
+
+.talent-trees {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.talent-tree {
+  flex: 1;
+  min-width: 200px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.talent-tree-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.talent-tree-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.talent-tree-points {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  background: rgba(240, 171, 0, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.talent-bar-track {
+  height: 6px;
+  background: var(--bg-primary);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.talent-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.talent-bar-fill.tree-0 { background: var(--accent-blue); }
+.talent-bar-fill.tree-1 { background: var(--accent-green); }
+.talent-bar-fill.tree-2 { background: var(--accent-gold); }
+
+.talent-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+}
+
+.talent-pill {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: var(--bg-primary);
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.talent-pill-rank {
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+/* ── Equipment ───────────────────────── */
+.equipment-section {
+  margin-top: 24px;
+}
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 6px;
+}
+
+.equip-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+}
+
+.equip-slot {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  min-width: 52px;
+  flex-shrink: 0;
+}
+
+.equip-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.equip-ilvl {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.quality-POOR { color: #9d9d9d; }
+.quality-COMMON { color: var(--text-primary); }
+.quality-UNCOMMON { color: #1eff00; }
+.quality-RARE { color: #0070dd; }
+.quality-EPIC { color: #a335ee; }
+.quality-LEGENDARY { color: #ff8000; }
+
 /* ── Footer ──────────────────────────── */
 .footer {
   padding: 32px 0;
