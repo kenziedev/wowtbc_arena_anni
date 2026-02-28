@@ -217,6 +217,25 @@
     return map;
   }
 
+  function buildSpecSummary(charTrees) {
+    var className = state._className || "";
+    var classDef = findClassDef(className);
+    if (!classDef) {
+      return charTrees.filter(function (t) { return t.points > 0; })
+        .map(function (t) { return t.points; }).join("/");
+    }
+    var parts = [];
+    for (var i = 0; i < classDef.trees.length; i++) {
+      var pts = 0;
+      var ko = classDef.trees[i].ko;
+      for (var j = 0; j < charTrees.length; j++) {
+        if (charTrees[j].name === ko) { pts = charTrees[j].points || 0; break; }
+      }
+      parts.push(pts);
+    }
+    return parts.join("/");
+  }
+
   function renderSpecTabs(specGroups) {
     var tabContainer = $("#spec-tabs");
     tabContainer.innerHTML = "";
@@ -225,8 +244,7 @@
       var g = specGroups[i];
       var label = "특성" + (i + 1);
       if (g.active) label += " (active)";
-      var summary = g.trees.filter(function (t) { return t.points > 0; })
-        .map(function (t) { return t.points; }).join("/");
+      var summary = buildSpecSummary(g.trees);
       if (summary) label += " " + summary;
       var btn = document.createElement("button");
       btn.className = "spec-tab" + (i === 0 ? " active" : "");
