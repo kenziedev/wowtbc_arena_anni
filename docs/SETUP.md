@@ -80,7 +80,17 @@ GitHub 저장소 → Settings → Secrets and variables → Actions → **Reposi
 2. Source → **GitHub Actions** 선택
 3. 저장
 
-`main` 브랜치에 push가 발생하면 자동으로 배포됩니다.
+### 배포 트리거
+
+Pages 배포는 다음 3가지 경우에 자동으로 실행됩니다:
+
+| 트리거 | 워크플로우 | 설명 |
+|---|---|---|
+| `main` 브랜치 push | `deploy-pages.yml` | 사람이 직접 push할 때 |
+| 스케줄 (6시간 간격) | `fetch-leaderboard.yml` → `deploy` job | 전체 데이터 수집 후 자동 배포 |
+| 이슈 등록 (`[추가]`) | `process-submission.yml` → `deploy` job | 증분 데이터 수집 후 자동 배포 |
+
+> **참고**: GitHub Actions의 `GITHUB_TOKEN`으로 push된 커밋은 다른 워크플로우를 트리거하지 않습니다 (무한루프 방지 정책). 이 때문에 데이터 수집 워크플로우에 Pages 배포 job이 직접 포함되어 있습니다.
 
 ---
 
