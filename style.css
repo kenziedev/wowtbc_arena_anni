@@ -851,6 +851,76 @@ a.equip-name:hover {
 
 .footer-disclaimer { margin-top: 4px; opacity: 0.7; }
 
+.footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer a:hover { color: var(--accent-gold); }
+
+/* ── Static Pages ────────────────────── */
+.page-content {
+  padding: 24px 0;
+}
+
+.content-section {
+  margin-bottom: 28px;
+}
+
+.content-section h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.content-section p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.content-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.content-section li {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding-left: 16px;
+  position: relative;
+}
+
+.content-section li::before {
+  content: "·";
+  position: absolute;
+  left: 4px;
+  color: var(--accent-gold-dim);
+  font-weight: 700;
+}
+
+.content-section a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+.content-section a:hover {
+  text-decoration: underline;
+}
+
+.content-section code {
+  background: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
 /* ── Responsive ──────────────────────── */
 @media (max-width: 720px) {
   html { font-size: 14px; }
