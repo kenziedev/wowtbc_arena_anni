@@ -231,7 +231,10 @@
             "descriptions": [
               "A vicious strike that deals weapon damage plus 85 and wounds the target, reducing the effectiveness of any healing by 50% for 10 sec."
             ],
-            "prereq": "Death Wish"
+            "prereq": "Death Wish",
+            "spell_ids": [
+              12294
+            ]
           },
           {
             "name": "Second Wind",
@@ -256,7 +259,12 @@
               "Reduces the cooldown of your Mortal Strike ability by 0.8 sec and increases the damage it causes by 4%.",
               "Reduces the cooldown of your Mortal Strike ability by 1 sec and increases the damage it causes by 5%."
             ],
-            "prereq": "Mortal Strike"
+            "prereq": "Mortal Strike",
+            "spell_ids": [
+              35446,
+              35449,
+              35451
+            ]
           },
           null,
           null,
@@ -763,12 +771,13 @@
           {
             "name": "Vitality",
             "icon": "inv_helmet_21",
-            "max_rank": 4,
+            "max_rank": 5,
             "descriptions": [
               "Increases your total Stamina by 1% and your total Strength by 2%.",
               "Increases your total Stamina by 2% and your total Strength by 4%.",
               "Increases your total Stamina by 3% and your total Strength by 6%.",
-              "Increases your total Stamina by 4% and your total Strength by 8%."
+              "Increases your total Stamina by 4% and your total Strength by 8%.",
+              "Increases your total Stamina by 5% and your total Strength by 10%."
             ],
             "prereq": null
           },
@@ -1247,7 +1256,10 @@
               "Increases damage caused by your Holy Shield by 10% and increases the number of charges of your Holy Shield by 2.",
               "Increases damage caused by your Holy Shield by 20% and increases the number of charges of your Holy Shield by 4."
             ],
-            "prereq": "Holy Shield"
+            "prereq": "Holy Shield",
+            "spell_ids": [
+              41026
+            ]
           },
           {
             "name": "Holy Shield",
@@ -1256,7 +1268,10 @@
             "descriptions": [
               "Increases chance to block by 30% for 10 sec and deals 59 Holy damage for each attack blocked while active.  Damage caused by Holy Shield causes 35% additional threat.  Each block expends a charge.  4 charges."
             ],
-            "prereq": "Blessing of Sanctuary"
+            "prereq": "Blessing of Sanctuary",
+            "spell_ids": [
+              20925
+            ]
           },
           {
             "name": "Ardent Defender",
@@ -1342,7 +1357,11 @@
               "Decreases the cooldown of your Judgement spell by 1 sec.",
               "Decreases the cooldown of your Judgement spell by 2 sec."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              25956,
+              25957
+            ]
           },
           {
             "name": "Improved Seal of the Crusader",
@@ -1353,7 +1372,11 @@
               "In addition to the normal effect, your Judgement of the Crusader spell will also increase the critical strike chance of all attacks made against that target by an additional 2%.",
               "In addition to the normal effect, your Judgement of the Crusader spell will also increase the critical strike chance of all attacks made against that target by an additional 3%."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              20336,
+              20337
+            ]
           },
           {
             "name": "Deflection",
@@ -1464,7 +1487,10 @@
             "descriptions": [
               "Increases Holy damage done by party members within 30 yards by 10%.  Players may only have one Aura on them per Paladin at any one time."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              20218
+            ]
           },
           {
             "name": "Improved Sanctity Aura",
@@ -1474,7 +1500,10 @@
               "The amount of damage caused by targets affected by Sanctity Aura is increased by 1%.",
               "The amount of damage caused by targets affected by Sanctity Aura is increased by 2%."
             ],
-            "prereq": "Sanctity Aura"
+            "prereq": "Sanctity Aura",
+            "spell_ids": [
+              31870
+            ]
           },
           null,
           {
@@ -1499,7 +1528,12 @@
               "Gives your Judgement spell a 66% chance to return 80% of the mana cost of the judged seal.",
               "Gives your Judgement spell a 100% chance to return 80% of the mana cost of the judged seal."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              31876,
+              31877,
+              31878
+            ]
           },
           null,
           {
@@ -1511,7 +1545,11 @@
               "Increases your chance to critically hit with all spells and melee attacks by 2% and reduces the chance your Seals will be dispelled by 66%.",
               "Increases your chance to critically hit with all spells and melee attacks by 3% and reduces the chance your Seals will be dispelled by 100%."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              35396,
+              35397
+            ]
           },
           {
             "name": "Repentance",
@@ -1538,12 +1576,13 @@
           {
             "name": "Fanaticism",
             "icon": "spell_holy_fanaticism",
-            "max_rank": 4,
+            "max_rank": 5,
             "descriptions": [
               "Increases the critical strike chance of all Judgements capable of a critical hit by 3% and reduces threat caused by all actions by 6% except when under the effects of Righteous Fury.",
               "Increases the critical strike chance of all Judgements capable of a critical hit by 6% and reduces threat caused by all actions by 12% except when under the effects of Righteous Fury.",
               "Increases the critical strike chance of all Judgements capable of a critical hit by 9% and reduces threat caused by all actions by 18% except when under the effects of Righteous Fury.",
-              "Increases the critical strike chance of all Judgements capable of a critical hit by 12% and reduces threat caused by all actions by 24% except when under the effects of Righteous Fury."
+              "Increases the critical strike chance of all Judgements capable of a critical hit by 12% and reduces threat caused by all actions by 24% except when under the effects of Righteous Fury.",
+              "Increases the critical strike chance of all Judgements capable of a critical hit by 15% and reduces threat caused by all actions by 30% except when under the effects of Righteous Fury."
             ],
             "prereq": "Repentance"
           },
@@ -1976,7 +2015,10 @@
               "Increases the damage done by your Multi-Shot and Volley spells by 8%.",
               "Increases the damage done by your Multi-Shot and Volley spells by 12%."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              24691
+            ]
           },
           null,
           {
@@ -2033,7 +2075,10 @@
               "Increases the critical strike chance of your Multi-Shot ability by 8% and gives you a 66% chance to avoid interruption caused by damage while channeling Volley.",
               "Increases the critical strike chance of your Multi-Shot ability by 12% and gives you a 100% chance to avoid interruption caused by damage while channeling Volley."
             ],
-            "prereq": "Barrage"
+            "prereq": "Barrage",
+            "spell_ids": [
+              35111
+            ]
           },
           null,
           null,
@@ -2307,12 +2352,13 @@
           {
             "name": "Master Tactician",
             "icon": "ability_hunter_mastertactitian",
-            "max_rank": 4,
+            "max_rank": 5,
             "descriptions": [
               "Your successful ranged attacks have a 6% chance to increase your critical strike chance with all attacks by 2% for 8 sec.",
               "Your successful ranged attacks have a 6% chance to increase your critical strike chance with all attacks by 4% for 8 sec.",
               "Your successful ranged attacks have a 6% chance to increase your critical strike chance with all attacks by 6% for 8 sec.",
-              "Your successful ranged attacks have a 6% chance to increase your critical strike chance with all attacks by 8% for 8 sec."
+              "Your successful ranged attacks have a 6% chance to increase your critical strike chance with all attacks by 8% for 8 sec.",
+              "Your successful ranged attacks have a 6% chance to increase your critical strike chance with all attacks by 10% for 8 sec."
             ],
             "prereq": null
           },
@@ -3104,12 +3150,13 @@
           {
             "name": "Sinister Calling",
             "icon": "ability_rogue_sinistercalling",
-            "max_rank": 4,
+            "max_rank": 5,
             "descriptions": [
               "Increases your total Agility by 3% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional 1%.",
               "Increases your total Agility by 6% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional 2%.",
               "Increases your total Agility by 9% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional 3%.",
-              "Increases your total Agility by 12% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional 4%."
+              "Increases your total Agility by 12% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional 4%.",
+              "Increases your total Agility by 15% and increases the percentage damage bonus of Backstab and Hemorrhage by an additional 5%."
             ],
             "prereq": "Premeditation"
           },
@@ -3198,7 +3245,12 @@
               "Increases the damage absorbed by your Power Word: Shield by 10%.",
               "Increases the damage absorbed by your Power Word: Shield by 15%."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              14748,
+              14768,
+              14769
+            ]
           },
           {
             "name": "Martyrdom",
@@ -3298,7 +3350,10 @@
             "descriptions": [
               "Holy power infuses the target, increasing their Spirit by 17 for 30 min."
             ],
-            "prereq": "Meditation"
+            "prereq": "Meditation",
+            "spell_ids": [
+              14752
+            ]
           },
           {
             "name": "Improved Divine Spirit",
@@ -3308,7 +3363,11 @@
               "Your Divine Spirit and Prayer of Spirit spells also increase the target's spell damage and healing by an amount equal to 5% of their total Spirit.",
               "Your Divine Spirit and Prayer of Spirit spells also increase the target's spell damage and healing by an amount equal to 10% of their total Spirit."
             ],
-            "prereq": "Divine Spirit"
+            "prereq": "Divine Spirit",
+            "spell_ids": [
+              33174,
+              33182
+            ]
           },
           {
             "name": "Focused Power",
@@ -3366,7 +3425,13 @@
               "Causes 40% of the damage absorbed by your Power Word: Shield to reflect back at the attacker.  This damage causes no threat.",
               "Causes 50% of the damage absorbed by your Power Word: Shield to reflect back at the attacker.  This damage causes no threat."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              33202,
+              33203,
+              33204,
+              33205
+            ]
           },
           null,
           null,
@@ -3877,12 +3942,13 @@
           {
             "name": "Misery",
             "icon": "spell_shadow_misery",
-            "max_rank": 4,
+            "max_rank": 5,
             "descriptions": [
               "Your Shadow Word: Pain, Mind Flay and Vampiric Touch spells also cause the target to take an additional 1% spell damage.",
               "Your Shadow Word: Pain, Mind Flay and Vampiric Touch spells also cause the target to take an additional 2% spell damage.",
               "Your Shadow Word: Pain, Mind Flay and Vampiric Touch spells also cause the target to take an additional 3% spell damage.",
-              "Your Shadow Word: Pain, Mind Flay and Vampiric Touch spells also cause the target to take an additional 4% spell damage."
+              "Your Shadow Word: Pain, Mind Flay and Vampiric Touch spells also cause the target to take an additional 4% spell damage.",
+              "Your Shadow Word: Pain, Mind Flay and Vampiric Touch spells also cause the target to take an additional 5% spell damage."
             ],
             "prereq": null
           },
@@ -4605,12 +4671,13 @@
           {
             "name": "Nature's Guardian",
             "icon": "spell_nature_natureguardian",
-            "max_rank": 4,
+            "max_rank": 5,
             "descriptions": [
               "Whenever a damaging attack is taken that reduces you below 30% health, you have a 10% chance to heal 10% of your total health and reduce your threat level on that target.  5 second cooldown.",
               "Whenever a damaging attack is taken that reduces you below 30% health, you have a 20% chance to heal 10% of your total health and reduce your threat level on that target.  5 second cooldown.",
               "Whenever a damaging attack is taken that reduces you below 30% health, you have a 30% chance to heal 10% of your total health and reduce your threat level on that target.  5 second cooldown.",
-              "Whenever a damaging attack is taken that reduces you below 30% health, you have a 40% chance to heal 10% of your total health and reduce your threat level on that target.  5 second cooldown."
+              "Whenever a damaging attack is taken that reduces you below 30% health, you have a 40% chance to heal 10% of your total health and reduce your threat level on that target.  5 second cooldown.",
+              "Whenever a damaging attack is taken that reduces you below 30% health, you have a 50% chance to heal 10% of your total health and reduce your threat level on that target.  5 second cooldown."
             ],
             "prereq": null
           },
@@ -4695,7 +4762,12 @@
               "Gives you a 80% chance to avoid interruption caused by damage while channeling Arcane Missiles.",
               "Gives you a 100% chance to avoid interruption caused by damage while channeling Arcane Missiles."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              11237,
+              12464,
+              16770
+            ]
           },
           null,
           {
@@ -4941,7 +5013,10 @@
               "Reduces the casting time of your Fireball spell by 0.4 sec.",
               "Reduces the casting time of your Fireball spell by 0.5 sec."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              12341
+            ]
           },
           {
             "name": "Impact",
@@ -5166,7 +5241,10 @@
               "Your Fireball spell gains an additional 12% of your bonus spell damage effects.",
               "Your Fireball spell gains an additional 15% of your bonus spell damage effects."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              31660
+            ]
           },
           null,
           null,
@@ -5208,7 +5286,12 @@
               "Reduces the casting time of your Frostbolt spell by 0.4 sec.",
               "Reduces the casting time of your Frostbolt spell by 0.5 sec."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              12473,
+              16765,
+              16766
+            ]
           },
           {
             "name": "Elemental Precision",
@@ -5426,7 +5509,13 @@
               "Your Frostbolt spell gains an additional 6% of your bonus spell damage effects and an additional 3% chance to critically strike.",
               "Your Frostbolt spell gains an additional 8% of your bonus spell damage effects and an additional 4% chance to critically strike."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              31682,
+              31684,
+              31685,
+              31686
+            ]
           },
           null,
           null,
@@ -5478,7 +5567,13 @@
               "Reduces the casting time of your Corruption spell by 1.6 sec.",
               "Reduces the casting time of your Corruption spell by 2 sec."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              17810,
+              17811,
+              17812,
+              17814
+            ]
           },
           null,
           {
@@ -5584,7 +5679,12 @@
               "Your Corruption spell gains an additional 24% of your bonus spell damage effects.",
               "Your Corruption spell gains an additional 36% of your bonus spell damage effects."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              32381,
+              32382,
+              32383
+            ]
           },
           {
             "name": "Shadow Embrace",
@@ -6181,12 +6281,13 @@
           {
             "name": "Shadow and Flame",
             "icon": "spell_shadow_shadowandflame",
-            "max_rank": 4,
+            "max_rank": 5,
             "descriptions": [
               "Your Shadow Bolt and Incinerate spells gain an additional 4% of your bonus spell damage effects.",
               "Your Shadow Bolt and Incinerate spells gain an additional 8% of your bonus spell damage effects.",
               "Your Shadow Bolt and Incinerate spells gain an additional 12% of your bonus spell damage effects.",
-              "Your Shadow Bolt and Incinerate spells gain an additional 16% of your bonus spell damage effects."
+              "Your Shadow Bolt and Incinerate spells gain an additional 16% of your bonus spell damage effects.",
+              "Your Shadow Bolt and Incinerate spells gain an additional 20% of your bonus spell damage effects."
             ],
             "prereq": null
           },
@@ -6235,7 +6336,10 @@
             "descriptions": [
               "While active, any time an enemy strikes the caster they have a 35% chance to become afflicted by Entangling Roots (Rank 1).  Only useable outdoors.  1 charge.  Lasts 45 sec."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              16689
+            ]
           },
           {
             "name": "Improved Nature's Grasp",
@@ -6247,7 +6351,13 @@
               "Increases the chance for your Nature's Grasp to entangle an enemy by 45%.",
               "Increases the chance for your Nature's Grasp to entangle an enemy by 65%."
             ],
-            "prereq": "Nature's Grasp"
+            "prereq": "Nature's Grasp",
+            "spell_ids": [
+              17245,
+              17247,
+              17248,
+              17249
+            ]
           },
           null,
           {
@@ -6660,7 +6770,10 @@
             "descriptions": [
               "While in Cat, Bear or Dire Bear Form, the Leader of the Pack increases ranged and melee critical chance of all party members within 45 yards by 5%."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              17007
+            ]
           },
           {
             "name": "Improved Leader of the Pack",
@@ -6670,7 +6783,11 @@
               "Your Leader of the Pack ability also causes affected targets to have a 100% chance to heal themselves for 2% of their total health when they critically hit with a melee or ranged attack.  The healing effect cannot occur more than once every 6 sec.",
               "Your Leader of the Pack ability also causes affected targets to have a 100% chance to heal themselves for 4% of their total health when they critically hit with a melee or ranged attack.  The healing effect cannot occur more than once every 6 sec."
             ],
-            "prereq": "Leader of the Pack"
+            "prereq": "Leader of the Pack",
+            "spell_ids": [
+              34297,
+              34300
+            ]
           },
           null,
           null,
@@ -6927,12 +7044,13 @@
           {
             "name": "Empowered Rejuvenation",
             "icon": "ability_druid_empoweredrejuvination",
-            "max_rank": 4,
+            "max_rank": 5,
             "descriptions": [
               "The bonus healing effects of your healing over time spells is increased by 4%.",
               "The bonus healing effects of your healing over time spells is increased by 8%.",
               "The bonus healing effects of your healing over time spells is increased by 12%.",
-              "The bonus healing effects of your healing over time spells is increased by 16%."
+              "The bonus healing effects of your healing over time spells is increased by 16%.",
+              "The bonus healing effects of your healing over time spells is increased by 20%."
             ],
             "prereq": null
           },

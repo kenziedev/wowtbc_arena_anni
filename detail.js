@@ -209,17 +209,33 @@
   }
 
   function buildLearnedMap(charTalents) {
-    var map = {};
+    var iconMap = {};
+    var spellIdMap = {};
     for (var i = 0; i < charTalents.length; i++) {
       var t = charTalents[i];
+      if (t.spell_id) {
+        spellIdMap[t.spell_id] = t;
+      }
       if (t.icon) {
-        map[t.icon] = t;
-        if (t.icon.indexOf("classic_") === 0) {
-          map[t.icon.substring(8)] = t;
+        var key = t.icon;
+        if (key.indexOf("classic_") === 0) key = key.substring(8);
+        if (!iconMap[key]) {
+          iconMap[key] = t;
         }
       }
     }
-    return map;
+    return { icons: iconMap, spells: spellIdMap };
+  }
+
+  function findLearned(learnedMap, def) {
+    if (def.spell_ids) {
+      for (var i = 0; i < def.spell_ids.length; i++) {
+        var match = learnedMap.spells[def.spell_ids[i]];
+        if (match) return match;
+      }
+      return null;
+    }
+    return learnedMap.icons[def.icon] || null;
   }
 
   function buildSpecSummary(charTrees) {
@@ -328,7 +344,7 @@
         var row = Math.floor(gi / 4) + 1;
         var col = (gi % 4) + 1;
 
-        var learned = learnedMap[def.icon] || null;
+        var learned = findLearned(learnedMap, def);
         var curRank = learned ? learned.rank : 0;
         var maxRank = def.max_rank || 1;
 
