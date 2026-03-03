@@ -28,6 +28,10 @@ jobs:
           ref: main
           fetch-depth: 0
 
+      - name: Save base commit hash
+        id: base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -85,16 +89,32 @@ jobs:
       - name: Close issue with comment
         if: always()
         uses: actions/github-script@v7
+        env:
+          BASE_SHA: ${{ steps.base.outputs.sha }}
         with:
           script: |
-            const fs = require('fs');
+            const baseSha = process.env.BASE_SHA;
             let body;
             try {
-              const diff = require('child_process').execSync('git diff HEAD~1 -- config/sources.json', {encoding: 'utf-8'});
-              if (diff.includes('+')) {
+              const diff = require('child_process').execSync(
+                `git diff ${baseSha} -- config/sources.json`, {encoding: 'utf-8'}
+              );
+              const added = diff.split('\n').filter(l => l.startsWith('+') && !l.startsWith('+++')).length;
+              if (added > 0) {
                 body = '등록이 완료되었습니다! 리더보드에 반영되었습니다. ✅';
               } else {
-                body = '요청하신 항목이 이미 등록되어 있거나 존재하지 않는 길드/캐릭터입니다. ❌\n\n이름을 다시 확인해 주세요.';
+                const log = require('child_process').execSync(
+                  'cat /tmp/submission_result.json 2>/dev/null || echo "{}"', {encoding: 'utf-8'}
+                );
+                const result = JSON.parse(log);
+                const details = [];
+                if (result.duplicates?.length) details.push('이미 등록된 항목:\n' + result.duplicates.map(d => `- ${d}`).join('\n'));
+                if (result.not_found?.length) details.push('Battle.net에서 찾을 수 없는 항목:\n' + result.not_found.map(d => `- ${d}`).join('\n'));
+                if (details.length) {
+                  body = '요청하신 항목을 추가하지 못했습니다. ❌\n\n' + details.join('\n\n') + '\n\n이름과 서버를 다시 확인해 주세요.';
+                } else {
+                  body = '요청하신 항목이 이미 등록되어 있거나 존재하지 않는 길드/캐릭터입니다. ❌\n\n이름을 다시 확인해 주세요.';
+                }
               }
             } catch {
               body = '처리가 완료되었습니다.';

@@ -60,8 +60,11 @@ def verify_guild(token: str, name: str, realm: str) -> bool:
     try:
         resp = _session.get(url, headers={"Authorization": f"Bearer {token}"},
                             params={"namespace": NS_PROFILE, "locale": LOCALE}, timeout=15)
+        if resp.status_code != 200:
+            print(f"  [API] Guild '{name}' ({realm}): HTTP {resp.status_code}")
         return resp.status_code == 200
-    except requests.RequestException:
+    except requests.RequestException as e:
+        print(f"  [API] Guild '{name}' ({realm}): {e}")
         return False
 
 
@@ -71,8 +74,11 @@ def verify_character(token: str, name: str, realm: str) -> bool:
     try:
         resp = _session.get(url, headers={"Authorization": f"Bearer {token}"},
                             params={"namespace": NS_PROFILE, "locale": LOCALE}, timeout=15)
+        if resp.status_code != 200:
+            print(f"  [API] Character '{name}' ({realm}): HTTP {resp.status_code}")
         return resp.status_code == 200
-    except requests.RequestException:
+    except requests.RequestException as e:
+        print(f"  [API] Character '{name}' ({realm}): {e}")
         return False
 
 
@@ -166,6 +172,7 @@ def update_sources(new_entries: dict, token: str | None) -> tuple[list[str], lis
 
     added = []
     added_entries = {"guilds": [], "characters": []}
+    not_found = []
     skipped = list(already_skipped)
 
     if not token:
@@ -201,7 +208,18 @@ def update_sources(new_entries: dict, token: str | None) -> tuple[list[str], lis
                         added.append(f"캐릭터: {name} ({realm})")
                         added_entries["characters"].append({"name": name, "realm": realm})
                 else:
-                    skipped.append(f"{'길드' if kind == 'guild' else '캐릭터'}: {name} (존재하지 않음)")
+                    label = '길드' if kind == 'guild' else '캐릭터'
+                    not_found.append(f"{label}: {name} ({realm})")
+                    skipped.append(f"{label}: {name} (존재하지 않음)")
+
+    result_path = Path("/tmp/submission_result.json")
+    result_data = {
+        "duplicates": already_skipped,
+        "not_found": not_found,
+        "added": added,
+    }
+    with open(result_path, "w", encoding="utf-8") as f:
+        json.dump(result_data, f, ensure_ascii=False, indent=2)
 
     if added:
         with open(CONFIG_PATH, "w", encoding="utf-8") as f:
