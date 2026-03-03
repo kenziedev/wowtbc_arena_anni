@@ -320,7 +320,7 @@
         if (charTrees[ci].name === treeDef.ko) { charTree = charTrees[ci]; break; }
       }
 
-      var learnedMap = charTree ? buildLearnedMap(charTree.talents) : {};
+      var learnedMap = charTree ? buildLearnedMap(charTree.talents) : { icons: {}, spells: {} };
       var points = charTree ? (charTree.points || 0) : 0;
       var maxTier = Math.ceil(treeDef.grid.length / 4);
 
