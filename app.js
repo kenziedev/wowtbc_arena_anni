@@ -10,8 +10,11 @@
     "moldars-moxie": "몰다르의 투지",
   };
 
+  var PAGE_SIZE = 300;
+
   var state = {
     bracket: "2v2",
+    page: 1,
     data: {},
     meta: null,
     search: "",
@@ -116,6 +119,10 @@
     return filtered;
   }
 
+  function getTotalPages(filtered) {
+    return Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  }
+
   function render() {
     var body = els.body();
     var filtered = getFiltered();
@@ -124,18 +131,78 @@
     if (filtered.length === 0) {
       els.tableWrap().hidden = true;
       els.empty().hidden = false;
+      renderPagination(0, 0);
       return;
     }
 
     els.tableWrap().hidden = false;
     els.empty().hidden = true;
 
+    var totalPages = getTotalPages(filtered);
+    if (state.page > totalPages) state.page = totalPages;
+    if (state.page < 1) state.page = 1;
+
+    var start = (state.page - 1) * PAGE_SIZE;
+    var end = Math.min(start + PAGE_SIZE, filtered.length);
+    var pageItems = filtered.slice(start, end);
+
     var fragment = document.createDocumentFragment();
-    for (var i = 0; i < filtered.length; i++) {
-      fragment.appendChild(buildRow(filtered[i]));
+    for (var i = 0; i < pageItems.length; i++) {
+      fragment.appendChild(buildRow(pageItems[i]));
     }
     body.appendChild(fragment);
     updateSortIndicators();
+    renderPagination(totalPages, filtered.length);
+  }
+
+  function renderPagination(totalPages, totalItems) {
+    var container = document.getElementById("pagination");
+    if (!container) return;
+
+    if (totalPages <= 1) {
+      container.innerHTML = "";
+      container.hidden = true;
+      return;
+    }
+    container.hidden = false;
+
+    var html = '<div class="pagination-info">' +
+      totalItems + '명 중 ' +
+      ((state.page - 1) * PAGE_SIZE + 1) + '-' +
+      Math.min(state.page * PAGE_SIZE, totalItems) + '명' +
+      '</div><div class="pagination-buttons">';
+
+    html += '<button class="page-btn' + (state.page === 1 ? ' disabled' : '') + '" data-page="prev">&laquo;</button>';
+
+    var pages = buildPageNumbers(state.page, totalPages);
+    for (var i = 0; i < pages.length; i++) {
+      var p = pages[i];
+      if (p === "...") {
+        html += '<span class="page-ellipsis">...</span>';
+      } else {
+        html += '<button class="page-btn' + (p === state.page ? ' active' : '') + '" data-page="' + p + '">' + p + '</button>';
+      }
+    }
+
+    html += '<button class="page-btn' + (state.page === totalPages ? ' disabled' : '') + '" data-page="next">&raquo;</button>';
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  function buildPageNumbers(current, total) {
+    if (total <= 7) {
+      var arr = [];
+      for (var i = 1; i <= total; i++) arr.push(i);
+      return arr;
+    }
+    var pages = [1];
+    if (current > 3) pages.push("...");
+    for (var j = Math.max(2, current - 1); j <= Math.min(total - 1, current + 1); j++) {
+      pages.push(j);
+    }
+    if (current < total - 2) pages.push("...");
+    pages.push(total);
+    return pages;
   }
 
   function updateSortIndicators() {
@@ -193,22 +260,72 @@
     });
   }
 
+  function syncURL(push) {
+    var params = new URLSearchParams();
+    params.set("bracket", state.bracket);
+    if (state.page > 1) params.set("page", state.page);
+    var qs = "?" + params.toString();
+    if (window.location.search === qs) return;
+    var newURL = window.location.pathname + qs;
+    if (push) {
+      history.pushState(null, "", newURL);
+    } else {
+      history.replaceState(null, "", newURL);
+    }
+  }
+
+  function readURL() {
+    var params = new URLSearchParams(window.location.search);
+    var b = params.get("bracket");
+    if (b && BRACKETS.indexOf(b) !== -1) state.bracket = b;
+    var p = parseInt(params.get("page"), 10);
+    if (p && p > 0) state.page = p;
+  }
+
+  function setActiveTab() {
+    var tabs = $$(".tab");
+    for (var j = 0; j < tabs.length; j++) {
+      var isActive = tabs[j].dataset.bracket === state.bracket;
+      tabs[j].classList.toggle("active", isActive);
+      tabs[j].setAttribute("aria-selected", isActive ? "true" : "false");
+    }
+  }
+
   function initTabs() {
     var tabs = $$(".tab");
     for (var i = 0; i < tabs.length; i++) {
       tabs[i].addEventListener("click", function () {
-        for (var j = 0; j < tabs.length; j++) {
-          tabs[j].classList.remove("active");
-          tabs[j].setAttribute("aria-selected", "false");
-        }
-        this.classList.add("active");
-        this.setAttribute("aria-selected", "true");
         state.bracket = this.dataset.bracket;
+        state.page = 1;
         state.sort = { key: null, asc: true };
+        setActiveTab();
         updateMeta();
         render();
+        syncURL(true);
       });
     }
+  }
+
+  function initPagination() {
+    var container = document.getElementById("pagination");
+    if (!container) return;
+    container.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-page]");
+      if (!btn || btn.classList.contains("disabled")) return;
+      var val = btn.dataset.page;
+      var filtered = getFiltered();
+      var totalPages = getTotalPages(filtered);
+      if (val === "prev") {
+        state.page = Math.max(1, state.page - 1);
+      } else if (val === "next") {
+        state.page = Math.min(totalPages, state.page + 1);
+      } else {
+        state.page = parseInt(val, 10);
+      }
+      render();
+      syncURL(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   }
 
   function initSearch() {
@@ -217,6 +334,7 @@
       clearTimeout(timer);
       timer = setTimeout(function () {
         state.search = e.target.value;
+        state.page = 1;
         render();
       }, 200);
     });
@@ -271,11 +389,21 @@
   }
 
   function init() {
+    readURL();
+    setActiveTab();
     initTabs();
     initSearch();
     initSort();
     initModal();
+    initPagination();
     loadData();
+
+    window.addEventListener("popstate", function () {
+      readURL();
+      setActiveTab();
+      updateMeta();
+      render();
+    });
   }
 
   if (document.readyState === "loading") {

@@ -838,6 +838,67 @@ a.equip-name:hover {
 .quality-EPIC { color: #a335ee; }
 .quality-LEGENDARY { color: #ff8000; }
 
+/* ── Pagination ─────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pagination[hidden] { display: none !important; }
+
+.pagination-info {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.page-btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.15s;
+}
+
+.page-btn:hover:not(.disabled):not(.active) {
+  background: var(--bg-row-hover);
+  border-color: var(--accent-gold-dim);
+  color: var(--text-primary);
+}
+
+.page-btn.active {
+  background: var(--accent-gold-dim);
+  border-color: var(--accent-gold);
+  color: #fff;
+}
+
+.page-btn.disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.page-ellipsis {
+  padding: 0 4px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
 /* ── Footer ──────────────────────────── */
 .footer {
   padding: 32px 0;
@@ -936,4 +997,7 @@ a.equip-name:hover {
 
   .leaderboard th, .leaderboard td { padding: 8px 8px; }
   .col-rank { width: 44px; }
+
+  .pagination { justify-content: center; }
+  .pagination-info { width: 100%; text-align: center; }
 }
