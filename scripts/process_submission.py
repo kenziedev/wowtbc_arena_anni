@@ -55,7 +55,7 @@ def get_access_token() -> str | None:
 
 
 def verify_guild(token: str, name: str, realm: str) -> bool:
-    slug = quote(name.lower())
+    slug = name.lower().strip().replace(" ", "-")
     url = f"{API_BASE}/data/wow/guild/{realm}/{slug}/roster"
     try:
         resp = _session.get(url, headers={"Authorization": f"Bearer {token}"},

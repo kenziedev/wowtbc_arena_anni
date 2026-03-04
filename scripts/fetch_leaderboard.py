@@ -73,7 +73,7 @@ def load_sources() -> dict:
 
 
 def fetch_guild_members(token: str, guild_name: str, realm_slug: str) -> list[dict]:
-    guild_slug = quote(guild_name.lower())
+    guild_slug = guild_name.lower().strip().replace(" ", "-")
     url = f"{API_BASE}/data/wow/guild/{realm_slug}/{guild_slug}/roster"
     data = api_get(token, url, NS_PROFILE)
     if not data:
