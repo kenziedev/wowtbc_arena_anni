@@ -373,6 +373,32 @@ def resolve_icons(token: str, all_pvp: list[dict]):
                         t["icon"] = icon_name
 
 
+def discover_new_guilds(all_pvp: list[dict], sources: dict):
+    """Auto-add newly discovered guild names from character data to sources.json."""
+    existing = {(g["name"].lower(), g["realm"]) for g in sources.get("guilds", [])}
+    new_guilds = []
+
+    for char in all_pvp:
+        guild = char.get("guild", "")
+        realm = char.get("realm", "")
+        if guild and (guild.lower(), realm) not in existing:
+            existing.add((guild.lower(), realm))
+            new_guilds.append({"name": guild, "realm": realm})
+
+    if new_guilds:
+        sources.setdefault("guilds", []).extend(new_guilds)
+        sources_path = CONFIG_DIR / "sources.json"
+        with open(sources_path, "w", encoding="utf-8") as f:
+            json.dump(sources, f, ensure_ascii=False, indent=2)
+        print(f"\nAuto-discovered {len(new_guilds)} new guilds:")
+        for g in new_guilds[:20]:
+            print(f"  + {g['name']} ({g['realm']})")
+        if len(new_guilds) > 20:
+            print(f"  ... and {len(new_guilds) - 20} more")
+    else:
+        print("\nNo new guilds discovered.")
+
+
 def build_leaderboard(all_pvp_data: list[dict], bracket: str) -> list[dict]:
     entries = []
     for char in all_pvp_data:
@@ -458,6 +484,9 @@ def main():
                 all_pvp.append(pvp)
 
     print(f"\nCharacters with PvP data: {len(all_pvp)}")
+
+    # Auto-discover new guilds from fetched character data
+    discover_new_guilds(all_pvp, sources)
 
     resolve_icons(token, all_pvp)
 

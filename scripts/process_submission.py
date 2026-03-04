@@ -68,7 +68,8 @@ def verify_guild(token: str, name: str, realm: str) -> bool:
         return False
 
 
-def verify_character(token: str, name: str, realm: str) -> bool:
+def verify_character(token: str, name: str, realm: str) -> tuple[bool, str]:
+    """Returns (exists, guild_name)."""
     encoded = quote(name.lower())
     url = f"{API_BASE}/profile/wow/character/{realm}/{encoded}"
     try:
@@ -76,10 +77,12 @@ def verify_character(token: str, name: str, realm: str) -> bool:
                             params={"namespace": NS_PROFILE, "locale": LOCALE}, timeout=15)
         if resp.status_code != 200:
             print(f"  [API] Character '{name}' ({realm}): HTTP {resp.status_code}")
-        return resp.status_code == 200
+            return False, ""
+        guild_name = resp.json().get("guild", {}).get("name", "")
+        return True, guild_name
     except requests.RequestException as e:
         print(f"  [API] Character '{name}' ({realm}): {e}")
-        return False
+        return False, ""
 
 
 def parse_issue_body(body: str) -> dict:
@@ -135,9 +138,10 @@ def parse_issue_body(body: str) -> dict:
 def _verify_worker(args):
     kind, token, name, realm = args
     if kind == "guild":
-        return kind, name, realm, verify_guild(token, name, realm)
+        return kind, name, realm, verify_guild(token, name, realm), ""
     else:
-        return kind, name, realm, verify_character(token, name, realm)
+        exists, guild_name = verify_character(token, name, realm)
+        return kind, name, realm, exists, guild_name
 
 
 def update_sources(new_entries: dict, token: str | None) -> tuple[list[str], list[str]]:
@@ -189,11 +193,12 @@ def update_sources(new_entries: dict, token: str | None) -> tuple[list[str], lis
         tasks = [(kind, token, name, realm) for kind, name, realm in to_verify]
         done = 0
         total = len(tasks)
+        discovered_guilds = []
 
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             futures = {executor.submit(_verify_worker, t): t for t in tasks}
             for future in as_completed(futures):
-                kind, name, realm, exists = future.result()
+                kind, name, realm, exists, char_guild = future.result()
                 done += 1
                 if done % 100 == 0 or done == total:
                     print(f"  Verified: {done}/{total}")
@@ -207,10 +212,25 @@ def update_sources(new_entries: dict, token: str | None) -> tuple[list[str], lis
                         sources.setdefault("characters", []).append({"name": name, "realm": realm})
                         added.append(f"캐릭터: {name} ({realm})")
                         added_entries["characters"].append({"name": name, "realm": realm})
+                        if char_guild:
+                            discovered_guilds.append({"name": char_guild, "realm": realm})
                 else:
                     label = '길드' if kind == 'guild' else '캐릭터'
                     not_found.append(f"{label}: {name} ({realm})")
                     skipped.append(f"{label}: {name} (존재하지 않음)")
+
+        if discovered_guilds:
+            existing_g = {(g["name"].lower(), g["realm"]) for g in sources.get("guilds", [])}
+            auto_added = 0
+            for g in discovered_guilds:
+                key = (g["name"].lower(), g["realm"])
+                if key not in existing_g:
+                    existing_g.add(key)
+                    sources.setdefault("guilds", []).append(g)
+                    auto_added += 1
+                    print(f"  [AUTO] Guild discovered: {g['name']} ({g['realm']})")
+            if auto_added:
+                print(f"  Auto-discovered {auto_added} new guilds from character data")
 
     result_path = Path("/tmp/submission_result.json")
     result_data = {
