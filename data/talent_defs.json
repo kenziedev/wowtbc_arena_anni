@@ -263,6 +263,7 @@
             "spell_ids": [
               35446,
               35449,
+              35450,
               35451
             ]
           },
@@ -4765,6 +4766,7 @@
             "prereq": null,
             "spell_ids": [
               11237,
+              12463,
               12464,
               16770
             ]
@@ -4945,7 +4947,12 @@
               "Your Arcane Missiles spell gains an additional 30% of your bonus spell damage effects, but mana cost is increased by 4%.",
               "Your Arcane Missiles spell gains an additional 45% of your bonus spell damage effects, but mana cost is increased by 6%."
             ],
-            "prereq": null
+            "prereq": null,
+            "spell_ids": [
+              31579,
+              31582,
+              31583
+            ]
           },
           {
             "name": "Arcane Power",
@@ -5502,12 +5509,13 @@
           {
             "name": "Empowered Frostbolt",
             "icon": "spell_frost_frostbolt02",
-            "max_rank": 4,
+            "max_rank": 5,
             "descriptions": [
               "Your Frostbolt spell gains an additional 2% of your bonus spell damage effects and an additional 1% chance to critically strike.",
               "Your Frostbolt spell gains an additional 4% of your bonus spell damage effects and an additional 2% chance to critically strike.",
               "Your Frostbolt spell gains an additional 6% of your bonus spell damage effects and an additional 3% chance to critically strike.",
-              "Your Frostbolt spell gains an additional 8% of your bonus spell damage effects and an additional 4% chance to critically strike."
+              "Your Frostbolt spell gains an additional 8% of your bonus spell damage effects and an additional 4% chance to critically strike.",
+              "Your Frostbolt spell gains an additional 10% of your bonus spell damage effects and an additional 5% chance to critically strike."
             ],
             "prereq": null,
             "spell_ids": [
