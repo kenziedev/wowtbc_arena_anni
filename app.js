@@ -17,6 +17,7 @@
     page: 1,
     data: {},
     meta: null,
+    cutoffs: null,
     search: "",
     sort: { key: null, asc: true },
   };
@@ -232,6 +233,61 @@
     info.innerHTML = count + "명 &middot; " + scanned + "명 스캔 &middot; " + updated;
   }
 
+  var CUTOFF_ICONS = {
+    "지옥에서 온 검투사": '<svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.83-3.13 9.37-7 10.5-3.87-1.13-7-5.67-7-10.5V6.3l7-3.12zM12 7l-1.5 3H7l2.5 2-1 3.5L12 13l3.5 2.5-1-3.5L17 10h-3.5z"/></svg>',
+    "검투사": '<svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.83-3.13 9.37-7 10.5-3.87-1.13-7-5.67-7-10.5V6.3l7-3.12z"/></svg>',
+    "결투사": '<svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.83-3.13 9.37-7 10.5-3.87-1.13-7-5.67-7-10.5V6.3l7-3.12z"/></svg>',
+    "승부사": '<svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.83-3.13 9.37-7 10.5-3.87-1.13-7-5.67-7-10.5V6.3l7-3.12z"/></svg>',
+    "도전자": '<svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.83-3.13 9.37-7 10.5-3.87-1.13-7-5.67-7-10.5V6.3l7-3.12z"/></svg>'
+  };
+
+  var CUTOFF_CLASS_MAP = {
+    "지옥에서 온 검투사": "cutoff-infernal",
+    "검투사": "cutoff-gladiator",
+    "결투사": "cutoff-duelist",
+    "승부사": "cutoff-rival",
+    "도전자": "cutoff-challenger"
+  };
+
+  function renderCutoffs() {
+    var container = document.getElementById("cutoffs");
+    if (!container) return;
+    if (!state.cutoffs || !state.cutoffs.cutoffs) {
+      container.innerHTML = "";
+      return;
+    }
+    var bracketCutoffs = state.cutoffs.cutoffs[state.bracket];
+    if (!bracketCutoffs || bracketCutoffs.length === 0) {
+      container.innerHTML = "";
+      return;
+    }
+
+    var entries = state.data[state.bracket] || [];
+    var html = "";
+    for (var i = 0; i < bracketCutoffs.length; i++) {
+      var c = bracketCutoffs[i];
+      var cls = CUTOFF_CLASS_MAP[c.title] || "";
+      var icon = CUTOFF_ICONS[c.title] || "";
+
+      var rankText = "";
+      if (entries.length > 0) {
+        var count = 0;
+        for (var j = 0; j < entries.length; j++) {
+          if (entries[j].rating >= c.rating) count++;
+        }
+        if (count > 0) rankText = "~" + count + "위";
+      }
+
+      html += '<div class="cutoff-badge ' + cls + '">' +
+        '<div class="cutoff-icon">' + icon + '</div>' +
+        '<div class="cutoff-info">' +
+        '<div class="cutoff-title">' + esc(c.title) + '</div>' +
+        '<div class="cutoff-rating">' + c.rating + (rankText ? '<span style="font-size:0.65rem;font-weight:400;color:var(--text-muted);margin-left:6px">' + rankText + '</span>' : '') + '</div>' +
+        '</div></div>';
+    }
+    container.innerHTML = html;
+  }
+
   function fetchJSON(url) {
     var bustUrl = url + (url.indexOf("?") === -1 ? "?" : "&") + "_t=" + Date.now();
     return fetch(bustUrl).then(function (resp) {
@@ -246,16 +302,20 @@
     BRACKETS.forEach(function (b) {
       promises.push(fetchJSON(DATA_BASE + "/" + b + ".json").catch(function () { return []; }));
     });
+    promises.push(fetchJSON(DATA_BASE + "/cutoffs.json").catch(function () { return null; }));
 
     Promise.all(promises).then(function (results) {
       state.meta = results[0];
       BRACKETS.forEach(function (b, i) { state.data[b] = results[i + 1]; });
+      state.cutoffs = results[BRACKETS.length + 1];
     }).catch(function () {
       state.meta = null;
       BRACKETS.forEach(function (b) { state.data[b] = []; });
+      state.cutoffs = null;
     }).finally(function () {
       showLoading(false);
       updateMeta();
+      renderCutoffs();
       render();
     });
   }
@@ -300,6 +360,7 @@
         state.sort = { key: null, asc: true };
         setActiveTab();
         updateMeta();
+        renderCutoffs();
         render();
         syncURL(true);
       });
@@ -402,6 +463,7 @@
       readURL();
       setActiveTab();
       updateMeta();
+      renderCutoffs();
       render();
     });
   }

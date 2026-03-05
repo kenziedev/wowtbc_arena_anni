@@ -373,6 +373,45 @@ def resolve_icons(token: str, all_pvp: list[dict]):
                         t["icon"] = icon_name
 
 
+def fetch_cutoffs(token: str):
+    """Fetch PvP season reward cutoffs and save to data/cutoffs.json."""
+    BRACKET_MAP = {"ARENA_2v2": "2v2", "ARENA_3v3": "3v3", "ARENA_5v5": "5v5"}
+
+    url = f"{API_BASE}/data/wow/pvp-season/1/pvp-reward/index"
+    data = api_get(token, url, NS_DYNAMIC)
+    if not data:
+        print("  [WARN] Could not fetch PvP reward cutoffs")
+        return
+
+    cutoffs = {}
+    for reward in data.get("rewards", []):
+        bracket_type = reward.get("bracket", {}).get("type", "")
+        bracket = BRACKET_MAP.get(bracket_type)
+        if not bracket:
+            continue
+        name = reward.get("achievement", {}).get("name", "")
+        rating = reward.get("rating_cutoff", 0)
+        title = name.split(":")[0].strip()
+
+        if bracket not in cutoffs:
+            cutoffs[bracket] = []
+        if not any(c["title"] == title for c in cutoffs[bracket]):
+            cutoffs[bracket].append({"title": title, "rating": rating})
+
+    for bracket in cutoffs:
+        cutoffs[bracket].sort(key=lambda c: c["rating"], reverse=True)
+
+    out = {"season_id": 1, "cutoffs": cutoffs}
+    out_path = DATA_DIR / "cutoffs.json"
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=2)
+
+    print("Cutoffs saved:")
+    for bracket, items in cutoffs.items():
+        for c in items:
+            print(f"  {bracket}: {c['title']} = {c['rating']}")
+
+
 def discover_new_guilds(all_pvp: list[dict], sources: dict):
     """Auto-add newly discovered guild names from character data to sources.json."""
     existing = {(g["name"].lower(), g["realm"]) for g in sources.get("guilds", [])}
@@ -443,6 +482,9 @@ def main():
     print("Authenticating...")
     token = get_access_token(client_id, client_secret)
     print("Authenticated.")
+
+    print("\nFetching PvP reward cutoffs...")
+    fetch_cutoffs(token)
 
     seen = set()
     characters = []

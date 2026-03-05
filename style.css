@@ -94,6 +94,131 @@ body {
   border-bottom-color: var(--accent-gold);
 }
 
+/* ── Cutoffs ─────────────────────────── */
+.cutoffs {
+  display: flex;
+  gap: 8px;
+  padding: 14px 0 0;
+  flex-wrap: wrap;
+}
+
+.cutoff-badge {
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.cutoff-badge:hover {
+  background: var(--bg-row-hover);
+}
+
+.cutoff-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cutoff-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.cutoff-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cutoff-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cutoff-rating {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.cutoff-badge.cutoff-infernal {
+  border-left-color: #ff4444;
+}
+.cutoff-badge.cutoff-infernal .cutoff-title { color: #ff6b6b; }
+.cutoff-badge.cutoff-infernal .cutoff-rating { color: #ff4444; }
+.cutoff-badge.cutoff-infernal .cutoff-icon svg { fill: #ff4444; }
+
+.cutoff-badge.cutoff-gladiator {
+  border-left-color: #f0ab00;
+}
+.cutoff-badge.cutoff-gladiator .cutoff-title { color: #f0c050; }
+.cutoff-badge.cutoff-gladiator .cutoff-rating { color: #f0ab00; }
+.cutoff-badge.cutoff-gladiator .cutoff-icon svg { fill: #f0ab00; }
+
+.cutoff-badge.cutoff-duelist {
+  border-left-color: #a335ee;
+}
+.cutoff-badge.cutoff-duelist .cutoff-title { color: #c070ff; }
+.cutoff-badge.cutoff-duelist .cutoff-rating { color: #a335ee; }
+.cutoff-badge.cutoff-duelist .cutoff-icon svg { fill: #a335ee; }
+
+.cutoff-badge.cutoff-rival {
+  border-left-color: #0070dd;
+}
+.cutoff-badge.cutoff-rival .cutoff-title { color: #58a6ff; }
+.cutoff-badge.cutoff-rival .cutoff-rating { color: #0070dd; }
+.cutoff-badge.cutoff-rival .cutoff-icon svg { fill: #0070dd; }
+
+.cutoff-badge.cutoff-challenger {
+  border-left-color: #1eff00;
+}
+.cutoff-badge.cutoff-challenger .cutoff-title { color: #4fdb4f; }
+.cutoff-badge.cutoff-challenger .cutoff-rating { color: #1eff00; }
+.cutoff-badge.cutoff-challenger .cutoff-icon svg { fill: #1eff00; }
+
+@media (max-width: 720px) {
+  .cutoffs {
+    gap: 6px;
+  }
+  .cutoff-badge {
+    min-width: 0;
+    flex-basis: calc(50% - 3px);
+    flex-grow: 0;
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  .cutoff-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .cutoff-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+  .cutoff-rating {
+    font-size: 1.05rem;
+  }
+  .cutoff-title {
+    font-size: 0.65rem;
+  }
+}
+
 /* ── Toolbar ─────────────────────────── */
 .toolbar {
   display: flex;
