@@ -105,6 +105,36 @@
     "rank": 7
   },
   {
+    "name": "Satz",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "도적",
+    "race": "언데드",
+    "faction": "HORDE",
+    "guild": "Unreal",
+    "rating": 1735,
+    "won": 20,
+    "lost": 1,
+    "played": 21,
+    "winrate": 95.2,
+    "rank": 8
+  },
+  {
+    "name": "Satx",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "드루이드",
+    "race": "타우렌",
+    "faction": "HORDE",
+    "guild": "Unreal",
+    "rating": 1735,
+    "won": 20,
+    "lost": 1,
+    "played": 21,
+    "winrate": 95.2,
+    "rank": 9
+  },
+  {
     "name": "유짱",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -117,36 +147,6 @@
     "lost": 3,
     "played": 25,
     "winrate": 88.0,
-    "rank": 8
-  },
-  {
-    "name": "Satz",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "도적",
-    "race": "언데드",
-    "faction": "HORDE",
-    "guild": "Unreal",
-    "rating": 1719,
-    "won": 18,
-    "lost": 1,
-    "played": 19,
-    "winrate": 94.7,
-    "rank": 9
-  },
-  {
-    "name": "Satx",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "드루이드",
-    "race": "타우렌",
-    "faction": "HORDE",
-    "guild": "Unreal",
-    "rating": 1719,
-    "won": 18,
-    "lost": 1,
-    "played": 19,
-    "winrate": 94.7,
     "rank": 10
   },
   {
@@ -255,11 +255,11 @@
     "rank": 17
   },
   {
-    "name": "노워",
+    "name": "도담",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
-    "class": "사제",
-    "race": "드워프",
+    "class": "마법사",
+    "race": "인간",
     "faction": "ALLIANCE",
     "guild": "Laughing skull",
     "rating": 1671,
@@ -270,11 +270,11 @@
     "rank": 18
   },
   {
-    "name": "도담",
+    "name": "노워",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
-    "class": "마법사",
-    "race": "인간",
+    "class": "사제",
+    "race": "드워프",
     "faction": "ALLIANCE",
     "guild": "Laughing skull",
     "rating": 1671,
@@ -750,36 +750,6 @@
     "rank": 50
   },
   {
-    "name": "도적이라니까요",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "도적",
-    "race": "인간",
-    "faction": "ALLIANCE",
-    "guild": "World Class",
-    "rating": 1548,
-    "won": 10,
-    "lost": 5,
-    "played": 15,
-    "winrate": 66.7,
-    "rank": 51
-  },
-  {
-    "name": "양변사제",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "사제",
-    "race": "인간",
-    "faction": "ALLIANCE",
-    "guild": "World Class",
-    "rating": 1548,
-    "won": 10,
-    "lost": 5,
-    "played": 15,
-    "winrate": 66.7,
-    "rank": 52
-  },
-  {
     "name": "주논",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -792,6 +762,36 @@
     "lost": 15,
     "played": 34,
     "winrate": 55.9,
+    "rank": 51
+  },
+  {
+    "name": "도적이라니까요",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "도적",
+    "race": "인간",
+    "faction": "ALLIANCE",
+    "guild": "World Class",
+    "rating": 1546,
+    "won": 10,
+    "lost": 7,
+    "played": 17,
+    "winrate": 58.8,
+    "rank": 52
+  },
+  {
+    "name": "양변사제",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "사제",
+    "race": "인간",
+    "faction": "ALLIANCE",
+    "guild": "World Class",
+    "rating": 1546,
+    "won": 10,
+    "lost": 7,
+    "played": 17,
+    "winrate": 58.8,
     "rank": 53
   },
   {
@@ -1215,21 +1215,6 @@
     "rank": 81
   },
   {
-    "name": "Owov",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "드루이드",
-    "race": "나이트 엘프",
-    "faction": "ALLIANCE",
-    "guild": "CastorPollux",
-    "rating": 1526,
-    "won": 2,
-    "lost": 0,
-    "played": 2,
-    "winrate": 100.0,
-    "rank": 82
-  },
-  {
     "name": "캔디공장",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -1242,13 +1227,28 @@
     "lost": 0,
     "played": 2,
     "winrate": 100.0,
+    "rank": 82
+  },
+  {
+    "name": "Owov",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "드루이드",
+    "race": "나이트 엘프",
+    "faction": "ALLIANCE",
+    "guild": "CastorPollux",
+    "rating": 1526,
+    "won": 2,
+    "lost": 0,
+    "played": 2,
+    "winrate": 100.0,
     "rank": 83
   },
   {
-    "name": "Mana",
+    "name": "깝노노",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
-    "class": "사제",
+    "class": "도적",
     "race": "언데드",
     "faction": "HORDE",
     "guild": "Phoenix",
@@ -1260,10 +1260,10 @@
     "rank": 84
   },
   {
-    "name": "깝노노",
+    "name": "Mana",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
-    "class": "도적",
+    "class": "사제",
     "race": "언데드",
     "faction": "HORDE",
     "guild": "Phoenix",
@@ -1980,11 +1980,11 @@
     "rank": 132
   },
   {
-    "name": "비개오노",
+    "name": "이구역미틴놈",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
-    "class": "전사",
-    "race": "타우렌",
+    "class": "마법사",
+    "race": "언데드",
     "faction": "HORDE",
     "guild": "소 리 달",
     "rating": 1489,
@@ -1995,11 +1995,11 @@
     "rank": 133
   },
   {
-    "name": "이구역미틴놈",
+    "name": "비개오노",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
-    "class": "마법사",
-    "race": "언데드",
+    "class": "전사",
+    "race": "타우렌",
     "faction": "HORDE",
     "guild": "소 리 달",
     "rating": 1489,
@@ -2130,6 +2130,21 @@
     "rank": 142
   },
   {
+    "name": "찌르술사",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "주술사",
+    "race": "오크",
+    "faction": "HORDE",
+    "guild": "ClanDS",
+    "rating": 1488,
+    "won": 0,
+    "lost": 1,
+    "played": 1,
+    "winrate": 0.0,
+    "rank": 143
+  },
+  {
     "name": "언더법사",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -2142,7 +2157,7 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 143
+    "rank": 144
   },
   {
     "name": "에쎄라이트",
@@ -2150,21 +2165,6 @@
     "realm_name": "펜구스의 흉포",
     "class": "사제",
     "race": "언데드",
-    "faction": "HORDE",
-    "guild": "ClanDS",
-    "rating": 1488,
-    "won": 0,
-    "lost": 1,
-    "played": 1,
-    "winrate": 0.0,
-    "rank": 144
-  },
-  {
-    "name": "찌르술사",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "주술사",
-    "race": "오크",
     "faction": "HORDE",
     "guild": "ClanDS",
     "rating": 1488,
@@ -2250,11 +2250,11 @@
     "rank": 150
   },
   {
-    "name": "독을마시는새",
+    "name": "이삐삐",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
-    "class": "주술사",
-    "race": "타우렌",
+    "class": "사냥꾼",
+    "race": "오크",
     "faction": "HORDE",
     "guild": "불타는 노동조합",
     "rating": 1483,
@@ -2265,11 +2265,11 @@
     "rank": 151
   },
   {
-    "name": "이삐삐",
+    "name": "독을마시는새",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
-    "class": "사냥꾼",
-    "race": "오크",
+    "class": "주술사",
+    "race": "타우렌",
     "faction": "HORDE",
     "guild": "불타는 노동조합",
     "rating": 1483,
@@ -2880,11 +2880,11 @@
     "rank": 192
   },
   {
-    "name": "분노한거추",
+    "name": "나먼저간다",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
-    "class": "성기사",
-    "race": "인간",
+    "class": "마법사",
+    "race": "노움",
     "faction": "ALLIANCE",
     "guild": "클래식",
     "rating": 1460,
@@ -2895,11 +2895,11 @@
     "rank": 193
   },
   {
-    "name": "나먼저간다",
+    "name": "분노한거추",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
-    "class": "마법사",
-    "race": "노움",
+    "class": "성기사",
+    "race": "인간",
     "faction": "ALLIANCE",
     "guild": "클래식",
     "rating": 1460,
@@ -3510,11 +3510,11 @@
     "rank": 234
   },
   {
-    "name": "납치되었소",
+    "name": "등굽은생선",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
-    "class": "드루이드",
-    "race": "타우렌",
+    "class": "주술사",
+    "race": "트롤",
     "faction": "HORDE",
     "guild": "동행",
     "rating": 1366,
@@ -3525,11 +3525,11 @@
     "rank": 235
   },
   {
-    "name": "등굽은생선",
+    "name": "납치되었소",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
-    "class": "주술사",
-    "race": "트롤",
+    "class": "드루이드",
+    "race": "타우렌",
     "faction": "HORDE",
     "guild": "동행",
     "rating": 1366,
