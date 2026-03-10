@@ -379,6 +379,18 @@ td.col-rank { font-weight: 700; text-align: center; }
 .winrate-mid  { color: var(--accent-gold); }
 .winrate-low  { color: var(--accent-red); }
 
+.change-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  margin-left: 4px;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.change-up { color: var(--accent-green); }
+.change-down { color: var(--accent-red); }
+
 /* ── Loading ─────────────────────────── */
 .loading {
   text-align: center;

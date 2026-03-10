@@ -72,15 +72,25 @@
     return el.innerHTML;
   }
 
+  function changeBadge(val, invert) {
+    if (!val) return "";
+    var cls = val > 0 ? "change-up" : "change-down";
+    if (invert) cls = val > 0 ? "change-down" : "change-up";
+    var arrow = val > 0 ? "\u25B2" : "\u25BC";
+    return '<span class="change-badge ' + cls + '">' + arrow + Math.abs(val) + '</span>';
+  }
+
   function buildRow(entry) {
     var wr = entry.winrate || 0;
     var tr = document.createElement("tr");
+    var rankChange = changeBadge(entry.rkd, true);
+    var ratingChange = changeBadge(entry.rd, false);
     tr.innerHTML =
-      '<td class="col-rank ' + rankClass(entry.rank) + '">' + entry.rank + "</td>" +
+      '<td class="col-rank ' + rankClass(entry.rank) + '">' + entry.rank + rankChange + "</td>" +
       '<td class="col-name ' + factionClass(entry.faction) + '"><a class="char-link char-name" href="detail.html?name=' + encodeURIComponent(entry.name) + '&realm=' + encodeURIComponent(entry.realm) + '">' + esc(entry.name) + "</a></td>" +
       '<td class="col-class"><span class="class-tag">' + esc(entry["class"]) + "</span></td>" +
       '<td class="col-guild"><span class="guild-name">' + esc(entry.guild) + "</span></td>" +
-      '<td class="col-rating"><span class="rating-badge ' + ratingClass(entry.rating) + '">' + entry.rating + "</span></td>" +
+      '<td class="col-rating"><span class="rating-badge ' + ratingClass(entry.rating) + '">' + entry.rating + '</span>' + ratingChange + "</td>" +
       '<td class="col-record">' + entry.won + "승 " + entry.lost + "패</td>" +
       '<td class="col-winrate ' + winrateClass(wr) + '">' + wr.toFixed(1) + "%</td>";
     return tr;

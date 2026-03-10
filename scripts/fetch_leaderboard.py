@@ -438,7 +438,22 @@ def discover_new_guilds(all_pvp: list[dict], sources: dict):
         print("\nNo new guilds discovered.")
 
 
+def load_previous_leaderboard(bracket: str) -> dict:
+    """Load previous leaderboard data and return a lookup dict keyed by (name, realm)."""
+    path = DATA_DIR / f"{bracket}.json"
+    if not path.exists():
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            prev = json.load(f)
+        return {(e["name"], e["realm"]): e for e in prev}
+    except Exception:
+        return {}
+
+
 def build_leaderboard(all_pvp_data: list[dict], bracket: str) -> list[dict]:
+    prev_map = load_previous_leaderboard(bracket)
+
     entries = []
     for char in all_pvp_data:
         bdata = char.get("brackets", {}).get(bracket)
@@ -462,8 +477,22 @@ def build_leaderboard(all_pvp_data: list[dict], bracket: str) -> list[dict]:
         })
 
     entries.sort(key=lambda x: x["rating"], reverse=True)
-    for i, entry in enumerate(entries, 1):
-        entry["rank"] = i
+
+    rank = 1
+    for i, entry in enumerate(entries):
+        if i > 0 and entry["rating"] < entries[i - 1]["rating"]:
+            rank = i + 1
+        entry["rank"] = rank
+
+        key = (entry["name"], entry["realm"])
+        prev = prev_map.get(key)
+        if prev:
+            rating_diff = entry["rating"] - prev.get("rating", 0)
+            if rating_diff != 0:
+                entry["rd"] = rating_diff
+            rank_diff = prev.get("rank", 0) - entry["rank"]
+            if rank_diff != 0:
+                entry["rkd"] = rank_diff
 
     return entries
 
