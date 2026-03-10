@@ -38,7 +38,7 @@ body {
 }
 
 .container {
-  max-width: 1060px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
 }
@@ -337,10 +337,10 @@ body {
 .leaderboard tbody tr:hover { background: var(--bg-row-hover); }
 .leaderboard tbody tr:last-child td { border-bottom: none; }
 
-.col-rank { width: 56px; text-align: center; }
-.col-rating { width: 86px; }
-.col-record { width: 100px; }
-.col-winrate { width: 72px; }
+.col-rank { width: 80px; text-align: center; white-space: nowrap; }
+.col-rating { width: 120px; white-space: nowrap; }
+.col-record { width: 120px; white-space: nowrap; }
+.col-winrate { width: 72px; white-space: nowrap; }
 .col-class { width: 80px; }
 
 td.col-rank { font-weight: 700; text-align: center; }
@@ -1132,8 +1132,10 @@ a.equip-name:hover {
   .col-guild { display: none; }
   .col-class { display: none; }
 
-  .leaderboard th, .leaderboard td { padding: 8px 8px; }
-  .col-rank { width: 44px; }
+  .leaderboard th, .leaderboard td { padding: 8px 6px; }
+  .col-rank { width: 64px; }
+  .col-rating { width: 100px; }
+  .col-record { width: 110px; }
 
   .pagination { justify-content: center; }
   .pagination-info { width: 100%; text-align: center; }
