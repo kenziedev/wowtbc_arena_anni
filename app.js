@@ -83,7 +83,7 @@
   function buildRow(entry) {
     var wr = entry.winrate || 0;
     var tr = document.createElement("tr");
-    var rankChange = changeBadge(entry.rkd, true);
+    var rankChange = changeBadge(entry.rkd, false);
     var ratingChange = changeBadge(entry.rd, false);
     tr.innerHTML =
       '<td class="col-rank ' + rankClass(entry.rank) + '">' + entry.rank + rankChange + "</td>" +
