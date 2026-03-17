@@ -285,11 +285,13 @@ def enrich_ranked_characters(token: str, ranked_characters: dict[tuple[str, str]
 
             stub = ranked_characters[key]
             if profile:
+                profile["profile_restricted"] = False
                 profile["brackets"] = stub["brackets"]
                 if not profile.get("faction"):
                     profile["faction"] = stub.get("faction", "")
                 enriched.append(profile)
             else:
+                stub["profile_restricted"] = True
                 enriched.append(stub)
 
     return enriched

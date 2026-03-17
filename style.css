@@ -684,6 +684,27 @@ td.col-rank { font-weight: 700; text-align: center; }
   padding: 0;
 }
 
+.detail-notice {
+  margin-top: 8px;
+  padding: 14px 16px;
+  background: rgba(240, 171, 0, 0.08);
+  border: 1px solid rgba(240, 171, 0, 0.3);
+  border-radius: var(--radius);
+}
+
+.detail-notice-title {
+  color: var(--accent-gold);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.detail-notice-text {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
 /* ── Talents ─────────────────────────── */
 .talents-section {
   margin-top: 24px;

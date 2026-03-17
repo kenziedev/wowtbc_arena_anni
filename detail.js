@@ -117,6 +117,29 @@
     return null;
   }
 
+  function hasDetailedProfile(extras) {
+    if (!extras) return false;
+    if (extras.profile_restricted) return false;
+    if (extras.avatar) return true;
+    if (extras.equipment && extras.equipment.length > 0) return true;
+    if (extras.spec_groups && extras.spec_groups.length > 0) return true;
+    if (extras.talents && extras.talents.length > 0) return true;
+    return false;
+  }
+
+  function shouldShowPrivacyNotice(extras, snapshots) {
+    if (!extras) return false;
+    if (extras.profile_restricted) return true;
+    if (!snapshots || snapshots.length === 0) return false;
+    return !hasDetailedProfile(extras);
+  }
+
+  function renderPrivacyNotice(extras, snapshots) {
+    var notice = $("#privacy-notice");
+    if (!notice) return;
+    notice.hidden = !shouldShowPrivacyNotice(extras, snapshots);
+  }
+
   function renderHeader(char, extras) {
     $("#char-name").textContent = char.name;
     var parts = [];
@@ -665,6 +688,7 @@
     state._className = (extras && extras["class"]) || char["class"] || "";
     renderHeader(char, extras);
     renderAvatar(extras);
+    renderPrivacyNotice(extras, snapshots);
 
     if (snapshots.length > 0) {
       state.snapshots = snapshots;
