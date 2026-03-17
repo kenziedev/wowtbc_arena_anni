@@ -13,7 +13,6 @@ import requests
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
-CONFIG_DIR = BASE_DIR / "config"
 
 REGION = "kr"
 API_BASE = f"https://{REGION}.api.blizzard.com"
@@ -23,7 +22,6 @@ NS_DYNAMIC = "dynamic-classicann-kr"
 LOCALE = "ko_KR"
 
 BRACKETS = ["2v2", "3v3", "5v5"]
-MIN_LEVEL = 70
 MAX_WORKERS = 10
 
 
@@ -66,37 +64,109 @@ def api_get(token: str, url: str, namespace: str, retries: int = 2) -> dict | No
     return None
 
 
-def load_sources() -> dict:
-    path = CONFIG_DIR / "sources.json"
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+def character_key(name: str, realm: str) -> tuple[str, str]:
+    return name.lower(), realm
 
 
-def fetch_guild_members(token: str, guild_name: str, realm_slug: str) -> list[dict]:
-    guild_slug = guild_name.lower().strip().replace(" ", "-")
-    url = f"{API_BASE}/data/wow/guild/{realm_slug}/{guild_slug}/roster"
-    data = api_get(token, url, NS_PROFILE)
+def localized_name(value) -> str:
+    if isinstance(value, dict):
+        return value.get("ko_KR", value.get("en_US", ""))
+    return value or ""
+
+
+def fetch_current_season(token: str) -> dict:
+    url = f"{API_BASE}/data/wow/pvp-season/index"
+    data = api_get(token, url, NS_DYNAMIC)
     if not data:
-        print(f"  [WARN] Guild '{guild_name}' on {realm_slug}: not found or error")
+        return {"id": 1, "name": ""}
+
+    current = data.get("current_season", {})
+    season_id = current.get("id", 1)
+
+    season_name = ""
+    season_data = api_get(token, f"{API_BASE}/data/wow/pvp-season/{season_id}", NS_DYNAMIC)
+    if season_data:
+        season_name = localized_name(season_data.get("season_name", ""))
+
+    return {"id": season_id, "name": season_name}
+
+
+def fetch_official_leaderboard(token: str, season_id: int, bracket: str) -> list[dict]:
+    url = f"{API_BASE}/data/wow/pvp-season/{season_id}/pvp-leaderboard/{bracket}"
+    data = api_get(token, url, NS_DYNAMIC)
+    if not data:
+        print(f"  [WARN] Could not fetch official leaderboard for {bracket}")
         return []
 
-    members = []
-    for m in data.get("members", []):
-        char = m.get("character", {})
-        level = char.get("level", 0)
-        if level >= MIN_LEVEL:
-            name = char.get("name", "")
-            realm = char.get("realm", {})
-            members.append({
-                "name": name,
-                "realm": realm.get("slug", realm_slug),
-                "level": level,
-                "id": char.get("id", 0),
+    entries = []
+    for row in data.get("entries", []):
+        char = row.get("character", {})
+        realm = char.get("realm", {})
+        name = char.get("name", "")
+        realm_slug = realm.get("slug", "")
+        if not name or not realm_slug:
+            continue
+
+        stats = row.get("season_match_statistics", {})
+        played = stats.get("played", 0)
+        won = stats.get("won", 0)
+        lost = stats.get("lost", 0)
+        if played == 0 and (won or lost):
+            played = won + lost
+        winrate = round((won / played * 100) if played > 0 else 0, 1)
+
+        entries.append({
+            "name": name,
+            "realm": realm_slug,
+            "realm_name": "",
+            "class": "",
+            "race": "",
+            "faction": row.get("faction", {}).get("type", ""),
+            "guild": "",
+            "rating": row.get("rating", 0),
+            "won": won,
+            "lost": lost,
+            "played": played,
+            "winrate": winrate,
+            "rank": row.get("rank", 0),
+        })
+
+    entries.sort(key=lambda entry: entry.get("rank", 0) or 0)
+    return entries
+
+
+def build_ranked_character_map(leaderboards: dict[str, list[dict]], season_id: int) -> dict[tuple[str, str], dict]:
+    ranked_characters = {}
+
+    for bracket, entries in leaderboards.items():
+        for entry in entries:
+            key = character_key(entry["name"], entry["realm"])
+            char = ranked_characters.setdefault(key, {
+                "name": entry["name"],
+                "realm": entry["realm"],
+                "realm_name": entry.get("realm_name", ""),
+                "level": 0,
+                "class": "",
+                "race": "",
+                "faction": entry.get("faction", ""),
+                "guild": "",
+                "brackets": {},
             })
-    return members
+            if not char.get("faction") and entry.get("faction"):
+                char["faction"] = entry["faction"]
+            char["brackets"][bracket] = {
+                "rating": entry["rating"],
+                "won": entry["won"],
+                "lost": entry["lost"],
+                "played": entry["played"],
+                "season_id": season_id,
+                "rank": entry["rank"],
+            }
+
+    return ranked_characters
 
 
-def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
+def fetch_character_profile(token: str, name: str, realm_slug: str) -> dict | None:
     encoded = quote(name.lower())
     base_url = f"{API_BASE}/profile/wow/character/{realm_slug}/{encoded}"
 
@@ -107,32 +177,15 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
     result = {
         "name": profile.get("name", name),
         "realm": realm_slug,
-        "realm_name": profile.get("realm", {}).get("name", ""),
+        "realm_name": localized_name(profile.get("realm", {}).get("name", "")),
         "level": profile.get("level", 0),
-        "class": profile.get("character_class", {}).get("name", ""),
-        "race": profile.get("race", {}).get("name", ""),
+        "class": localized_name(profile.get("character_class", {}).get("name", "")),
+        "race": localized_name(profile.get("race", {}).get("name", "")),
         "faction": profile.get("faction", {}).get("type", ""),
-        "guild": profile.get("guild", {}).get("name", ""),
+        "guild": localized_name(profile.get("guild", {}).get("name", "")),
         "brackets": {},
     }
 
-    if isinstance(result["realm_name"], dict):
-        result["realm_name"] = result["realm_name"].get("ko_KR", result["realm_name"].get("en_US", ""))
-
-    for bracket in BRACKETS:
-        pvp_url = f"{base_url}/pvp-bracket/{bracket}"
-        pvp_data = api_get(token, pvp_url, NS_PROFILE)
-        if pvp_data:
-            stats = pvp_data.get("season_match_statistics", {})
-            result["brackets"][bracket] = {
-                "rating": pvp_data.get("rating", 0),
-                "won": stats.get("won", 0),
-                "lost": stats.get("lost", 0),
-                "played": stats.get("played", 0),
-                "season_id": pvp_data.get("season", {}).get("id"),
-            }
-
-    # Specializations (all groups for dual spec)
     spec_data = api_get(token, f"{base_url}/specializations", NS_PROFILE)
     if spec_data:
         spec_groups = []
@@ -140,7 +193,7 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
             trees = []
             for spec in group.get("specializations", []):
                 tree = {
-                    "name": spec.get("specialization_name", ""),
+                    "name": localized_name(spec.get("specialization_name", "")),
                     "points": spec.get("spent_points", 0),
                     "talents": [],
                 }
@@ -148,7 +201,7 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
                     tooltip = t.get("spell_tooltip", {})
                     spell = tooltip.get("spell", {})
                     tree["talents"].append({
-                        "name": spell.get("name", ""),
+                        "name": localized_name(spell.get("name", "")),
                         "rank": t.get("talent_rank", 0),
                         "spell_id": spell.get("id", 0),
                     })
@@ -159,7 +212,6 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
             })
         result["spec_groups"] = spec_groups
 
-    # Equipment
     eq_data = api_get(token, f"{base_url}/equipment", NS_PROFILE)
     if eq_data:
         items = []
@@ -170,16 +222,16 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
                 continue
             item_id = item.get("item", {}).get("id", 0)
             entry = {
-                "slot": item.get("slot", {}).get("name", ""),
+                "slot": localized_name(item.get("slot", {}).get("name", "")),
                 "slot_type": slot_type,
-                "name": item.get("name", ""),
-                "quality": item.get("quality", {}).get("name", ""),
+                "name": localized_name(item.get("name", "")),
+                "quality": localized_name(item.get("quality", {}).get("name", "")),
                 "quality_type": item.get("quality", {}).get("type", ""),
                 "item_id": item_id,
             }
             enchants = []
             for ench in item.get("enchantments", []):
-                e = {"text": ench.get("display_string", "")}
+                e = {"text": localized_name(ench.get("display_string", ""))}
                 slot_info = ench.get("enchantment_slot", {})
                 if slot_info.get("type") == "PERMANENT":
                     e["type"] = "PERMANENT"
@@ -187,7 +239,7 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
                     e["type"] = "GEM"
                     src = ench.get("source_item", {})
                     if src.get("name"):
-                        e["source"] = src["name"]
+                        e["source"] = localized_name(src["name"])
                 enchants.append(e)
             if enchants:
                 entry["enchants"] = enchants
@@ -197,7 +249,6 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
         result["equipment"] = items
         result["_item_ids"] = list(item_ids_needed)
 
-    # Character media (avatar)
     media_data = api_get(token, f"{base_url}/character-media", NS_PROFILE)
     if media_data:
         for asset in media_data.get("assets", []):
@@ -208,11 +259,40 @@ def fetch_character_pvp(token: str, name: str, realm_slug: str) -> dict | None:
     return result
 
 
-def fetch_character_worker(args):
-    """Worker for parallel character PvP fetching."""
-    token, name, realm, idx, total = args
-    pvp = fetch_character_pvp(token, name, realm)
-    return idx, name, pvp
+def fetch_character_profile_worker(args):
+    token, stub, idx, total = args
+    profile = fetch_character_profile(token, stub["name"], stub["realm"])
+    return idx, character_key(stub["name"], stub["realm"]), profile
+
+
+def enrich_ranked_characters(token: str, ranked_characters: dict[tuple[str, str], dict]) -> list[dict]:
+    characters = list(ranked_characters.values())
+    total = len(characters)
+    print(f"\nEnriching {total} ranked characters...")
+    print(f"Using {MAX_WORKERS} parallel workers...")
+
+    enriched = []
+    done = 0
+    tasks = [(token, char, i, total) for i, char in enumerate(characters)]
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = {executor.submit(fetch_character_profile_worker, task): task for task in tasks}
+        for future in as_completed(futures):
+            idx, key, profile = future.result()
+            done += 1
+            if done % 50 == 0 or done == total:
+                print(f"  Progress: {done}/{total}")
+
+            stub = ranked_characters[key]
+            if profile:
+                profile["brackets"] = stub["brackets"]
+                if not profile.get("faction"):
+                    profile["faction"] = stub.get("faction", "")
+                enriched.append(profile)
+            else:
+                enriched.append(stub)
+
+    return enriched
 
 
 ICON_CACHE_PATH = DATA_DIR / "_icon_cache.json"
@@ -373,11 +453,11 @@ def resolve_icons(token: str, all_pvp: list[dict]):
                         t["icon"] = icon_name
 
 
-def fetch_cutoffs(token: str):
+def fetch_cutoffs(token: str, season_id: int):
     """Fetch PvP season reward cutoffs and save to data/cutoffs.json."""
     BRACKET_MAP = {"ARENA_2v2": "2v2", "ARENA_3v3": "3v3", "ARENA_5v5": "5v5"}
 
-    url = f"{API_BASE}/data/wow/pvp-season/1/pvp-reward/index"
+    url = f"{API_BASE}/data/wow/pvp-season/{season_id}/pvp-reward/index"
     data = api_get(token, url, NS_DYNAMIC)
     if not data:
         print("  [WARN] Could not fetch PvP reward cutoffs")
@@ -389,7 +469,7 @@ def fetch_cutoffs(token: str):
         bracket = BRACKET_MAP.get(bracket_type)
         if not bracket:
             continue
-        name = reward.get("achievement", {}).get("name", "")
+        name = localized_name(reward.get("achievement", {}).get("name", ""))
         rating = reward.get("rating_cutoff", 0)
         title = name.split(":")[0].strip()
 
@@ -401,7 +481,7 @@ def fetch_cutoffs(token: str):
     for bracket in cutoffs:
         cutoffs[bracket].sort(key=lambda c: c["rating"], reverse=True)
 
-    out = {"season_id": 1, "cutoffs": cutoffs}
+    out = {"season_id": season_id, "cutoffs": cutoffs}
     out_path = DATA_DIR / "cutoffs.json"
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
@@ -410,32 +490,6 @@ def fetch_cutoffs(token: str):
     for bracket, items in cutoffs.items():
         for c in items:
             print(f"  {bracket}: {c['title']} = {c['rating']}")
-
-
-def discover_new_guilds(all_pvp: list[dict], sources: dict):
-    """Auto-add newly discovered guild names from character data to sources.json."""
-    existing = {(g["name"].lower(), g["realm"]) for g in sources.get("guilds", [])}
-    new_guilds = []
-
-    for char in all_pvp:
-        guild = char.get("guild", "")
-        realm = char.get("realm", "")
-        if guild and (guild.lower(), realm) not in existing:
-            existing.add((guild.lower(), realm))
-            new_guilds.append({"name": guild, "realm": realm})
-
-    if new_guilds:
-        sources.setdefault("guilds", []).extend(new_guilds)
-        sources_path = CONFIG_DIR / "sources.json"
-        with open(sources_path, "w", encoding="utf-8") as f:
-            json.dump(sources, f, ensure_ascii=False, indent=2)
-        print(f"\nAuto-discovered {len(new_guilds)} new guilds:")
-        for g in new_guilds[:20]:
-            print(f"  + {g['name']} ({g['realm']})")
-        if len(new_guilds) > 20:
-            print(f"  ... and {len(new_guilds) - 20} more")
-    else:
-        print("\nNo new guilds discovered.")
 
 
 def load_previous_leaderboard(bracket: str) -> dict:
@@ -459,8 +513,6 @@ def build_leaderboard(all_pvp_data: list[dict], bracket: str) -> list[dict]:
         bdata = char.get("brackets", {}).get(bracket)
         if not bdata or bdata["rating"] == 0:
             continue
-        total = bdata["won"] + bdata["lost"]
-        winrate = (bdata["won"] / total * 100) if total > 0 else 0
         entries.append({
             "name": char["name"],
             "realm": char["realm"],
@@ -473,17 +525,13 @@ def build_leaderboard(all_pvp_data: list[dict], bracket: str) -> list[dict]:
             "won": bdata["won"],
             "lost": bdata["lost"],
             "played": bdata["played"],
-            "winrate": round(winrate, 1),
+            "winrate": round((bdata["won"] / bdata["played"] * 100) if bdata["played"] > 0 else 0, 1),
+            "rank": bdata.get("rank", 0),
         })
 
-    entries.sort(key=lambda x: x["rating"], reverse=True)
+    entries.sort(key=lambda x: (x.get("rank", 0) or 0, -(x.get("rating", 0) or 0), x["name"]))
 
-    rank = 1
-    for i, entry in enumerate(entries):
-        if i > 0 and entry["rating"] < entries[i - 1]["rating"]:
-            rank = i + 1
-        entry["rank"] = rank
-
+    for entry in entries:
         key = (entry["name"], entry["realm"])
         prev = prev_map.get(key)
         if prev:
@@ -506,69 +554,46 @@ def main():
         sys.exit(1)
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    sources = load_sources()
 
     print("Authenticating...")
     token = get_access_token(client_id, client_secret)
     print("Authenticated.")
 
+    print("\nResolving current PvP season...")
+    season = fetch_current_season(token)
+    season_id = season["id"]
+    print(f"Using season {season_id}")
+
     print("\nFetching PvP reward cutoffs...")
-    fetch_cutoffs(token)
+    fetch_cutoffs(token, season_id)
 
-    seen = set()
-    characters = []
+    leaderboards = {}
+    for bracket in BRACKETS:
+        print(f"\nFetching official {bracket} leaderboard...")
+        leaderboard = fetch_official_leaderboard(token, season_id, bracket)
+        print(f"  {len(leaderboard)} entries")
+        leaderboards[bracket] = leaderboard
 
-    for guild in sources.get("guilds", []):
-        gname = guild["name"]
-        grealm = guild["realm"]
-        print(f"Fetching guild roster: {gname} ({grealm})...")
-        members = fetch_guild_members(token, gname, grealm)
-        print(f"  {len(members)} eligible members (lvl >= {MIN_LEVEL})")
-        for m in members:
-            key = (m["name"].lower(), m["realm"])
-            if key not in seen:
-                seen.add(key)
-                characters.append(m)
+    ranked_characters = build_ranked_character_map(leaderboards, season_id)
+    total_ranked_characters = len(ranked_characters)
+    print(f"\nTotal unique ranked characters: {total_ranked_characters}")
 
-    for char in sources.get("characters", []):
-        key = (char["name"].lower(), char["realm"])
-        if key not in seen:
-            seen.add(key)
-            characters.append({"name": char["name"], "realm": char["realm"], "level": 70, "id": 0})
-
-    total = len(characters)
-    print(f"\nTotal unique characters to query: {total}")
-    print(f"Using {MAX_WORKERS} parallel workers...")
-
-    all_pvp = []
-    done = 0
-    tasks = [(token, c["name"], c["realm"], i, total) for i, c in enumerate(characters)]
-
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = {executor.submit(fetch_character_worker, t): t for t in tasks}
-        for future in as_completed(futures):
-            idx, name, pvp = future.result()
-            done += 1
-            if done % 50 == 0 or done == total:
-                print(f"  Progress: {done}/{total}")
-            if pvp and pvp["brackets"]:
-                all_pvp.append(pvp)
-
-    print(f"\nCharacters with PvP data: {len(all_pvp)}")
-
-    # Auto-discover new guilds from fetched character data
-    discover_new_guilds(all_pvp, sources)
+    all_pvp = enrich_ranked_characters(token, ranked_characters)
 
     resolve_icons(token, all_pvp)
 
     meta = {
         "region": REGION,
-        "namespace": NS_PROFILE,
+        "namespace": NS_DYNAMIC,
+        "profile_namespace": NS_PROFILE,
         "locale": LOCALE,
+        "season_id": season_id,
+        "season_name": season.get("name", ""),
+        "source": "official-pvp-leaderboard-api",
         "updated_at": datetime.now(timezone.utc).isoformat(),
-        "total_characters_scanned": total,
+        "total_characters_scanned": total_ranked_characters,
         "total_with_pvp": len(all_pvp),
-        "guilds_scanned": [g["name"] for g in sources.get("guilds", [])],
+        "guilds_scanned": [],
         "brackets": {},
     }
 
@@ -583,6 +608,7 @@ def main():
         meta["brackets"][bracket] = {
             "count": len(leaderboard),
             "file": f"{bracket}.json",
+            "source_count": len(leaderboards.get(bracket, [])),
         }
 
     all_pvp_path = DATA_DIR / "all_characters.json"
