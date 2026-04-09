@@ -644,7 +644,11 @@ def supabase_request(url: str, key: str, method: str, path: str, body=None):
         "Prefer": "return=representation",
     }
     full_url = f"{url}/rest/v1/{path}"
-    resp = requests.request(method, full_url, headers=headers, json=body, timeout=15)
+    try:
+        resp = requests.request(method, full_url, headers=headers, json=body, timeout=30)
+    except requests.RequestException as e:
+        print(f"  [SUPABASE ERROR] {method} {path}: {e}")
+        return None
     if resp.status_code >= 400:
         print(f"  [SUPABASE ERROR] {method} {path}: {resp.status_code} {resp.text[:200]}")
         return None
@@ -656,6 +660,7 @@ def supabase_request(url: str, key: str, method: str, path: str, body=None):
 def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
     now = datetime.now(timezone.utc).isoformat()
     synced = 0
+    errors = 0
 
     for char in all_pvp:
         char_row = {
@@ -674,14 +679,20 @@ def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
             "Content-Type": "application/json",
             "Prefer": "return=representation,resolution=merge-duplicates",
         }
-        resp = requests.post(
-            f"{url}/rest/v1/characters",
-            headers=headers,
-            json=char_row,
-            params={"on_conflict": "name,realm"},
-            timeout=15,
-        )
+        try:
+            resp = requests.post(
+                f"{url}/rest/v1/characters",
+                headers=headers,
+                json=char_row,
+                params={"on_conflict": "name,realm"},
+                timeout=30,
+            )
+        except requests.RequestException as e:
+            errors += 1
+            print(f"  [SUPABASE] character upsert timeout/error for {char['name']}: {e}")
+            continue
         if resp.status_code >= 400:
+            errors += 1
             print(f"  [SUPABASE] character upsert failed for {char['name']}: {resp.text[:100]}")
             continue
 
@@ -715,6 +726,8 @@ def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
             supabase_request(url, key, "POST", "rating_snapshots", snapshot)
             synced += 1
 
+    if errors:
+        print(f"  [SUPABASE] {errors} characters had errors during sync")
     return synced
 
 
