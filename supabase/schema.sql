@@ -28,6 +28,19 @@ CREATE INDEX IF NOT EXISTS idx_snapshots_char_bracket
 CREATE INDEX IF NOT EXISTS idx_snapshots_recorded
   ON rating_snapshots(recorded_at);
 
+-- Latest snapshot per character/bracket (for efficient sync reads via PostgREST)
+CREATE OR REPLACE VIEW rating_snapshots_latest AS
+SELECT DISTINCT ON (character_id, bracket)
+  character_id,
+  bracket,
+  rating,
+  won,
+  lost,
+  played,
+  recorded_at
+FROM rating_snapshots
+ORDER BY character_id, bracket, recorded_at DESC;
+
 -- RLS: public read, service-role write
 ALTER TABLE characters ENABLE ROW LEVEL SECURITY;
 ALTER TABLE rating_snapshots ENABLE ROW LEVEL SECURITY;
@@ -37,6 +50,8 @@ CREATE POLICY "Public read characters"
 
 CREATE POLICY "Public read snapshots"
   ON rating_snapshots FOR SELECT TO anon USING (true);
+
+GRANT SELECT ON rating_snapshots_latest TO anon;
 
 CREATE POLICY "Service insert characters"
   ON characters FOR INSERT TO service_role WITH CHECK (true);

@@ -2,7 +2,7 @@ name: Fetch Arena Leaderboard
 
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 */2 * * *'
   workflow_dispatch:
 
 permissions:
@@ -42,6 +42,8 @@ jobs:
           BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          FETCH_WORKERS: "24"
+          SPELL_ICON_WORKERS: "16"
         run: python scripts/fetch_leaderboard.py
 
       - name: Commit and push data

@@ -22,7 +22,10 @@ NS_DYNAMIC = "dynamic-classicann-kr"
 LOCALE = "ko_KR"
 
 BRACKETS = ["2v2", "3v3", "5v5"]
-MAX_WORKERS = 10
+MAX_WORKERS = int(os.environ.get("FETCH_WORKERS", "20"))
+SUPABASE_CHAR_BATCH = int(os.environ.get("SUPABASE_CHAR_BATCH", "200"))
+SUPABASE_ID_CHUNK = int(os.environ.get("SUPABASE_ID_CHUNK", "150"))
+SUPABASE_SNAPSHOT_BATCH = int(os.environ.get("SUPABASE_SNAPSHOT_BATCH", "500"))
 
 
 def get_access_token(client_id: str, client_secret: str) -> str:
@@ -435,7 +438,8 @@ def resolve_icons(token: str, all_pvp: list[dict]):
 
         done = 0
         total = len(talent_spell_ids)
-        with ThreadPoolExecutor(max_workers=5) as executor:
+        spell_workers = int(os.environ.get("SPELL_ICON_WORKERS", str(min(MAX_WORKERS, 16))))
+        with ThreadPoolExecutor(max_workers=max(1, spell_workers)) as executor:
             futures = {executor.submit(_spell_icon_worker_wh, sid): sid
                        for sid in talent_spell_ids}
             for future in as_completed(futures):
@@ -659,75 +663,245 @@ def supabase_request(url: str, key: str, method: str, path: str, body=None):
 
 def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
     now = datetime.now(timezone.utc).isoformat()
-    synced = 0
-    errors = 0
 
-    for char in all_pvp:
-        char_row = {
-            "name": char["name"],
-            "realm": char["realm"],
-            "class": char.get("class", ""),
-            "race": char.get("race", ""),
-            "faction": char.get("faction", ""),
-            "guild": char.get("guild", ""),
-            "updated_at": now,
-        }
+    rows = [{
+        "name": c["name"],
+        "realm": c["realm"],
+        "class": c.get("class", ""),
+        "race": c.get("race", ""),
+        "faction": c.get("faction", ""),
+        "guild": c.get("guild", ""),
+        "updated_at": now,
+    } for c in all_pvp]
 
-        headers = {
-            "apikey": key,
-            "Authorization": f"Bearer {key}",
-            "Content-Type": "application/json",
-            "Prefer": "return=representation,resolution=merge-duplicates",
-        }
+    headers = {
+        "apikey": key,
+        "Authorization": f"Bearer {key}",
+        "Content-Type": "application/json",
+    }
+
+    base = url.rstrip("/")
+    chars_url = f"{base}/rest/v1/characters"
+    id_map: dict[tuple[str, str], int] = {}
+
+    errs = 0
+    bs = SUPABASE_CHAR_BATCH
+    for i in range(0, len(rows), bs):
+        chunk = rows[i : i + bs]
         try:
             resp = requests.post(
-                f"{url}/rest/v1/characters",
-                headers=headers,
-                json=char_row,
-                params={"on_conflict": "name,realm"},
-                timeout=30,
+                f"{chars_url}?on_conflict=name,realm",
+                headers={
+                    **headers,
+                    "Prefer": "return=representation,resolution=merge-duplicates",
+                },
+                json=chunk,
+                timeout=120,
             )
         except requests.RequestException as e:
-            errors += 1
-            print(f"  [SUPABASE] character upsert timeout/error for {char['name']}: {e}")
+            errs += 1
+            print(f"  [SUPABASE] character batch upsert error: {e}")
             continue
         if resp.status_code >= 400:
-            errors += 1
-            print(f"  [SUPABASE] character upsert failed for {char['name']}: {resp.text[:100]}")
+            errs += 1
+            print(f"  [SUPABASE] character batch upsert failed: {resp.status_code} {resp.text[:200]}")
             continue
-
-        char_data = resp.json()
-        if not char_data:
+        payload = resp.json()
+        if isinstance(payload, dict):
+            payload = [payload]
+        elif not isinstance(payload, list):
+            errs += 1
             continue
-        char_id = char_data[0]["id"]
+        for row in payload:
+            if not row:
+                continue
+            id_map[character_key(row["name"], row["realm"])] = row["id"]
 
-        for bracket, bdata in char.get("brackets", {}).items():
-            last = supabase_request(
-                url, key, "GET",
-                f"rating_snapshots?character_id=eq.{char_id}&bracket=eq.{bracket}"
-                f"&order=recorded_at.desc&limit=1",
+    missing = [(c["name"], c["realm"]) for c in all_pvp
+               if character_key(c["name"], c["realm"]) not in id_map]
+    if missing:
+        print(f"  [SUPABASE] Resolving ids for {len(missing)} characters not in upsert payload...")
+        for name, realm in missing:
+            k = character_key(name, realm)
+            try:
+                lr = requests.get(
+                    chars_url,
+                    headers={**headers, "Accept": "application/json"},
+                    params={
+                        "select": "id,name,realm",
+                        "name": f"eq.{name}",
+                        "realm": f"eq.{realm}",
+                    },
+                    timeout=30,
+                )
+            except requests.RequestException as e:
+                errs += 1
+                print(f"    [SUPABASE] id lookup failed {name}-{realm}: {e}")
+                continue
+            if lr.status_code >= 400:
+                errs += 1
+                continue
+            rows_found = lr.json() if lr.text else []
+            if isinstance(rows_found, dict):
+                rows_found = [rows_found]
+            if rows_found:
+                row0 = rows_found[0]
+                id_map[k] = row0["id"]
+
+    missing = [(c["name"], c["realm"]) for c in all_pvp
+               if character_key(c["name"], c["realm"]) not in id_map]
+    if missing:
+        errs += len(missing)
+        print(f"  [SUPABASE] {len(missing)} characters still without id — skipping snapshots for those")
+
+    seen_ids = set(id_map.values())
+    latest: dict[tuple[int, str], dict] = {}
+    hdr_get = {"apikey": key, "Authorization": f"Bearer {key}"}
+
+    def snapshots_use_latest_view() -> bool:
+        r = requests.get(
+            f"{base}/rest/v1/rating_snapshots_latest?select=character_id&limit=1",
+            headers=hdr_get,
+            timeout=15,
+        )
+        return r.status_code != 404
+
+    use_view = snapshots_use_latest_view()
+    path = "rating_snapshots_latest" if use_view else "rating_snapshots"
+
+    id_list = [i for i in seen_ids]
+
+    print(f"  Loading previous snapshots via {path} ({len(id_list)} characters)...")
+    ich = SUPABASE_ID_CHUNK
+    for j in range(0, len(id_list), ich):
+        sub = id_list[j : j + ich]
+        in_list = "(" + ",".join(str(x) for x in sub) + ")"
+
+        if use_view:
+            try:
+                resp = requests.get(
+                    f"{base}/rest/v1/{path}?character_id=in.{in_list}"
+                    "&select=character_id,bracket,rating,won,lost,played",
+                    headers=hdr_get,
+                    timeout=120,
+                )
+            except requests.RequestException as e:
+                errs += 1
+                print(f"  [SUPABASE] snapshot read error: {e}")
+                continue
+            if resp.status_code >= 400:
+                errs += 1
+                print(f"  [SUPABASE] snapshot read failed: {resp.status_code} {resp.text[:200]}")
+                continue
+            for row in resp.json() if resp.text else []:
+                cid = row["character_id"]
+                bk = row["bracket"]
+                latest[(cid, bk)] = {
+                    "rating": row["rating"],
+                    "won": row["won"],
+                    "lost": row["lost"],
+                    "played": row.get("played", 0),
+                }
+        else:
+            print(
+                "  [SUPABASE] Apply rating_snapshots_latest view on Supabase (see supabase/schema.sql) "
+                "for faster sync; falling back to paginated snapshot history.",
+                flush=True,
             )
-            if last and isinstance(last, list) and len(last) > 0:
-                prev = last[0]
-                if (prev["rating"] == bdata["rating"]
-                        and prev["won"] == bdata["won"]
-                        and prev["lost"] == bdata["lost"]):
-                    continue
+            offset = 0
+            chunk_size = 1000
+            while True:
+                try:
+                    headers_page = dict(hdr_get)
+                    headers_page["Prefer"] = "count=exact"
+                    resp = requests.get(
+                        f"{base}/rest/v1/{path}?character_id=in.{in_list}"
+                        "&select=character_id,bracket,rating,won,lost,played,recorded_at"
+                        "&order=recorded_at.desc"
+                        f"&offset={offset}&limit={chunk_size}",
+                        headers=headers_page,
+                        timeout=120,
+                    )
+                except requests.RequestException as e:
+                    errs += 1
+                    print(f"  [SUPABASE] snapshot read error: {e}")
+                    break
+                if resp.status_code >= 400:
+                    errs += 1
+                    print(f"  [SUPABASE] snapshot read failed: {resp.status_code} {resp.text[:200]}")
+                    break
+                batch = resp.json() if resp.text else []
+                if not batch:
+                    break
+                for row in batch:
+                    k = (row["character_id"], row["bracket"])
+                    rt = row.get("recorded_at", "") or ""
+                    prev_row = latest.get(k)
+                    prev_rt = (prev_row or {}).get("_rt", "") or ""
+                    if not prev_row or rt > prev_rt:
+                        latest[k] = {
+                            "rating": row["rating"],
+                            "won": row["won"],
+                            "lost": row["lost"],
+                            "played": row.get("played", 0),
+                            "_rt": rt,
+                        }
+                offset += len(batch)
+                if len(batch) < chunk_size:
+                    break
 
-            snapshot = {
-                "character_id": char_id,
+    for lk in list(latest.keys()):
+        d = latest.get(lk)
+        if isinstance(d, dict):
+            d.pop("_rt", None)
+
+    new_snapshots: list[dict] = []
+    for char in all_pvp:
+        key_nr = character_key(char["name"], char["realm"])
+        cid = id_map.get(key_nr)
+        if not cid:
+            continue
+        for bracket, bdata in char.get("brackets", {}).items():
+            prev = latest.get((cid, bracket))
+            if prev and (
+                    prev["rating"] == bdata["rating"]
+                    and prev["won"] == bdata["won"]
+                    and prev["lost"] == bdata["lost"]
+            ):
+                continue
+            new_snapshots.append({
+                "character_id": cid,
                 "bracket": bracket,
                 "rating": bdata["rating"],
                 "won": bdata["won"],
                 "lost": bdata["lost"],
                 "played": bdata["played"],
                 "recorded_at": now,
-            }
-            supabase_request(url, key, "POST", "rating_snapshots", snapshot)
-            synced += 1
+            })
 
-    if errors:
-        print(f"  [SUPABASE] {errors} characters had errors during sync")
+    synced = 0
+    snap_bs = SUPABASE_SNAPSHOT_BATCH
+    for i in range(0, len(new_snapshots), snap_bs):
+        batch = new_snapshots[i : i + snap_bs]
+        try:
+            resp = requests.post(
+                f"{base}/rest/v1/rating_snapshots",
+                headers={**headers, "Prefer": "return=minimal"},
+                json=batch,
+                timeout=120,
+            )
+        except requests.RequestException as e:
+            errs += 1
+            print(f"  [SUPABASE] snapshot batch insert error: {e}")
+            continue
+        if resp.status_code >= 400:
+            errs += 1
+            print(f"  [SUPABASE] snapshot batch insert failed: {resp.status_code} {resp.text[:200]}")
+            continue
+        synced += len(batch)
+
+    if errs:
+        print(f"  [SUPABASE] Completed with {errs} batched-errors (see logs above)")
     return synced
 
 
