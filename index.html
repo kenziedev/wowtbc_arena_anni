@@ -38,7 +38,6 @@
       </div>
       <div class="toolbar-right">
         <div class="meta-info" id="meta-info"></div>
-        <button class="btn-add" id="btn-add" title="길드/캐릭터 추가">+ 추가</button>
       </div>
     </div>
 
@@ -71,42 +70,6 @@
     <div class="loading" id="loading">
       <div class="spinner"></div>
       <p>리더보드 데이터를 불러오는 중...</p>
-    </div>
-
-    <!-- Add Source Modal -->
-    <div class="modal-overlay" id="modal-overlay" hidden>
-      <div class="modal">
-        <div class="modal-header">
-          <h2>길드 / 캐릭터 추가</h2>
-          <button class="modal-close" id="modal-close">&times;</button>
-        </div>
-        <div class="modal-body">
-          <p class="modal-desc">추가할 길드명 또는 캐릭터명을 입력하면 GitHub Issue로 자동 등록됩니다.<br>등록 후 다음 업데이트 시 리더보드에 반영됩니다.</p>
-
-          <div class="form-group">
-            <label>유형</label>
-            <div class="radio-group">
-              <label class="radio-label"><input type="radio" name="add-type" value="guild" checked> 길드</label>
-              <label class="radio-label"><input type="radio" name="add-type" value="character"> 캐릭터</label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="add-name">이름</label>
-            <input type="text" id="add-name" placeholder="길드명 또는 캐릭터명">
-          </div>
-
-          <div class="form-group">
-            <label for="add-realm">서버</label>
-            <select id="add-realm">
-              <option value="fengus-ferocity">펜구스의 흉포</option>
-              <option value="moldars-moxie">몰다르의 투지</option>
-            </select>
-          </div>
-
-          <button class="btn-submit" id="btn-submit">GitHub Issue로 등록</button>
-        </div>
-      </div>
     </div>
 
     <footer class="footer">

@@ -3,13 +3,6 @@
 
   var BRACKETS = ["2v2", "3v3", "5v5"];
   var DATA_BASE = "data";
-  var GITHUB_REPO = "kenziedev/wowtbc_arena_anni";
-
-  var REALM_LABELS = {
-    "fengus-ferocity": "펜구스의 흉포",
-    "moldars-moxie": "몰다르의 투지",
-  };
-
   var CLASS_CLASS_MAP = {
     "전사": "class-warrior",
     "성기사": "class-paladin",
@@ -97,6 +90,11 @@
     return CLASS_CLASS_MAP[className] || "";
   }
 
+  function characterRowClass(className) {
+    var classClass = characterClassClass(className);
+    return classClass ? classClass.replace("class-", "row-class-") : "";
+  }
+
   function esc(str) {
     var el = document.createElement("span");
     el.textContent = str || "";
@@ -119,6 +117,7 @@
     var className = (entry["class"] || "").trim();
     var guildName = (entry.guild || "").trim();
     var profileHidden = !className && !guildName;
+    tr.className = characterRowClass(className);
 
     var classGuildHtml;
     if (profileHidden) {
@@ -474,45 +473,12 @@
     }
   }
 
-  function initModal() {
-    var overlay = $("#modal-overlay");
-    var btnAdd = $("#btn-add");
-    var btnClose = $("#modal-close");
-    var btnSubmit = $("#btn-submit");
-
-    btnAdd.addEventListener("click", function () { overlay.hidden = false; });
-    btnClose.addEventListener("click", function () { overlay.hidden = true; });
-    overlay.addEventListener("click", function (e) {
-      if (e.target === overlay) overlay.hidden = true;
-    });
-
-    btnSubmit.addEventListener("click", function () {
-      var type = document.querySelector('input[name="add-type"]:checked').value;
-      var name = $("#add-name").value.trim();
-      var realm = $("#add-realm").value;
-      var realmLabel = REALM_LABELS[realm] || realm;
-
-      if (!name) { alert("이름을 입력해주세요."); return; }
-
-      var typeLabel = type === "guild" ? "길드" : "캐릭터";
-      var title = encodeURIComponent("[추가] " + typeLabel + ": " + name);
-      var body = encodeURIComponent(
-        typeLabel + ":\n- " + name + " / " + realmLabel
-      );
-
-      var url = "https://github.com/" + GITHUB_REPO + "/issues/new?title=" + title + "&body=" + body + "&labels=add-source";
-      window.open(url, "_blank");
-      overlay.hidden = true;
-    });
-  }
-
   function init() {
     readURL();
     setActiveTab();
     initTabs();
     initSearch();
     initSort();
-    initModal();
     initPagination();
     loadData();
 
