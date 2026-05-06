@@ -86,6 +86,16 @@
     return "";
   }
 
+  function factionMark(f) {
+    if (f === "HORDE") {
+      return '<span class="faction-mark faction-mark-horde" title="호드">호</span>';
+    }
+    if (f === "ALLIANCE") {
+      return '<span class="faction-mark faction-mark-alliance" title="얼라이언스">얼</span>';
+    }
+    return "";
+  }
+
   function characterClassClass(className) {
     return CLASS_CLASS_MAP[className] || "";
   }
@@ -133,7 +143,8 @@
     }
 
     tr.innerHTML =
-      '<td class="col-rank ' + rankClass(entry.rank) + '">' + entry.rank + rankChange + "</td>" +
+      '<td class="col-rank">' + factionMark(entry.faction) +
+      '<span class="rank-main"><span class="col-rank-num ' + rankClass(entry.rank) + '">' + entry.rank + "</span>" + rankChange + "</span></td>" +
       '<td class="col-name ' + factionClass(entry.faction) + '"><a class="char-link char-name" href="detail.html?name=' + encodeURIComponent(entry.name) + '&realm=' + encodeURIComponent(entry.realm) + '">' + esc(entry.name) + "</a></td>" +
       classGuildHtml +
       '<td class="col-rating"><span class="rating-badge ' + ratingClass(entry.rating) + '">' + entry.rating + '</span>' + ratingChange + "</td>" +

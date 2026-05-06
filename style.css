@@ -367,7 +367,27 @@ body {
   vertical-align: top;
 }
 
-td.col-rank { font-weight: 700; text-align: center; }
+td.col-rank {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.col-rank-num {
+  font-weight: 700;
+}
+
+.rank-main {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 3px;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.faction-mark {
+  display: none;
+}
 
 .rank-1 { color: var(--rank-gold); }
 .rank-2 { color: var(--rank-silver); }
@@ -1161,11 +1181,91 @@ a.equip-name:hover {
     letter-spacing: 0.01em;
   }
 
-  .col-rank { width: 38px; }
-  .col-name { width: auto; }
-  .col-rating { width: 72px; }
-  .col-record { width: 58px; }
-  .col-winrate { width: 46px; }
+  .col-rank {
+    width: 15%;
+    min-width: 52px;
+    max-width: 60px;
+    padding: 5px 2px !important;
+    vertical-align: middle;
+  }
+
+  td.col-rank {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    white-space: nowrap;
+  }
+
+  .faction-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-width: 15px;
+    height: 16px;
+    padding: 0 2px;
+    border-radius: 3px;
+    font-size: 0.58rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .faction-mark-alliance {
+    color: #66a1ff;
+    background: rgba(0, 88, 204, 0.22);
+  }
+
+  .faction-mark-horde {
+    color: #ff6666;
+    background: rgba(179, 0, 0, 0.2);
+  }
+
+  .rank-main {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1px;
+    min-width: 0;
+  }
+
+  .col-name {
+    width: 28%;
+    min-width: 0;
+    max-width: 32vw;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+  }
+
+  .col-rating {
+    width: 17%;
+    min-width: 56px;
+    max-width: 64px;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    white-space: nowrap;
+  }
+
+  .col-record {
+    width: 27%;
+    min-width: 62px;
+    max-width: 78px;
+    white-space: nowrap;
+    font-size: 0.66rem;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+  }
+
+  .col-winrate {
+    width: 13%;
+    min-width: 36px;
+    max-width: 42px;
+    white-space: nowrap;
+    font-size: 0.7rem;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+  }
   .col-class,
   .col-guild,
   .col-class-guild {
@@ -1177,7 +1277,8 @@ a.equip-name:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 0.82rem;
+    font-size: 0.74rem;
+    max-width: 100%;
   }
 
   .row-class-warrior .char-name { color: #c79c6e; }
@@ -1196,22 +1297,23 @@ a.equip-name:hover {
     padding-left: 0;
   }
 
-  .rating-badge {
-    min-width: 42px;
-    padding: 2px 4px;
-    font-size: 0.74rem;
+  .col-rating .rating-badge {
+    min-width: 0;
+    padding: 1px 3px;
+    font-size: 0.66rem;
   }
 
-  .change-badge {
-    display: block;
-    margin-left: 0;
-    margin-top: 2px;
-    font-size: 0.58rem;
+  .col-rank .change-badge,
+  .col-rating .change-badge {
+    display: inline;
+    margin-left: 1px;
+    margin-top: 0;
+    font-size: 0.52rem;
+    vertical-align: baseline;
   }
 
   .col-record {
-    white-space: normal;
-    line-height: 1.25;
+    line-height: 1.15;
   }
 
   .pagination { justify-content: center; }
