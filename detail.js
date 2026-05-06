@@ -89,8 +89,8 @@
   }
 
   function fetchJSON(url) {
-    var bustUrl = url + (url.indexOf("?") === -1 ? "?" : "&") + "_t=" + Date.now();
-    return fetch(bustUrl).then(function (r) {
+    var bustUrl = url + (url.indexOf("?") === -1 ? "?" : "&") + "_t=" + Date.now() + "-" + Math.random().toString(36).slice(2);
+    return fetch(bustUrl, { cache: "no-store" }).then(function (r) {
       if (!r.ok) throw new Error("HTTP " + r.status);
       return r.json();
     });
