@@ -3,7 +3,7 @@ import sys
 import json
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote
 
@@ -13,6 +13,8 @@ import requests
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
+DAILY_BASELINES_FILE = DATA_DIR / "daily_baselines.json"
+KST = timezone(timedelta(hours=9))
 
 REGION = "kr"
 API_BASE = f"https://{REGION}.api.blizzard.com"
@@ -511,6 +513,64 @@ def load_previous_leaderboard(bracket: str) -> dict:
         return {}
 
 
+def _daily_key(dt: datetime) -> str:
+    return dt.astimezone(KST).date().isoformat()
+
+
+def _entry_key(entry: dict) -> str:
+    return f"{entry['name']}::{entry['realm']}"
+
+
+def load_daily_baselines() -> dict:
+    """Load first leaderboard snapshot captured for each KST day."""
+    if not DAILY_BASELINES_FILE.exists():
+        return {}
+    try:
+        with open(DAILY_BASELINES_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def save_daily_baselines(baselines: dict) -> None:
+    with open(DAILY_BASELINES_FILE, "w", encoding="utf-8") as f:
+        json.dump(baselines, f, ensure_ascii=False, indent=2)
+
+
+def build_daily_snapshot(entries: list[dict]) -> dict:
+    return {
+        _entry_key(entry): {
+            "name": entry["name"],
+            "realm": entry["realm"],
+            "rating": entry.get("rating", 0),
+            "rank": entry.get("rank", 0),
+        }
+        for entry in entries
+    }
+
+
+def load_yesterday_baseline(bracket: str, entries: list[dict]) -> dict:
+    """Return yesterday's first KST snapshot and preserve today's first snapshot."""
+    now = datetime.now(KST)
+    today_key = _daily_key(now)
+    yesterday_key = _daily_key(now - timedelta(days=1))
+    baselines = load_daily_baselines()
+    changed = False
+
+    if today_key not in baselines:
+        baselines[today_key] = {}
+        changed = True
+
+    if bracket not in baselines[today_key]:
+        baselines[today_key][bracket] = build_daily_snapshot(entries)
+        changed = True
+
+    if changed:
+        save_daily_baselines(baselines)
+
+    return baselines.get(yesterday_key, {}).get(bracket, {})
+
+
 def build_leaderboard(all_pvp_data: list[dict], bracket: str) -> list[dict]:
     prev_map = load_previous_leaderboard(bracket)
 
@@ -536,10 +596,14 @@ def build_leaderboard(all_pvp_data: list[dict], bracket: str) -> list[dict]:
         })
 
     entries.sort(key=lambda x: (x.get("rank", 0) or 0, -(x.get("rating", 0) or 0), x["name"]))
+    yesterday_map = load_yesterday_baseline(bracket, entries)
 
     for entry in entries:
-        key = (entry["name"], entry["realm"])
-        prev = prev_map.get(key)
+        daily_key = _entry_key(entry)
+        prev = yesterday_map.get(daily_key)
+        if not prev:
+            key = (entry["name"], entry["realm"])
+            prev = prev_map.get(key)
         if prev:
             rating_diff = entry["rating"] - prev.get("rating", 0)
             if rating_diff != 0:

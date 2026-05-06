@@ -7,60 +7,70 @@
 }
 
 :root {
-  --bg-primary: #0d1117;
-  --bg-secondary: #161b22;
-  --bg-tertiary: #1c2333;
-  --bg-row-hover: #1f2a3a;
-  --border: #30363d;
-  --text-primary: #e6edf3;
-  --text-secondary: #8b949e;
-  --text-muted: #6e7681;
-  --accent-gold: #f0ab00;
-  --accent-gold-dim: #b8860b;
-  --accent-blue: #58a6ff;
-  --accent-green: #3fb950;
-  --accent-red: #f85149;
+  --bg-primary: #0b0e11;
+  --bg-secondary: #1e2329;
+  --bg-tertiary: #2b3139;
+  --bg-row-hover: #252c35;
+  --border: #2b3139;
+  --text-primary: #eaecef;
+  --text-secondary: #929aa5;
+  --text-muted: #707a8a;
+  --accent-gold: #fcd535;
+  --accent-gold-dim: #f0b90b;
+  --accent-blue: #3b82f6;
+  --accent-green: #0ecb81;
+  --accent-red: #f6465d;
+  --on-primary: #181a20;
+  --surface-glow: rgba(252, 213, 53, 0.08);
+  --tier-infernal: #f6465d;
+  --tier-gladiator: #f0b90b;
+  --tier-duelist: #a335ee;
+  --tier-rival: #3b82f6;
+  --tier-challenger: #0ecb81;
   --rank-gold: #ffd700;
   --rank-silver: #c0c0c0;
   --rank-bronze: #cd7f32;
   --radius: 8px;
-  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+  --font: BinanceNova, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+  --font-number: BinancePlex, BinanceNova, 'IBM Plex Sans', 'Segoe UI', Roboto, sans-serif;
 }
 
 html { font-size: 15px; }
 
 body {
   font-family: var(--font);
-  background: var(--bg-primary);
+  background:
+    radial-gradient(circle at top, rgba(252, 213, 53, 0.06), transparent 28rem),
+    var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.5;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 20px;
 }
 
 /* ── Header ─────────────────────────── */
 .header {
-  padding: 40px 0 24px;
+  padding: 48px 0 28px;
   text-align: center;
   border-bottom: 1px solid var(--border);
 }
 
 .title {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--accent-gold);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
 }
 
 .title-icon { margin-right: 6px; }
 
 .subtitle {
-  margin-top: 4px;
+  margin-top: 6px;
   color: var(--text-secondary);
   font-size: 0.9rem;
 }
@@ -68,14 +78,14 @@ body {
 /* ── Tabs ────────────────────────────── */
 .tabs {
   display: flex;
-  gap: 4px;
-  padding: 16px 0 0;
+  gap: 8px;
+  padding: 18px 0 0;
   border-bottom: 1px solid var(--border);
 }
 
 .tab {
   flex: 1;
-  padding: 10px 0;
+  padding: 12px 0;
   background: transparent;
   border: none;
   border-bottom: 2px solid transparent;
@@ -83,11 +93,14 @@ body {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: color 0.2s, border-color 0.2s;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
   font-family: var(--font);
 }
 
-.tab:hover { color: var(--text-primary); }
+.tab:hover {
+  color: var(--text-primary);
+  background: rgba(43, 49, 57, 0.35);
+}
 
 .tab.active {
   color: var(--accent-gold);
@@ -97,8 +110,8 @@ body {
 /* ── Cutoffs ─────────────────────────── */
 .cutoffs {
   display: flex;
-  gap: 8px;
-  padding: 14px 0 0;
+  gap: 10px;
+  padding: 18px 0 0;
   flex-wrap: wrap;
 }
 
@@ -107,17 +120,18 @@ body {
   min-width: 120px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 10px 14px;
-  border-left: 3px solid transparent;
-  transition: border-color 0.2s, background 0.2s;
+  border-radius: 12px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--cutoff-color, transparent);
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
 }
 
 .cutoff-badge:hover {
   background: var(--bg-row-hover);
+  transform: translateY(-1px);
 }
 
 .cutoff-icon {
@@ -154,43 +168,57 @@ body {
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.2;
+  font-family: var(--font-number);
   font-variant-numeric: tabular-nums;
 }
 
 .cutoff-badge.cutoff-infernal {
-  border-left-color: #ff4444;
+  --cutoff-color: var(--tier-infernal);
+  background: linear-gradient(135deg, rgba(246, 70, 93, 0.14), var(--bg-secondary) 55%);
 }
-.cutoff-badge.cutoff-infernal .cutoff-title { color: #ff6b6b; }
-.cutoff-badge.cutoff-infernal .cutoff-rating { color: #ff4444; }
-.cutoff-badge.cutoff-infernal .cutoff-icon svg { fill: #ff4444; }
+.cutoff-badge.cutoff-infernal .cutoff-title { color: #ff7b8c; }
+.cutoff-badge.cutoff-infernal .cutoff-rating { color: var(--tier-infernal); }
+.cutoff-badge.cutoff-infernal .cutoff-icon svg { fill: var(--tier-infernal); }
 
 .cutoff-badge.cutoff-gladiator {
-  border-left-color: #f0ab00;
+  --cutoff-color: var(--tier-gladiator);
+  background: linear-gradient(135deg, rgba(240, 185, 11, 0.16), var(--bg-secondary) 55%);
 }
-.cutoff-badge.cutoff-gladiator .cutoff-title { color: #f0c050; }
-.cutoff-badge.cutoff-gladiator .cutoff-rating { color: #f0ab00; }
-.cutoff-badge.cutoff-gladiator .cutoff-icon svg { fill: #f0ab00; }
+.cutoff-badge.cutoff-gladiator .cutoff-title { color: var(--accent-gold); }
+.cutoff-badge.cutoff-gladiator .cutoff-rating { color: var(--tier-gladiator); }
+.cutoff-badge.cutoff-gladiator .cutoff-icon svg { fill: var(--tier-gladiator); }
 
 .cutoff-badge.cutoff-duelist {
-  border-left-color: #a335ee;
+  --cutoff-color: var(--tier-duelist);
+  background: linear-gradient(135deg, rgba(163, 53, 238, 0.16), var(--bg-secondary) 55%);
 }
 .cutoff-badge.cutoff-duelist .cutoff-title { color: #c070ff; }
-.cutoff-badge.cutoff-duelist .cutoff-rating { color: #a335ee; }
-.cutoff-badge.cutoff-duelist .cutoff-icon svg { fill: #a335ee; }
+.cutoff-badge.cutoff-duelist .cutoff-rating { color: var(--tier-duelist); }
+.cutoff-badge.cutoff-duelist .cutoff-icon svg { fill: var(--tier-duelist); }
 
 .cutoff-badge.cutoff-rival {
-  border-left-color: #0070dd;
+  --cutoff-color: var(--tier-rival);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), var(--bg-secondary) 55%);
 }
-.cutoff-badge.cutoff-rival .cutoff-title { color: #58a6ff; }
-.cutoff-badge.cutoff-rival .cutoff-rating { color: #0070dd; }
-.cutoff-badge.cutoff-rival .cutoff-icon svg { fill: #0070dd; }
+.cutoff-badge.cutoff-rival .cutoff-title { color: #7aa7ff; }
+.cutoff-badge.cutoff-rival .cutoff-rating { color: var(--tier-rival); }
+.cutoff-badge.cutoff-rival .cutoff-icon svg { fill: var(--tier-rival); }
 
 .cutoff-badge.cutoff-challenger {
-  border-left-color: #1eff00;
+  --cutoff-color: var(--tier-challenger);
+  background: linear-gradient(135deg, rgba(14, 203, 129, 0.14), var(--bg-secondary) 55%);
 }
-.cutoff-badge.cutoff-challenger .cutoff-title { color: #4fdb4f; }
-.cutoff-badge.cutoff-challenger .cutoff-rating { color: #1eff00; }
-.cutoff-badge.cutoff-challenger .cutoff-icon svg { fill: #1eff00; }
+.cutoff-badge.cutoff-challenger .cutoff-title { color: #58e0a8; }
+.cutoff-badge.cutoff-challenger .cutoff-rating { color: var(--tier-challenger); }
+.cutoff-badge.cutoff-challenger .cutoff-icon svg { fill: var(--tier-challenger); }
+
+.cutoff-rank {
+  margin-left: 6px;
+  color: var(--text-muted);
+  font-family: var(--font);
+  font-size: 0.65rem;
+  font-weight: 400;
+}
 
 @media (max-width: 720px) {
   .cutoffs {
@@ -252,7 +280,7 @@ body {
 
 #search {
   width: 100%;
-  padding: 8px 12px 8px 36px;
+  padding: 10px 12px 10px 36px;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -264,7 +292,10 @@ body {
 }
 
 #search::placeholder { color: var(--text-muted); }
-#search:focus { border-color: var(--accent-gold-dim); }
+#search:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.22);
+}
 
 .meta-info {
   font-size: 0.8rem;
@@ -273,11 +304,11 @@ body {
 }
 
 .btn-add {
-  padding: 6px 14px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border);
+  padding: 8px 16px;
+  background: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
   border-radius: var(--radius);
-  color: var(--accent-gold);
+  color: var(--on-primary);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
@@ -287,7 +318,7 @@ body {
 }
 
 .btn-add:hover {
-  background: var(--bg-row-hover);
+  background: var(--accent-gold-dim);
   border-color: var(--accent-gold-dim);
 }
 
@@ -295,7 +326,8 @@ body {
 .table-wrap {
   overflow-x: auto;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 12px;
+  background: var(--bg-secondary);
 }
 
 .leaderboard {
@@ -334,14 +366,25 @@ body {
   font-size: 0.9rem;
 }
 
-.leaderboard tbody tr:hover { background: var(--bg-row-hover); }
+.leaderboard tbody tr:hover { background: rgba(43, 49, 57, 0.72); }
 .leaderboard tbody tr:last-child td { border-bottom: none; }
 
 .col-rank { width: 80px; text-align: center; white-space: nowrap; }
 .col-rating { width: 120px; white-space: nowrap; }
 .col-record { width: 120px; white-space: nowrap; }
 .col-winrate { width: 72px; white-space: nowrap; }
-.col-class { width: 80px; }
+.col-class {
+  width: 88px;
+  max-width: 100px;
+  padding-right: 4px !important;
+  vertical-align: top;
+}
+.col-guild {
+  max-width: 14rem;
+  min-width: 0;
+  padding-left: 4px !important;
+  vertical-align: top;
+}
 
 td.col-rank { font-weight: 700; text-align: center; }
 
@@ -350,29 +393,80 @@ td.col-rank { font-weight: 700; text-align: center; }
 .rank-3 { color: var(--rank-bronze); }
 
 .rating-badge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  min-width: 54px;
+  justify-content: center;
+  padding: 3px 8px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-family: var(--font-number);
+  font-weight: 700;
   font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
 }
 
-.rating-high { background: rgba(240, 171, 0, 0.15); color: var(--accent-gold); }
-.rating-mid  { background: rgba(88, 166, 255, 0.12); color: var(--accent-blue); }
-.rating-low  { background: rgba(139, 148, 158, 0.1);  color: var(--text-secondary); }
+.rating-cutoff-infernal { background: rgba(246, 70, 93, 0.14); border-color: rgba(246, 70, 93, 0.42); color: #ff7b8c; }
+.rating-cutoff-gladiator { background: rgba(240, 185, 11, 0.16); border-color: rgba(240, 185, 11, 0.45); color: var(--accent-gold); }
+.rating-cutoff-duelist { background: rgba(163, 53, 238, 0.15); border-color: rgba(163, 53, 238, 0.42); color: #c070ff; }
+.rating-cutoff-rival { background: rgba(59, 130, 246, 0.14); border-color: rgba(59, 130, 246, 0.42); color: #7aa7ff; }
+.rating-cutoff-challenger { background: rgba(14, 203, 129, 0.12); border-color: rgba(14, 203, 129, 0.38); color: #58e0a8; }
+.rating-high { background: rgba(252, 213, 53, 0.15); border-color: rgba(252, 213, 53, 0.35); color: var(--accent-gold); }
+.rating-mid  { background: rgba(59, 130, 246, 0.12); border-color: rgba(59, 130, 246, 0.32); color: #7aa7ff; }
+.rating-low  { background: rgba(146, 154, 165, 0.1); border-color: rgba(146, 154, 165, 0.22); color: var(--text-secondary); }
 
 .char-name { font-weight: 600; }
 .char-faction-horde { border-left: 3px solid #b30000; padding-left: 8px; }
 .char-faction-alliance { border-left: 3px solid #0058cc; padding-left: 8px; }
 
 .class-tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 2px 8px;
+  background: rgba(146, 154, 165, 0.08);
+  border: 1px solid rgba(146, 154, 165, 0.16);
   font-size: 0.8rem;
+  font-weight: 600;
   color: var(--text-secondary);
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.class-warrior { color: #c79c6e; background: rgba(199, 156, 110, 0.12); border-color: rgba(199, 156, 110, 0.32); }
+.class-paladin { color: #f58cba; background: rgba(245, 140, 186, 0.12); border-color: rgba(245, 140, 186, 0.32); }
+.class-hunter { color: #abd473; background: rgba(171, 212, 115, 0.12); border-color: rgba(171, 212, 115, 0.32); }
+.class-rogue { color: #fff569; background: rgba(255, 245, 105, 0.12); border-color: rgba(255, 245, 105, 0.32); }
+.class-priest { color: #ffffff; background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.28); }
+.class-shaman { color: #0070de; background: rgba(0, 112, 222, 0.16); border-color: rgba(0, 112, 222, 0.42); }
+.class-mage { color: #69ccf0; background: rgba(105, 204, 240, 0.12); border-color: rgba(105, 204, 240, 0.32); }
+.class-warlock { color: #9482c9; background: rgba(148, 130, 201, 0.13); border-color: rgba(148, 130, 201, 0.34); }
+.class-druid { color: #ff7d0a; background: rgba(255, 125, 10, 0.13); border-color: rgba(255, 125, 10, 0.34); }
+
+.char-info-class {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
 }
 
 .guild-name {
+  display: block;
   font-size: 0.85rem;
   color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.col-profile-hidden {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.profile-hidden-label {
+  font-style: italic;
+  letter-spacing: -0.01em;
 }
 
 .winrate-high { color: var(--accent-green); }
@@ -537,10 +631,10 @@ td.col-rank { font-weight: 700; text-align: center; }
 .btn-submit {
   width: 100%;
   padding: 10px;
-  background: var(--accent-gold-dim);
+  background: var(--accent-gold);
   border: none;
   border-radius: var(--radius);
-  color: #fff;
+  color: var(--on-primary);
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -548,7 +642,7 @@ td.col-rank { font-weight: 700; text-align: center; }
   transition: background 0.2s;
 }
 
-.btn-submit:hover { background: var(--accent-gold); color: #000; }
+.btn-submit:hover { background: var(--accent-gold-dim); }
 
 /* ── Detail Page ─────────────────────── */
 .back-link {
@@ -574,10 +668,16 @@ td.col-rank { font-weight: 700; text-align: center; }
   min-width: 140px;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 12px;
   padding: 16px;
   text-align: center;
 }
+
+.detail-card.rating-cutoff-infernal { background: linear-gradient(135deg, rgba(246, 70, 93, 0.16), var(--bg-secondary) 62%); border-color: rgba(246, 70, 93, 0.36); }
+.detail-card.rating-cutoff-gladiator { background: linear-gradient(135deg, rgba(240, 185, 11, 0.18), var(--bg-secondary) 62%); border-color: rgba(240, 185, 11, 0.4); }
+.detail-card.rating-cutoff-duelist { background: linear-gradient(135deg, rgba(163, 53, 238, 0.17), var(--bg-secondary) 62%); border-color: rgba(163, 53, 238, 0.38); }
+.detail-card.rating-cutoff-rival { background: linear-gradient(135deg, rgba(59, 130, 246, 0.16), var(--bg-secondary) 62%); border-color: rgba(59, 130, 246, 0.36); }
+.detail-card.rating-cutoff-challenger { background: linear-gradient(135deg, rgba(14, 203, 129, 0.14), var(--bg-secondary) 62%); border-color: rgba(14, 203, 129, 0.34); }
 
 .card-bracket {
   font-size: 0.8rem;
@@ -592,7 +692,15 @@ td.col-rank { font-weight: 700; text-align: center; }
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--accent-gold);
+  font-family: var(--font-number);
+  font-variant-numeric: tabular-nums;
 }
+
+.detail-card.rating-cutoff-infernal .card-rating { color: #ff7b8c; }
+.detail-card.rating-cutoff-gladiator .card-rating { color: var(--accent-gold); }
+.detail-card.rating-cutoff-duelist .card-rating { color: #c070ff; }
+.detail-card.rating-cutoff-rival .card-rating { color: #7aa7ff; }
+.detail-card.rating-cutoff-challenger .card-rating { color: #58e0a8; }
 
 .card-record {
   font-size: 0.85rem;
@@ -642,7 +750,7 @@ td.col-rank { font-weight: 700; text-align: center; }
 .chart-wrap {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 12px;
   padding: 16px;
   height: 300px;
 }
@@ -1041,9 +1149,9 @@ a.equip-name:hover {
 }
 
 .page-btn.active {
-  background: var(--accent-gold-dim);
+  background: var(--accent-gold);
   border-color: var(--accent-gold);
-  color: #fff;
+  color: var(--on-primary);
 }
 
 .page-btn.disabled {
@@ -1150,13 +1258,20 @@ a.equip-name:hover {
   .toolbar-right { justify-content: space-between; }
   .search-box { max-width: none; }
 
-  .col-guild { display: none; }
-  .col-class { display: none; }
-
   .leaderboard th, .leaderboard td { padding: 8px 6px; }
   .col-rank { width: 64px; }
   .col-rating { width: 100px; }
   .col-record { width: 110px; }
+
+  .col-class {
+    max-width: 78px;
+    padding-right: 2px !important;
+  }
+
+  .col-guild {
+    max-width: 5.5rem;
+    padding-left: 2px !important;
+  }
 
   .pagination { justify-content: center; }
   .pagination-info { width: 100%; text-align: center; }

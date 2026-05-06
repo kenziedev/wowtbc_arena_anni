@@ -6,22 +6,68 @@
   var CONFIG_PATH = "config/supabase.json";
   var ALL_CHARS_PATH = "data/all_characters.json";
   var TALENT_DEFS_PATH = "data/talent_defs.json";
+  var CUTOFFS_PATH = "data/cutoffs.json";
 
   var BRACKET_COLORS = {
-    "2v2": { line: "#58a6ff", bg: "rgba(88,166,255,0.1)" },
-    "3v3": { line: "#3fb950", bg: "rgba(63,185,80,0.1)" },
-    "5v5": { line: "#f0ab00", bg: "rgba(240,171,0,0.1)" },
+    "2v2": { line: "#3b82f6", bg: "rgba(59,130,246,0.12)" },
+    "3v3": { line: "#0ecb81", bg: "rgba(14,203,129,0.12)" },
+    "5v5": { line: "#fcd535", bg: "rgba(252,213,53,0.12)" },
+  };
+
+  var CLASS_CLASS_MAP = {
+    "전사": "class-warrior",
+    "성기사": "class-paladin",
+    "사냥꾼": "class-hunter",
+    "도적": "class-rogue",
+    "사제": "class-priest",
+    "주술사": "class-shaman",
+    "마법사": "class-mage",
+    "흑마법사": "class-warlock",
+    "드루이드": "class-druid",
+  };
+
+  var CUTOFF_CLASS_MAP = {
+    "지옥에서 온 검투사": "cutoff-infernal",
+    "검투사": "cutoff-gladiator",
+    "결투사": "cutoff-duelist",
+    "승부사": "cutoff-rival",
+    "도전자": "cutoff-challenger",
   };
 
   var chart = null;
-  var state = { charId: null, name: "", realm: "", snapshots: [], activeBracket: null };
+  var state = { charId: null, name: "", realm: "", snapshots: [], activeBracket: null, cutoffs: null };
 
   function $(sel) { return document.querySelector(sel); }
 
   function esc(s) {
     var d = document.createElement("div");
-    d.textContent = s;
+    d.textContent = s || "";
     return d.innerHTML;
+  }
+
+  function characterClassClass(className) {
+    return CLASS_CLASS_MAP[className] || "";
+  }
+
+  function cutoffRatingClass(r, bracket) {
+    var cutoffs = state.cutoffs && state.cutoffs.cutoffs && state.cutoffs.cutoffs[bracket];
+    if (!cutoffs || !cutoffs.length) return "";
+    var sorted = cutoffs.slice().sort(function (a, b) { return b.rating - a.rating; });
+    for (var i = 0; i < sorted.length; i++) {
+      if (r >= sorted[i].rating) {
+        var cutoffClass = CUTOFF_CLASS_MAP[sorted[i].title];
+        return cutoffClass ? cutoffClass.replace("cutoff-", "rating-cutoff-") : "";
+      }
+    }
+    return "";
+  }
+
+  function ratingClass(r, bracket) {
+    var cutoffClass = cutoffRatingClass(r, bracket);
+    if (cutoffClass) return cutoffClass;
+    if (r >= 2000) return "rating-high";
+    if (r >= 1500) return "rating-mid";
+    return "rating-low";
   }
 
   function getParams() {
@@ -147,12 +193,14 @@
     var cls = (extras && extras["class"]) || char["class"] || "";
     var guild = (extras && extras.guild) || char.guild || "";
     var faction = (extras && extras.faction) || char.faction || "";
-    if (race) parts.push(race);
-    if (cls) parts.push(cls);
-    if (guild) parts.push("<" + guild + ">");
+    if (race) parts.push(esc(race));
+    if (cls) {
+      parts.push('<span class="class-tag char-info-class ' + characterClassClass(cls) + '">' + esc(cls) + '</span>');
+    }
+    if (guild) parts.push('<span class="guild-name">&lt;' + esc(guild) + '&gt;</span>');
     var factionLabel = faction === "HORDE" ? "호드" : faction === "ALLIANCE" ? "얼라이언스" : "";
-    if (factionLabel) parts.push(factionLabel);
-    $("#char-info").textContent = parts.join(" · ");
+    if (factionLabel) parts.push(esc(factionLabel));
+    $("#char-info").innerHTML = parts.join(" · ");
     document.title = char.name + " - TBC 투기장";
   }
 
@@ -187,7 +235,7 @@
       var total = data.won + data.lost;
       var wr = total > 0 ? (data.won / total * 100).toFixed(1) : "0.0";
       var card = document.createElement("div");
-      card.className = "detail-card";
+      card.className = "detail-card " + ratingClass(data.rating, b);
       card.innerHTML =
         '<div class="card-bracket">' + b + '</div>' +
         '<div class="card-rating">' + data.rating + '</div>' +
@@ -623,8 +671,8 @@
           },
         },
         scales: {
-          x: { ticks: { color: "#8b949e" }, grid: { color: "rgba(48,54,61,0.5)" } },
-          y: { ticks: { color: "#8b949e" }, grid: { color: "rgba(48,54,61,0.5)" } },
+          x: { ticks: { color: "#929aa5" }, grid: { color: "rgba(43,49,57,0.55)" } },
+          y: { ticks: { color: "#929aa5" }, grid: { color: "rgba(43,49,57,0.55)" } },
         },
       },
     });
@@ -645,7 +693,7 @@
       tr.innerHTML =
         "<td>" + formatDate(s.recorded_at) + "</td>" +
         "<td>" + s.bracket + "</td>" +
-        "<td>" + s.rating + "</td>" +
+        '<td><span class="rating-badge ' + ratingClass(s.rating, s.bracket) + '">' + s.rating + "</span></td>" +
         "<td>" + s.won + "승 " + s.lost + "패</td>" +
         '<td class="' + diffClass + '">' + diffText + "</td>";
       body.appendChild(tr);
@@ -662,9 +710,11 @@
     var configPromise = loadConfig();
     var extrasPromise = loadCharacterExtras(params.name, params.realm);
     var talentDefsPromise = loadTalentDefs();
+    var cutoffsPromise = fetchJSON(CUTOFFS_PATH).catch(function () { return null; });
     var configured = await configPromise;
     var extras = await extrasPromise;
     await talentDefsPromise;
+    state.cutoffs = await cutoffsPromise;
 
     var char = null;
     var snapshots = [];

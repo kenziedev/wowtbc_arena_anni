@@ -10,6 +10,18 @@
     "moldars-moxie": "몰다르의 투지",
   };
 
+  var CLASS_CLASS_MAP = {
+    "전사": "class-warrior",
+    "성기사": "class-paladin",
+    "사냥꾼": "class-hunter",
+    "도적": "class-rogue",
+    "사제": "class-priest",
+    "주술사": "class-shaman",
+    "마법사": "class-mage",
+    "흑마법사": "class-warlock",
+    "드루이드": "class-druid",
+  };
+
   var PAGE_SIZE = 300;
 
   var state = {
@@ -41,7 +53,22 @@
     return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) + " " + pad(d.getHours()) + ":" + pad(d.getMinutes());
   }
 
+  function cutoffRatingClass(r, bracket) {
+    var cutoffs = state.cutoffs && state.cutoffs.cutoffs && state.cutoffs.cutoffs[bracket];
+    if (!cutoffs || !cutoffs.length) return "";
+    var sorted = cutoffs.slice().sort(function (a, b) { return b.rating - a.rating; });
+    for (var i = 0; i < sorted.length; i++) {
+      if (r >= sorted[i].rating) {
+        var cutoffClass = CUTOFF_CLASS_MAP[sorted[i].title];
+        return cutoffClass ? cutoffClass.replace("cutoff-", "rating-cutoff-") : "";
+      }
+    }
+    return "";
+  }
+
   function ratingClass(r) {
+    var cutoffClass = cutoffRatingClass(r, state.bracket);
+    if (cutoffClass) return cutoffClass;
     if (r >= 2000) return "rating-high";
     if (r >= 1500) return "rating-mid";
     return "rating-low";
@@ -66,6 +93,10 @@
     return "";
   }
 
+  function characterClassClass(className) {
+    return CLASS_CLASS_MAP[className] || "";
+  }
+
   function esc(str) {
     var el = document.createElement("span");
     el.textContent = str || "";
@@ -85,11 +116,27 @@
     var tr = document.createElement("tr");
     var rankChange = changeBadge(entry.rkd, false);
     var ratingChange = changeBadge(entry.rd, false);
+    var className = (entry["class"] || "").trim();
+    var guildName = (entry.guild || "").trim();
+    var profileHidden = !className && !guildName;
+
+    var classGuildHtml;
+    if (profileHidden) {
+      classGuildHtml =
+        '<td colspan="2" class="col-class-guild col-profile-hidden">' +
+        '<span class="profile-hidden-label">&lt;정보제공 비동의&gt;</span></td>';
+    } else {
+      var classClass = characterClassClass(className);
+      var guildTitle = guildName ? ' title="' + esc(guildName) + '"' : "";
+      classGuildHtml =
+        '<td class="col-class"><span class="class-tag ' + classClass + '">' + esc(className) + "</span></td>" +
+        '<td class="col-guild"><span class="guild-name"' + guildTitle + ">" + esc(guildName) + "</span></td>";
+    }
+
     tr.innerHTML =
       '<td class="col-rank ' + rankClass(entry.rank) + '">' + entry.rank + rankChange + "</td>" +
       '<td class="col-name ' + factionClass(entry.faction) + '"><a class="char-link char-name" href="detail.html?name=' + encodeURIComponent(entry.name) + '&realm=' + encodeURIComponent(entry.realm) + '">' + esc(entry.name) + "</a></td>" +
-      '<td class="col-class"><span class="class-tag">' + esc(entry["class"]) + "</span></td>" +
-      '<td class="col-guild"><span class="guild-name">' + esc(entry.guild) + "</span></td>" +
+      classGuildHtml +
       '<td class="col-rating"><span class="rating-badge ' + ratingClass(entry.rating) + '">' + entry.rating + '</span>' + ratingChange + "</td>" +
       '<td class="col-record">' + entry.won + "승 " + entry.lost + "패</td>" +
       '<td class="col-winrate ' + winrateClass(wr) + '">' + wr.toFixed(1) + "%</td>";
@@ -292,7 +339,7 @@
         '<div class="cutoff-icon">' + icon + '</div>' +
         '<div class="cutoff-info">' +
         '<div class="cutoff-title">' + esc(c.title) + '</div>' +
-        '<div class="cutoff-rating">' + c.rating + (rankText ? '<span style="font-size:0.65rem;font-weight:400;color:var(--text-muted);margin-left:6px">' + rankText + '</span>' : '') + '</div>' +
+        '<div class="cutoff-rating">' + c.rating + (rankText ? '<span class="cutoff-rank">' + rankText + '</span>' : '') + '</div>' +
         '</div></div>';
     }
     container.innerHTML = html;
