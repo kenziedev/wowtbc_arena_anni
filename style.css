@@ -367,6 +367,39 @@ body {
   vertical-align: top;
 }
 
+@media (min-width: 721px) {
+  /* 캐릭터명과 직업 열을 붙여 두어 한 줄로 읽히게 */
+  .col-name {
+    width: max-content;
+    max-width: 15rem;
+    padding-right: 4px !important;
+    vertical-align: middle;
+  }
+
+  td.col-name .char-link {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .col-class {
+    padding-left: 4px !important;
+    padding-right: 6px !important;
+    vertical-align: middle;
+  }
+
+  .leaderboard th.col-name {
+    padding-right: 4px;
+  }
+
+  .leaderboard th.col-class {
+    padding-left: 4px;
+  }
+}
+
 td.col-rank {
   text-align: center;
   white-space: nowrap;
