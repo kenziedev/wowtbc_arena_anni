@@ -4,9 +4,11 @@
   var SUPABASE_URL = "";
   var SUPABASE_ANON_KEY = "";
   var CONFIG_PATH = "config/supabase.json";
-  var ALL_CHARS_PATH = "data/all_characters.json";
+  var DATA_BASE = "data";
+  var SEASONS_INDEX_PATH = DATA_BASE + "/seasons.json";
+  var ALL_CHARS_FILE = "all_characters.json";
   var TALENT_DEFS_PATH = "data/talent_defs.json";
-  var CUTOFFS_PATH = "data/cutoffs.json";
+  var CUTOFFS_FILE = "cutoffs.json";
 
   var BRACKET_COLORS = {
     "2v2": { line: "#3b82f6", bg: "rgba(59,130,246,0.12)" },
@@ -35,7 +37,17 @@
   };
 
   var chart = null;
-  var state = { charId: null, name: "", realm: "", snapshots: [], activeBracket: null, cutoffs: null };
+  var state = {
+    charId: null,
+    name: "",
+    realm: "",
+    snapshots: [],
+    activeBracket: null,
+    cutoffs: null,
+    seasons: [],
+    currentSeasonId: null,
+    seasonId: null,
+  };
 
   function $(sel) { return document.querySelector(sel); }
 
@@ -72,7 +84,35 @@
 
   function getParams() {
     var params = new URLSearchParams(window.location.search);
-    return { name: params.get("name") || "", realm: params.get("realm") || "" };
+    return {
+      name: params.get("name") || "",
+      realm: params.get("realm") || "",
+      season: normalizeSeasonId(params.get("season")),
+    };
+  }
+
+  function normalizeSeasonId(value) {
+    if (value === null || value === undefined || value === "") return null;
+    var id = parseInt(value, 10);
+    return id > 0 ? id : null;
+  }
+
+  function findSeason(id) {
+    var seasonId = normalizeSeasonId(id);
+    if (!seasonId) return null;
+    for (var i = 0; i < state.seasons.length; i++) {
+      if (normalizeSeasonId(state.seasons[i].id) === seasonId) return state.seasons[i];
+    }
+    return null;
+  }
+
+  function seasonPath(season) {
+    if (!season) return DATA_BASE;
+    return (season.path || (DATA_BASE + "/seasons/" + season.id)).replace(/\/$/, "");
+  }
+
+  function activeSeasonPath() {
+    return seasonPath(findSeason(state.seasonId) || findSeason(state.currentSeasonId) || state.seasons[0] || null);
   }
 
   function formatDate(iso) {
@@ -121,6 +161,24 @@
     }
   }
 
+  async function loadSeasonsIndex(requestedSeasonId) {
+    try {
+      var index = await fetchJSON(SEASONS_INDEX_PATH);
+      var seasons = index && index.seasons;
+      state.seasons = Array.isArray(seasons) ? seasons.slice() : [];
+      state.seasons.sort(function (a, b) { return normalizeSeasonId(a.id) - normalizeSeasonId(b.id); });
+      state.currentSeasonId = normalizeSeasonId(index && index.current_season_id);
+      if (!state.currentSeasonId && state.seasons.length > 0) {
+        state.currentSeasonId = normalizeSeasonId(state.seasons[state.seasons.length - 1].id);
+      }
+      state.seasonId = findSeason(requestedSeasonId) ? requestedSeasonId : state.currentSeasonId;
+    } catch (e) {
+      state.seasons = [{ id: 1, label: "시즌 1", path: DATA_BASE, status: "current" }];
+      state.currentSeasonId = 1;
+      state.seasonId = 1;
+    }
+  }
+
   async function supabaseGet(path) {
     var resp = await fetch(SUPABASE_URL + "/rest/v1/" + path, {
       headers: {
@@ -142,9 +200,11 @@
     return chars[0];
   }
 
-  async function loadSnapshots(charId) {
+  async function loadSnapshots(charId, seasonId) {
+    var seasonFilter = seasonId ? "&season_id=eq." + encodeURIComponent(seasonId) : "";
     var snaps = await supabaseGet(
       "rating_snapshots?character_id=eq." + charId +
+      seasonFilter +
       "&order=recorded_at.asc"
     );
     return snaps || [];
@@ -152,7 +212,7 @@
 
   async function loadCharacterExtras(name, realm) {
     try {
-      var all = await fetchJSON(ALL_CHARS_PATH);
+      var all = await fetchJSON(activeSeasonPath() + "/" + ALL_CHARS_FILE);
       var nameLower = name.toLowerCase();
       for (var i = 0; i < all.length; i++) {
         if (all[i].name.toLowerCase() === nameLower && all[i].realm === realm) {
@@ -707,10 +767,12 @@
     var params = getParams();
     if (!params.name || !params.realm) { showEmpty(); return; }
 
+    await loadSeasonsIndex(params.season);
+
     var configPromise = loadConfig();
     var extrasPromise = loadCharacterExtras(params.name, params.realm);
     var talentDefsPromise = loadTalentDefs();
-    var cutoffsPromise = fetchJSON(CUTOFFS_PATH).catch(function () { return null; });
+    var cutoffsPromise = fetchJSON(activeSeasonPath() + "/" + CUTOFFS_FILE).catch(function () { return null; });
     var configured = await configPromise;
     var extras = await extrasPromise;
     await talentDefsPromise;
@@ -722,7 +784,7 @@
     if (configured) {
       char = await loadCharacter(params.name, params.realm);
       if (char) {
-        snapshots = await loadSnapshots(char.id);
+        snapshots = await loadSnapshots(char.id, state.seasonId);
       }
     }
 

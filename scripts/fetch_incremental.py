@@ -17,6 +17,10 @@ from fetch_leaderboard import (
     build_leaderboard,
     sync_to_supabase,
     resolve_icons,
+    load_seasons_index,
+    mirror_current_season_file,
+    save_seasons_index,
+    season_data_dir,
     BRACKETS,
     MAX_WORKERS,
     MIN_LEVEL,
@@ -27,8 +31,14 @@ DATA_DIR = BASE_DIR / "data"
 ADDED_FILE = BASE_DIR / "config" / "_added.json"
 
 
-def load_existing_characters() -> list[dict]:
-    path = DATA_DIR / "all_characters.json"
+def current_season_id() -> int:
+    index = load_seasons_index()
+    sid = index.get("current_season_id") or 1
+    return int(sid)
+
+
+def load_existing_characters(data_dir: Path) -> list[dict]:
+    path = data_dir / "all_characters.json"
     if path.exists():
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -59,7 +69,10 @@ def main():
     print("Authenticating...")
     token = get_access_token(client_id, client_secret)
 
-    existing = load_existing_characters()
+    season_id = current_season_id()
+    out_dir = season_data_dir(season_id)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    existing = load_existing_characters(out_dir)
     existing_keys = {(c["name"].lower(), c["realm"]) for c in existing}
 
     chars_to_fetch = []
@@ -122,12 +135,13 @@ def main():
     print(f"Merged {added_count} new characters into all_characters.json (total: {len(merged)})")
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+    out_dir.mkdir(parents=True, exist_ok=True)
 
-    with open(DATA_DIR / "all_characters.json", "w", encoding="utf-8") as f:
+    with open(out_dir / "all_characters.json", "w", encoding="utf-8") as f:
         json.dump(merged, f, ensure_ascii=False, indent=2)
 
     # Rebuild leaderboards
-    meta_path = DATA_DIR / "meta.json"
+    meta_path = out_dir / "meta.json"
     meta = {}
     if meta_path.exists():
         with open(meta_path, "r", encoding="utf-8") as f:
@@ -138,21 +152,25 @@ def main():
     meta["brackets"] = meta.get("brackets", {})
 
     for bracket in BRACKETS:
-        leaderboard = build_leaderboard(merged, bracket)
+        leaderboard = build_leaderboard(merged, bracket, out_dir)
         print(f"  {bracket}: {len(leaderboard)} ranked players")
-        with open(DATA_DIR / f"{bracket}.json", "w", encoding="utf-8") as f:
+        with open(out_dir / f"{bracket}.json", "w", encoding="utf-8") as f:
             json.dump(leaderboard, f, ensure_ascii=False, indent=2)
         meta["brackets"][bracket] = {"count": len(leaderboard), "file": f"{bracket}.json"}
 
     with open(meta_path, "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
 
+    for filename in ["meta.json", "cutoffs.json", "all_characters.json"] + [f"{b}.json" for b in BRACKETS]:
+        mirror_current_season_file(filename, out_dir)
+    save_seasons_index(season_id)
+
     # Supabase sync (only new characters)
     supabase_url = os.environ.get("SUPABASE_URL", "")
     supabase_key = os.environ.get("SUPABASE_SERVICE_KEY", "")
     if supabase_url and supabase_key and new_pvp:
         print("\nSyncing new characters to Supabase...")
-        synced = sync_to_supabase(supabase_url, supabase_key, new_pvp)
+        synced = sync_to_supabase(supabase_url, supabase_key, new_pvp, season_id)
         print(f"  Synced {synced} snapshots")
 
     ADDED_FILE.unlink(missing_ok=True)

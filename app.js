@@ -3,6 +3,7 @@
 
   var BRACKETS = ["2v2", "3v3", "5v5"];
   var DATA_BASE = "data";
+  var SEASONS_INDEX_PATH = DATA_BASE + "/seasons.json";
   var CLASS_CLASS_MAP = {
     "전사": "class-warrior",
     "성기사": "class-paladin",
@@ -23,6 +24,10 @@
     data: {},
     meta: null,
     cutoffs: null,
+    seasons: [],
+    currentSeasonId: null,
+    seasonId: null,
+    pendingSeasonId: null,
     search: "",
     sort: { key: null, asc: true },
   };
@@ -37,6 +42,8 @@
     tableWrap: function () { return $(".table-wrap"); },
     metaInfo: function () { return $("#meta-info"); },
     search: function () { return $("#search"); },
+    seasonSelect: function () { return $("#season-select"); },
+    seasonSelectWrap: function () { return $("#season-select-wrap"); },
   };
 
   function formatDate(iso) {
@@ -111,6 +118,30 @@
     return el.innerHTML;
   }
 
+  function normalizeSeasonId(value) {
+    if (value === null || value === undefined || value === "") return null;
+    var id = parseInt(value, 10);
+    return id > 0 ? id : null;
+  }
+
+  function findSeason(id) {
+    var seasonId = normalizeSeasonId(id);
+    if (!seasonId) return null;
+    for (var i = 0; i < state.seasons.length; i++) {
+      if (normalizeSeasonId(state.seasons[i].id) === seasonId) return state.seasons[i];
+    }
+    return null;
+  }
+
+  function seasonPath(season) {
+    if (!season) return DATA_BASE;
+    return (season.path || (DATA_BASE + "/seasons/" + season.id)).replace(/\/$/, "");
+  }
+
+  function currentSeason() {
+    return findSeason(state.seasonId) || findSeason(state.currentSeasonId) || state.seasons[0] || null;
+  }
+
   function changeBadge(val, invert) {
     if (!val) return "";
     var cls = val > 0 ? "change-up" : "change-down";
@@ -145,7 +176,7 @@
     tr.innerHTML =
       '<td class="col-rank">' + factionMark(entry.faction) +
       '<span class="rank-main"><span class="col-rank-num ' + rankClass(entry.rank) + '">' + entry.rank + "</span>" + rankChange + "</span></td>" +
-      '<td class="col-name ' + factionClass(entry.faction) + '"><a class="char-link char-name" href="detail.html?name=' + encodeURIComponent(entry.name) + '&realm=' + encodeURIComponent(entry.realm) + '">' + esc(entry.name) + "</a></td>" +
+      '<td class="col-name ' + factionClass(entry.faction) + '"><a class="char-link char-name" href="detail.html?name=' + encodeURIComponent(entry.name) + '&realm=' + encodeURIComponent(entry.realm) + '&season=' + encodeURIComponent(state.seasonId || "") + '">' + esc(entry.name) + "</a></td>" +
       classGuildHtml +
       '<td class="col-rating"><span class="rating-badge ' + ratingClass(entry.rating) + '">' + entry.rating + '</span>' + ratingChange + "</td>" +
       '<td class="col-record">' + entry.won + "승 " + entry.lost + "패</td>" +
@@ -363,15 +394,54 @@
     });
   }
 
+  function loadSeasonsIndex() {
+    return fetchJSON(SEASONS_INDEX_PATH).then(function (index) {
+      var seasons = index && index.seasons;
+      state.seasons = Array.isArray(seasons) ? seasons.slice() : [];
+      state.seasons.sort(function (a, b) { return normalizeSeasonId(a.id) - normalizeSeasonId(b.id); });
+      state.currentSeasonId = normalizeSeasonId(index && index.current_season_id);
+      if (!state.currentSeasonId && state.seasons.length > 0) {
+        state.currentSeasonId = normalizeSeasonId(state.seasons[state.seasons.length - 1].id);
+      }
+      state.seasonId = findSeason(state.pendingSeasonId) ? state.pendingSeasonId : state.currentSeasonId;
+      renderSeasonSelect();
+    }).catch(function () {
+      state.seasons = [{ id: 1, label: "시즌 1", path: DATA_BASE, status: "current" }];
+      state.currentSeasonId = 1;
+      state.seasonId = 1;
+      renderSeasonSelect();
+    });
+  }
+
+  function renderSeasonSelect() {
+    var select = els.seasonSelect();
+    var wrap = els.seasonSelectWrap();
+    if (!select || !wrap) return;
+    if (!state.seasons || state.seasons.length === 0) {
+      select.innerHTML = "";
+      wrap.hidden = true;
+      return;
+    }
+    var html = "";
+    for (var i = 0; i < state.seasons.length; i++) {
+      var season = state.seasons[i];
+      var id = normalizeSeasonId(season.id);
+      var status = season.status === "current" ? " · 진행중" : "";
+      html += '<option value="' + id + '"' + (id === state.seasonId ? ' selected' : '') + '>' +
+        esc(season.label || ("시즌 " + id)) + status + '</option>';
+    }
+    select.innerHTML = html;
+    wrap.hidden = false;
+  }
+
   function loadData() {
     showLoading(true);
-    var promises = [fetchJSON(DATA_BASE + "/meta.json")];
-    BRACKETS.forEach(function (b) {
-      promises.push(fetchJSON(DATA_BASE + "/" + b + ".json").catch(function () { return []; }));
-    });
-    promises.push(fetchJSON(DATA_BASE + "/cutoffs.json").catch(function () { return null; }));
-
-    Promise.all(promises).then(function (results) {
+    var season = currentSeason();
+    var base = seasonPath(season);
+    fetchDataSet(base).catch(function () {
+      if (base !== DATA_BASE) return fetchDataSet(DATA_BASE);
+      throw new Error("Could not load leaderboard data");
+    }).then(function (results) {
       state.meta = results[0];
       BRACKETS.forEach(function (b, i) { state.data[b] = results[i + 1]; });
       state.cutoffs = results[BRACKETS.length + 1];
@@ -387,8 +457,18 @@
     });
   }
 
+  function fetchDataSet(base) {
+    var promises = [fetchJSON(base + "/meta.json")];
+    BRACKETS.forEach(function (b) {
+      promises.push(fetchJSON(base + "/" + b + ".json").catch(function () { return []; }));
+    });
+    promises.push(fetchJSON(base + "/cutoffs.json").catch(function () { return null; }));
+    return Promise.all(promises);
+  }
+
   function syncURL(push) {
     var params = new URLSearchParams();
+    if (state.seasonId && state.seasonId !== state.currentSeasonId) params.set("season", state.seasonId);
     params.set("bracket", state.bracket);
     if (state.page > 1) params.set("page", state.page);
     var qs = "?" + params.toString();
@@ -403,10 +483,14 @@
 
   function readURL() {
     var params = new URLSearchParams(window.location.search);
+    state.pendingSeasonId = normalizeSeasonId(params.get("season"));
+    if (state.seasons.length > 0) {
+      state.seasonId = findSeason(state.pendingSeasonId) ? state.pendingSeasonId : state.currentSeasonId;
+    }
     var b = params.get("bracket");
     if (b && BRACKETS.indexOf(b) !== -1) state.bracket = b;
     var p = parseInt(params.get("page"), 10);
-    if (p && p > 0) state.page = p;
+    state.page = p && p > 0 ? p : 1;
   }
 
   function setActiveTab() {
@@ -432,6 +516,22 @@
         syncURL(true);
       });
     }
+  }
+
+  function initSeasonSelect() {
+    var select = els.seasonSelect();
+    if (!select) return;
+    select.addEventListener("change", function () {
+      var seasonId = normalizeSeasonId(select.value);
+      if (!seasonId || seasonId === state.seasonId) return;
+      state.seasonId = seasonId;
+      state.pendingSeasonId = seasonId;
+      state.page = 1;
+      state.sort = { key: null, asc: true };
+      renderSeasonSelect();
+      loadData();
+      syncURL(true);
+    });
   }
 
   function initPagination() {
@@ -487,18 +587,21 @@
   function init() {
     readURL();
     setActiveTab();
+    initSeasonSelect();
     initTabs();
     initSearch();
     initSort();
     initPagination();
-    loadData();
+    loadSeasonsIndex().then(function () {
+      syncURL(false);
+      loadData();
+    });
 
     window.addEventListener("popstate", function () {
       readURL();
       setActiveTab();
-      updateMeta();
-      renderCutoffs();
-      render();
+      renderSeasonSelect();
+      loadData();
     });
   }
 

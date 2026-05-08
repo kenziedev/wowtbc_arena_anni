@@ -13,7 +13,7 @@ import requests
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
-DAILY_BASELINES_FILE = DATA_DIR / "daily_baselines.json"
+SEASONS_INDEX_FILE = DATA_DIR / "seasons.json"
 KST = timezone(timedelta(hours=9))
 
 REGION = "kr"
@@ -28,6 +28,70 @@ MAX_WORKERS = int(os.environ.get("FETCH_WORKERS", "20"))
 SUPABASE_CHAR_BATCH = int(os.environ.get("SUPABASE_CHAR_BATCH", "200"))
 SUPABASE_ID_CHUNK = int(os.environ.get("SUPABASE_ID_CHUNK", "150"))
 SUPABASE_SNAPSHOT_BATCH = int(os.environ.get("SUPABASE_SNAPSHOT_BATCH", "500"))
+
+
+def season_data_dir(season_id: int) -> Path:
+    return DATA_DIR / "seasons" / str(season_id)
+
+
+def season_label(season_id: int) -> str:
+    return f"시즌 {season_id}"
+
+
+def load_seasons_index() -> dict:
+    if not SEASONS_INDEX_FILE.exists():
+        return {"current_season_id": None, "seasons": []}
+    try:
+        with open(SEASONS_INDEX_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if not isinstance(data.get("seasons"), list):
+            data["seasons"] = []
+        return data
+    except Exception:
+        return {"current_season_id": None, "seasons": []}
+
+
+def save_seasons_index(current_season_id: int) -> None:
+    index = load_seasons_index()
+    seasons = index.get("seasons", [])
+    by_id = {}
+    for season in seasons:
+        try:
+            sid = int(season.get("id"))
+        except (TypeError, ValueError):
+            continue
+        by_id[sid] = season
+
+    for sid, season in by_id.items():
+        season["id"] = sid
+        season.setdefault("label", season_label(sid))
+        season["path"] = f"data/seasons/{sid}"
+        season["status"] = "current" if sid == current_season_id else "archived"
+
+    if current_season_id not in by_id:
+        by_id[current_season_id] = {
+            "id": current_season_id,
+            "label": season_label(current_season_id),
+            "status": "current",
+            "path": f"data/seasons/{current_season_id}",
+        }
+
+    out = {
+        "current_season_id": current_season_id,
+        "seasons": [by_id[sid] for sid in sorted(by_id)],
+    }
+    with open(SEASONS_INDEX_FILE, "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=2)
+
+
+def mirror_current_season_file(filename: str, data_dir: Path) -> None:
+    src = data_dir / filename
+    if not src.exists():
+        return
+    with open(src, "r", encoding="utf-8") as f:
+        payload = json.load(f)
+    with open(DATA_DIR / filename, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
 
 
 def get_access_token(client_id: str, client_secret: str) -> str:
@@ -79,7 +143,14 @@ def localized_name(value) -> str:
     return value or ""
 
 
-def fetch_current_season(token: str) -> dict:
+def fetch_current_season(token: str, override_season_id: int | None = None) -> dict:
+    if override_season_id:
+        season_name = ""
+        season_data = api_get(token, f"{API_BASE}/data/wow/pvp-season/{override_season_id}", NS_DYNAMIC)
+        if season_data:
+            season_name = localized_name(season_data.get("season_name", ""))
+        return {"id": override_season_id, "name": season_name}
+
     url = f"{API_BASE}/data/wow/pvp-season/index"
     data = api_get(token, url, NS_DYNAMIC)
     if not data:
@@ -461,8 +532,8 @@ def resolve_icons(token: str, all_pvp: list[dict]):
                         t["icon"] = icon_name
 
 
-def fetch_cutoffs(token: str, season_id: int):
-    """Fetch PvP season reward cutoffs and save to data/cutoffs.json."""
+def fetch_cutoffs(token: str, season_id: int, data_dir: Path):
+    """Fetch PvP season reward cutoffs and save them for the selected season."""
     BRACKET_MAP = {"ARENA_2v2": "2v2", "ARENA_3v3": "3v3", "ARENA_5v5": "5v5"}
 
     url = f"{API_BASE}/data/wow/pvp-season/{season_id}/pvp-reward/index"
@@ -490,7 +561,7 @@ def fetch_cutoffs(token: str, season_id: int):
         cutoffs[bracket].sort(key=lambda c: c["rating"], reverse=True)
 
     out = {"season_id": season_id, "cutoffs": cutoffs}
-    out_path = DATA_DIR / "cutoffs.json"
+    out_path = data_dir / "cutoffs.json"
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
 
@@ -500,9 +571,9 @@ def fetch_cutoffs(token: str, season_id: int):
             print(f"  {bracket}: {c['title']} = {c['rating']}")
 
 
-def load_previous_leaderboard(bracket: str) -> dict:
+def load_previous_leaderboard(bracket: str, data_dir: Path) -> dict:
     """Load previous leaderboard data and return a lookup dict keyed by (name, realm)."""
-    path = DATA_DIR / f"{bracket}.json"
+    path = data_dir / f"{bracket}.json"
     if not path.exists():
         return {}
     try:
@@ -521,19 +592,20 @@ def _entry_key(entry: dict) -> str:
     return f"{entry['name']}::{entry['realm']}"
 
 
-def load_daily_baselines() -> dict:
+def load_daily_baselines(data_dir: Path) -> dict:
     """Load first leaderboard snapshot captured for each KST day."""
-    if not DAILY_BASELINES_FILE.exists():
+    path = data_dir / "daily_baselines.json"
+    if not path.exists():
         return {}
     try:
-        with open(DAILY_BASELINES_FILE, "r", encoding="utf-8") as f:
+        with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
     except Exception:
         return {}
 
 
-def save_daily_baselines(baselines: dict) -> None:
-    with open(DAILY_BASELINES_FILE, "w", encoding="utf-8") as f:
+def save_daily_baselines(baselines: dict, data_dir: Path) -> None:
+    with open(data_dir / "daily_baselines.json", "w", encoding="utf-8") as f:
         json.dump(baselines, f, ensure_ascii=False, indent=2)
 
 
@@ -549,12 +621,12 @@ def build_daily_snapshot(entries: list[dict]) -> dict:
     }
 
 
-def load_yesterday_baseline(bracket: str, entries: list[dict]) -> dict:
+def load_yesterday_baseline(bracket: str, entries: list[dict], data_dir: Path) -> dict:
     """Return yesterday's first KST snapshot and preserve today's first snapshot."""
     now = datetime.now(KST)
     today_key = _daily_key(now)
     yesterday_key = _daily_key(now - timedelta(days=1))
-    baselines = load_daily_baselines()
+    baselines = load_daily_baselines(data_dir)
     changed = False
 
     if today_key not in baselines:
@@ -566,13 +638,13 @@ def load_yesterday_baseline(bracket: str, entries: list[dict]) -> dict:
         changed = True
 
     if changed:
-        save_daily_baselines(baselines)
+        save_daily_baselines(baselines, data_dir)
 
     return baselines.get(yesterday_key, {}).get(bracket, {})
 
 
-def build_leaderboard(all_pvp_data: list[dict], bracket: str) -> list[dict]:
-    prev_map = load_previous_leaderboard(bracket)
+def build_leaderboard(all_pvp_data: list[dict], bracket: str, data_dir: Path = DATA_DIR) -> list[dict]:
+    prev_map = load_previous_leaderboard(bracket, data_dir)
 
     entries = []
     for char in all_pvp_data:
@@ -596,7 +668,7 @@ def build_leaderboard(all_pvp_data: list[dict], bracket: str) -> list[dict]:
         })
 
     entries.sort(key=lambda x: (x.get("rank", 0) or 0, -(x.get("rating", 0) or 0), x["name"]))
-    yesterday_map = load_yesterday_baseline(bracket, entries)
+    yesterday_map = load_yesterday_baseline(bracket, entries, data_dir)
 
     for entry in entries:
         daily_key = _entry_key(entry)
@@ -630,12 +702,21 @@ def main():
     print("Authenticated.")
 
     print("\nResolving current PvP season...")
-    season = fetch_current_season(token)
+    override_season_id = None
+    if os.environ.get("PVP_SEASON_ID"):
+        try:
+            override_season_id = int(os.environ["PVP_SEASON_ID"])
+        except ValueError:
+            print("ERROR: PVP_SEASON_ID must be an integer")
+            sys.exit(1)
+    season = fetch_current_season(token, override_season_id)
     season_id = season["id"]
     print(f"Using season {season_id}")
+    out_dir = season_data_dir(season_id)
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     print("\nFetching PvP reward cutoffs...")
-    fetch_cutoffs(token, season_id)
+    fetch_cutoffs(token, season_id, out_dir)
 
     leaderboards = {}
     for bracket in BRACKETS:
@@ -668,10 +749,10 @@ def main():
     }
 
     for bracket in BRACKETS:
-        leaderboard = build_leaderboard(all_pvp, bracket)
+        leaderboard = build_leaderboard(all_pvp, bracket, out_dir)
         print(f"{bracket}: {len(leaderboard)} ranked players")
 
-        out_path = DATA_DIR / f"{bracket}.json"
+        out_path = out_dir / f"{bracket}.json"
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(leaderboard, f, ensure_ascii=False, indent=2)
 
@@ -681,22 +762,26 @@ def main():
             "source_count": len(leaderboards.get(bracket, [])),
         }
 
-    all_pvp_path = DATA_DIR / "all_characters.json"
+    all_pvp_path = out_dir / "all_characters.json"
     with open(all_pvp_path, "w", encoding="utf-8") as f:
         json.dump(all_pvp, f, ensure_ascii=False, indent=2)
 
-    meta_path = DATA_DIR / "meta.json"
+    meta_path = out_dir / "meta.json"
     with open(meta_path, "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
 
-    print(f"\nData saved to {DATA_DIR}")
+    for filename in ["meta.json", "cutoffs.json", "all_characters.json"] + [f"{b}.json" for b in BRACKETS]:
+        mirror_current_season_file(filename, out_dir)
+    save_seasons_index(season_id)
+
+    print(f"\nData saved to {out_dir}")
 
     supabase_url = os.environ.get("SUPABASE_URL", "")
     supabase_key = os.environ.get("SUPABASE_SERVICE_KEY", "")
 
     if supabase_url and supabase_key:
         print("\nSyncing to Supabase...")
-        synced = sync_to_supabase(supabase_url, supabase_key, all_pvp)
+        synced = sync_to_supabase(supabase_url, supabase_key, all_pvp, season_id)
         print(f"  Synced {synced} new/changed snapshots")
     else:
         print("\nSkipping Supabase (SUPABASE_URL / SUPABASE_SERVICE_KEY not set)")
@@ -725,7 +810,7 @@ def supabase_request(url: str, key: str, method: str, path: str, body=None):
     return None
 
 
-def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
+def sync_to_supabase(url: str, key: str, all_pvp: list[dict], season_id: int) -> int:
     now = datetime.now(timezone.utc).isoformat()
 
     rows = [{
@@ -819,16 +904,16 @@ def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
         print(f"  [SUPABASE] {len(missing)} characters still without id — skipping snapshots for those")
 
     seen_ids = set(id_map.values())
-    latest: dict[tuple[int, str], dict] = {}
+    latest: dict[tuple[int, str, int], dict] = {}
     hdr_get = {"apikey": key, "Authorization": f"Bearer {key}"}
 
     def snapshots_use_latest_view() -> bool:
         r = requests.get(
-            f"{base}/rest/v1/rating_snapshots_latest?select=character_id&limit=1",
+            f"{base}/rest/v1/rating_snapshots_latest?select=character_id,season_id&limit=1",
             headers=hdr_get,
             timeout=15,
         )
-        return r.status_code != 404
+        return r.status_code < 400
 
     use_view = snapshots_use_latest_view()
     path = "rating_snapshots_latest" if use_view else "rating_snapshots"
@@ -844,8 +929,8 @@ def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
         if use_view:
             try:
                 resp = requests.get(
-                    f"{base}/rest/v1/{path}?character_id=in.{in_list}"
-                    "&select=character_id,bracket,rating,won,lost,played",
+                    f"{base}/rest/v1/{path}?character_id=in.{in_list}&season_id=eq.{season_id}"
+                    "&select=character_id,bracket,season_id,rating,won,lost,played",
                     headers=hdr_get,
                     timeout=120,
                 )
@@ -860,7 +945,8 @@ def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
             for row in resp.json() if resp.text else []:
                 cid = row["character_id"]
                 bk = row["bracket"]
-                latest[(cid, bk)] = {
+                sid = row.get("season_id", season_id)
+                latest[(cid, bk, sid)] = {
                     "rating": row["rating"],
                     "won": row["won"],
                     "lost": row["lost"],
@@ -879,8 +965,8 @@ def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
                     headers_page = dict(hdr_get)
                     headers_page["Prefer"] = "count=exact"
                     resp = requests.get(
-                        f"{base}/rest/v1/{path}?character_id=in.{in_list}"
-                        "&select=character_id,bracket,rating,won,lost,played,recorded_at"
+                        f"{base}/rest/v1/{path}?character_id=in.{in_list}&season_id=eq.{season_id}"
+                        "&select=character_id,bracket,season_id,rating,won,lost,played,recorded_at"
                         "&order=recorded_at.desc"
                         f"&offset={offset}&limit={chunk_size}",
                         headers=headers_page,
@@ -898,7 +984,7 @@ def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
                 if not batch:
                     break
                 for row in batch:
-                    k = (row["character_id"], row["bracket"])
+                    k = (row["character_id"], row["bracket"], row.get("season_id", season_id))
                     rt = row.get("recorded_at", "") or ""
                     prev_row = latest.get(k)
                     prev_rt = (prev_row or {}).get("_rt", "") or ""
@@ -926,7 +1012,7 @@ def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
         if not cid:
             continue
         for bracket, bdata in char.get("brackets", {}).items():
-            prev = latest.get((cid, bracket))
+            prev = latest.get((cid, bracket, season_id))
             if prev and (
                     prev["rating"] == bdata["rating"]
                     and prev["won"] == bdata["won"]
@@ -935,6 +1021,7 @@ def sync_to_supabase(url: str, key: str, all_pvp: list[dict]) -> int:
                 continue
             new_snapshots.append({
                 "character_id": cid,
+                "season_id": season_id,
                 "bracket": bracket,
                 "rating": bdata["rating"],
                 "won": bdata["won"],

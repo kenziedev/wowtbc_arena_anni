@@ -263,6 +263,34 @@ body {
   gap: 12px;
 }
 
+.season-select-wrap {
+  flex-shrink: 0;
+}
+
+.season-select {
+  appearance: none;
+  min-width: 92px;
+  padding: 7px 28px 7px 10px;
+  background:
+    linear-gradient(45deg, transparent 50%, var(--text-muted) 50%) right 12px center / 5px 5px no-repeat,
+    linear-gradient(135deg, var(--text-muted) 50%, transparent 50%) right 8px center / 5px 5px no-repeat,
+    var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.season-select:hover,
+.season-select:focus {
+  color: var(--text-primary);
+  border-color: var(--accent-gold-dim);
+  outline: none;
+}
+
 .search-box {
   position: relative;
   flex: 1;
@@ -301,6 +329,18 @@ body {
   font-size: 0.8rem;
   color: var(--text-muted);
   white-space: nowrap;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ── Table ───────────────────────────── */
