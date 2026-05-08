@@ -65,7 +65,7 @@ def save_seasons_index(current_season_id: int) -> None:
     for sid, season in by_id.items():
         season["id"] = sid
         season.setdefault("label", season_label(sid))
-        season["path"] = f"data/seasons/{sid}"
+        season["path"] = "data" if sid == current_season_id else f"data/seasons/{sid}"
         season["status"] = "current" if sid == current_season_id else "archived"
 
     if current_season_id not in by_id:
@@ -73,7 +73,7 @@ def save_seasons_index(current_season_id: int) -> None:
             "id": current_season_id,
             "label": season_label(current_season_id),
             "status": "current",
-            "path": f"data/seasons/{current_season_id}",
+            "path": "data",
         }
 
     out = {
