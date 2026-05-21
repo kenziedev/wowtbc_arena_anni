@@ -1,13 +1,402 @@
 [
   {
-    "name": "Madbear",
+    "name": "최애",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
     "level": 70,
-    "class": "드루이드",
-    "race": "나이트 엘프",
+    "class": "주술사",
+    "race": "드레나이",
     "faction": "ALLIANCE",
     "guild": "시그널",
+    "brackets": {
+      "2v2": {
+        "rating": 1500,
+        "won": 0,
+        "lost": 0,
+        "played": 0,
+        "season_id": 2,
+        "rank": 1
+      }
+    },
+    "spec_groups": [
+      {
+        "active": true,
+        "trees": [
+          {
+            "name": "정기",
+            "points": 41,
+            "talents": [
+              {
+                "name": "기의 흐름",
+                "rank": 5,
+                "spell_id": 16112,
+                "icon": "spell_nature_wispsplode"
+              },
+              {
+                "name": "촉발",
+                "rank": 5,
+                "spell_id": 16108,
+                "icon": "spell_fire_fireball"
+              },
+              {
+                "name": "정기의 집중",
+                "rank": 1,
+                "spell_id": 16164,
+                "icon": "spell_shadow_manaburn"
+              },
+              {
+                "name": "산울림",
+                "rank": 4,
+                "spell_id": 16115,
+                "icon": "spell_frost_frostward"
+              },
+              {
+                "name": "천둥의 부름",
+                "rank": 5,
+                "spell_id": 16120,
+                "icon": "spell_nature_callstorm"
+              },
+              {
+                "name": "폭풍의 테두리",
+                "rank": 2,
+                "spell_id": 29000,
+                "icon": "spell_nature_stormreach"
+              },
+              {
+                "name": "자연의 격노",
+                "rank": 1,
+                "spell_id": 16089,
+                "icon": "spell_fire_volcano"
+              },
+              {
+                "name": "몰아치는 폭풍",
+                "rank": 3,
+                "spell_id": 30666,
+                "icon": "spell_nature_unrelentingstorm"
+              },
+              {
+                "name": "정기의 정밀함",
+                "rank": 3,
+                "spell_id": 30674,
+                "icon": "spell_nature_elementalprecision_1"
+              },
+              {
+                "name": "번개 전문화",
+                "rank": 5,
+                "spell_id": 16582,
+                "icon": "spell_lightning_lightningbolt01"
+              },
+              {
+                "name": "정기의 깨달음",
+                "rank": 1,
+                "spell_id": 16166,
+                "icon": "spell_nature_wispheal"
+              },
+              {
+                "name": "넘치는 정기",
+                "rank": 5,
+                "spell_id": 30681,
+                "icon": "spell_nature_lightningoverload"
+              },
+              {
+                "name": "격노의 토템",
+                "rank": 1,
+                "spell_id": 30706,
+                "icon": "spell_fire_totemofwrath"
+              }
+            ]
+          },
+          {
+            "name": "복원",
+            "points": 20,
+            "talents": [
+              {
+                "name": "해일의 집중",
+                "rank": 5,
+                "spell_id": 16217,
+                "icon": "spell_frost_manarecharge"
+              },
+              {
+                "name": "토템 집중",
+                "rank": 5,
+                "spell_id": 16225,
+                "icon": "spell_nature_moonglow"
+              },
+              {
+                "name": "자연의 가르침",
+                "rank": 3,
+                "spell_id": 16198,
+                "icon": "spell_frost_stun"
+              },
+              {
+                "name": "치유의 집중",
+                "rank": 1,
+                "spell_id": 16181,
+                "icon": "spell_nature_healingwavelesser"
+              },
+              {
+                "name": "토템 전문화",
+                "rank": 1,
+                "spell_id": 16189,
+                "icon": "spell_nature_nullward"
+              },
+              {
+                "name": "해일의 깨달음",
+                "rank": 5,
+                "spell_id": 16221,
+                "icon": "spell_nature_tranquility"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "active": false,
+        "trees": []
+      }
+    ],
+    "equipment": [
+      {
+        "slot": "머리",
+        "slot_type": "HEAD",
+        "name": "예언자의 쇠사슬 투구",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 35388,
+        "enchants": [
+          {
+            "text": "주문 극대화 적중도 +12 / 주문 치명타 피해 3%만큼 증가",
+            "type": "GEM",
+            "source": "혼돈의 하늘불꽃 다이아몬드"
+          },
+          {
+            "text": "주문 공격력 +7",
+            "type": "GEM",
+            "source": "룬이 새겨진 혈류석"
+          },
+          {
+            "text": "탄력도 +4",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_helmet_09.jpg"
+      },
+      {
+        "slot": "목",
+        "slot_type": "NECK",
+        "name": "세데크 예언자의 목걸이",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 29333,
+        "icon": "icons/inv_jewelry_necklace_29naxxramas.jpg"
+      },
+      {
+        "slot": "어깨",
+        "slot_type": "SHOULDER",
+        "name": "예언자의 고리사슬 어깨보호구",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 35395,
+        "enchants": [
+          {
+            "text": "주문 공격력 +7",
+            "type": "GEM",
+            "source": "룬이 새겨진 혈류석"
+          },
+          {
+            "text": "주문 극대화 적중도 +3 / 주문 공격력 +4",
+            "type": "GEM",
+            "source": "마력이 담긴 불꽃석류석"
+          },
+          {
+            "text": "탄력도 +3",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_shoulder_29.jpg"
+      },
+      {
+        "slot": "가슴",
+        "slot_type": "CHEST",
+        "name": "살아 있는 번개 조끼",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 24357,
+        "enchants": [
+          {
+            "text": "마법부여: 생명력 +100",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 공격력 +7",
+            "type": "GEM",
+            "source": "룬이 새겨진 혈류석"
+          },
+          {
+            "text": "주문 공격력 +4 / 체력 +4",
+            "type": "GEM",
+            "source": "작열하는 암흑 드레나이트"
+          },
+          {
+            "text": "주문 극대화 적중도 +3 / 주문 관통력 +4",
+            "type": "GEM",
+            "source": "눈부신 심연의 감람석"
+          },
+          {
+            "text": "주문 치유량 +9 / 주문 공격력 +3",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_chest_cloth_06.jpg"
+      },
+      {
+        "slot": "허리",
+        "slot_type": "WAIST",
+        "name": "작전사령관의 쇠사슬 벨트",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28993,
+        "icon": "icons/inv_belt_20.jpg"
+      },
+      {
+        "slot": "다리",
+        "slot_type": "LEGS",
+        "name": "예언자의 고리사슬 다리보호구",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 35394,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +46 / 주문 공격력 +16 / 체력 +15",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_pants_mail_15.jpg"
+      },
+      {
+        "slot": "발",
+        "slot_type": "FEET",
+        "name": "작전사령관의 쇠사슬 발덮개",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28994,
+        "enchants": [
+          {
+            "text": "마법부여: 체력 +7",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_boots_plate_06.jpg"
+      },
+      {
+        "slot": "손목",
+        "slot_type": "WRIST",
+        "name": "작전사령관의 쇠사슬 팔보호구",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28992,
+        "enchants": [
+          {
+            "text": "마법부여: 지능 +12",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 극대화 적중도 +3 / 주문 공격력 +4",
+            "type": "GEM",
+            "source": "마력이 담긴 불꽃석류석"
+          },
+          {
+            "text": "탄력도 +2",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_bracer_16.jpg"
+      },
+      {
+        "slot": "손",
+        "slot_type": "HANDS",
+        "name": "예언자의 쇠사슬 건틀릿",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 35387,
+        "icon": "icons/inv_gauntlets_11.jpg"
+      },
+      {
+        "slot": "반지 1",
+        "slot_type": "FINGER_1",
+        "name": "아쉬옌의 선물",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29172,
+        "icon": "icons/inv_jewelry_ring_51naxxramas.jpg"
+      },
+      {
+        "slot": "반지 2",
+        "slot_type": "FINGER_2",
+        "name": "수호자의 고리",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 29320,
+        "icon": "icons/inv_jewelry_ring_38.jpg"
+      },
+      {
+        "slot": "장신구 1",
+        "slot_type": "TRINKET_1",
+        "name": "지리의 선물",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 29179,
+        "icon": "icons/inv_misc_elvencoins.jpg"
+      },
+      {
+        "slot": "장신구 2",
+        "slot_type": "TRINKET_2",
+        "name": "쿠아그미란의 눈",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 27683,
+        "icon": "icons/inv_misc_gem_pearl_01.jpg"
+      },
+      {
+        "slot": "등",
+        "slot_type": "BACK",
+        "name": "바바의 비전술 망토",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 28269,
+        "icon": "icons/inv_misc_cape_05.jpg"
+      },
+      {
+        "slot": "주장비",
+        "slot_type": "MAIN_HAND",
+        "name": "아키나이 지팡이",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 29130,
+        "icon": "icons/inv_staff_14.jpg"
+      },
+      {
+        "slot": "원거리 장비",
+        "slot_type": "RANGED",
+        "name": "공허의 토템",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 28248,
+        "icon": "icons/spell_arcane_blast.jpg"
+      }
+    ],
+    "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/241/30453233-avatar.jpg",
+    "profile_restricted": false
+  },
+  {
+    "name": "안강도라지",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "level": 70,
+    "class": "성기사",
+    "race": "인간",
+    "faction": "ALLIANCE",
+    "guild": "모꼬지",
     "brackets": {
       "2v2": {
         "rating": 1500,
@@ -23,170 +412,140 @@
         "active": false,
         "trees": [
           {
-            "name": "회복",
-            "points": 17,
+            "name": "징벌",
+            "points": 48,
             "talents": [
               {
-                "name": "광란",
+                "name": "힘의 축복 연마",
                 "rank": 5,
-                "spell_id": 17061,
-                "icon": "spell_holy_blessingofstamina"
+                "spell_id": 20048,
+                "icon": "spell_holy_fistofjustice"
               },
               {
-                "name": "자연의 탐구자",
-                "rank": 5,
-                "spell_id": 17073,
-                "icon": "spell_nature_healingtouch"
-              },
-              {
-                "name": "변신의 대가",
+                "name": "성전사의 문장 연마",
                 "rank": 3,
-                "spell_id": 16835,
-                "icon": "spell_nature_wispsplode"
+                "spell_id": 20337,
+                "icon": "spell_holy_holysmite"
               },
               {
-                "name": "청명의 전조",
+                "name": "심판 연마",
+                "rank": 2,
+                "spell_id": 25957,
+                "icon": "spell_holy_righteousfury"
+              },
+              {
+                "name": "자각",
+                "rank": 5,
+                "spell_id": 20121,
+                "icon": "spell_holy_retributionaura"
+              },
+              {
+                "name": "성전",
+                "rank": 3,
+                "spell_id": 31868,
+                "icon": "spell_holy_crusade"
+              },
+              {
+                "name": "심판의 추격",
+                "rank": 3,
+                "spell_id": 44414,
+                "icon": "spell_holy_persuitofjustice"
+              },
+              {
+                "name": "고결의 오라",
                 "rank": 1,
-                "spell_id": 16864,
-                "icon": "spell_nature_crystalball"
+                "spell_id": 20218,
+                "icon": "spell_holy_mindvision"
               },
               {
-                "name": "격렬",
+                "name": "고결의 오라 연마",
+                "rank": 2,
+                "spell_id": 31870,
+                "icon": "spell_holy_mindvision"
+              },
+              {
+                "name": "양손 무기류 전문화",
                 "rank": 3,
-                "spell_id": 17108,
+                "spell_id": 20113,
+                "icon": "inv_hammer_04"
+              },
+              {
+                "name": "복수",
+                "rank": 5,
+                "spell_id": 20059,
+                "icon": "ability_racial_avatar"
+              },
+              {
+                "name": "참회",
+                "rank": 1,
+                "spell_id": 20066,
+                "icon": "spell_holy_prayerofhealing"
+              },
+              {
+                "name": "신성한 문장",
+                "rank": 3,
+                "spell_id": 35397,
+                "icon": "spell_holy_holysmite"
+              },
+              {
+                "name": "지휘의 문장",
+                "rank": 1,
+                "spell_id": 20375,
+                "icon": "ability_warrior_innerrage"
+              },
+              {
+                "name": "광신",
+                "rank": 5,
+                "spell_id": 31883,
+                "icon": "spell_holy_fanaticism"
+              },
+              {
+                "name": "성전사의 일격",
+                "rank": 1,
+                "spell_id": 35395,
+                "icon": "spell_holy_crusaderstrike"
+              },
+              {
+                "name": "신성한 심판",
+                "rank": 3,
+                "spell_id": 31878,
+                "icon": "spell_holy_righteousfury"
+              },
+              {
+                "name": "축복의 기도",
+                "rank": 2,
+                "spell_id": 20102,
                 "icon": "spell_frost_windwalkon"
               }
             ]
           },
           {
-            "name": "야성",
-            "points": 42,
+            "name": "보호",
+            "points": 8,
             "talents": [
               {
-                "name": "야수의 본성",
+                "name": "기원의 오라 연마",
                 "rank": 5,
-                "spell_id": 16938,
-                "icon": "ability_hunter_pet_hyena"
+                "spell_id": 20142,
+                "icon": "spell_holy_devotionaura"
               },
               {
-                "name": "야생의 본능",
+                "name": "정밀함",
                 "rank": 3,
-                "spell_id": 16949,
-                "icon": "ability_ambush"
-              },
-              {
-                "name": "야수의 습격",
-                "rank": 2,
-                "spell_id": 16941,
-                "icon": "ability_druid_bash"
-              },
-              {
-                "name": "야생의 기민함",
-                "rank": 2,
-                "spell_id": 24866,
-                "icon": "spell_nature_spiritwolf"
-              },
-              {
-                "name": "야성의 돌진",
-                "rank": 1,
-                "spell_id": 16979,
-                "icon": "ability_hunter_pet_bear"
-              },
-              {
-                "name": "날카로운 발톱",
-                "rank": 3,
-                "spell_id": 16944,
-                "icon": "inv_misc_monsterclaw_04"
-              },
-              {
-                "name": "야수의 분노",
-                "rank": 2,
-                "spell_id": 37117,
-                "icon": "ability_racial_cannibalize"
-              },
-              {
-                "name": "야생의 포식자",
-                "rank": 3,
-                "spell_id": 16975,
-                "icon": "ability_hunter_pet_cat"
-              },
-              {
-                "name": "맹렬한 격노",
-                "rank": 2,
-                "spell_id": 16999,
-                "icon": "ability_druid_ravage"
-              },
-              {
-                "name": "요정의 불꽃 (야성)",
-                "rank": 1,
-                "spell_id": 16857,
-                "icon": "spell_nature_faeriefire"
-              },
-              {
-                "name": "회복의 본능",
-                "rank": 2,
-                "spell_id": 33873,
-                "icon": "ability_druid_healinginstincts"
-              },
-              {
-                "name": "야생의 정수",
-                "rank": 5,
-                "spell_id": 24894,
-                "icon": "spell_holy_blessingofagility"
-              },
-              {
-                "name": "적자 생존",
-                "rank": 3,
-                "spell_id": 33856,
-                "icon": "ability_druid_enrage"
-              },
-              {
-                "name": "무리의 우두머리",
-                "rank": 1,
-                "spell_id": 17007,
-                "icon": "spell_nature_unyeildingstamina"
-              },
-              {
-                "name": "무리의 우두머리 연마",
-                "rank": 2,
-                "spell_id": 34300,
-                "icon": "spell_nature_unyeildingstamina"
-              },
-              {
-                "name": "죽음의 발톱",
-                "rank": 2,
-                "spell_id": 16968,
-                "icon": "spell_shadow_vampiricaura"
-              },
-              {
-                "name": "태고의 강인함",
-                "rank": 2,
-                "spell_id": 33852,
-                "icon": "ability_druid_primaltenacity"
-              },
-              {
-                "name": "짓이기기",
-                "rank": 1,
-                "spell_id": 33917,
-                "icon": "ability_druid_mangle2"
+                "spell_id": 20193,
+                "icon": "ability_rogue_ambush"
               }
             ]
           },
           {
-            "name": "조화",
-            "points": 2,
+            "name": "신성",
+            "points": 5,
             "talents": [
               {
-                "name": "자연의 손아귀",
-                "rank": 1,
-                "spell_id": 16689,
-                "icon": "spell_nature_natureswrath"
-              },
-              {
-                "name": "자연의 손아귀 연마",
-                "rank": 1,
-                "spell_id": 17245,
-                "icon": "spell_nature_natureswrath"
+                "name": "천상의 힘",
+                "rank": 5,
+                "spell_id": 20266,
+                "icon": "ability_golemthunderclap"
               }
             ]
           }
@@ -196,146 +555,146 @@
         "active": true,
         "trees": [
           {
-            "name": "야성",
-            "points": 44,
+            "name": "신성",
+            "points": 45,
             "talents": [
               {
-                "name": "야수의 본성",
+                "name": "천상의 지능",
                 "rank": 5,
-                "spell_id": 16938,
-                "icon": "ability_hunter_pet_hyena"
+                "spell_id": 20261,
+                "icon": "spell_nature_sleep"
               },
               {
-                "name": "야생의 본능",
-                "rank": 3,
-                "spell_id": 16949,
-                "icon": "ability_ambush"
-              },
-              {
-                "name": "두꺼운 가죽",
-                "rank": 3,
-                "spell_id": 16931,
-                "icon": "inv_misc_pelt_bear_03"
-              },
-              {
-                "name": "날카로운 발톱",
-                "rank": 3,
-                "spell_id": 16944,
-                "icon": "inv_misc_monsterclaw_04"
-              },
-              {
-                "name": "야성의 돌진",
-                "rank": 1,
-                "spell_id": 16979,
-                "icon": "ability_hunter_pet_bear"
-              },
-              {
-                "name": "야생의 기민함",
-                "rank": 2,
-                "spell_id": 24866,
-                "icon": "spell_nature_spiritwolf"
-              },
-              {
-                "name": "죽음의 발톱",
-                "rank": 2,
-                "spell_id": 16968,
-                "icon": "spell_shadow_vampiricaura"
-              },
-              {
-                "name": "야생의 포식자",
-                "rank": 3,
-                "spell_id": 16975,
-                "icon": "ability_hunter_pet_cat"
-              },
-              {
-                "name": "야수의 분노",
-                "rank": 2,
-                "spell_id": 37117,
-                "icon": "ability_racial_cannibalize"
-              },
-              {
-                "name": "요정의 불꽃 (야성)",
-                "rank": 1,
-                "spell_id": 16857,
-                "icon": "spell_nature_faeriefire"
-              },
-              {
-                "name": "맹렬한 격노",
-                "rank": 2,
-                "spell_id": 16999,
-                "icon": "ability_druid_ravage"
-              },
-              {
-                "name": "야생의 정수",
+                "name": "영적인 집중력",
                 "rank": 5,
-                "spell_id": 24894,
-                "icon": "spell_holy_blessingofagility"
+                "spell_id": 20208,
+                "icon": "spell_arcane_blink"
               },
               {
-                "name": "적자 생존",
+                "name": "치유의 빛",
                 "rank": 3,
-                "spell_id": 33856,
-                "icon": "ability_druid_enrage"
+                "spell_id": 20239,
+                "icon": "spell_holy_holybolt"
               },
               {
-                "name": "무리의 우두머리",
-                "rank": 1,
-                "spell_id": 17007,
-                "icon": "spell_nature_unyeildingstamina"
-              },
-              {
-                "name": "무리의 우두머리 연마",
+                "name": "신의 축복 연마",
                 "rank": 2,
-                "spell_id": 34300,
-                "icon": "spell_nature_unyeildingstamina"
+                "spell_id": 20235,
+                "icon": "spell_holy_layonhands"
               },
               {
-                "name": "포식자의 본능",
+                "name": "계시",
                 "rank": 5,
-                "spell_id": 33869,
-                "icon": "ability_druid_predatoryinstincts"
+                "spell_id": 20215,
+                "icon": "spell_holy_greaterheal"
               },
               {
-                "name": "짓이기기",
+                "name": "신의 은총",
                 "rank": 1,
-                "spell_id": 33917,
-                "icon": "ability_druid_mangle2"
+                "spell_id": 20216,
+                "icon": "spell_holy_heal"
+              },
+              {
+                "name": "축복받은 빛",
+                "rank": 3,
+                "spell_id": 20361,
+                "icon": "spell_holy_healingaura"
+              },
+              {
+                "name": "지혜의 축복 연마",
+                "rank": 2,
+                "spell_id": 20245,
+                "icon": "spell_holy_sealofwisdom"
+              },
+              {
+                "name": "신성 마법 강화",
+                "rank": 5,
+                "spell_id": 25829,
+                "icon": "spell_holy_power"
+              },
+              {
+                "name": "신성 충격",
+                "rank": 1,
+                "spell_id": 20473,
+                "icon": "spell_holy_searinglight"
+              },
+              {
+                "name": "빛의 은총",
+                "rank": 3,
+                "spell_id": 31836,
+                "icon": "spell_holy_lightsgrace"
+              },
+              {
+                "name": "신성한 인도",
+                "rank": 5,
+                "spell_id": 31841,
+                "icon": "spell_holy_holyguidance"
+              },
+              {
+                "name": "신의 계시",
+                "rank": 1,
+                "spell_id": 31842,
+                "icon": "spell_holy_divineillumination"
+              },
+              {
+                "name": "오라 숙련",
+                "rank": 1,
+                "spell_id": 31821,
+                "icon": "spell_holy_auramastery"
+              },
+              {
+                "name": "정화의 힘",
+                "rank": 2,
+                "spell_id": 31826,
+                "icon": "spell_holy_purifyingpower"
+              },
+              {
+                "name": "축복받은 생명",
+                "rank": 1,
+                "spell_id": 31828,
+                "icon": "spell_holy_blessedlife"
               }
             ]
           },
           {
-            "name": "회복",
-            "points": 17,
+            "name": "보호",
+            "points": 11,
             "talents": [
               {
-                "name": "광란",
+                "name": "기원의 오라 연마",
                 "rank": 5,
-                "spell_id": 17061,
-                "icon": "spell_holy_blessingofstamina"
+                "spell_id": 20142,
+                "icon": "spell_holy_devotionaura"
               },
               {
-                "name": "변신의 대가",
+                "name": "수호신의 은총",
+                "rank": 2,
+                "spell_id": 20175,
+                "icon": "spell_holy_sealofprotection"
+              },
+              {
+                "name": "정밀함",
                 "rank": 3,
-                "spell_id": 16835,
-                "icon": "spell_nature_wispsplode"
+                "spell_id": 20193,
+                "icon": "ability_rogue_ambush"
               },
               {
-                "name": "자연의 탐구자",
-                "rank": 5,
-                "spell_id": 17073,
-                "icon": "spell_nature_healingtouch"
-              },
-              {
-                "name": "청명의 전조",
+                "name": "왕의 축복",
                 "rank": 1,
-                "spell_id": 16864,
-                "icon": "spell_nature_crystalball"
-              },
+                "spell_id": 20217,
+                "icon": "spell_magic_magearmor"
+              }
+            ]
+          },
+          {
+            "name": "징벌",
+            "points": 5,
+            "talents": [
               {
-                "name": "격렬",
-                "rank": 3,
-                "spell_id": 17108,
-                "icon": "spell_frost_windwalkon"
+                "name": "힘의 축복 연마",
+                "rank": 5,
+                "spell_id": 20048,
+                "icon": "spell_holy_fistofjustice"
               }
             ]
           }
@@ -346,27 +705,27 @@
       {
         "slot": "머리",
         "slot_type": "HEAD",
-        "name": "말로른의 사슴뿔투구",
+        "name": "심판관의 머리관",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 29098,
+        "item_id": 29061,
         "enchants": [
           {
-            "text": "마법부여: 전투력 +34 / 적중도 +16",
+            "text": "마법부여: 주문 치유량 +35 / 주문 공격력 +12 / 5초당 마나 회복량 +7",
             "type": "PERMANENT"
           },
           {
-            "text": "적중도 +8",
+            "text": "주문 치유량 +9 / 주문 공격력 +3 / 지능 +4",
             "type": "GEM",
-            "source": "강도 높은 여명석"
+            "source": "영롱한 귀황옥"
           },
           {
-            "text": "민첩성 +12 / 치명타 피해 3%만큼 증가",
+            "text": "지능 +12 / 주문 시전 시 일정 확률로 마나 회복",
             "type": "GEM",
-            "source": "냉혹의 대지폭풍 다이아몬드"
+            "source": "통찰의 대지폭풍 다이아몬드"
           },
           {
-            "text": "민첩성 +4",
+            "text": "5초당 마나 회복량 +2",
             "type": "GEM"
           }
         ],
@@ -375,148 +734,573 @@
       {
         "slot": "목",
         "slot_type": "NECK",
-        "name": "영웅심의 미스릴 목걸이",
+        "name": "영원한 희망의 목걸이",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 28745,
-        "icon": "icons/inv_jewelry_necklace_06.jpg"
+        "item_id": 29374,
+        "icon": "icons/inv_jewelry_necklace_31.jpg"
       },
       {
         "slot": "어깨",
         "slot_type": "SHOULDER",
-        "name": "최고사령관의 용가죽 어깨갑옷",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 28622,
+        "name": "정의 탐구자의 어깨갑옷",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28666,
         "enchants": [
           {
-            "text": "민첩성 +6",
-            "type": "GEM",
-            "source": "섬세하게 연마된 혈류석"
-          },
-          {
-            "text": "치명타 적중도 +4 / 체력 +6",
-            "type": "GEM",
-            "source": "톱니모양 탈라사이트"
-          },
-          {
-            "text": "탄력도 +3",
-            "type": "GEM"
+            "text": "마법부여: 주문 치유량 +33 / 주문 공격력 +11 / 마나 회복량 +4",
+            "type": "PERMANENT"
           }
         ],
-        "icon": "icons/inv_shoulder_12.jpg"
+        "icon": "icons/inv_shoulder_35.jpg"
       },
       {
         "slot": "가슴",
         "slot_type": "CHEST",
-        "name": "최고사령관의 용가죽 튜닉",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 28623,
+        "name": "심판관의 가슴보호대",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29062,
         "enchants": [
           {
-            "text": "마법부여: 생명력 +100",
+            "text": "마법부여: 모든 능력치 +6",
             "type": "PERMANENT"
           },
           {
-            "text": "민첩성 +6",
+            "text": "주문 치유량 +9 / 주문 공격력 +3 / 5초당 마나 회복량 +2",
             "type": "GEM",
-            "source": "섬세하게 연마된 혈류석"
+            "source": "호화로운 야안석"
           },
           {
-            "text": "민첩성 +6",
+            "text": "주문 치유량 +9 / 주문 공격력 +3 / 5초당 마나 회복량 +2",
             "type": "GEM",
-            "source": "섬세하게 연마된 혈류석"
+            "source": "호화로운 야안석"
           },
           {
-            "text": "치명타 적중도 +4 / 체력 +6",
+            "text": "주문 극대화 적중도 +5 / 5초당 마나 회복량 +2",
             "type": "GEM",
-            "source": "톱니모양 탈라사이트"
+            "source": "룬으로 덮인 녹옥수"
           },
           {
-            "text": "치명타 적중도 +4",
+            "text": "체력 +6",
             "type": "GEM"
           }
         ],
-        "icon": "icons/inv_chest_leather_03.jpg"
+        "icon": "icons/inv_chest_chain_15.jpg"
       },
       {
         "slot": "허리",
         "slot_type": "WAIST",
-        "name": "죽음의 선고자 벨트",
+        "name": "작전사령관의 문장 허리띠",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 29247,
-        "icon": "icons/inv_belt_26.jpg"
+        "item_id": 32985,
+        "icon": "icons/inv_belt_14.jpg"
       },
       {
         "slot": "다리",
         "slot_type": "LEGS",
-        "name": "잠행자의 경갑",
+        "name": "무고의 다리갑옷",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 28741,
+        "item_id": 28748,
         "enchants": [
           {
-            "text": "마법부여: 전투력 +40 / 치명타 적중도 +10",
+            "text": "마법부여: 주문 치유량 +66 / 주문 공격력 +22 / 체력 +20",
             "type": "PERMANENT"
           },
           {
-            "text": "적중도 +3 / 민첩성 +3",
+            "text": "주문 치유량 +9 / 주문 공격력 +3 / 지능 +4",
             "type": "GEM",
-            "source": "예리하게 빛나는 불꽃석류석"
+            "source": "영롱한 귀황옥"
           },
           {
-            "text": "적중도 +3 / 민첩성 +3",
+            "text": "주문 치유량 +9 / 주문 공격력 +3 / 5초당 마나 회복량 +2",
             "type": "GEM",
-            "source": "예리하게 빛나는 불꽃석류석"
+            "source": "호화로운 야안석"
           },
           {
-            "text": "체력 +3 / 치명타 적중도 +4",
+            "text": "주문 치유량 +9 / 주문 공격력 +3 / 5초당 마나 회복량 +2",
             "type": "GEM",
-            "source": "날카로운 심연의 감람석"
+            "source": "호화로운 야안석"
           },
           {
-            "text": "회피 숙련도 +4",
+            "text": "지능 +4",
             "type": "GEM"
           }
         ],
-        "icon": "icons/inv_pants_leather_13.jpg"
+        "icon": "icons/inv_pants_plate_18.jpg"
       },
       {
         "slot": "발",
         "slot_type": "FEET",
-        "name": "작전사령관의 용가죽 장화",
+        "name": "작전사령관의 문장 경갑",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 28977,
-        "enchants": [
-          {
-            "text": "마법부여: 체력 +7",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_boots_08.jpg"
+        "item_id": 32987,
+        "icon": "icons/inv_boots_plate_04.jpg"
       },
       {
         "slot": "손목",
         "slot_type": "WRIST",
-        "name": "작전사령관의 용가죽 팔보호구",
+        "name": "정의의 팔보호구",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 28978,
+        "item_id": 28512,
         "enchants": [
           {
-            "text": "마법부여: 힘 +12",
+            "text": "마법부여: 주문 치유량 +30 / 주문 공격력 +10",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_bracer_02.jpg"
+      },
+      {
+        "slot": "손",
+        "slot_type": "HANDS",
+        "name": "검투사의 문장 장갑",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 31614,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +35 / 주문 공격력 +12",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_gauntlets_29.jpg"
+      },
+      {
+        "slot": "반지 1",
+        "slot_type": "FINGER_1",
+        "name": "나루 빛의 수호자 고리",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28790,
+        "icon": "icons/inv_jewelry_ring_70.jpg"
+      },
+      {
+        "slot": "반지 2",
+        "slot_type": "FINGER_2",
+        "name": "숭고한 구원자의 보랏빛 인장",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29290,
+        "icon": "icons/inv_jewelry_ring_62.jpg"
+      },
+      {
+        "slot": "장신구 1",
+        "slot_type": "TRINKET_1",
+        "name": "보랏빛 눈의 펜던트",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28727,
+        "icon": "icons/inv_trinket_naxxramas02.jpg"
+      },
+      {
+        "slot": "장신구 2",
+        "slot_type": "TRINKET_2",
+        "name": "순교자의 정수",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29376,
+        "icon": "icons/inv_valentineperfumebottle.jpg"
+      },
+      {
+        "slot": "등",
+        "slot_type": "BACK",
+        "name": "주교의 망토",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29375,
+        "enchants": [
+          {
+            "text": "마법부여: 방어도 +120",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_misc_cape_02.jpg"
+      },
+      {
+        "slot": "주장비",
+        "slot_type": "MAIN_HAND",
+        "name": "빛의 심판",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28771,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +81 / 주문 공격력 +27",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_mace_46.jpg"
+      },
+      {
+        "slot": "보조장비",
+        "slot_type": "OFF_HAND",
+        "name": "빛의 전도사의 신념 방패",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29267,
+        "enchants": [
+          {
+            "text": "마법부여: 지능 +12",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_shield_33.jpg"
+      },
+      {
+        "slot": "원거리 장비",
+        "slot_type": "RANGED",
+        "name": "구원된 영혼의 성서",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28592,
+        "icon": "icons/inv_relics_libramofgrace.jpg"
+      }
+    ],
+    "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/174/31384494-avatar.jpg",
+    "profile_restricted": false
+  },
+  {
+    "name": "스트라드",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "level": 70,
+    "class": "사제",
+    "race": "인간",
+    "faction": "ALLIANCE",
+    "guild": "모꼬지",
+    "brackets": {
+      "2v2": {
+        "rating": 1500,
+        "won": 0,
+        "lost": 0,
+        "played": 0,
+        "season_id": 2,
+        "rank": 1
+      }
+    },
+    "spec_groups": [
+      {
+        "active": true,
+        "trees": [
+          {
+            "name": "암흑",
+            "points": 49,
+            "talents": [
+              {
+                "name": "정신력 누출",
+                "rank": 5,
+                "spell_id": 15338,
+                "icon": "spell_shadow_requiem"
+              },
+              {
+                "name": "어둠의 권능: 고통 연마",
+                "rank": 2,
+                "spell_id": 15317,
+                "icon": "spell_shadow_shadowwordpain"
+              },
+              {
+                "name": "암흑 마법 친화",
+                "rank": 3,
+                "spell_id": 15320,
+                "icon": "spell_shadow_shadowward"
+              },
+              {
+                "name": "정신의 채찍",
+                "rank": 1,
+                "spell_id": 15407,
+                "icon": "spell_shadow_siphonmana"
+              },
+              {
+                "name": "정신 분열 연마",
+                "rank": 5,
+                "spell_id": 15316,
+                "icon": "spell_shadow_unholyfrenzy"
+              },
+              {
+                "name": "어둠의 테두리",
+                "rank": 2,
+                "spell_id": 17323,
+                "icon": "spell_shadow_chilltouch"
+              },
+              {
+                "name": "어둠의 매듭",
+                "rank": 5,
+                "spell_id": 15334,
+                "icon": "spell_shadow_blackplague"
+              },
+              {
+                "name": "흡혈의 선물",
+                "rank": 1,
+                "spell_id": 15286,
+                "icon": "spell_shadow_unsummonbuilding"
+              },
+              {
+                "name": "암흑 마법 집중",
+                "rank": 5,
+                "spell_id": 15330,
+                "icon": "spell_shadow_burningspirit"
+              },
+              {
+                "name": "어둠",
+                "rank": 5,
+                "spell_id": 15310,
+                "icon": "spell_shadow_twilight"
+              },
+              {
+                "name": "어둠의 형상",
+                "rank": 1,
+                "spell_id": 15473,
+                "icon": "spell_shadow_shadowform"
+              },
+              {
+                "name": "어둠의 힘",
+                "rank": 5,
+                "spell_id": 33225,
+                "icon": "spell_shadow_shadowpower"
+              },
+              {
+                "name": "불행",
+                "rank": 5,
+                "spell_id": 33195,
+                "icon": "spell_shadow_misery"
+              },
+              {
+                "name": "흡혈의 손길",
+                "rank": 1,
+                "spell_id": 34914,
+                "icon": "spell_holy_stoicism"
+              },
+              {
+                "name": "흐트러짐 없는 마음",
+                "rank": 3,
+                "spell_id": 33215,
+                "icon": "spell_nature_focusedmind"
+              }
+            ]
+          },
+          {
+            "name": "수양",
+            "points": 12,
+            "talents": [
+              {
+                "name": "굳은 의지",
+                "rank": 5,
+                "spell_id": 14791,
+                "icon": "spell_magic_magearmor"
+              },
+              {
+                "name": "신의 권능: 인내 연마",
+                "rank": 2,
+                "spell_id": 14767,
+                "icon": "spell_holy_wordfortitude"
+              },
+              {
+                "name": "신의 권능: 보호막 연마",
+                "rank": 3,
+                "spell_id": 14769,
+                "icon": "spell_holy_powerwordshield"
+              },
+              {
+                "name": "내면의 집중력",
+                "rank": 1,
+                "spell_id": 14751,
+                "icon": "spell_frost_windwalkon"
+              },
+              {
+                "name": "명상",
+                "rank": 1,
+                "spell_id": 14521,
+                "icon": "spell_nature_sleep"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "active": false,
+        "trees": []
+      }
+    ],
+    "equipment": [
+      {
+        "slot": "머리",
+        "slot_type": "HEAD",
+        "name": "현신의 영혼무늬 깃장식",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29058,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 공격력 및 치유량 +22 / 주문 적중도 +14",
             "type": "PERMANENT"
           },
           {
-            "text": "민첩성 +6",
+            "text": "주문 공격력 +12 / 최하급 달리기 속도 증가",
             "type": "GEM",
-            "source": "섬세하게 연마된 혈류석"
+            "source": "신속의 별빛불꽃 다이아몬드"
           },
           {
-            "text": "탄력도 +2",
+            "text": "주문 공격력 +6 / 주문 극대화 적중도 +5",
+            "type": "GEM",
+            "source": "마력이 담긴 화려한 황옥"
+          },
+          {
+            "text": "주문 공격력 및 치유량 +5",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_crown_01.jpg"
+      },
+      {
+        "slot": "목",
+        "slot_type": "NECK",
+        "name": "릿신의 잃어버린 펜던트",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 30666,
+        "icon": "icons/inv_jewelry_necklace_30naxxramas.jpg"
+      },
+      {
+        "slot": "어깨",
+        "slot_type": "SHOULDER",
+        "name": "현신의 영혼무늬 어깨보호대",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29060,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 극대화 적중도 +15 / 주문 공격력 및 치유량 +12",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 공격력 +9",
+            "type": "GEM",
+            "source": "룬이 새겨진 생명의 루비"
+          },
+          {
+            "text": "주문 공격력 +6 / 체력 +6",
+            "type": "GEM",
+            "source": "작열하는 탄자나이트"
+          },
+          {
+            "text": "주문 적중도 +3",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_shoulder_25.jpg"
+      },
+      {
+        "slot": "가슴",
+        "slot_type": "CHEST",
+        "name": "현신의 의복",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29056,
+        "enchants": [
+          {
+            "text": "마법부여: 모든 능력치 +6",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 공격력 +12",
+            "type": "GEM",
+            "source": "룬이 새겨진 화려한 루비"
+          },
+          {
+            "text": "주문 공격력 +8",
+            "type": "GEM",
+            "source": "완전한 혈류석"
+          },
+          {
+            "text": "주문 공격력 +9",
+            "type": "GEM",
+            "source": "룬이 새겨진 생명의 루비"
+          }
+        ],
+        "icon": "icons/inv_chest_cloth_43.jpg"
+      },
+      {
+        "slot": "허리",
+        "slot_type": "WAIST",
+        "name": "성스러운 감화의 허리띠",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28799,
+        "enchants": [
+          {
+            "text": "주문 공격력 +9",
+            "type": "GEM",
+            "source": "룬이 새겨진 생명의 루비"
+          },
+          {
+            "text": "주문 공격력 +9",
+            "type": "GEM",
+            "source": "룬이 새겨진 생명의 루비"
+          }
+        ],
+        "icon": "icons/inv_belt_03.jpg"
+      },
+      {
+        "slot": "다리",
+        "slot_type": "LEGS",
+        "name": "현신의 다리보호구",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29059,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 공격력 +35 / 체력 +20",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_pants_cloth_05.jpg"
+      },
+      {
+        "slot": "발",
+        "slot_type": "FEET",
+        "name": "얼어붙은 그림자매듭 장화",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 21870,
+        "enchants": [
+          {
+            "text": "주문 공격력 +9",
+            "type": "GEM",
+            "source": "룬이 새겨진 생명의 루비"
+          },
+          {
+            "text": "주문 공격력 +9",
+            "type": "GEM",
+            "source": "룬이 새겨진 생명의 루비"
+          }
+        ],
+        "icon": "icons/inv_boots_cloth_03.jpg"
+      },
+      {
+        "slot": "손목",
+        "slot_type": "WRIST",
+        "name": "작전사령관의 비단 소매장식",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29002,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 공격력 +15",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 극대화 적중도 +4 / 주문 공격력 +5",
+            "type": "GEM",
+            "source": "마력이 담긴 귀황옥"
+          },
+          {
+            "text": "주문 공격력 +2",
             "type": "GEM"
           }
         ],
@@ -525,95 +1309,116 @@
       {
         "slot": "손",
         "slot_type": "HANDS",
-        "name": "암살의 장갑",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 27509,
+        "name": "현신의 장갑",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29057,
         "enchants": [
           {
-            "text": "마법부여: 전투력 +26",
+            "text": "마법부여: 주문 공격력 +20",
             "type": "PERMANENT"
           }
         ],
-        "icon": "icons/inv_gauntlets_01.jpg"
+        "icon": "icons/inv_gauntlets_17.jpg"
       },
       {
         "slot": "반지 1",
         "slot_type": "FINGER_1",
-        "name": "보랏빛 인장",
+        "name": "순환의 반지",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 29281,
-        "icon": "icons/inv_jewelry_ring_62.jpg"
+        "item_id": 28753,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 공격력 +12",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_jewelry_ring_15.jpg"
       },
       {
         "slot": "반지 2",
         "slot_type": "FINGER_2",
-        "name": "빛의 수호자 고리",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 29128,
-        "icon": "icons/inv_jewelry_ring_48naxxramas.jpg"
+        "name": "대마법사의 보랏빛 인장",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29287,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 공격력 +12",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_jewelry_ring_62.jpg"
       },
       {
         "slot": "장신구 1",
         "slot_type": "TRINKET_1",
-        "name": "해결사의 모래시계",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 28034,
-        "icon": "icons/inv_gizmo_khoriumpowercore.jpg"
+        "name": "은빛 초승달의 상징",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29370,
+        "icon": "icons/inv_weapon_shortblade_23.jpg"
       },
       {
         "slot": "장신구 2",
         "slot_type": "TRINKET_2",
-        "name": "블레이드피스트의 관용",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 28041,
-        "icon": "icons/inv_datacrystal06.jpg"
+        "name": "마그테리돈의 눈",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28789,
+        "icon": "icons/inv_elemental_mote_life01.jpg"
       },
       {
         "slot": "등",
         "slot_type": "BACK",
-        "name": "원정순찰대 야생망토",
+        "name": "비전의 루비 외투",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 28764,
+        "item_id": 28766,
         "enchants": [
           {
-            "text": "마법부여: 민첩성 +12",
+            "text": "마법부여: 위협 수준 감소",
             "type": "PERMANENT"
           }
         ],
-        "icon": "icons/inv_misc_cape_17.jpg"
+        "icon": "icons/inv_misc_cape_18.jpg"
       },
       {
         "slot": "주장비",
         "slot_type": "MAIN_HAND",
-        "name": "대지의 파수꾼",
+        "name": "검투사의 마법검",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 29171,
+        "item_id": 28297,
         "enchants": [
           {
-            "text": "마법부여: 민첩성 +35",
+            "text": "마법부여: 냉기의 영혼",
             "type": "PERMANENT"
           }
         ],
-        "icon": "icons/inv_hammer_10.jpg"
+        "icon": "icons/inv_weapon_shortblade_26.jpg"
+      },
+      {
+        "slot": "보조장비",
+        "slot_type": "OFF_HAND",
+        "name": "영혼포식자의 보주",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29272,
+        "icon": "icons/inv_misc_orb_04.jpg"
       },
       {
         "slot": "원거리 장비",
         "slot_type": "RANGED",
-        "name": "야생의 우상",
-        "quality": "고급",
-        "quality_type": "UNCOMMON",
-        "item_id": 28064,
-        "icon": "icons/spell_nature_spiritwolf.jpg"
+        "name": "소멸의 에레다르 마법봉",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28783,
+        "icon": "icons/inv_wand_20.jpg"
       }
     ],
-    "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/245/15827445-avatar.jpg",
+    "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/12/30387980-avatar.jpg",
     "profile_restricted": false
   },
   {
@@ -1185,16 +1990,651 @@
     "profile_restricted": false
   },
   {
-    "name": "최애",
+    "name": "연소",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
     "level": 70,
-    "class": "주술사",
-    "race": "드레나이",
+    "class": "흑마법사",
+    "race": "노움",
     "faction": "ALLIANCE",
-    "guild": "시그널",
+    "guild": "",
     "brackets": {
       "2v2": {
+        "rating": 1500,
+        "won": 0,
+        "lost": 0,
+        "played": 0,
+        "season_id": 2,
+        "rank": 1
+      }
+    },
+    "spec_groups": [
+      {
+        "active": false,
+        "trees": [
+          {
+            "name": "파괴",
+            "points": 40,
+            "talents": [
+              {
+                "name": "어둠의 화살 연마",
+                "rank": 5,
+                "spell_id": 17803,
+                "icon": "spell_shadow_shadowbolt"
+              },
+              {
+                "name": "파멸",
+                "rank": 5,
+                "spell_id": 17792,
+                "icon": "spell_shadow_deathpact"
+              },
+              {
+                "name": "황폐",
+                "rank": 5,
+                "spell_id": 18134,
+                "icon": "spell_fire_flameshock"
+              },
+              {
+                "name": "어둠의 연소",
+                "rank": 1,
+                "spell_id": 17877,
+                "icon": "spell_shadow_scourgebuild"
+              },
+              {
+                "name": "파괴의 테두리",
+                "rank": 2,
+                "spell_id": 17918,
+                "icon": "spell_shadow_corpseexplode"
+              },
+              {
+                "name": "격렬",
+                "rank": 2,
+                "spell_id": 18136,
+                "icon": "spell_fire_lavaspawn"
+              },
+              {
+                "name": "붕괴",
+                "rank": 1,
+                "spell_id": 17959,
+                "icon": "spell_shadow_shadowwordpain"
+              },
+              {
+                "name": "재앙",
+                "rank": 5,
+                "spell_id": 17782,
+                "icon": "spell_fire_windsofwoe"
+              },
+              {
+                "name": "황천의 보호",
+                "rank": 3,
+                "spell_id": 30302,
+                "icon": "spell_shadow_netherprotection"
+              },
+              {
+                "name": "제물 연마",
+                "rank": 1,
+                "spell_id": 17815,
+                "icon": "spell_fire_immolation"
+              },
+              {
+                "name": "반발력",
+                "rank": 3,
+                "spell_id": 34939,
+                "icon": "spell_fire_playingwithfire"
+              },
+              {
+                "name": "영혼 갈취",
+                "rank": 2,
+                "spell_id": 30295,
+                "icon": "spell_shadow_soulleech_3"
+              },
+              {
+                "name": "어둠과 불길",
+                "rank": 5,
+                "spell_id": 30292,
+                "icon": "spell_shadow_shadowandflame"
+              }
+            ]
+          },
+          {
+            "name": "악마",
+            "points": 21,
+            "talents": [
+              {
+                "name": "악마의 은총",
+                "rank": 5,
+                "spell_id": 18701,
+                "icon": "spell_shadow_metamorphosis"
+              },
+              {
+                "name": "생명석 연마",
+                "rank": 2,
+                "spell_id": 18693,
+                "icon": "inv_stone_04"
+              },
+              {
+                "name": "마의 지능",
+                "rank": 3,
+                "spell_id": 18744,
+                "icon": "spell_holy_magicalsentry"
+              },
+              {
+                "name": "악마의 보호",
+                "rank": 3,
+                "spell_id": 30145,
+                "icon": "spell_shadow_ragingscream"
+              },
+              {
+                "name": "마의 지배",
+                "rank": 1,
+                "spell_id": 18708,
+                "icon": "spell_nature_removecurse"
+              },
+              {
+                "name": "마의 체력",
+                "rank": 1,
+                "spell_id": 18748,
+                "icon": "spell_shadow_antishadow"
+              },
+              {
+                "name": "소환의 대가",
+                "rank": 2,
+                "spell_id": 18710,
+                "icon": "spell_shadow_impphaseshift"
+              },
+              {
+                "name": "부정의 힘",
+                "rank": 3,
+                "spell_id": 18771,
+                "icon": "spell_shadow_shadowworddominate"
+              },
+              {
+                "name": "악의 제물",
+                "rank": 1,
+                "spell_id": 18788,
+                "icon": "spell_shadow_psychicscream"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "active": true,
+        "trees": [
+          {
+            "name": "악마",
+            "points": 36,
+            "talents": [
+              {
+                "name": "악마의 은총",
+                "rank": 5,
+                "spell_id": 18701,
+                "icon": "spell_shadow_metamorphosis"
+              },
+              {
+                "name": "생명석 연마",
+                "rank": 2,
+                "spell_id": 18693,
+                "icon": "inv_stone_04"
+              },
+              {
+                "name": "마의 지능",
+                "rank": 1,
+                "spell_id": 18731,
+                "icon": "spell_holy_magicalsentry"
+              },
+              {
+                "name": "생명력 집중 연마",
+                "rank": 2,
+                "spell_id": 18704,
+                "icon": "spell_shadow_lifedrain"
+              },
+              {
+                "name": "마의 체력",
+                "rank": 3,
+                "spell_id": 18750,
+                "icon": "spell_shadow_antishadow"
+              },
+              {
+                "name": "악마의 보호",
+                "rank": 3,
+                "spell_id": 30145,
+                "icon": "spell_shadow_ragingscream"
+              },
+              {
+                "name": "마의 지배",
+                "rank": 1,
+                "spell_id": 18708,
+                "icon": "spell_nature_removecurse"
+              },
+              {
+                "name": "소환의 대가",
+                "rank": 2,
+                "spell_id": 18710,
+                "icon": "spell_shadow_impphaseshift"
+              },
+              {
+                "name": "부정의 힘",
+                "rank": 5,
+                "spell_id": 18773,
+                "icon": "spell_shadow_shadowworddominate"
+              },
+              {
+                "name": "악의 제물",
+                "rank": 1,
+                "spell_id": 18788,
+                "icon": "spell_shadow_psychicscream"
+              },
+              {
+                "name": "악령술의 대가",
+                "rank": 4,
+                "spell_id": 23824,
+                "icon": "spell_shadow_shadowpact"
+              },
+              {
+                "name": "마나 섭취",
+                "rank": 1,
+                "spell_id": 30326,
+                "icon": "spell_shadow_manafeed"
+              },
+              {
+                "name": "영혼의 고리",
+                "rank": 1,
+                "spell_id": 19028,
+                "icon": "spell_shadow_gathershadows"
+              },
+              {
+                "name": "악마의 지식",
+                "rank": 3,
+                "spell_id": 35693,
+                "icon": "spell_shadow_improvedvampiricembrace"
+              },
+              {
+                "name": "악마의 탄력성",
+                "rank": 2,
+                "spell_id": 30320,
+                "icon": "spell_shadow_demonicfortitude"
+              }
+            ]
+          },
+          {
+            "name": "고통",
+            "points": 25,
+            "talents": [
+              {
+                "name": "부패 연마",
+                "rank": 5,
+                "spell_id": 17814,
+                "icon": "spell_shadow_abominationexplosion"
+              },
+              {
+                "name": "생명력 전환 연마",
+                "rank": 2,
+                "spell_id": 18183,
+                "icon": "spell_shadow_burningspirit"
+              },
+              {
+                "name": "영혼 착취",
+                "rank": 2,
+                "spell_id": 17805,
+                "icon": "spell_shadow_lifedrain02"
+              },
+              {
+                "name": "억제",
+                "rank": 1,
+                "spell_id": 18174,
+                "icon": "spell_shadow_unsummonbuilding"
+              },
+              {
+                "name": "저주 증폭",
+                "rank": 1,
+                "spell_id": 18288,
+                "icon": "spell_shadow_contagion"
+              },
+              {
+                "name": "마의 정신집중",
+                "rank": 2,
+                "spell_id": 17784,
+                "icon": "spell_shadow_fingerofdeath"
+              },
+              {
+                "name": "고통의 저주 연마",
+                "rank": 2,
+                "spell_id": 18829,
+                "icon": "spell_shadow_curseofsargeras"
+              },
+              {
+                "name": "부패 강화",
+                "rank": 3,
+                "spell_id": 32383,
+                "icon": "spell_shadow_abominationexplosion"
+              },
+              {
+                "name": "일몰",
+                "rank": 2,
+                "spell_id": 18095,
+                "icon": "spell_shadow_twilight"
+              },
+              {
+                "name": "냉혹의 테두리",
+                "rank": 2,
+                "spell_id": 18219,
+                "icon": "spell_shadow_callofbone"
+              },
+              {
+                "name": "생명력 착취",
+                "rank": 1,
+                "spell_id": 18265,
+                "icon": "spell_shadow_requiem"
+              },
+              {
+                "name": "피로의 저주",
+                "rank": 1,
+                "spell_id": 18223,
+                "icon": "spell_shadow_grimward"
+              },
+              {
+                "name": "어둠의 선물",
+                "rank": 1,
+                "spell_id": 32385,
+                "icon": "spell_shadow_shadowembrace"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "equipment": [
+      {
+        "slot": "머리",
+        "slot_type": "HEAD",
+        "name": "검투사의 공포매듭 두건",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 24553,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 공격력 및 치유량 +22 / 주문 적중도 +14",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 공격력 +12 / 최하급 달리기 속도 증가",
+            "type": "GEM",
+            "source": "신속의 별빛불꽃 다이아몬드"
+          },
+          {
+            "text": "주문 공격력 +7",
+            "type": "GEM",
+            "source": "룬이 새겨진 혈류석"
+          },
+          {
+            "text": "탄력도 +4",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_helmet_30.jpg"
+      },
+      {
+        "slot": "목",
+        "slot_type": "NECK",
+        "name": "멈출 수 없는 격노의 브로치",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28530,
+        "icon": "icons/inv_jewelry_necklace_ahnqiraj_04.jpg"
+      },
+      {
+        "slot": "어깨",
+        "slot_type": "SHOULDER",
+        "name": "검투사의 공포매듭 어깨보호대",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 24554,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 극대화 적중도 +15 / 주문 공격력 및 치유량 +12",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 관통력 +10",
+            "type": "GEM",
+            "source": "휘몰아치는 엘룬의 별"
+          },
+          {
+            "text": "탄력도 +4 / 체력 +6",
+            "type": "GEM",
+            "source": "한결같은 탈라사이트"
+          },
+          {
+            "text": "탄력도 +3",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_shoulder_02.jpg"
+      },
+      {
+        "slot": "가슴",
+        "slot_type": "CHEST",
+        "name": "검투사의 공포매듭 로브",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 24552,
+        "enchants": [
+          {
+            "text": "마법부여: 모든 능력치 +6",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 공격력 +7",
+            "type": "GEM",
+            "source": "룬이 새겨진 혈류석"
+          },
+          {
+            "text": "탄력도 +4 / 체력 +6",
+            "type": "GEM",
+            "source": "한결같은 탈라사이트"
+          },
+          {
+            "text": "탄력도 +4 / 체력 +6",
+            "type": "GEM",
+            "source": "한결같은 탈라사이트"
+          },
+          {
+            "text": "탄력도 +4",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_chest_cloth_43.jpg"
+      },
+      {
+        "slot": "허리",
+        "slot_type": "WAIST",
+        "name": "역전용사의 공포매듭 허리띠",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 32799,
+        "icon": "icons/inv_belt_17.jpg"
+      },
+      {
+        "slot": "다리",
+        "slot_type": "LEGS",
+        "name": "검투사의 공포매듭 다리보호구",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 24555,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 공격력 +25 / 체력 +15",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_pants_cloth_05.jpg"
+      },
+      {
+        "slot": "발",
+        "slot_type": "FEET",
+        "name": "역전용사의 공포매듭 장화",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 32787,
+        "enchants": [
+          {
+            "text": "마법부여: 체력 +10",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_boots_05.jpg"
+      },
+      {
+        "slot": "손목",
+        "slot_type": "WRIST",
+        "name": "역전용사의 공포매듭 소매장식",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 32811,
+        "enchants": [
+          {
+            "text": "마법부여: 지능 +12",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "탄력도 +8",
+            "type": "GEM",
+            "source": "신비로운 여명석"
+          },
+          {
+            "text": "주문 공격력 +2",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_bracer_07.jpg"
+      },
+      {
+        "slot": "손",
+        "slot_type": "HANDS",
+        "name": "검투사의 공포매듭 장갑",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 24556,
+        "enchants": [
+          {
+            "text": "마법부여: 체력 +10",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_gauntlets_15.jpg"
+      },
+      {
+        "slot": "반지 1",
+        "slot_type": "FINGER_1",
+        "name": "지배의 역전용사 고리",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 33056,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 공격력 +12",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_jewelry_ring_60.jpg"
+      },
+      {
+        "slot": "반지 2",
+        "slot_type": "FINGER_2",
+        "name": "붉은 분노의 고리",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28793,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 공격력 +12",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_jewelry_ring_65.jpg"
+      },
+      {
+        "slot": "장신구 1",
+        "slot_type": "TRINKET_1",
+        "name": "은빛 초승달의 상징",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29370,
+        "icon": "icons/inv_weapon_shortblade_23.jpg"
+      },
+      {
+        "slot": "장신구 2",
+        "slot_type": "TRINKET_2",
+        "name": "얼라이언스의 메달",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 30348,
+        "icon": "icons/inv_jewelry_trinketpvp_01.jpg"
+      },
+      {
+        "slot": "등",
+        "slot_type": "BACK",
+        "name": "수호병의 두꺼운 외투",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28378,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 관통력 +20",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_misc_cape_07.jpg"
+      },
+      {
+        "slot": "주장비",
+        "slot_type": "MAIN_HAND",
+        "name": "정신의 나스레짐 단검",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28770,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 공격력 및 치유 +40",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_weapon_shortblade_41.jpg"
+      },
+      {
+        "slot": "보조장비",
+        "slot_type": "OFF_HAND",
+        "name": "무한한 가능성의 보석",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28734,
+        "icon": "icons/inv_misc_gem_ebondraenite_02.jpg"
+      },
+      {
+        "slot": "원거리 장비",
+        "slot_type": "RANGED",
+        "name": "검투사의 타도의 손길",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28320,
+        "icon": "icons/inv_wand_09.jpg"
+      }
+    ],
+    "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/132/18035844-avatar.jpg",
+    "profile_restricted": false
+  },
+  {
+    "name": "리르일루와잇",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "level": 70,
+    "class": "사제",
+    "race": "인간",
+    "faction": "ALLIANCE",
+    "guild": "왁타버스",
+    "brackets": {
+      "3v3": {
         "rating": 1500,
         "won": 0,
         "lost": 0,
@@ -1208,128 +2648,140 @@
         "active": true,
         "trees": [
           {
-            "name": "정기",
-            "points": 41,
+            "name": "수양",
+            "points": 43,
             "talents": [
               {
-                "name": "기의 흐름",
+                "name": "굳은 의지",
                 "rank": 5,
-                "spell_id": 16112,
-                "icon": "spell_nature_wispsplode"
+                "spell_id": 14791,
+                "icon": "spell_magic_magearmor"
               },
               {
-                "name": "촉발",
-                "rank": 5,
-                "spell_id": 16108,
-                "icon": "spell_fire_fireball"
+                "name": "신의 권능: 보호막 연마",
+                "rank": 3,
+                "spell_id": 14769,
+                "icon": "spell_holy_powerwordshield"
               },
               {
-                "name": "정기의 집중",
-                "rank": 1,
-                "spell_id": 16164,
-                "icon": "spell_shadow_manaburn"
-              },
-              {
-                "name": "산울림",
-                "rank": 4,
-                "spell_id": 16115,
-                "icon": "spell_frost_frostward"
-              },
-              {
-                "name": "천둥의 부름",
-                "rank": 5,
-                "spell_id": 16120,
-                "icon": "spell_nature_callstorm"
-              },
-              {
-                "name": "폭풍의 테두리",
+                "name": "신의 권능: 인내 연마",
                 "rank": 2,
-                "spell_id": 29000,
-                "icon": "spell_nature_stormreach"
+                "spell_id": 14767,
+                "icon": "spell_holy_wordfortitude"
               },
               {
-                "name": "자연의 격노",
-                "rank": 1,
-                "spell_id": 16089,
-                "icon": "spell_fire_volcano"
-              },
-              {
-                "name": "몰아치는 폭풍",
+                "name": "명상",
                 "rank": 3,
-                "spell_id": 30666,
-                "icon": "spell_nature_unrelentingstorm"
+                "spell_id": 14777,
+                "icon": "spell_nature_sleep"
               },
               {
-                "name": "정기의 정밀함",
-                "rank": 3,
-                "spell_id": 30674,
-                "icon": "spell_nature_elementalprecision_1"
-              },
-              {
-                "name": "번개 전문화",
-                "rank": 5,
-                "spell_id": 16582,
-                "icon": "spell_lightning_lightningbolt01"
-              },
-              {
-                "name": "정기의 깨달음",
+                "name": "내면의 집중력",
                 "rank": 1,
-                "spell_id": 16166,
-                "icon": "spell_nature_wispheal"
+                "spell_id": 14751,
+                "icon": "spell_frost_windwalkon"
               },
               {
-                "name": "넘치는 정기",
+                "name": "무언의 결심",
                 "rank": 5,
-                "spell_id": 30681,
-                "icon": "spell_nature_lightningoverload"
+                "spell_id": 14787,
+                "icon": "spell_nature_manaregentotem"
               },
               {
-                "name": "격노의 토템",
+                "name": "마음의 기민함",
+                "rank": 5,
+                "spell_id": 14783,
+                "icon": "ability_hibernation"
+              },
+              {
+                "name": "천상의 정신",
                 "rank": 1,
-                "spell_id": 30706,
-                "icon": "spell_fire_totemofwrath"
+                "spell_id": 14752,
+                "icon": "spell_holy_divinespirit"
+              },
+              {
+                "name": "천상의 정신 연마",
+                "rank": 2,
+                "spell_id": 33182,
+                "icon": "spell_holy_divinespirit"
+              },
+              {
+                "name": "정신력",
+                "rank": 5,
+                "spell_id": 18555,
+                "icon": "spell_nature_enchantarmor"
+              },
+              {
+                "name": "집중된 마력",
+                "rank": 2,
+                "spell_id": 33190,
+                "icon": "spell_shadow_focusedpower"
+              },
+              {
+                "name": "마력 주입",
+                "rank": 1,
+                "spell_id": 10060,
+                "icon": "spell_holy_powerinfusion"
+              },
+              {
+                "name": "깨달음",
+                "rank": 5,
+                "spell_id": 34912,
+                "icon": "spell_arcane_mindmastery"
+              },
+              {
+                "name": "고통 억제",
+                "rank": 1,
+                "spell_id": 33206,
+                "icon": "spell_holy_painsupression"
+              },
+              {
+                "name": "사면",
+                "rank": 2,
+                "spell_id": 33171,
+                "icon": "spell_holy_absolution"
               }
             ]
           },
           {
-            "name": "복원",
-            "points": 20,
+            "name": "신성",
+            "points": 18,
             "talents": [
               {
-                "name": "해일의 집중",
-                "rank": 5,
-                "spell_id": 16217,
-                "icon": "spell_frost_manarecharge"
+                "name": "치유의 정신집중",
+                "rank": 2,
+                "spell_id": 15012,
+                "icon": "spell_holy_healingfocus"
               },
               {
-                "name": "토템 집중",
-                "rank": 5,
-                "spell_id": 16225,
-                "icon": "spell_nature_moonglow"
-              },
-              {
-                "name": "자연의 가르침",
+                "name": "소생 연마",
                 "rank": 3,
-                "spell_id": 16198,
-                "icon": "spell_frost_stun"
+                "spell_id": 17191,
+                "icon": "spell_holy_renew"
               },
               {
-                "name": "치유의 집중",
-                "rank": 1,
-                "spell_id": 16181,
-                "icon": "spell_nature_healingwavelesser"
-              },
-              {
-                "name": "토템 전문화",
-                "rank": 1,
-                "spell_id": 16189,
-                "icon": "spell_nature_nullward"
-              },
-              {
-                "name": "해일의 깨달음",
+                "name": "신의 격노",
                 "rank": 5,
-                "spell_id": 16221,
-                "icon": "spell_nature_tranquility"
+                "spell_id": 18535,
+                "icon": "spell_holy_sealofwrath"
+              },
+              {
+                "name": "신의 계시",
+                "rank": 3,
+                "spell_id": 15363,
+                "icon": "spell_holy_layonhands"
+              },
+              {
+                "name": "신성 마법 전문화",
+                "rank": 2,
+                "spell_id": 15008,
+                "icon": "spell_holy_sealofsalvation"
+              },
+              {
+                "name": "치유 연마",
+                "rank": 3,
+                "spell_id": 15014,
+                "icon": "spell_holy_heal02"
               }
             ]
           }
@@ -1337,240 +2789,396 @@
       },
       {
         "active": false,
-        "trees": []
+        "trees": [
+          {
+            "name": "수양",
+            "points": 15,
+            "talents": [
+              {
+                "name": "굳은 의지",
+                "rank": 5,
+                "spell_id": 14791,
+                "icon": "spell_magic_magearmor"
+              },
+              {
+                "name": "신의 권능: 보호막 연마",
+                "rank": 3,
+                "spell_id": 14769,
+                "icon": "spell_holy_powerwordshield"
+              },
+              {
+                "name": "신의 권능: 인내 연마",
+                "rank": 2,
+                "spell_id": 14767,
+                "icon": "spell_holy_wordfortitude"
+              },
+              {
+                "name": "내면의 집중력",
+                "rank": 1,
+                "spell_id": 14751,
+                "icon": "spell_frost_windwalkon"
+              },
+              {
+                "name": "명상",
+                "rank": 3,
+                "spell_id": 14777,
+                "icon": "spell_nature_sleep"
+              },
+              {
+                "name": "마법봉류 전문화",
+                "rank": 1,
+                "spell_id": 14524,
+                "icon": "inv_wand_01"
+              }
+            ]
+          },
+          {
+            "name": "암흑",
+            "points": 46,
+            "talents": [
+              {
+                "name": "정신력 누출",
+                "rank": 5,
+                "spell_id": 15338,
+                "icon": "spell_shadow_requiem"
+              },
+              {
+                "name": "어둠의 권능: 고통 연마",
+                "rank": 2,
+                "spell_id": 15317,
+                "icon": "spell_shadow_shadowwordpain"
+              },
+              {
+                "name": "암흑 마법 집중",
+                "rank": 5,
+                "spell_id": 15330,
+                "icon": "spell_shadow_burningspirit"
+              },
+              {
+                "name": "정신 분열 연마",
+                "rank": 5,
+                "spell_id": 15316,
+                "icon": "spell_shadow_unholyfrenzy"
+              },
+              {
+                "name": "정신의 채찍",
+                "rank": 1,
+                "spell_id": 15407,
+                "icon": "spell_shadow_siphonmana"
+              },
+              {
+                "name": "어둠의 테두리",
+                "rank": 2,
+                "spell_id": 17323,
+                "icon": "spell_shadow_chilltouch"
+              },
+              {
+                "name": "흐트러짐 없는 마음",
+                "rank": 3,
+                "spell_id": 33215,
+                "icon": "spell_nature_focusedmind"
+              },
+              {
+                "name": "흡혈의 선물",
+                "rank": 1,
+                "spell_id": 15286,
+                "icon": "spell_shadow_unsummonbuilding"
+              },
+              {
+                "name": "어둠의 매듭",
+                "rank": 5,
+                "spell_id": 15334,
+                "icon": "spell_shadow_blackplague"
+              },
+              {
+                "name": "어둠",
+                "rank": 5,
+                "spell_id": 15310,
+                "icon": "spell_shadow_twilight"
+              },
+              {
+                "name": "어둠의 형상",
+                "rank": 1,
+                "spell_id": 15473,
+                "icon": "spell_shadow_shadowform"
+              },
+              {
+                "name": "어둠의 힘",
+                "rank": 5,
+                "spell_id": 33225,
+                "icon": "spell_shadow_shadowpower"
+              },
+              {
+                "name": "불행",
+                "rank": 5,
+                "spell_id": 33195,
+                "icon": "spell_shadow_misery"
+              },
+              {
+                "name": "흡혈의 손길",
+                "rank": 1,
+                "spell_id": 34914,
+                "icon": "spell_holy_stoicism"
+              }
+            ]
+          }
+        ]
       }
     ],
     "equipment": [
       {
         "slot": "머리",
         "slot_type": "HEAD",
-        "name": "예언자의 쇠사슬 투구",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 35388,
+        "name": "나루의 축복 두건",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 32090,
         "enchants": [
           {
-            "text": "주문 극대화 적중도 +12 / 주문 치명타 피해 3%만큼 증가",
-            "type": "GEM",
-            "source": "혼돈의 하늘불꽃 다이아몬드"
-          },
-          {
-            "text": "주문 공격력 +7",
-            "type": "GEM",
-            "source": "룬이 새겨진 혈류석"
-          },
-          {
-            "text": "탄력도 +4",
-            "type": "GEM"
-          }
-        ],
-        "icon": "icons/inv_helmet_09.jpg"
-      },
-      {
-        "slot": "목",
-        "slot_type": "NECK",
-        "name": "세데크 예언자의 목걸이",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 29333,
-        "icon": "icons/inv_jewelry_necklace_29naxxramas.jpg"
-      },
-      {
-        "slot": "어깨",
-        "slot_type": "SHOULDER",
-        "name": "예언자의 고리사슬 어깨보호구",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 35395,
-        "enchants": [
-          {
-            "text": "주문 공격력 +7",
-            "type": "GEM",
-            "source": "룬이 새겨진 혈류석"
-          },
-          {
-            "text": "주문 극대화 적중도 +3 / 주문 공격력 +4",
-            "type": "GEM",
-            "source": "마력이 담긴 불꽃석류석"
-          },
-          {
-            "text": "탄력도 +3",
-            "type": "GEM"
-          }
-        ],
-        "icon": "icons/inv_shoulder_29.jpg"
-      },
-      {
-        "slot": "가슴",
-        "slot_type": "CHEST",
-        "name": "살아 있는 번개 조끼",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 24357,
-        "enchants": [
-          {
-            "text": "마법부여: 생명력 +100",
+            "text": "마법부여: 주문 치유량 +35 / 주문 공격력 +12 / 5초당 마나 회복량 +7",
             "type": "PERMANENT"
           },
           {
-            "text": "주문 공격력 +7",
+            "text": "주문 치유량 +9 / 주문 공격력 +3 / 정신력 +4",
             "type": "GEM",
-            "source": "룬이 새겨진 혈류석"
+            "source": "정화된 암흑 진주"
           },
           {
-            "text": "주문 공격력 +4 / 체력 +4",
+            "text": "지능 +12 / 주문 시전 시 일정 확률로 마나 회복",
             "type": "GEM",
-            "source": "작열하는 암흑 드레나이트"
-          },
-          {
-            "text": "주문 극대화 적중도 +3 / 주문 관통력 +4",
-            "type": "GEM",
-            "source": "눈부신 심연의 감람석"
+            "source": "통찰의 대지폭풍 다이아몬드"
           },
           {
             "text": "주문 치유량 +9 / 주문 공격력 +3",
             "type": "GEM"
           }
         ],
-        "icon": "icons/inv_chest_cloth_06.jpg"
+        "icon": "icons/inv_helmet_30.jpg"
+      },
+      {
+        "slot": "목",
+        "slot_type": "NECK",
+        "name": "영원한 희망의 목걸이",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29374,
+        "icon": "icons/inv_jewelry_necklace_31.jpg"
+      },
+      {
+        "slot": "어깨",
+        "slot_type": "SHOULDER",
+        "name": "태초의 달빛매듭 어깨보호대",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 21874,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +33 / 주문 공격력 +11 / 마나 회복량 +4",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_shoulder_02.jpg"
+      },
+      {
+        "slot": "가슴",
+        "slot_type": "CHEST",
+        "name": "태초의 달빛매듭 로브",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 21875,
+        "enchants": [
+          {
+            "text": "마법부여: 모든 능력치 +6",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 치유량 +11 / 주문 공격력 +4 / 지능 +4",
+            "type": "GEM",
+            "source": "영롱한 불꽃 오팔"
+          },
+          {
+            "text": "주문 치유량 +7 / 주문 공격력 +3 / 정신력 +3",
+            "type": "GEM",
+            "source": "정화된 톱니조개 진주"
+          },
+          {
+            "text": "지능 +3",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_chest_cloth_04.jpg"
       },
       {
         "slot": "허리",
         "slot_type": "WAIST",
-        "name": "작전사령관의 쇠사슬 벨트",
+        "name": "태초의 달빛매듭 허리띠",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 28993,
-        "icon": "icons/inv_belt_20.jpg"
+        "item_id": 21873,
+        "enchants": [
+          {
+            "text": "주문 치유량 +7 / 주문 공격력 +3 / 지능 +3",
+            "type": "GEM",
+            "source": "영롱한 불꽃석류석"
+          },
+          {
+            "text": "주문 치유량 +9 / 주문 공격력 +3 / 정신력 +4",
+            "type": "GEM",
+            "source": "정화된 암흑 진주"
+          },
+          {
+            "text": "지능 +3",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_belt_31.jpg"
       },
       {
         "slot": "다리",
         "slot_type": "LEGS",
-        "name": "예언자의 고리사슬 다리보호구",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 35394,
+        "name": "카마이의 하늘색 치마",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 31343,
         "enchants": [
           {
             "text": "마법부여: 주문 치유량 +46 / 주문 공격력 +16 / 체력 +15",
             "type": "PERMANENT"
           }
         ],
-        "icon": "icons/inv_pants_mail_15.jpg"
+        "icon": "icons/inv_pants_cloth_20.jpg"
       },
       {
         "slot": "발",
         "slot_type": "FEET",
-        "name": "작전사령관의 쇠사슬 발덮개",
+        "name": "긴 여정의 장화",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 28994,
+        "item_id": 30035,
         "enchants": [
           {
-            "text": "마법부여: 체력 +7",
+            "text": "마법부여: 최하급 속도 증가",
             "type": "PERMANENT"
           }
         ],
-        "icon": "icons/inv_boots_plate_06.jpg"
+        "icon": "icons/inv_boots_cloth_14.jpg"
       },
       {
         "slot": "손목",
         "slot_type": "WRIST",
-        "name": "작전사령관의 쇠사슬 팔보호구",
+        "name": "시간여행자의 손목띠",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 28992,
+        "item_id": 29183,
         "enchants": [
           {
-            "text": "마법부여: 지능 +12",
+            "text": "마법부여: 주문 치유량 +30 / 주문 공격력 +10",
             "type": "PERMANENT"
-          },
-          {
-            "text": "주문 극대화 적중도 +3 / 주문 공격력 +4",
-            "type": "GEM",
-            "source": "마력이 담긴 불꽃석류석"
-          },
-          {
-            "text": "탄력도 +2",
-            "type": "GEM"
           }
         ],
-        "icon": "icons/inv_bracer_16.jpg"
+        "icon": "icons/inv_bracer_10.jpg"
       },
       {
         "slot": "손",
         "slot_type": "HANDS",
-        "name": "예언자의 쇠사슬 건틀릿",
+        "name": "달빛매듭 전투 장갑",
         "quality": "희귀",
         "quality_type": "RARE",
-        "item_id": 35387,
-        "icon": "icons/inv_gauntlets_11.jpg"
+        "item_id": 35335,
+        "icon": "icons/inv_gauntlets_15.jpg"
       },
       {
         "slot": "반지 1",
         "slot_type": "FINGER_1",
-        "name": "아쉬옌의 선물",
+        "name": "치유사의 열정 반지",
         "quality": "영웅",
         "quality_type": "EPIC",
-        "item_id": 29172,
-        "icon": "icons/inv_jewelry_ring_51naxxramas.jpg"
+        "item_id": 28661,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +20 / 주문 공격력 +7",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_jewelry_ring_36.jpg"
       },
       {
         "slot": "반지 2",
         "slot_type": "FINGER_2",
-        "name": "수호자의 고리",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 29320,
-        "icon": "icons/inv_jewelry_ring_38.jpg"
+        "name": "후광의 반지",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29373,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +20 / 주문 공격력 +7",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_jewelry_ring_53naxxramas.jpg"
       },
       {
         "slot": "장신구 1",
         "slot_type": "TRINKET_1",
-        "name": "지리의 선물",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 29179,
-        "icon": "icons/inv_misc_elvencoins.jpg"
+        "name": "순교자의 정수",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29376,
+        "icon": "icons/inv_valentineperfumebottle.jpg"
       },
       {
         "slot": "장신구 2",
         "slot_type": "TRINKET_2",
-        "name": "쿠아그미란의 눈",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 27683,
-        "icon": "icons/inv_misc_gem_pearl_01.jpg"
+        "name": "보랏빛 눈의 펜던트",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28727,
+        "icon": "icons/inv_trinket_naxxramas02.jpg"
       },
       {
         "slot": "등",
         "slot_type": "BACK",
-        "name": "바바의 비전술 망토",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 28269,
-        "icon": "icons/inv_misc_cape_05.jpg"
+        "name": "주교의 망토",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29375,
+        "icon": "icons/inv_misc_cape_02.jpg"
       },
       {
         "slot": "주장비",
         "slot_type": "MAIN_HAND",
-        "name": "아키나이 지팡이",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 29130,
-        "icon": "icons/inv_staff_14.jpg"
+        "name": "검투사의 구원봉",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 32451,
+        "enchants": [
+          {
+            "text": "마법부여: 마력의 폭풍",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_mace_47.jpg"
+      },
+      {
+        "slot": "보조장비",
+        "slot_type": "OFF_HAND",
+        "name": "흔들리지 않는 신념의 인장",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28525,
+        "icon": "icons/inv_jewelry_ring_60.jpg"
       },
       {
         "slot": "원거리 장비",
         "slot_type": "RANGED",
-        "name": "공허의 토템",
+        "name": "알도르 영혼마법봉",
         "quality": "희귀",
         "quality_type": "RARE",
-        "item_id": 28248,
-        "icon": "icons/spell_arcane_blast.jpg"
+        "item_id": 27885,
+        "icon": "icons/inv_wand_05.jpg"
       }
     ],
-    "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/241/30453233-avatar.jpg",
+    "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/58/32164410-avatar.jpg",
     "profile_restricted": false
   },
   {
@@ -2189,6 +3797,576 @@
     "profile_restricted": false
   },
   {
+    "name": "채은",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "level": 70,
+    "class": "사제",
+    "race": "인간",
+    "faction": "ALLIANCE",
+    "guild": "",
+    "brackets": {
+      "2v2": {
+        "rating": 1500,
+        "won": 0,
+        "lost": 0,
+        "played": 0,
+        "season_id": 2,
+        "rank": 1
+      }
+    },
+    "spec_groups": [
+      {
+        "active": false,
+        "trees": [
+          {
+            "name": "암흑",
+            "points": 47,
+            "talents": [
+              {
+                "name": "정신력 누출",
+                "rank": 5,
+                "spell_id": 15338,
+                "icon": "spell_shadow_requiem"
+              },
+              {
+                "name": "암흑 마법 친화",
+                "rank": 3,
+                "spell_id": 15320,
+                "icon": "spell_shadow_shadowward"
+              },
+              {
+                "name": "어둠의 권능: 고통 연마",
+                "rank": 2,
+                "spell_id": 15317,
+                "icon": "spell_shadow_shadowwordpain"
+              },
+              {
+                "name": "암흑 마법 집중",
+                "rank": 5,
+                "spell_id": 15330,
+                "icon": "spell_shadow_burningspirit"
+              },
+              {
+                "name": "정신의 채찍",
+                "rank": 1,
+                "spell_id": 15407,
+                "icon": "spell_shadow_siphonmana"
+              },
+              {
+                "name": "정신 분열 연마",
+                "rank": 5,
+                "spell_id": 15316,
+                "icon": "spell_shadow_unholyfrenzy"
+              },
+              {
+                "name": "어둠의 테두리",
+                "rank": 2,
+                "spell_id": 17323,
+                "icon": "spell_shadow_chilltouch"
+              },
+              {
+                "name": "어둠의 매듭",
+                "rank": 4,
+                "spell_id": 15333,
+                "icon": "spell_shadow_blackplague"
+              },
+              {
+                "name": "흐트러짐 없는 마음",
+                "rank": 3,
+                "spell_id": 33215,
+                "icon": "spell_nature_focusedmind"
+              },
+              {
+                "name": "흡혈의 선물",
+                "rank": 1,
+                "spell_id": 15286,
+                "icon": "spell_shadow_unsummonbuilding"
+              },
+              {
+                "name": "어둠",
+                "rank": 5,
+                "spell_id": 15310,
+                "icon": "spell_shadow_twilight"
+              },
+              {
+                "name": "어둠의 형상",
+                "rank": 1,
+                "spell_id": 15473,
+                "icon": "spell_shadow_shadowform"
+              },
+              {
+                "name": "어둠의 힘",
+                "rank": 4,
+                "spell_id": 33224,
+                "icon": "spell_shadow_shadowpower"
+              },
+              {
+                "name": "불행",
+                "rank": 5,
+                "spell_id": 33195,
+                "icon": "spell_shadow_misery"
+              },
+              {
+                "name": "흡혈의 손길",
+                "rank": 1,
+                "spell_id": 34914,
+                "icon": "spell_holy_stoicism"
+              }
+            ]
+          },
+          {
+            "name": "수양",
+            "points": 14,
+            "talents": [
+              {
+                "name": "굳은 의지",
+                "rank": 5,
+                "spell_id": 14791,
+                "icon": "spell_magic_magearmor"
+              },
+              {
+                "name": "신의 권능: 인내 연마",
+                "rank": 2,
+                "spell_id": 14767,
+                "icon": "spell_holy_wordfortitude"
+              },
+              {
+                "name": "신의 권능: 보호막 연마",
+                "rank": 3,
+                "spell_id": 14769,
+                "icon": "spell_holy_powerwordshield"
+              },
+              {
+                "name": "명상",
+                "rank": 3,
+                "spell_id": 14777,
+                "icon": "spell_nature_sleep"
+              },
+              {
+                "name": "내면의 집중력",
+                "rank": 1,
+                "spell_id": 14751,
+                "icon": "spell_frost_windwalkon"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "active": true,
+        "trees": [
+          {
+            "name": "수양",
+            "points": 49,
+            "talents": [
+              {
+                "name": "굳은 의지",
+                "rank": 5,
+                "spell_id": 14791,
+                "icon": "spell_magic_magearmor"
+              },
+              {
+                "name": "신의 권능: 보호막 연마",
+                "rank": 3,
+                "spell_id": 14769,
+                "icon": "spell_holy_powerwordshield"
+              },
+              {
+                "name": "무언의 결심",
+                "rank": 5,
+                "spell_id": 14787,
+                "icon": "spell_nature_manaregentotem"
+              },
+              {
+                "name": "헌신",
+                "rank": 2,
+                "spell_id": 14774,
+                "icon": "spell_nature_tranquility"
+              },
+              {
+                "name": "내면의 집중력",
+                "rank": 1,
+                "spell_id": 14751,
+                "icon": "spell_frost_windwalkon"
+              },
+              {
+                "name": "사면",
+                "rank": 3,
+                "spell_id": 33172,
+                "icon": "spell_holy_absolution"
+              },
+              {
+                "name": "명상",
+                "rank": 3,
+                "spell_id": 14777,
+                "icon": "spell_nature_sleep"
+              },
+              {
+                "name": "마나 연소 연마",
+                "rank": 2,
+                "spell_id": 14772,
+                "icon": "spell_shadow_manaburn"
+              },
+              {
+                "name": "마음의 기민함",
+                "rank": 5,
+                "spell_id": 14783,
+                "icon": "ability_hibernation"
+              },
+              {
+                "name": "정신력",
+                "rank": 5,
+                "spell_id": 18555,
+                "icon": "spell_nature_enchantarmor"
+              },
+              {
+                "name": "천상의 정신",
+                "rank": 1,
+                "spell_id": 14752,
+                "icon": "spell_holy_divinespirit"
+              },
+              {
+                "name": "마력 주입",
+                "rank": 1,
+                "spell_id": 10060,
+                "icon": "spell_holy_powerinfusion"
+              },
+              {
+                "name": "집중된 마력",
+                "rank": 2,
+                "spell_id": 33190,
+                "icon": "spell_shadow_focusedpower"
+              },
+              {
+                "name": "의지 집중",
+                "rank": 3,
+                "spell_id": 45244,
+                "icon": "spell_arcane_focusedpower"
+              },
+              {
+                "name": "반사의 보호막",
+                "rank": 5,
+                "spell_id": 33205,
+                "icon": "spell_holy_powerwordshield"
+              },
+              {
+                "name": "깨달음",
+                "rank": 2,
+                "spell_id": 34909,
+                "icon": "spell_arcane_mindmastery"
+              },
+              {
+                "name": "고통 억제",
+                "rank": 1,
+                "spell_id": 33206,
+                "icon": "spell_holy_painsupression"
+              }
+            ]
+          },
+          {
+            "name": "신성",
+            "points": 12,
+            "talents": [
+              {
+                "name": "치유의 정신집중",
+                "rank": 2,
+                "spell_id": 15012,
+                "icon": "spell_holy_healingfocus"
+              },
+              {
+                "name": "소생 연마",
+                "rank": 3,
+                "spell_id": 17191,
+                "icon": "spell_holy_renew"
+              },
+              {
+                "name": "주문 수호",
+                "rank": 5,
+                "spell_id": 27904,
+                "icon": "spell_holy_spellwarding"
+              },
+              {
+                "name": "신성한 폭발",
+                "rank": 1,
+                "spell_id": 15237,
+                "icon": "spell_holy_holynova"
+              },
+              {
+                "name": "축복받은 회복력",
+                "rank": 1,
+                "spell_id": 27811,
+                "icon": "spell_holy_blessedrecovery"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "equipment": [
+      {
+        "slot": "머리",
+        "slot_type": "HEAD",
+        "name": "검투사의 달빛매듭 두건",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 31410,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +35 / 주문 공격력 +12 / 5초당 마나 회복량 +7",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 치유량 +26 / 주문 공격력 +9 / 위협 수준 2%만큼 감소",
+            "type": "GEM",
+            "source": "원기 회복의 대지폭풍 다이아몬드"
+          },
+          {
+            "text": "주문 치유량 +13 / 주문 공격력 +5",
+            "type": "GEM",
+            "source": "눈물모양 혈류석"
+          },
+          {
+            "text": "탄력도 +4",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_helmet_30.jpg"
+      },
+      {
+        "slot": "목",
+        "slot_type": "NECK",
+        "name": "지배의 펜던트",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28245,
+        "enchants": [
+          {
+            "text": "주문 공격력 +7",
+            "type": "GEM",
+            "source": "룬이 새겨진 혈류석"
+          }
+        ],
+        "icon": "icons/inv_jewelry_necklace_36.jpg"
+      },
+      {
+        "slot": "어깨",
+        "slot_type": "SHOULDER",
+        "name": "검투사의 달빛매듭 어깨보호대",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 31412,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +33 / 주문 공격력 +11 / 마나 회복량 +4",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 치유량 +13 / 주문 공격력 +5",
+            "type": "GEM",
+            "source": "눈물모양 혈류석"
+          },
+          {
+            "text": "탄력도 +4 / 체력 +6",
+            "type": "GEM",
+            "source": "한결같은 탈라사이트"
+          },
+          {
+            "text": "탄력도 +3",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_shoulder_02.jpg"
+      },
+      {
+        "slot": "가슴",
+        "slot_type": "CHEST",
+        "name": "검투사의 달빛매듭 로브",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 31413,
+        "enchants": [
+          {
+            "text": "마법부여: 체력 +10",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 치유량 +7 / 주문 공격력 +3 / 지능 +3",
+            "type": "GEM",
+            "source": "영롱한 불꽃석류석"
+          },
+          {
+            "text": "탄력도 +8",
+            "type": "GEM",
+            "source": "신비로운 여명석"
+          },
+          {
+            "text": "탄력도 +8",
+            "type": "GEM",
+            "source": "신비로운 여명석"
+          },
+          {
+            "text": "탄력도 +4",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_chest_cloth_43.jpg"
+      },
+      {
+        "slot": "허리",
+        "slot_type": "WAIST",
+        "name": "역전용사의 달빛매듭 허리띠",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 32979,
+        "icon": "icons/inv_belt_17.jpg"
+      },
+      {
+        "slot": "다리",
+        "slot_type": "LEGS",
+        "name": "검투사의 달빛매듭 다리보호구",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 31411,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +46 / 주문 공격력 +16 / 체력 +15",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_pants_cloth_05.jpg"
+      },
+      {
+        "slot": "발",
+        "slot_type": "FEET",
+        "name": "역전용사의 달빛매듭 덧신",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 32981,
+        "enchants": [
+          {
+            "text": "마법부여: 최하급 속도 증가",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_boots_05.jpg"
+      },
+      {
+        "slot": "손목",
+        "slot_type": "WRIST",
+        "name": "역전용사의 달빛매듭 소매장식",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 32980,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +30 / 주문 공격력 +10",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "탄력도 +8",
+            "type": "GEM",
+            "source": "신비로운 여명석"
+          },
+          {
+            "text": "주문 공격력 +2",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_bracer_07.jpg"
+      },
+      {
+        "slot": "손",
+        "slot_type": "HANDS",
+        "name": "검투사의 달빛매듭 장갑",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 31409,
+        "icon": "icons/inv_gauntlets_15.jpg"
+      },
+      {
+        "slot": "반지 1",
+        "slot_type": "FINGER_1",
+        "name": "후광의 반지",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29373,
+        "icon": "icons/inv_jewelry_ring_53naxxramas.jpg"
+      },
+      {
+        "slot": "반지 2",
+        "slot_type": "FINGER_2",
+        "name": "구조의 역전용사 고리",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 33064,
+        "icon": "icons/inv_jewelry_ring_60.jpg"
+      },
+      {
+        "slot": "장신구 1",
+        "slot_type": "TRINKET_1",
+        "name": "지옥 마력 정화장치",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 27896,
+        "icon": "icons/inv_potion_130.jpg"
+      },
+      {
+        "slot": "장신구 2",
+        "slot_type": "TRINKET_2",
+        "name": "얼라이언스의 메달",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 30349,
+        "icon": "icons/inv_jewelry_trinketpvp_01.jpg"
+      },
+      {
+        "slot": "등",
+        "slot_type": "BACK",
+        "name": "수호병의 두꺼운 외투",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28378,
+        "icon": "icons/inv_misc_cape_07.jpg"
+      },
+      {
+        "slot": "주장비",
+        "slot_type": "MAIN_HAND",
+        "name": "검투사의 구원봉",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 32451,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +81 / 주문 공격력 +27",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_mace_47.jpg"
+      },
+      {
+        "slot": "보조장비",
+        "slot_type": "OFF_HAND",
+        "name": "하늘의 눈물",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29274,
+        "icon": "icons/inv_potion_75.jpg"
+      },
+      {
+        "slot": "원거리 장비",
+        "slot_type": "RANGED",
+        "name": "검투사의 타도의 손길",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28320,
+        "icon": "icons/inv_wand_09.jpg"
+      }
+    ],
+    "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/45/17016621-avatar.jpg",
+    "profile_restricted": false
+  },
+  {
     "name": "불타는피망",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -2656,1130 +4834,6 @@
       }
     ],
     "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/132/30045316-avatar.jpg",
-    "profile_restricted": false
-  },
-  {
-    "name": "리르일루와잇",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "level": 70,
-    "class": "사제",
-    "race": "인간",
-    "faction": "ALLIANCE",
-    "guild": "왁타버스",
-    "brackets": {
-      "3v3": {
-        "rating": 1500,
-        "won": 0,
-        "lost": 0,
-        "played": 0,
-        "season_id": 2,
-        "rank": 1
-      }
-    },
-    "spec_groups": [
-      {
-        "active": true,
-        "trees": [
-          {
-            "name": "수양",
-            "points": 43,
-            "talents": [
-              {
-                "name": "굳은 의지",
-                "rank": 5,
-                "spell_id": 14791,
-                "icon": "spell_magic_magearmor"
-              },
-              {
-                "name": "신의 권능: 보호막 연마",
-                "rank": 3,
-                "spell_id": 14769,
-                "icon": "spell_holy_powerwordshield"
-              },
-              {
-                "name": "신의 권능: 인내 연마",
-                "rank": 2,
-                "spell_id": 14767,
-                "icon": "spell_holy_wordfortitude"
-              },
-              {
-                "name": "명상",
-                "rank": 3,
-                "spell_id": 14777,
-                "icon": "spell_nature_sleep"
-              },
-              {
-                "name": "내면의 집중력",
-                "rank": 1,
-                "spell_id": 14751,
-                "icon": "spell_frost_windwalkon"
-              },
-              {
-                "name": "무언의 결심",
-                "rank": 5,
-                "spell_id": 14787,
-                "icon": "spell_nature_manaregentotem"
-              },
-              {
-                "name": "마음의 기민함",
-                "rank": 5,
-                "spell_id": 14783,
-                "icon": "ability_hibernation"
-              },
-              {
-                "name": "천상의 정신",
-                "rank": 1,
-                "spell_id": 14752,
-                "icon": "spell_holy_divinespirit"
-              },
-              {
-                "name": "천상의 정신 연마",
-                "rank": 2,
-                "spell_id": 33182,
-                "icon": "spell_holy_divinespirit"
-              },
-              {
-                "name": "정신력",
-                "rank": 5,
-                "spell_id": 18555,
-                "icon": "spell_nature_enchantarmor"
-              },
-              {
-                "name": "집중된 마력",
-                "rank": 2,
-                "spell_id": 33190,
-                "icon": "spell_shadow_focusedpower"
-              },
-              {
-                "name": "마력 주입",
-                "rank": 1,
-                "spell_id": 10060,
-                "icon": "spell_holy_powerinfusion"
-              },
-              {
-                "name": "깨달음",
-                "rank": 5,
-                "spell_id": 34912,
-                "icon": "spell_arcane_mindmastery"
-              },
-              {
-                "name": "고통 억제",
-                "rank": 1,
-                "spell_id": 33206,
-                "icon": "spell_holy_painsupression"
-              },
-              {
-                "name": "사면",
-                "rank": 2,
-                "spell_id": 33171,
-                "icon": "spell_holy_absolution"
-              }
-            ]
-          },
-          {
-            "name": "신성",
-            "points": 18,
-            "talents": [
-              {
-                "name": "치유의 정신집중",
-                "rank": 2,
-                "spell_id": 15012,
-                "icon": "spell_holy_healingfocus"
-              },
-              {
-                "name": "소생 연마",
-                "rank": 3,
-                "spell_id": 17191,
-                "icon": "spell_holy_renew"
-              },
-              {
-                "name": "신의 격노",
-                "rank": 5,
-                "spell_id": 18535,
-                "icon": "spell_holy_sealofwrath"
-              },
-              {
-                "name": "신의 계시",
-                "rank": 3,
-                "spell_id": 15363,
-                "icon": "spell_holy_layonhands"
-              },
-              {
-                "name": "신성 마법 전문화",
-                "rank": 2,
-                "spell_id": 15008,
-                "icon": "spell_holy_sealofsalvation"
-              },
-              {
-                "name": "치유 연마",
-                "rank": 3,
-                "spell_id": 15014,
-                "icon": "spell_holy_heal02"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "active": false,
-        "trees": [
-          {
-            "name": "수양",
-            "points": 15,
-            "talents": [
-              {
-                "name": "굳은 의지",
-                "rank": 5,
-                "spell_id": 14791,
-                "icon": "spell_magic_magearmor"
-              },
-              {
-                "name": "신의 권능: 보호막 연마",
-                "rank": 3,
-                "spell_id": 14769,
-                "icon": "spell_holy_powerwordshield"
-              },
-              {
-                "name": "신의 권능: 인내 연마",
-                "rank": 2,
-                "spell_id": 14767,
-                "icon": "spell_holy_wordfortitude"
-              },
-              {
-                "name": "내면의 집중력",
-                "rank": 1,
-                "spell_id": 14751,
-                "icon": "spell_frost_windwalkon"
-              },
-              {
-                "name": "명상",
-                "rank": 3,
-                "spell_id": 14777,
-                "icon": "spell_nature_sleep"
-              },
-              {
-                "name": "마법봉류 전문화",
-                "rank": 1,
-                "spell_id": 14524,
-                "icon": "inv_wand_01"
-              }
-            ]
-          },
-          {
-            "name": "암흑",
-            "points": 46,
-            "talents": [
-              {
-                "name": "정신력 누출",
-                "rank": 5,
-                "spell_id": 15338,
-                "icon": "spell_shadow_requiem"
-              },
-              {
-                "name": "어둠의 권능: 고통 연마",
-                "rank": 2,
-                "spell_id": 15317,
-                "icon": "spell_shadow_shadowwordpain"
-              },
-              {
-                "name": "암흑 마법 집중",
-                "rank": 5,
-                "spell_id": 15330,
-                "icon": "spell_shadow_burningspirit"
-              },
-              {
-                "name": "정신 분열 연마",
-                "rank": 5,
-                "spell_id": 15316,
-                "icon": "spell_shadow_unholyfrenzy"
-              },
-              {
-                "name": "정신의 채찍",
-                "rank": 1,
-                "spell_id": 15407,
-                "icon": "spell_shadow_siphonmana"
-              },
-              {
-                "name": "어둠의 테두리",
-                "rank": 2,
-                "spell_id": 17323,
-                "icon": "spell_shadow_chilltouch"
-              },
-              {
-                "name": "흐트러짐 없는 마음",
-                "rank": 3,
-                "spell_id": 33215,
-                "icon": "spell_nature_focusedmind"
-              },
-              {
-                "name": "흡혈의 선물",
-                "rank": 1,
-                "spell_id": 15286,
-                "icon": "spell_shadow_unsummonbuilding"
-              },
-              {
-                "name": "어둠의 매듭",
-                "rank": 5,
-                "spell_id": 15334,
-                "icon": "spell_shadow_blackplague"
-              },
-              {
-                "name": "어둠",
-                "rank": 5,
-                "spell_id": 15310,
-                "icon": "spell_shadow_twilight"
-              },
-              {
-                "name": "어둠의 형상",
-                "rank": 1,
-                "spell_id": 15473,
-                "icon": "spell_shadow_shadowform"
-              },
-              {
-                "name": "어둠의 힘",
-                "rank": 5,
-                "spell_id": 33225,
-                "icon": "spell_shadow_shadowpower"
-              },
-              {
-                "name": "불행",
-                "rank": 5,
-                "spell_id": 33195,
-                "icon": "spell_shadow_misery"
-              },
-              {
-                "name": "흡혈의 손길",
-                "rank": 1,
-                "spell_id": 34914,
-                "icon": "spell_holy_stoicism"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "equipment": [
-      {
-        "slot": "머리",
-        "slot_type": "HEAD",
-        "name": "나루의 축복 두건",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 32090,
-        "enchants": [
-          {
-            "text": "마법부여: 주문 치유량 +35 / 주문 공격력 +12 / 5초당 마나 회복량 +7",
-            "type": "PERMANENT"
-          },
-          {
-            "text": "주문 치유량 +9 / 주문 공격력 +3 / 정신력 +4",
-            "type": "GEM",
-            "source": "정화된 암흑 진주"
-          },
-          {
-            "text": "지능 +12 / 주문 시전 시 일정 확률로 마나 회복",
-            "type": "GEM",
-            "source": "통찰의 대지폭풍 다이아몬드"
-          },
-          {
-            "text": "주문 치유량 +9 / 주문 공격력 +3",
-            "type": "GEM"
-          }
-        ],
-        "icon": "icons/inv_helmet_30.jpg"
-      },
-      {
-        "slot": "목",
-        "slot_type": "NECK",
-        "name": "영원한 희망의 목걸이",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 29374,
-        "icon": "icons/inv_jewelry_necklace_31.jpg"
-      },
-      {
-        "slot": "어깨",
-        "slot_type": "SHOULDER",
-        "name": "태초의 달빛매듭 어깨보호대",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 21874,
-        "enchants": [
-          {
-            "text": "마법부여: 주문 치유량 +33 / 주문 공격력 +11 / 마나 회복량 +4",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_shoulder_02.jpg"
-      },
-      {
-        "slot": "가슴",
-        "slot_type": "CHEST",
-        "name": "태초의 달빛매듭 로브",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 21875,
-        "enchants": [
-          {
-            "text": "마법부여: 모든 능력치 +6",
-            "type": "PERMANENT"
-          },
-          {
-            "text": "주문 치유량 +11 / 주문 공격력 +4 / 지능 +4",
-            "type": "GEM",
-            "source": "영롱한 불꽃 오팔"
-          },
-          {
-            "text": "주문 치유량 +7 / 주문 공격력 +3 / 정신력 +3",
-            "type": "GEM",
-            "source": "정화된 톱니조개 진주"
-          },
-          {
-            "text": "지능 +3",
-            "type": "GEM"
-          }
-        ],
-        "icon": "icons/inv_chest_cloth_04.jpg"
-      },
-      {
-        "slot": "허리",
-        "slot_type": "WAIST",
-        "name": "태초의 달빛매듭 허리띠",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 21873,
-        "enchants": [
-          {
-            "text": "주문 치유량 +7 / 주문 공격력 +3 / 지능 +3",
-            "type": "GEM",
-            "source": "영롱한 불꽃석류석"
-          },
-          {
-            "text": "주문 치유량 +9 / 주문 공격력 +3 / 정신력 +4",
-            "type": "GEM",
-            "source": "정화된 암흑 진주"
-          },
-          {
-            "text": "지능 +3",
-            "type": "GEM"
-          }
-        ],
-        "icon": "icons/inv_belt_31.jpg"
-      },
-      {
-        "slot": "다리",
-        "slot_type": "LEGS",
-        "name": "카마이의 하늘색 치마",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 31343,
-        "enchants": [
-          {
-            "text": "마법부여: 주문 치유량 +46 / 주문 공격력 +16 / 체력 +15",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_pants_cloth_20.jpg"
-      },
-      {
-        "slot": "발",
-        "slot_type": "FEET",
-        "name": "긴 여정의 장화",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 30035,
-        "enchants": [
-          {
-            "text": "마법부여: 최하급 속도 증가",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_boots_cloth_14.jpg"
-      },
-      {
-        "slot": "손목",
-        "slot_type": "WRIST",
-        "name": "시간여행자의 손목띠",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 29183,
-        "enchants": [
-          {
-            "text": "마법부여: 주문 치유량 +30 / 주문 공격력 +10",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_bracer_10.jpg"
-      },
-      {
-        "slot": "손",
-        "slot_type": "HANDS",
-        "name": "달빛매듭 전투 장갑",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 35335,
-        "icon": "icons/inv_gauntlets_15.jpg"
-      },
-      {
-        "slot": "반지 1",
-        "slot_type": "FINGER_1",
-        "name": "치유사의 열정 반지",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 28661,
-        "enchants": [
-          {
-            "text": "마법부여: 주문 치유량 +20 / 주문 공격력 +7",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_jewelry_ring_36.jpg"
-      },
-      {
-        "slot": "반지 2",
-        "slot_type": "FINGER_2",
-        "name": "후광의 반지",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 29373,
-        "enchants": [
-          {
-            "text": "마법부여: 주문 치유량 +20 / 주문 공격력 +7",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_jewelry_ring_53naxxramas.jpg"
-      },
-      {
-        "slot": "장신구 1",
-        "slot_type": "TRINKET_1",
-        "name": "순교자의 정수",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 29376,
-        "icon": "icons/inv_valentineperfumebottle.jpg"
-      },
-      {
-        "slot": "장신구 2",
-        "slot_type": "TRINKET_2",
-        "name": "보랏빛 눈의 펜던트",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 28727,
-        "icon": "icons/inv_trinket_naxxramas02.jpg"
-      },
-      {
-        "slot": "등",
-        "slot_type": "BACK",
-        "name": "주교의 망토",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 29375,
-        "icon": "icons/inv_misc_cape_02.jpg"
-      },
-      {
-        "slot": "주장비",
-        "slot_type": "MAIN_HAND",
-        "name": "검투사의 구원봉",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 32451,
-        "enchants": [
-          {
-            "text": "마법부여: 마력의 폭풍",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_mace_47.jpg"
-      },
-      {
-        "slot": "보조장비",
-        "slot_type": "OFF_HAND",
-        "name": "흔들리지 않는 신념의 인장",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 28525,
-        "icon": "icons/inv_jewelry_ring_60.jpg"
-      },
-      {
-        "slot": "원거리 장비",
-        "slot_type": "RANGED",
-        "name": "알도르 영혼마법봉",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 27885,
-        "icon": "icons/inv_wand_05.jpg"
-      }
-    ],
-    "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/58/32164410-avatar.jpg",
-    "profile_restricted": false
-  },
-  {
-    "name": "불타는감귤",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "level": 70,
-    "class": "사제",
-    "race": "나이트 엘프",
-    "faction": "ALLIANCE",
-    "guild": "소복소복",
-    "brackets": {
-      "3v3": {
-        "rating": 1500,
-        "won": 0,
-        "lost": 0,
-        "played": 0,
-        "season_id": 2,
-        "rank": 1
-      }
-    },
-    "spec_groups": [
-      {
-        "active": true,
-        "trees": [
-          {
-            "name": "수양",
-            "points": 23,
-            "talents": [
-              {
-                "name": "굳은 의지",
-                "rank": 5,
-                "spell_id": 14791,
-                "icon": "spell_magic_magearmor"
-              },
-              {
-                "name": "신의 권능: 인내 연마",
-                "rank": 2,
-                "spell_id": 14767,
-                "icon": "spell_holy_wordfortitude"
-              },
-              {
-                "name": "신의 권능: 보호막 연마",
-                "rank": 3,
-                "spell_id": 14769,
-                "icon": "spell_holy_powerwordshield"
-              },
-              {
-                "name": "명상",
-                "rank": 3,
-                "spell_id": 14777,
-                "icon": "spell_nature_sleep"
-              },
-              {
-                "name": "내면의 집중력",
-                "rank": 1,
-                "spell_id": 14751,
-                "icon": "spell_frost_windwalkon"
-              },
-              {
-                "name": "사면",
-                "rank": 1,
-                "spell_id": 33167,
-                "icon": "spell_holy_absolution"
-              },
-              {
-                "name": "마음의 기민함",
-                "rank": 5,
-                "spell_id": 14783,
-                "icon": "ability_hibernation"
-              },
-              {
-                "name": "천상의 정신",
-                "rank": 1,
-                "spell_id": 14752,
-                "icon": "spell_holy_divinespirit"
-              },
-              {
-                "name": "천상의 정신 연마",
-                "rank": 2,
-                "spell_id": 33182,
-                "icon": "spell_holy_divinespirit"
-              }
-            ]
-          },
-          {
-            "name": "신성",
-            "points": 38,
-            "talents": [
-              {
-                "name": "치유의 정신집중",
-                "rank": 2,
-                "spell_id": 15012,
-                "icon": "spell_holy_healingfocus"
-              },
-              {
-                "name": "소생 연마",
-                "rank": 3,
-                "spell_id": 17191,
-                "icon": "spell_holy_renew"
-              },
-              {
-                "name": "신성 마법 전문화",
-                "rank": 5,
-                "spell_id": 15011,
-                "icon": "spell_holy_sealofsalvation"
-              },
-              {
-                "name": "신의 격노",
-                "rank": 5,
-                "spell_id": 18535,
-                "icon": "spell_holy_sealofwrath"
-              },
-              {
-                "name": "신의 계시",
-                "rank": 3,
-                "spell_id": 15363,
-                "icon": "spell_holy_layonhands"
-              },
-              {
-                "name": "치유 연마",
-                "rank": 3,
-                "spell_id": 15014,
-                "icon": "spell_holy_heal02"
-              },
-              {
-                "name": "영혼의 길잡이",
-                "rank": 5,
-                "spell_id": 15031,
-                "icon": "spell_holy_spiritualguidence"
-              },
-              {
-                "name": "구원의 영혼",
-                "rank": 1,
-                "spell_id": 20711,
-                "icon": "inv_enchant_essenceeternallarge"
-              },
-              {
-                "name": "영혼의 치유",
-                "rank": 5,
-                "spell_id": 15356,
-                "icon": "spell_nature_moonglow"
-              },
-              {
-                "name": "치유의 기원 연마",
-                "rank": 2,
-                "spell_id": 15018,
-                "icon": "spell_holy_prayerofhealing02"
-              },
-              {
-                "name": "신성한 정신집중",
-                "rank": 1,
-                "spell_id": 34753,
-                "icon": "spell_holy_fanaticism"
-              },
-              {
-                "name": "치유 강화",
-                "rank": 3,
-                "spell_id": 33160,
-                "icon": "spell_holy_greaterheal"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "active": false,
-        "trees": [
-          {
-            "name": "암흑",
-            "points": 47,
-            "talents": [
-              {
-                "name": "정신력 누출",
-                "rank": 5,
-                "spell_id": 15338,
-                "icon": "spell_shadow_requiem"
-              },
-              {
-                "name": "어둠의 권능: 고통 연마",
-                "rank": 2,
-                "spell_id": 15317,
-                "icon": "spell_shadow_shadowwordpain"
-              },
-              {
-                "name": "암흑 마법 집중",
-                "rank": 5,
-                "spell_id": 15330,
-                "icon": "spell_shadow_burningspirit"
-              },
-              {
-                "name": "정신의 채찍",
-                "rank": 1,
-                "spell_id": 15407,
-                "icon": "spell_shadow_siphonmana"
-              },
-              {
-                "name": "영혼의 절규 연마",
-                "rank": 2,
-                "spell_id": 15448,
-                "icon": "spell_shadow_psychicscream"
-              },
-              {
-                "name": "어둠의 매듭",
-                "rank": 5,
-                "spell_id": 15334,
-                "icon": "spell_shadow_blackplague"
-              },
-              {
-                "name": "침묵",
-                "rank": 1,
-                "spell_id": 15487,
-                "icon": "spell_shadow_impphaseshift"
-              },
-              {
-                "name": "흡혈의 선물",
-                "rank": 1,
-                "spell_id": 15286,
-                "icon": "spell_shadow_unsummonbuilding"
-              },
-              {
-                "name": "흡혈의 선물 연마",
-                "rank": 2,
-                "spell_id": 27840,
-                "icon": "spell_shadow_improvedvampiricembrace"
-              },
-              {
-                "name": "흐트러짐 없는 마음",
-                "rank": 3,
-                "spell_id": 33215,
-                "icon": "spell_nature_focusedmind"
-              },
-              {
-                "name": "어둠",
-                "rank": 5,
-                "spell_id": 15310,
-                "icon": "spell_shadow_twilight"
-              },
-              {
-                "name": "어둠의 형상",
-                "rank": 1,
-                "spell_id": 15473,
-                "icon": "spell_shadow_shadowform"
-              },
-              {
-                "name": "어둠의 테두리",
-                "rank": 2,
-                "spell_id": 17323,
-                "icon": "spell_shadow_chilltouch"
-              },
-              {
-                "name": "불행",
-                "rank": 5,
-                "spell_id": 33195,
-                "icon": "spell_shadow_misery"
-              },
-              {
-                "name": "흡혈의 손길",
-                "rank": 1,
-                "spell_id": 34914,
-                "icon": "spell_holy_stoicism"
-              },
-              {
-                "name": "정신 분열 연마",
-                "rank": 5,
-                "spell_id": 15316,
-                "icon": "spell_shadow_unholyfrenzy"
-              },
-              {
-                "name": "어둠의 힘",
-                "rank": 1,
-                "spell_id": 33221,
-                "icon": "spell_shadow_shadowpower"
-              }
-            ]
-          },
-          {
-            "name": "수양",
-            "points": 14,
-            "talents": [
-              {
-                "name": "굳은 의지",
-                "rank": 5,
-                "spell_id": 14791,
-                "icon": "spell_magic_magearmor"
-              },
-              {
-                "name": "신의 권능: 인내 연마",
-                "rank": 2,
-                "spell_id": 14767,
-                "icon": "spell_holy_wordfortitude"
-              },
-              {
-                "name": "신의 권능: 보호막 연마",
-                "rank": 3,
-                "spell_id": 14769,
-                "icon": "spell_holy_powerwordshield"
-              },
-              {
-                "name": "명상",
-                "rank": 3,
-                "spell_id": 14777,
-                "icon": "spell_nature_sleep"
-              },
-              {
-                "name": "내면의 집중력",
-                "rank": 1,
-                "spell_id": 14751,
-                "icon": "spell_frost_windwalkon"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "equipment": [
-      {
-        "slot": "머리",
-        "slot_type": "HEAD",
-        "name": "감시자의 두건",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 29174,
-        "enchants": [
-          {
-            "text": "마법부여: 주문 치유량 +35 / 주문 공격력 +12 / 5초당 마나 회복량 +7",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_helmet_34.jpg"
-      },
-      {
-        "slot": "목",
-        "slot_type": "NECK",
-        "name": "세데크 신관의 초점 목걸이",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 29334,
-        "icon": "icons/inv_jewelry_necklace_12.jpg"
-      },
-      {
-        "slot": "어깨",
-        "slot_type": "SHOULDER",
-        "name": "태초의 달빛매듭 어깨보호대",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 21874,
-        "enchants": [
-          {
-            "text": "마법부여: 주문 치유량 +29 / 주문 공격력 +10",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_shoulder_02.jpg"
-      },
-      {
-        "slot": "가슴",
-        "slot_type": "CHEST",
-        "name": "태초의 달빛매듭 로브",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 21875,
-        "enchants": [
-          {
-            "text": "마법부여: 모든 능력치 +6",
-            "type": "PERMANENT"
-          },
-          {
-            "text": "주문 치유량 +7 / 주문 공격력 +3 / 지능 +3",
-            "type": "GEM",
-            "source": "영롱한 불꽃석류석"
-          },
-          {
-            "text": "주문 치유량 +11 / 주문 공격력 +4 / 5초당 마나 회복량 +2",
-            "type": "GEM",
-            "source": "호화로운 탄자나이트"
-          },
-          {
-            "text": "지능 +3",
-            "type": "GEM"
-          }
-        ],
-        "icon": "icons/inv_chest_cloth_04.jpg"
-      },
-      {
-        "slot": "허리",
-        "slot_type": "WAIST",
-        "name": "태초의 달빛매듭 허리띠",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 21873,
-        "enchants": [
-          {
-            "text": "주문 치유량 +7 / 주문 공격력 +3 / 지능 +3",
-            "type": "GEM",
-            "source": "영롱한 불꽃석류석"
-          },
-          {
-            "text": "주문 치유량 +7 / 주문 공격력 +3 / 정신력 +3",
-            "type": "GEM",
-            "source": "정화된 톱니조개 진주"
-          },
-          {
-            "text": "지능 +3",
-            "type": "GEM"
-          }
-        ],
-        "icon": "icons/inv_belt_31.jpg"
-      },
-      {
-        "slot": "다리",
-        "slot_type": "LEGS",
-        "name": "나루의 바지",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 30256,
-        "enchants": [
-          {
-            "text": "마법부여: 주문 치유량 +46 / 주문 공격력 +16 / 체력 +15",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_pants_cloth_19.jpg"
-      },
-      {
-        "slot": "발",
-        "slot_type": "FEET",
-        "name": "성직자의 장화",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 25792,
-        "enchants": [
-          {
-            "text": "마법부여: 체력 +10",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_boots_05.jpg"
-      },
-      {
-        "slot": "손목",
-        "slot_type": "WRIST",
-        "name": "황금덩굴 손목띠",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 28029,
-        "enchants": [
-          {
-            "text": "마법부여: 모든 능력치 +4",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_bracer_12.jpg"
-      },
-      {
-        "slot": "손",
-        "slot_type": "HANDS",
-        "name": "달빛매듭 전투 장갑",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 35335,
-        "enchants": [
-          {
-            "text": "마법부여: 체력 +10",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_gauntlets_15.jpg"
-      },
-      {
-        "slot": "반지 1",
-        "slot_type": "FINGER_1",
-        "name": "천상의 보석 반지",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 29814,
-        "enchants": [
-          {
-            "text": "마법부여: 주문 치유량 +20 / 주문 공격력 +7",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_jewelry_ring_05.jpg"
-      },
-      {
-        "slot": "반지 2",
-        "slot_type": "FINGER_2",
-        "name": "예후의 반지",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 29169,
-        "enchants": [
-          {
-            "text": "마법부여: 주문 치유량 +20 / 주문 공격력 +7",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_jewelry_ring_43.jpg"
-      },
-      {
-        "slot": "장신구 1",
-        "slot_type": "TRINKET_1",
-        "name": "끝없는 축복의 팔찌",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 28370,
-        "icon": "icons/inv_jewelry_necklace_27.jpg"
-      },
-      {
-        "slot": "장신구 2",
-        "slot_type": "TRINKET_2",
-        "name": "고난의 거리 기도서",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 30841,
-        "icon": "icons/inv_misc_book_11.jpg"
-      },
-      {
-        "slot": "등",
-        "slot_type": "BACK",
-        "name": "활발한 기운의 망토",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 28373,
-        "enchants": [
-          {
-            "text": "마법부여: 방어도 +120",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_misc_cape_14.jpg"
-      },
-      {
-        "slot": "주장비",
-        "slot_type": "MAIN_HAND",
-        "name": "고결한 빛의 망치",
-        "quality": "영웅",
-        "quality_type": "EPIC",
-        "item_id": 29175,
-        "enchants": [
-          {
-            "text": "마법부여: 주문 치유량 +81 / 주문 공격력 +27",
-            "type": "PERMANENT"
-          }
-        ],
-        "icon": "icons/inv_hammer_04.jpg"
-      },
-      {
-        "slot": "보조장비",
-        "slot_type": "OFF_HAND",
-        "name": "평화로운 휴식의 등불",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 28387,
-        "icon": "icons/inv_mace_13.jpg"
-      },
-      {
-        "slot": "원거리 장비",
-        "slot_type": "RANGED",
-        "name": "알도르 영혼마법봉",
-        "quality": "희귀",
-        "quality_type": "RARE",
-        "item_id": 27885,
-        "icon": "icons/inv_wand_05.jpg"
-      }
-    ],
-    "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/15/30041871-avatar.jpg",
     "profile_restricted": false
   },
   {
@@ -4389,6 +5443,1190 @@
       }
     ],
     "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/207/30173647-avatar.jpg",
+    "profile_restricted": false
+  },
+  {
+    "name": "Madbear",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "level": 70,
+    "class": "드루이드",
+    "race": "나이트 엘프",
+    "faction": "ALLIANCE",
+    "guild": "시그널",
+    "brackets": {
+      "2v2": {
+        "rating": 1500,
+        "won": 0,
+        "lost": 0,
+        "played": 0,
+        "season_id": 2,
+        "rank": 1
+      }
+    },
+    "spec_groups": [
+      {
+        "active": false,
+        "trees": [
+          {
+            "name": "회복",
+            "points": 17,
+            "talents": [
+              {
+                "name": "광란",
+                "rank": 5,
+                "spell_id": 17061,
+                "icon": "spell_holy_blessingofstamina"
+              },
+              {
+                "name": "자연의 탐구자",
+                "rank": 5,
+                "spell_id": 17073,
+                "icon": "spell_nature_healingtouch"
+              },
+              {
+                "name": "변신의 대가",
+                "rank": 3,
+                "spell_id": 16835,
+                "icon": "spell_nature_wispsplode"
+              },
+              {
+                "name": "청명의 전조",
+                "rank": 1,
+                "spell_id": 16864,
+                "icon": "spell_nature_crystalball"
+              },
+              {
+                "name": "격렬",
+                "rank": 3,
+                "spell_id": 17108,
+                "icon": "spell_frost_windwalkon"
+              }
+            ]
+          },
+          {
+            "name": "야성",
+            "points": 42,
+            "talents": [
+              {
+                "name": "야수의 본성",
+                "rank": 5,
+                "spell_id": 16938,
+                "icon": "ability_hunter_pet_hyena"
+              },
+              {
+                "name": "야생의 본능",
+                "rank": 3,
+                "spell_id": 16949,
+                "icon": "ability_ambush"
+              },
+              {
+                "name": "야수의 습격",
+                "rank": 2,
+                "spell_id": 16941,
+                "icon": "ability_druid_bash"
+              },
+              {
+                "name": "야생의 기민함",
+                "rank": 2,
+                "spell_id": 24866,
+                "icon": "spell_nature_spiritwolf"
+              },
+              {
+                "name": "야성의 돌진",
+                "rank": 1,
+                "spell_id": 16979,
+                "icon": "ability_hunter_pet_bear"
+              },
+              {
+                "name": "날카로운 발톱",
+                "rank": 3,
+                "spell_id": 16944,
+                "icon": "inv_misc_monsterclaw_04"
+              },
+              {
+                "name": "야수의 분노",
+                "rank": 2,
+                "spell_id": 37117,
+                "icon": "ability_racial_cannibalize"
+              },
+              {
+                "name": "야생의 포식자",
+                "rank": 3,
+                "spell_id": 16975,
+                "icon": "ability_hunter_pet_cat"
+              },
+              {
+                "name": "맹렬한 격노",
+                "rank": 2,
+                "spell_id": 16999,
+                "icon": "ability_druid_ravage"
+              },
+              {
+                "name": "요정의 불꽃 (야성)",
+                "rank": 1,
+                "spell_id": 16857,
+                "icon": "spell_nature_faeriefire"
+              },
+              {
+                "name": "회복의 본능",
+                "rank": 2,
+                "spell_id": 33873,
+                "icon": "ability_druid_healinginstincts"
+              },
+              {
+                "name": "야생의 정수",
+                "rank": 5,
+                "spell_id": 24894,
+                "icon": "spell_holy_blessingofagility"
+              },
+              {
+                "name": "적자 생존",
+                "rank": 3,
+                "spell_id": 33856,
+                "icon": "ability_druid_enrage"
+              },
+              {
+                "name": "무리의 우두머리",
+                "rank": 1,
+                "spell_id": 17007,
+                "icon": "spell_nature_unyeildingstamina"
+              },
+              {
+                "name": "무리의 우두머리 연마",
+                "rank": 2,
+                "spell_id": 34300,
+                "icon": "spell_nature_unyeildingstamina"
+              },
+              {
+                "name": "죽음의 발톱",
+                "rank": 2,
+                "spell_id": 16968,
+                "icon": "spell_shadow_vampiricaura"
+              },
+              {
+                "name": "태고의 강인함",
+                "rank": 2,
+                "spell_id": 33852,
+                "icon": "ability_druid_primaltenacity"
+              },
+              {
+                "name": "짓이기기",
+                "rank": 1,
+                "spell_id": 33917,
+                "icon": "ability_druid_mangle2"
+              }
+            ]
+          },
+          {
+            "name": "조화",
+            "points": 2,
+            "talents": [
+              {
+                "name": "자연의 손아귀",
+                "rank": 1,
+                "spell_id": 16689,
+                "icon": "spell_nature_natureswrath"
+              },
+              {
+                "name": "자연의 손아귀 연마",
+                "rank": 1,
+                "spell_id": 17245,
+                "icon": "spell_nature_natureswrath"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "active": true,
+        "trees": [
+          {
+            "name": "야성",
+            "points": 44,
+            "talents": [
+              {
+                "name": "야수의 본성",
+                "rank": 5,
+                "spell_id": 16938,
+                "icon": "ability_hunter_pet_hyena"
+              },
+              {
+                "name": "야생의 본능",
+                "rank": 3,
+                "spell_id": 16949,
+                "icon": "ability_ambush"
+              },
+              {
+                "name": "두꺼운 가죽",
+                "rank": 3,
+                "spell_id": 16931,
+                "icon": "inv_misc_pelt_bear_03"
+              },
+              {
+                "name": "날카로운 발톱",
+                "rank": 3,
+                "spell_id": 16944,
+                "icon": "inv_misc_monsterclaw_04"
+              },
+              {
+                "name": "야성의 돌진",
+                "rank": 1,
+                "spell_id": 16979,
+                "icon": "ability_hunter_pet_bear"
+              },
+              {
+                "name": "야생의 기민함",
+                "rank": 2,
+                "spell_id": 24866,
+                "icon": "spell_nature_spiritwolf"
+              },
+              {
+                "name": "죽음의 발톱",
+                "rank": 2,
+                "spell_id": 16968,
+                "icon": "spell_shadow_vampiricaura"
+              },
+              {
+                "name": "야생의 포식자",
+                "rank": 3,
+                "spell_id": 16975,
+                "icon": "ability_hunter_pet_cat"
+              },
+              {
+                "name": "야수의 분노",
+                "rank": 2,
+                "spell_id": 37117,
+                "icon": "ability_racial_cannibalize"
+              },
+              {
+                "name": "요정의 불꽃 (야성)",
+                "rank": 1,
+                "spell_id": 16857,
+                "icon": "spell_nature_faeriefire"
+              },
+              {
+                "name": "맹렬한 격노",
+                "rank": 2,
+                "spell_id": 16999,
+                "icon": "ability_druid_ravage"
+              },
+              {
+                "name": "야생의 정수",
+                "rank": 5,
+                "spell_id": 24894,
+                "icon": "spell_holy_blessingofagility"
+              },
+              {
+                "name": "적자 생존",
+                "rank": 3,
+                "spell_id": 33856,
+                "icon": "ability_druid_enrage"
+              },
+              {
+                "name": "무리의 우두머리",
+                "rank": 1,
+                "spell_id": 17007,
+                "icon": "spell_nature_unyeildingstamina"
+              },
+              {
+                "name": "무리의 우두머리 연마",
+                "rank": 2,
+                "spell_id": 34300,
+                "icon": "spell_nature_unyeildingstamina"
+              },
+              {
+                "name": "포식자의 본능",
+                "rank": 5,
+                "spell_id": 33869,
+                "icon": "ability_druid_predatoryinstincts"
+              },
+              {
+                "name": "짓이기기",
+                "rank": 1,
+                "spell_id": 33917,
+                "icon": "ability_druid_mangle2"
+              }
+            ]
+          },
+          {
+            "name": "회복",
+            "points": 17,
+            "talents": [
+              {
+                "name": "광란",
+                "rank": 5,
+                "spell_id": 17061,
+                "icon": "spell_holy_blessingofstamina"
+              },
+              {
+                "name": "변신의 대가",
+                "rank": 3,
+                "spell_id": 16835,
+                "icon": "spell_nature_wispsplode"
+              },
+              {
+                "name": "자연의 탐구자",
+                "rank": 5,
+                "spell_id": 17073,
+                "icon": "spell_nature_healingtouch"
+              },
+              {
+                "name": "청명의 전조",
+                "rank": 1,
+                "spell_id": 16864,
+                "icon": "spell_nature_crystalball"
+              },
+              {
+                "name": "격렬",
+                "rank": 3,
+                "spell_id": 17108,
+                "icon": "spell_frost_windwalkon"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "equipment": [
+      {
+        "slot": "머리",
+        "slot_type": "HEAD",
+        "name": "말로른의 사슴뿔투구",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29098,
+        "enchants": [
+          {
+            "text": "마법부여: 전투력 +34 / 적중도 +16",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "적중도 +8",
+            "type": "GEM",
+            "source": "강도 높은 여명석"
+          },
+          {
+            "text": "민첩성 +12 / 치명타 피해 3%만큼 증가",
+            "type": "GEM",
+            "source": "냉혹의 대지폭풍 다이아몬드"
+          },
+          {
+            "text": "민첩성 +4",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_helmet_15.jpg"
+      },
+      {
+        "slot": "목",
+        "slot_type": "NECK",
+        "name": "영웅심의 미스릴 목걸이",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28745,
+        "icon": "icons/inv_jewelry_necklace_06.jpg"
+      },
+      {
+        "slot": "어깨",
+        "slot_type": "SHOULDER",
+        "name": "최고사령관의 용가죽 어깨갑옷",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 28622,
+        "enchants": [
+          {
+            "text": "민첩성 +6",
+            "type": "GEM",
+            "source": "섬세하게 연마된 혈류석"
+          },
+          {
+            "text": "치명타 적중도 +4 / 체력 +6",
+            "type": "GEM",
+            "source": "톱니모양 탈라사이트"
+          },
+          {
+            "text": "탄력도 +3",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_shoulder_12.jpg"
+      },
+      {
+        "slot": "가슴",
+        "slot_type": "CHEST",
+        "name": "최고사령관의 용가죽 튜닉",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 28623,
+        "enchants": [
+          {
+            "text": "마법부여: 생명력 +100",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "민첩성 +6",
+            "type": "GEM",
+            "source": "섬세하게 연마된 혈류석"
+          },
+          {
+            "text": "민첩성 +6",
+            "type": "GEM",
+            "source": "섬세하게 연마된 혈류석"
+          },
+          {
+            "text": "치명타 적중도 +4 / 체력 +6",
+            "type": "GEM",
+            "source": "톱니모양 탈라사이트"
+          },
+          {
+            "text": "치명타 적중도 +4",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_chest_leather_03.jpg"
+      },
+      {
+        "slot": "허리",
+        "slot_type": "WAIST",
+        "name": "죽음의 선고자 벨트",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29247,
+        "icon": "icons/inv_belt_26.jpg"
+      },
+      {
+        "slot": "다리",
+        "slot_type": "LEGS",
+        "name": "잠행자의 경갑",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28741,
+        "enchants": [
+          {
+            "text": "마법부여: 전투력 +40 / 치명타 적중도 +10",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "적중도 +3 / 민첩성 +3",
+            "type": "GEM",
+            "source": "예리하게 빛나는 불꽃석류석"
+          },
+          {
+            "text": "적중도 +3 / 민첩성 +3",
+            "type": "GEM",
+            "source": "예리하게 빛나는 불꽃석류석"
+          },
+          {
+            "text": "체력 +3 / 치명타 적중도 +4",
+            "type": "GEM",
+            "source": "날카로운 심연의 감람석"
+          },
+          {
+            "text": "회피 숙련도 +4",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_pants_leather_13.jpg"
+      },
+      {
+        "slot": "발",
+        "slot_type": "FEET",
+        "name": "작전사령관의 용가죽 장화",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28977,
+        "enchants": [
+          {
+            "text": "마법부여: 체력 +7",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_boots_08.jpg"
+      },
+      {
+        "slot": "손목",
+        "slot_type": "WRIST",
+        "name": "작전사령관의 용가죽 팔보호구",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28978,
+        "enchants": [
+          {
+            "text": "마법부여: 힘 +12",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "민첩성 +6",
+            "type": "GEM",
+            "source": "섬세하게 연마된 혈류석"
+          },
+          {
+            "text": "탄력도 +2",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_bracer_07.jpg"
+      },
+      {
+        "slot": "손",
+        "slot_type": "HANDS",
+        "name": "암살의 장갑",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 27509,
+        "enchants": [
+          {
+            "text": "마법부여: 전투력 +26",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_gauntlets_01.jpg"
+      },
+      {
+        "slot": "반지 1",
+        "slot_type": "FINGER_1",
+        "name": "보랏빛 인장",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29281,
+        "icon": "icons/inv_jewelry_ring_62.jpg"
+      },
+      {
+        "slot": "반지 2",
+        "slot_type": "FINGER_2",
+        "name": "빛의 수호자 고리",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 29128,
+        "icon": "icons/inv_jewelry_ring_48naxxramas.jpg"
+      },
+      {
+        "slot": "장신구 1",
+        "slot_type": "TRINKET_1",
+        "name": "해결사의 모래시계",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 28034,
+        "icon": "icons/inv_gizmo_khoriumpowercore.jpg"
+      },
+      {
+        "slot": "장신구 2",
+        "slot_type": "TRINKET_2",
+        "name": "블레이드피스트의 관용",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 28041,
+        "icon": "icons/inv_datacrystal06.jpg"
+      },
+      {
+        "slot": "등",
+        "slot_type": "BACK",
+        "name": "원정순찰대 야생망토",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 28764,
+        "enchants": [
+          {
+            "text": "마법부여: 민첩성 +12",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_misc_cape_17.jpg"
+      },
+      {
+        "slot": "주장비",
+        "slot_type": "MAIN_HAND",
+        "name": "대지의 파수꾼",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29171,
+        "enchants": [
+          {
+            "text": "마법부여: 민첩성 +35",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_hammer_10.jpg"
+      },
+      {
+        "slot": "원거리 장비",
+        "slot_type": "RANGED",
+        "name": "야생의 우상",
+        "quality": "고급",
+        "quality_type": "UNCOMMON",
+        "item_id": 28064,
+        "icon": "icons/spell_nature_spiritwolf.jpg"
+      }
+    ],
+    "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/245/15827445-avatar.jpg",
+    "profile_restricted": false
+  },
+  {
+    "name": "불타는감귤",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "level": 70,
+    "class": "사제",
+    "race": "나이트 엘프",
+    "faction": "ALLIANCE",
+    "guild": "소복소복",
+    "brackets": {
+      "3v3": {
+        "rating": 1500,
+        "won": 0,
+        "lost": 0,
+        "played": 0,
+        "season_id": 2,
+        "rank": 1
+      }
+    },
+    "spec_groups": [
+      {
+        "active": true,
+        "trees": [
+          {
+            "name": "수양",
+            "points": 23,
+            "talents": [
+              {
+                "name": "굳은 의지",
+                "rank": 5,
+                "spell_id": 14791,
+                "icon": "spell_magic_magearmor"
+              },
+              {
+                "name": "신의 권능: 인내 연마",
+                "rank": 2,
+                "spell_id": 14767,
+                "icon": "spell_holy_wordfortitude"
+              },
+              {
+                "name": "신의 권능: 보호막 연마",
+                "rank": 3,
+                "spell_id": 14769,
+                "icon": "spell_holy_powerwordshield"
+              },
+              {
+                "name": "명상",
+                "rank": 3,
+                "spell_id": 14777,
+                "icon": "spell_nature_sleep"
+              },
+              {
+                "name": "내면의 집중력",
+                "rank": 1,
+                "spell_id": 14751,
+                "icon": "spell_frost_windwalkon"
+              },
+              {
+                "name": "사면",
+                "rank": 1,
+                "spell_id": 33167,
+                "icon": "spell_holy_absolution"
+              },
+              {
+                "name": "마음의 기민함",
+                "rank": 5,
+                "spell_id": 14783,
+                "icon": "ability_hibernation"
+              },
+              {
+                "name": "천상의 정신",
+                "rank": 1,
+                "spell_id": 14752,
+                "icon": "spell_holy_divinespirit"
+              },
+              {
+                "name": "천상의 정신 연마",
+                "rank": 2,
+                "spell_id": 33182,
+                "icon": "spell_holy_divinespirit"
+              }
+            ]
+          },
+          {
+            "name": "신성",
+            "points": 38,
+            "talents": [
+              {
+                "name": "치유의 정신집중",
+                "rank": 2,
+                "spell_id": 15012,
+                "icon": "spell_holy_healingfocus"
+              },
+              {
+                "name": "소생 연마",
+                "rank": 3,
+                "spell_id": 17191,
+                "icon": "spell_holy_renew"
+              },
+              {
+                "name": "신성 마법 전문화",
+                "rank": 5,
+                "spell_id": 15011,
+                "icon": "spell_holy_sealofsalvation"
+              },
+              {
+                "name": "신의 격노",
+                "rank": 5,
+                "spell_id": 18535,
+                "icon": "spell_holy_sealofwrath"
+              },
+              {
+                "name": "신의 계시",
+                "rank": 3,
+                "spell_id": 15363,
+                "icon": "spell_holy_layonhands"
+              },
+              {
+                "name": "치유 연마",
+                "rank": 3,
+                "spell_id": 15014,
+                "icon": "spell_holy_heal02"
+              },
+              {
+                "name": "영혼의 길잡이",
+                "rank": 5,
+                "spell_id": 15031,
+                "icon": "spell_holy_spiritualguidence"
+              },
+              {
+                "name": "구원의 영혼",
+                "rank": 1,
+                "spell_id": 20711,
+                "icon": "inv_enchant_essenceeternallarge"
+              },
+              {
+                "name": "영혼의 치유",
+                "rank": 5,
+                "spell_id": 15356,
+                "icon": "spell_nature_moonglow"
+              },
+              {
+                "name": "치유의 기원 연마",
+                "rank": 2,
+                "spell_id": 15018,
+                "icon": "spell_holy_prayerofhealing02"
+              },
+              {
+                "name": "신성한 정신집중",
+                "rank": 1,
+                "spell_id": 34753,
+                "icon": "spell_holy_fanaticism"
+              },
+              {
+                "name": "치유 강화",
+                "rank": 3,
+                "spell_id": 33160,
+                "icon": "spell_holy_greaterheal"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "active": false,
+        "trees": [
+          {
+            "name": "암흑",
+            "points": 47,
+            "talents": [
+              {
+                "name": "정신력 누출",
+                "rank": 5,
+                "spell_id": 15338,
+                "icon": "spell_shadow_requiem"
+              },
+              {
+                "name": "어둠의 권능: 고통 연마",
+                "rank": 2,
+                "spell_id": 15317,
+                "icon": "spell_shadow_shadowwordpain"
+              },
+              {
+                "name": "암흑 마법 집중",
+                "rank": 5,
+                "spell_id": 15330,
+                "icon": "spell_shadow_burningspirit"
+              },
+              {
+                "name": "정신의 채찍",
+                "rank": 1,
+                "spell_id": 15407,
+                "icon": "spell_shadow_siphonmana"
+              },
+              {
+                "name": "영혼의 절규 연마",
+                "rank": 2,
+                "spell_id": 15448,
+                "icon": "spell_shadow_psychicscream"
+              },
+              {
+                "name": "어둠의 매듭",
+                "rank": 5,
+                "spell_id": 15334,
+                "icon": "spell_shadow_blackplague"
+              },
+              {
+                "name": "침묵",
+                "rank": 1,
+                "spell_id": 15487,
+                "icon": "spell_shadow_impphaseshift"
+              },
+              {
+                "name": "흡혈의 선물",
+                "rank": 1,
+                "spell_id": 15286,
+                "icon": "spell_shadow_unsummonbuilding"
+              },
+              {
+                "name": "흡혈의 선물 연마",
+                "rank": 2,
+                "spell_id": 27840,
+                "icon": "spell_shadow_improvedvampiricembrace"
+              },
+              {
+                "name": "흐트러짐 없는 마음",
+                "rank": 3,
+                "spell_id": 33215,
+                "icon": "spell_nature_focusedmind"
+              },
+              {
+                "name": "어둠",
+                "rank": 5,
+                "spell_id": 15310,
+                "icon": "spell_shadow_twilight"
+              },
+              {
+                "name": "어둠의 형상",
+                "rank": 1,
+                "spell_id": 15473,
+                "icon": "spell_shadow_shadowform"
+              },
+              {
+                "name": "어둠의 테두리",
+                "rank": 2,
+                "spell_id": 17323,
+                "icon": "spell_shadow_chilltouch"
+              },
+              {
+                "name": "불행",
+                "rank": 5,
+                "spell_id": 33195,
+                "icon": "spell_shadow_misery"
+              },
+              {
+                "name": "흡혈의 손길",
+                "rank": 1,
+                "spell_id": 34914,
+                "icon": "spell_holy_stoicism"
+              },
+              {
+                "name": "정신 분열 연마",
+                "rank": 5,
+                "spell_id": 15316,
+                "icon": "spell_shadow_unholyfrenzy"
+              },
+              {
+                "name": "어둠의 힘",
+                "rank": 1,
+                "spell_id": 33221,
+                "icon": "spell_shadow_shadowpower"
+              }
+            ]
+          },
+          {
+            "name": "수양",
+            "points": 14,
+            "talents": [
+              {
+                "name": "굳은 의지",
+                "rank": 5,
+                "spell_id": 14791,
+                "icon": "spell_magic_magearmor"
+              },
+              {
+                "name": "신의 권능: 인내 연마",
+                "rank": 2,
+                "spell_id": 14767,
+                "icon": "spell_holy_wordfortitude"
+              },
+              {
+                "name": "신의 권능: 보호막 연마",
+                "rank": 3,
+                "spell_id": 14769,
+                "icon": "spell_holy_powerwordshield"
+              },
+              {
+                "name": "명상",
+                "rank": 3,
+                "spell_id": 14777,
+                "icon": "spell_nature_sleep"
+              },
+              {
+                "name": "내면의 집중력",
+                "rank": 1,
+                "spell_id": 14751,
+                "icon": "spell_frost_windwalkon"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "equipment": [
+      {
+        "slot": "머리",
+        "slot_type": "HEAD",
+        "name": "감시자의 두건",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 29174,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +35 / 주문 공격력 +12 / 5초당 마나 회복량 +7",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_helmet_34.jpg"
+      },
+      {
+        "slot": "목",
+        "slot_type": "NECK",
+        "name": "세데크 신관의 초점 목걸이",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 29334,
+        "icon": "icons/inv_jewelry_necklace_12.jpg"
+      },
+      {
+        "slot": "어깨",
+        "slot_type": "SHOULDER",
+        "name": "태초의 달빛매듭 어깨보호대",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 21874,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +29 / 주문 공격력 +10",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_shoulder_02.jpg"
+      },
+      {
+        "slot": "가슴",
+        "slot_type": "CHEST",
+        "name": "태초의 달빛매듭 로브",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 21875,
+        "enchants": [
+          {
+            "text": "마법부여: 모든 능력치 +6",
+            "type": "PERMANENT"
+          },
+          {
+            "text": "주문 치유량 +7 / 주문 공격력 +3 / 지능 +3",
+            "type": "GEM",
+            "source": "영롱한 불꽃석류석"
+          },
+          {
+            "text": "주문 치유량 +11 / 주문 공격력 +4 / 5초당 마나 회복량 +2",
+            "type": "GEM",
+            "source": "호화로운 탄자나이트"
+          },
+          {
+            "text": "지능 +3",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_chest_cloth_04.jpg"
+      },
+      {
+        "slot": "허리",
+        "slot_type": "WAIST",
+        "name": "태초의 달빛매듭 허리띠",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 21873,
+        "enchants": [
+          {
+            "text": "주문 치유량 +7 / 주문 공격력 +3 / 지능 +3",
+            "type": "GEM",
+            "source": "영롱한 불꽃석류석"
+          },
+          {
+            "text": "주문 치유량 +7 / 주문 공격력 +3 / 정신력 +3",
+            "type": "GEM",
+            "source": "정화된 톱니조개 진주"
+          },
+          {
+            "text": "지능 +3",
+            "type": "GEM"
+          }
+        ],
+        "icon": "icons/inv_belt_31.jpg"
+      },
+      {
+        "slot": "다리",
+        "slot_type": "LEGS",
+        "name": "나루의 바지",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 30256,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +46 / 주문 공격력 +16 / 체력 +15",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_pants_cloth_19.jpg"
+      },
+      {
+        "slot": "발",
+        "slot_type": "FEET",
+        "name": "성직자의 장화",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 25792,
+        "enchants": [
+          {
+            "text": "마법부여: 체력 +10",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_boots_05.jpg"
+      },
+      {
+        "slot": "손목",
+        "slot_type": "WRIST",
+        "name": "황금덩굴 손목띠",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 28029,
+        "enchants": [
+          {
+            "text": "마법부여: 모든 능력치 +4",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_bracer_12.jpg"
+      },
+      {
+        "slot": "손",
+        "slot_type": "HANDS",
+        "name": "달빛매듭 전투 장갑",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 35335,
+        "enchants": [
+          {
+            "text": "마법부여: 체력 +10",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_gauntlets_15.jpg"
+      },
+      {
+        "slot": "반지 1",
+        "slot_type": "FINGER_1",
+        "name": "천상의 보석 반지",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 29814,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +20 / 주문 공격력 +7",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_jewelry_ring_05.jpg"
+      },
+      {
+        "slot": "반지 2",
+        "slot_type": "FINGER_2",
+        "name": "예후의 반지",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 29169,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +20 / 주문 공격력 +7",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_jewelry_ring_43.jpg"
+      },
+      {
+        "slot": "장신구 1",
+        "slot_type": "TRINKET_1",
+        "name": "끝없는 축복의 팔찌",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 28370,
+        "icon": "icons/inv_jewelry_necklace_27.jpg"
+      },
+      {
+        "slot": "장신구 2",
+        "slot_type": "TRINKET_2",
+        "name": "고난의 거리 기도서",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 30841,
+        "icon": "icons/inv_misc_book_11.jpg"
+      },
+      {
+        "slot": "등",
+        "slot_type": "BACK",
+        "name": "활발한 기운의 망토",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 28373,
+        "enchants": [
+          {
+            "text": "마법부여: 방어도 +120",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_misc_cape_14.jpg"
+      },
+      {
+        "slot": "주장비",
+        "slot_type": "MAIN_HAND",
+        "name": "고결한 빛의 망치",
+        "quality": "영웅",
+        "quality_type": "EPIC",
+        "item_id": 29175,
+        "enchants": [
+          {
+            "text": "마법부여: 주문 치유량 +81 / 주문 공격력 +27",
+            "type": "PERMANENT"
+          }
+        ],
+        "icon": "icons/inv_hammer_04.jpg"
+      },
+      {
+        "slot": "보조장비",
+        "slot_type": "OFF_HAND",
+        "name": "평화로운 휴식의 등불",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 28387,
+        "icon": "icons/inv_mace_13.jpg"
+      },
+      {
+        "slot": "원거리 장비",
+        "slot_type": "RANGED",
+        "name": "알도르 영혼마법봉",
+        "quality": "희귀",
+        "quality_type": "RARE",
+        "item_id": 27885,
+        "icon": "icons/inv_wand_05.jpg"
+      }
+    ],
+    "avatar": "https://render.worldofwarcraft.com/classicann-kr/character/fengus-ferocity/15/30041871-avatar.jpg",
     "profile_restricted": false
   }
 ]
