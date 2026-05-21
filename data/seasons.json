@@ -1,9 +1,15 @@
 {
-  "current_season_id": 1,
+  "current_season_id": 2,
   "seasons": [
     {
       "id": 1,
       "label": "시즌 1",
+      "status": "archived",
+      "path": "data/seasons/1"
+    },
+    {
+      "id": 2,
+      "label": "시즌 2",
       "status": "current",
       "path": "data"
     }
