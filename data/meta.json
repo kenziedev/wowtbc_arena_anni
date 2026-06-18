@@ -3,28 +3,28 @@
   "namespace": "dynamic-classicann-kr",
   "profile_namespace": "profile-classicann-kr",
   "locale": "ko_KR",
-  "season_id": 1,
+  "season_id": 2,
   "season_name": "",
   "source": "official-pvp-leaderboard-api",
-  "updated_at": "2026-06-18T02:56:48.748164+00:00",
-  "total_characters_scanned": 0,
-  "total_with_pvp": 0,
+  "updated_at": "2026-06-18T08:50:25.331657+00:00",
+  "total_characters_scanned": 5680,
+  "total_with_pvp": 5680,
   "guilds_scanned": [],
   "brackets": {
     "2v2": {
-      "count": 0,
+      "count": 1528,
       "file": "2v2.json",
-      "source_count": 0
+      "source_count": 1528
     },
     "3v3": {
-      "count": 0,
+      "count": 980,
       "file": "3v3.json",
-      "source_count": 0
+      "source_count": 980
     },
     "5v5": {
-      "count": 0,
+      "count": 5019,
       "file": "5v5.json",
-      "source_count": 0
+      "source_count": 5019
     }
   }
 }
