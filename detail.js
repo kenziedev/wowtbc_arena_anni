@@ -61,14 +61,19 @@
     return CLASS_CLASS_MAP[className] || "";
   }
 
+  // 최상위 보상 타이틀은 시즌마다 바뀌므로(시즌2 "무자비한 검투사" 등)
+  // 맵에 없는 타이틀은 최상위(infernal) 등급으로 처리한다.
+  function cutoffTierClass(title) {
+    return CUTOFF_CLASS_MAP[title] || "cutoff-infernal";
+  }
+
   function cutoffRatingClass(r, bracket) {
     var cutoffs = state.cutoffs && state.cutoffs.cutoffs && state.cutoffs.cutoffs[bracket];
     if (!cutoffs || !cutoffs.length) return "";
     var sorted = cutoffs.slice().sort(function (a, b) { return b.rating - a.rating; });
     for (var i = 0; i < sorted.length; i++) {
       if (r >= sorted[i].rating) {
-        var cutoffClass = CUTOFF_CLASS_MAP[sorted[i].title];
-        return cutoffClass ? cutoffClass.replace("cutoff-", "rating-cutoff-") : "";
+        return cutoffTierClass(sorted[i].title).replace("cutoff-", "rating-cutoff-");
       }
     }
     return "";

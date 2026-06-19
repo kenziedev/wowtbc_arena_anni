@@ -53,14 +53,24 @@
     return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) + " " + pad(d.getHours()) + ":" + pad(d.getMinutes());
   }
 
+  // The top reward title changes every season (시즌1 "지옥에서 온 검투사",
+  // 시즌2 "무자비한 검투사", ...). Only the lower four tiers keep stable names,
+  // so any title we don't recognise is treated as the top (infernal) tier.
+  function cutoffTierClass(title) {
+    return CUTOFF_CLASS_MAP[title] || "cutoff-infernal";
+  }
+
+  function cutoffTierIcon(title) {
+    return CUTOFF_ICONS[title] || CUTOFF_ICONS["지옥에서 온 검투사"];
+  }
+
   function cutoffRatingClass(r, bracket) {
     var cutoffs = state.cutoffs && state.cutoffs.cutoffs && state.cutoffs.cutoffs[bracket];
     if (!cutoffs || !cutoffs.length) return "";
     var sorted = cutoffs.slice().sort(function (a, b) { return b.rating - a.rating; });
     for (var i = 0; i < sorted.length; i++) {
       if (r >= sorted[i].rating) {
-        var cutoffClass = CUTOFF_CLASS_MAP[sorted[i].title];
-        return cutoffClass ? cutoffClass.replace("cutoff-", "rating-cutoff-") : "";
+        return cutoffTierClass(sorted[i].title).replace("cutoff-", "rating-cutoff-");
       }
     }
     return "";
@@ -364,8 +374,8 @@
     var html = "";
     for (var i = 0; i < bracketCutoffs.length; i++) {
       var c = bracketCutoffs[i];
-      var cls = CUTOFF_CLASS_MAP[c.title] || "";
-      var icon = CUTOFF_ICONS[c.title] || "";
+      var cls = cutoffTierClass(c.title);
+      var icon = cutoffTierIcon(c.title);
 
       var rankText = "";
       if (entries.length > 0) {

@@ -94,6 +94,40 @@ def mirror_current_season_file(filename: str, data_dir: Path) -> None:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
 
+def season_has_existing_data(data_dir: Path) -> bool:
+    """True if any bracket file for this season already holds entries on disk."""
+    for bracket in BRACKETS:
+        path = data_dir / f"{bracket}.json"
+        if not path.exists():
+            continue
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                if json.load(f):
+                    return True
+        except (OSError, json.JSONDecodeError):
+            continue
+    return False
+
+
+def guard_season_regression(api_season_id: int) -> int:
+    """The official API occasionally reports the *previous* season as current,
+    which would make us re-fetch an inactive (empty) leaderboard and wipe the
+    archive. Never move the current season backwards; only ever stay or advance.
+    """
+    index = load_seasons_index()
+    try:
+        last_current = int(index.get("current_season_id"))
+    except (TypeError, ValueError):
+        last_current = None
+    if last_current and api_season_id < last_current:
+        print(
+            f"  [GUARD] API reported current season {api_season_id}, but the last known "
+            f"current season is {last_current}. Ignoring the regression and keeping {last_current}."
+        )
+        return last_current
+    return api_season_id
+
+
 def get_access_token(client_id: str, client_secret: str) -> str:
     resp = requests.post(
         OAUTH_URL,
@@ -711,6 +745,11 @@ def main():
             sys.exit(1)
     season = fetch_current_season(token, override_season_id)
     season_id = season["id"]
+    if override_season_id is None:
+        guarded_id = guard_season_regression(season_id)
+        if guarded_id != season_id:
+            season = {"id": guarded_id, "name": ""}
+            season_id = guarded_id
     print(f"Using season {season_id}")
     out_dir = season_data_dir(season_id)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -724,6 +763,14 @@ def main():
         leaderboard = fetch_official_leaderboard(token, season_id, bracket)
         print(f"  {len(leaderboard)} entries")
         leaderboards[bracket] = leaderboard
+
+    source_total = sum(len(entries) for entries in leaderboards.values())
+    if source_total == 0 and override_season_id is None and season_has_existing_data(out_dir):
+        print(
+            "  [GUARD] Official leaderboards returned 0 entries for every bracket. "
+            "Keeping the existing data instead of overwriting a populated season."
+        )
+        return
 
     ranked_characters = build_ranked_character_map(leaderboards, season_id)
     total_ranked_characters = len(ranked_characters)
