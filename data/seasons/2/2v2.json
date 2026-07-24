@@ -528,6 +528,40 @@
     "rank": 33
   },
   {
+    "name": "Poki",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "전사",
+    "race": "노움",
+    "faction": "ALLIANCE",
+    "guild": "슈크림붕어빵",
+    "rating": 2046,
+    "won": 404,
+    "lost": 209,
+    "played": 613,
+    "winrate": 65.9,
+    "rank": 34,
+    "rd": 60,
+    "rkd": 20
+  },
+  {
+    "name": "플포",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "드루이드",
+    "race": "나이트 엘프",
+    "faction": "ALLIANCE",
+    "guild": "Lethon",
+    "rating": 2046,
+    "won": 419,
+    "lost": 217,
+    "played": 636,
+    "winrate": 65.9,
+    "rank": 34,
+    "rd": 60,
+    "rkd": 20
+  },
+  {
     "name": "오리목뼈탐닉자",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -540,41 +574,8 @@
     "lost": 306,
     "played": 774,
     "winrate": 60.5,
-    "rank": 34
-  },
-  {
-    "name": "Poki",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "전사",
-    "race": "노움",
-    "faction": "ALLIANCE",
-    "guild": "슈크림붕어빵",
-    "rating": 2034,
-    "won": 400,
-    "lost": 209,
-    "played": 609,
-    "winrate": 65.7,
-    "rank": 35,
-    "rd": 48,
-    "rkd": 19
-  },
-  {
-    "name": "플포",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "드루이드",
-    "race": "나이트 엘프",
-    "faction": "ALLIANCE",
-    "guild": "Lethon",
-    "rating": 2034,
-    "won": 415,
-    "lost": 217,
-    "played": 632,
-    "winrate": 65.7,
-    "rank": 35,
-    "rd": 48,
-    "rkd": 19
+    "rank": 36,
+    "rkd": -2
   },
   {
     "name": "Dawnfrost",
@@ -1293,38 +1294,6 @@
     "rkd": -3
   },
   {
-    "name": "Ether",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "드루이드",
-    "race": "나이트 엘프",
-    "faction": "ALLIANCE",
-    "guild": "CastorPollux",
-    "rating": 1935,
-    "won": 198,
-    "lost": 121,
-    "played": 319,
-    "winrate": 62.1,
-    "rank": 81,
-    "rkd": -2
-  },
-  {
-    "name": "듣보잡",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "전사",
-    "race": "노움",
-    "faction": "ALLIANCE",
-    "guild": "WarLord",
-    "rating": 1935,
-    "won": 198,
-    "lost": 120,
-    "played": 318,
-    "winrate": 62.3,
-    "rank": 81,
-    "rkd": -2
-  },
-  {
     "name": "매맞는남편",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -1337,8 +1306,7 @@
     "lost": 40,
     "played": 113,
     "winrate": 64.6,
-    "rank": 83,
-    "rkd": -2
+    "rank": 81
   },
   {
     "name": "Any",
@@ -1353,8 +1321,7 @@
     "lost": 29,
     "played": 81,
     "winrate": 64.2,
-    "rank": 84,
-    "rkd": -2
+    "rank": 82
   },
   {
     "name": "살괭이",
@@ -1369,8 +1336,41 @@
     "lost": 164,
     "played": 317,
     "winrate": 48.3,
+    "rank": 82
+  },
+  {
+    "name": "Ether",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "드루이드",
+    "race": "나이트 엘프",
+    "faction": "ALLIANCE",
+    "guild": "CastorPollux",
+    "rating": 1930,
+    "won": 201,
+    "lost": 122,
+    "played": 323,
+    "winrate": 62.2,
     "rank": 84,
-    "rkd": -2
+    "rd": -5,
+    "rkd": -5
+  },
+  {
+    "name": "듣보잡",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "전사",
+    "race": "노움",
+    "faction": "ALLIANCE",
+    "guild": "WarLord",
+    "rating": 1930,
+    "won": 201,
+    "lost": 121,
+    "played": 322,
+    "winrate": 62.4,
+    "rank": 84,
+    "rd": -5,
+    "rkd": -5
   },
   {
     "name": "구리구름파파",
@@ -3486,6 +3486,40 @@
     "rank": 216
   },
   {
+    "name": "바닐라캣",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "사제",
+    "race": "나이트 엘프",
+    "faction": "ALLIANCE",
+    "guild": "Big Spoon",
+    "rating": 1772,
+    "won": 304,
+    "lost": 301,
+    "played": 605,
+    "winrate": 50.2,
+    "rank": 216,
+    "rd": 46,
+    "rkd": 43
+  },
+  {
+    "name": "캣워크",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "도적",
+    "race": "인간",
+    "faction": "ALLIANCE",
+    "guild": "냥펀치",
+    "rating": 1772,
+    "won": 338,
+    "lost": 310,
+    "played": 648,
+    "winrate": 52.2,
+    "rank": 216,
+    "rd": 46,
+    "rkd": 43
+  },
+  {
     "name": "리멤버전설",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -3498,7 +3532,8 @@
     "lost": 40,
     "played": 86,
     "winrate": 53.5,
-    "rank": 217
+    "rank": 219,
+    "rkd": -2
   },
   {
     "name": "미라쥬매직",
@@ -3513,7 +3548,8 @@
     "lost": 125,
     "played": 257,
     "winrate": 51.4,
-    "rank": 217
+    "rank": 219,
+    "rkd": -2
   },
   {
     "name": "뿌엉이",
@@ -3528,8 +3564,8 @@
     "lost": 124,
     "played": 275,
     "winrate": 54.9,
-    "rank": 219,
-    "rkd": 3
+    "rank": 221,
+    "rkd": 1
   },
   {
     "name": "로찌",
@@ -3544,8 +3580,8 @@
     "lost": 110,
     "played": 225,
     "winrate": 51.1,
-    "rank": 220,
-    "rkd": 3
+    "rank": 222,
+    "rkd": 1
   },
   {
     "name": "북서풍",
@@ -3560,9 +3596,9 @@
     "lost": 214,
     "played": 443,
     "winrate": 51.7,
-    "rank": 220,
+    "rank": 222,
     "rd": -38,
-    "rkd": -39
+    "rkd": -41
   },
   {
     "name": "극깡",
@@ -3577,8 +3613,7 @@
     "lost": 10,
     "played": 32,
     "winrate": 68.8,
-    "rank": 222,
-    "rkd": 2
+    "rank": 224
   },
   {
     "name": "Buendia",
@@ -3593,8 +3628,7 @@
     "lost": 24,
     "played": 58,
     "winrate": 58.6,
-    "rank": 223,
-    "rkd": 2
+    "rank": 225
   },
   {
     "name": "츠직",
@@ -3609,9 +3643,9 @@
     "lost": 204,
     "played": 354,
     "winrate": 42.4,
-    "rank": 223,
+    "rank": 225,
     "rd": -27,
-    "rkd": -27
+    "rkd": -29
   },
   {
     "name": "아카자",
@@ -3626,8 +3660,8 @@
     "lost": 66,
     "played": 133,
     "winrate": 50.4,
-    "rank": 225,
-    "rkd": 1
+    "rank": 227,
+    "rkd": -1
   },
   {
     "name": "졀단",
@@ -3642,8 +3676,8 @@
     "lost": 45,
     "played": 92,
     "winrate": 51.1,
-    "rank": 226,
-    "rkd": 1
+    "rank": 228,
+    "rkd": -1
   },
   {
     "name": "Resort",
@@ -3658,8 +3692,8 @@
     "lost": 45,
     "played": 100,
     "winrate": 55.0,
-    "rank": 227,
-    "rkd": 1
+    "rank": 229,
+    "rkd": -1
   },
   {
     "name": "곽수양",
@@ -3674,8 +3708,8 @@
     "lost": 102,
     "played": 196,
     "winrate": 48.0,
-    "rank": 228,
-    "rkd": 1
+    "rank": 230,
+    "rkd": -1
   },
   {
     "name": "조블리",
@@ -3690,8 +3724,8 @@
     "lost": 102,
     "played": 196,
     "winrate": 48.0,
-    "rank": 228,
-    "rkd": 1
+    "rank": 230,
+    "rkd": -1
   },
   {
     "name": "Gregor",
@@ -3706,8 +3740,8 @@
     "lost": 28,
     "played": 72,
     "winrate": 61.1,
-    "rank": 230,
-    "rkd": 1
+    "rank": 232,
+    "rkd": -1
   },
   {
     "name": "닥터노",
@@ -3722,8 +3756,8 @@
     "lost": 31,
     "played": 68,
     "winrate": 54.4,
-    "rank": 230,
-    "rkd": 1
+    "rank": 232,
+    "rkd": -1
   },
   {
     "name": "겜보이",
@@ -3738,9 +3772,9 @@
     "lost": 41,
     "played": 84,
     "winrate": 51.2,
-    "rank": 232,
+    "rank": 234,
     "rd": 40,
-    "rkd": 39
+    "rkd": 37
   },
   {
     "name": "Muriel",
@@ -3755,9 +3789,9 @@
     "lost": 348,
     "played": 699,
     "winrate": 50.2,
-    "rank": 233,
+    "rank": 235,
     "rd": -17,
-    "rkd": -16
+    "rkd": -18
   },
   {
     "name": "디마",
@@ -3772,7 +3806,8 @@
     "lost": 36,
     "played": 77,
     "winrate": 53.2,
-    "rank": 233
+    "rank": 235,
+    "rkd": -2
   },
   {
     "name": "렉사",
@@ -3787,9 +3822,9 @@
     "lost": 371,
     "played": 755,
     "winrate": 50.9,
-    "rank": 233,
+    "rank": 235,
     "rd": -17,
-    "rkd": -16
+    "rkd": -18
   },
   {
     "name": "호러볼",
@@ -3804,24 +3839,8 @@
     "lost": 13,
     "played": 38,
     "winrate": 65.8,
-    "rank": 233
-  },
-  {
-    "name": "바닐라캣",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "사제",
-    "race": "나이트 엘프",
-    "faction": "ALLIANCE",
-    "guild": "Big Spoon",
-    "rating": 1753,
-    "won": 303,
-    "lost": 301,
-    "played": 604,
-    "winrate": 50.2,
-    "rank": 237,
-    "rd": 27,
-    "rkd": 22
+    "rank": 235,
+    "rkd": -2
   },
   {
     "name": "조도",
@@ -3836,25 +3855,8 @@
     "lost": 18,
     "played": 43,
     "winrate": 58.1,
-    "rank": 237,
-    "rkd": -2
-  },
-  {
-    "name": "캣워크",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "도적",
-    "race": "인간",
-    "faction": "ALLIANCE",
-    "guild": "냥펀치",
-    "rating": 1753,
-    "won": 337,
-    "lost": 310,
-    "played": 647,
-    "winrate": 52.1,
-    "rank": 237,
-    "rd": 27,
-    "rkd": 22
+    "rank": 239,
+    "rkd": -4
   },
   {
     "name": "레오파고",
@@ -4923,23 +4925,6 @@
     "rkd": -1
   },
   {
-    "name": "로랑쥐",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "드루이드",
-    "race": "타우렌",
-    "faction": "HORDE",
-    "guild": "동행",
-    "rating": 1698,
-    "won": 253,
-    "lost": 309,
-    "played": 562,
-    "winrate": 45.0,
-    "rank": 306,
-    "rd": 1,
-    "rkd": 1
-  },
-  {
     "name": "발정왕에디슨",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -4984,8 +4969,7 @@
     "lost": 86,
     "played": 166,
     "winrate": 48.2,
-    "rank": 309,
-    "rkd": -1
+    "rank": 308
   },
   {
     "name": "박회복",
@@ -5000,8 +4984,7 @@
     "lost": 11,
     "played": 32,
     "winrate": 65.6,
-    "rank": 310,
-    "rkd": -1
+    "rank": 309
   },
   {
     "name": "사냥안해",
@@ -5016,8 +4999,7 @@
     "lost": 72,
     "played": 140,
     "winrate": 48.6,
-    "rank": 311,
-    "rkd": -1
+    "rank": 310
   },
   {
     "name": "빽사",
@@ -5032,8 +5014,7 @@
     "lost": 39,
     "played": 86,
     "winrate": 54.7,
-    "rank": 312,
-    "rkd": -1
+    "rank": 311
   },
   {
     "name": "시드미온",
@@ -5048,8 +5029,7 @@
     "lost": 149,
     "played": 278,
     "winrate": 46.4,
-    "rank": 313,
-    "rkd": -1
+    "rank": 312
   },
   {
     "name": "하우디",
@@ -5064,8 +5044,7 @@
     "lost": 54,
     "played": 131,
     "winrate": 58.8,
-    "rank": 314,
-    "rkd": -1
+    "rank": 313
   },
   {
     "name": "손고억",
@@ -5080,8 +5059,7 @@
     "lost": 9,
     "played": 25,
     "winrate": 64.0,
-    "rank": 315,
-    "rkd": -1
+    "rank": 314
   },
   {
     "name": "청춘은바로지금",
@@ -5096,8 +5074,7 @@
     "lost": 53,
     "played": 117,
     "winrate": 54.7,
-    "rank": 316,
-    "rkd": -1
+    "rank": 315
   },
   {
     "name": "법갓",
@@ -5112,8 +5089,7 @@
     "lost": 297,
     "played": 489,
     "winrate": 39.3,
-    "rank": 317,
-    "rkd": -1
+    "rank": 316
   },
   {
     "name": "악군이",
@@ -5128,8 +5104,7 @@
     "lost": 4,
     "played": 16,
     "winrate": 75.0,
-    "rank": 317,
-    "rkd": -1
+    "rank": 316
   },
   {
     "name": "저당초코우유",
@@ -5144,8 +5119,24 @@
     "lost": 8,
     "played": 19,
     "winrate": 57.9,
+    "rank": 318
+  },
+  {
+    "name": "로랑쥐",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "드루이드",
+    "race": "타우렌",
+    "faction": "HORDE",
+    "guild": "동행",
+    "rating": 1681,
+    "won": 253,
+    "lost": 313,
+    "played": 566,
+    "winrate": 44.7,
     "rank": 319,
-    "rkd": -1
+    "rd": -16,
+    "rkd": -12
   },
   {
     "name": "풍선껌은역시와우",
@@ -5160,8 +5151,7 @@
     "lost": 134,
     "played": 256,
     "winrate": 47.7,
-    "rank": 320,
-    "rkd": -1
+    "rank": 319
   },
   {
     "name": "버엌",
@@ -5671,7 +5661,7 @@
     "class": "사제",
     "race": "드워프",
     "faction": "ALLIANCE",
-    "guild": "LuckySeveN",
+    "guild": "",
     "rating": 1659,
     "won": 14,
     "lost": 11,
@@ -6181,23 +6171,6 @@
     "rkd": -4
   },
   {
-    "name": "전사갱",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "전사",
-    "race": "오크",
-    "faction": "HORDE",
-    "guild": "벚꽃",
-    "rating": 1640,
-    "won": 190,
-    "lost": 249,
-    "played": 439,
-    "winrate": 43.3,
-    "rank": 384,
-    "rd": -21,
-    "rkd": -39
-  },
-  {
     "name": "투기장버스기사",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -6226,8 +6199,8 @@
     "lost": 35,
     "played": 75,
     "winrate": 53.3,
-    "rank": 386,
-    "rkd": -4
+    "rank": 385,
+    "rkd": -3
   },
   {
     "name": "렘피카",
@@ -6242,8 +6215,8 @@
     "lost": 29,
     "played": 58,
     "winrate": 50.0,
-    "rank": 386,
-    "rkd": -4
+    "rank": 385,
+    "rkd": -3
   },
   {
     "name": "박남정",
@@ -6258,8 +6231,8 @@
     "lost": 35,
     "played": 75,
     "winrate": 53.3,
-    "rank": 386,
-    "rkd": -4
+    "rank": 385,
+    "rkd": -3
   },
   {
     "name": "소독해주마",
@@ -6274,8 +6247,8 @@
     "lost": 38,
     "played": 72,
     "winrate": 47.2,
-    "rank": 386,
-    "rkd": -4
+    "rank": 385,
+    "rkd": -3
   },
   {
     "name": "오케이땡큐",
@@ -6290,8 +6263,8 @@
     "lost": 26,
     "played": 52,
     "winrate": 50.0,
-    "rank": 386,
-    "rkd": -4
+    "rank": 385,
+    "rkd": -3
   },
   {
     "name": "드루와빈수",
@@ -6306,8 +6279,8 @@
     "lost": 43,
     "played": 84,
     "winrate": 48.8,
-    "rank": 391,
-    "rkd": -4
+    "rank": 390,
+    "rkd": -3
   },
   {
     "name": "합격마법사",
@@ -6322,8 +6295,8 @@
     "lost": 49,
     "played": 87,
     "winrate": 43.7,
-    "rank": 391,
-    "rkd": -4
+    "rank": 390,
+    "rkd": -3
   },
   {
     "name": "개토",
@@ -6338,8 +6311,8 @@
     "lost": 5,
     "played": 15,
     "winrate": 66.7,
-    "rank": 393,
-    "rkd": -3
+    "rank": 392,
+    "rkd": -2
   },
   {
     "name": "크림스프",
@@ -6354,8 +6327,8 @@
     "lost": 4,
     "played": 17,
     "winrate": 76.5,
-    "rank": 393,
-    "rkd": -3
+    "rank": 392,
+    "rkd": -2
   },
   {
     "name": "너를그린세상",
@@ -6370,8 +6343,8 @@
     "lost": 84,
     "played": 175,
     "winrate": 52.0,
-    "rank": 395,
-    "rkd": -3
+    "rank": 394,
+    "rkd": -2
   },
   {
     "name": "아를렌",
@@ -6386,8 +6359,8 @@
     "lost": 14,
     "played": 28,
     "winrate": 50.0,
-    "rank": 395,
-    "rkd": -3
+    "rank": 394,
+    "rkd": -2
   },
   {
     "name": "믹히",
@@ -6402,8 +6375,8 @@
     "lost": 90,
     "played": 160,
     "winrate": 43.8,
-    "rank": 397,
-    "rkd": -3
+    "rank": 396,
+    "rkd": -2
   },
   {
     "name": "최수죵",
@@ -6418,8 +6391,8 @@
     "lost": 62,
     "played": 114,
     "winrate": 45.6,
-    "rank": 397,
-    "rkd": -3
+    "rank": 396,
+    "rkd": -2
   },
   {
     "name": "최유키",
@@ -6434,9 +6407,9 @@
     "lost": 189,
     "played": 351,
     "winrate": 46.2,
-    "rank": 397,
+    "rank": 396,
     "rd": -18,
-    "rkd": -38
+    "rkd": -37
   },
   {
     "name": "카스프님",
@@ -6451,8 +6424,8 @@
     "lost": 4,
     "played": 15,
     "winrate": 73.3,
-    "rank": 397,
-    "rkd": -3
+    "rank": 396,
+    "rkd": -2
   },
   {
     "name": "서퍼",
@@ -6467,8 +6440,8 @@
     "lost": 30,
     "played": 61,
     "winrate": 50.8,
-    "rank": 401,
-    "rkd": -3
+    "rank": 400,
+    "rkd": -2
   },
   {
     "name": "Yondu",
@@ -6483,8 +6456,8 @@
     "lost": 94,
     "played": 169,
     "winrate": 44.4,
-    "rank": 402,
-    "rkd": -3
+    "rank": 401,
+    "rkd": -2
   },
   {
     "name": "뽀구",
@@ -6499,8 +6472,8 @@
     "lost": 94,
     "played": 169,
     "winrate": 44.4,
-    "rank": 402,
-    "rkd": -3
+    "rank": 401,
+    "rkd": -2
   },
   {
     "name": "흑헉",
@@ -6515,8 +6488,8 @@
     "lost": 73,
     "played": 143,
     "winrate": 49.0,
-    "rank": 404,
-    "rkd": -2
+    "rank": 403,
+    "rkd": -1
   },
   {
     "name": "천불이",
@@ -6531,8 +6504,8 @@
     "lost": 91,
     "played": 168,
     "winrate": 45.8,
-    "rank": 405,
-    "rkd": -2
+    "rank": 404,
+    "rkd": -1
   },
   {
     "name": "꿈같은날들",
@@ -6547,8 +6520,8 @@
     "lost": 3,
     "played": 13,
     "winrate": 76.9,
-    "rank": 406,
-    "rkd": -2
+    "rank": 405,
+    "rkd": -1
   },
   {
     "name": "쌀먹전사",
@@ -6563,8 +6536,8 @@
     "lost": 8,
     "played": 21,
     "winrate": 61.9,
-    "rank": 406,
-    "rkd": -2
+    "rank": 405,
+    "rkd": -1
   },
   {
     "name": "체인소",
@@ -6579,8 +6552,8 @@
     "lost": 198,
     "played": 384,
     "winrate": 48.4,
-    "rank": 406,
-    "rkd": -2
+    "rank": 405,
+    "rkd": -1
   },
   {
     "name": "서리궁수",
@@ -6595,8 +6568,25 @@
     "lost": 18,
     "played": 47,
     "winrate": 61.7,
-    "rank": 409,
-    "rkd": -2
+    "rank": 408,
+    "rkd": -1
+  },
+  {
+    "name": "전사갱",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "전사",
+    "race": "오크",
+    "faction": "HORDE",
+    "guild": "벚꽃",
+    "rating": 1628,
+    "won": 190,
+    "lost": 253,
+    "played": 443,
+    "winrate": 42.9,
+    "rank": 408,
+    "rd": -33,
+    "rkd": -63
   },
   {
     "name": "회오리바람",
@@ -6611,8 +6601,8 @@
     "lost": 34,
     "played": 72,
     "winrate": 52.8,
-    "rank": 409,
-    "rkd": -2
+    "rank": 408,
+    "rkd": -1
   },
   {
     "name": "그치",
@@ -11487,22 +11477,6 @@
     "rkd": -5
   },
   {
-    "name": "Realflow",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "마법사",
-    "race": "언데드",
-    "faction": "HORDE",
-    "guild": "",
-    "rating": 1538,
-    "won": 13,
-    "lost": 15,
-    "played": 28,
-    "winrate": 46.4,
-    "rank": 717,
-    "rkd": -5
-  },
-  {
     "name": "가오캥이",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -11577,9 +11551,9 @@
     "guild": "던전에서 만남을",
     "rating": 1538,
     "won": 11,
-    "lost": 26,
-    "played": 37,
-    "winrate": 29.7,
+    "lost": 29,
+    "played": 40,
+    "winrate": 27.5,
     "rank": 717,
     "rkd": -5
   },
@@ -11692,8 +11666,8 @@
     "lost": 7,
     "played": 12,
     "winrate": 41.7,
-    "rank": 730,
-    "rkd": -6
+    "rank": 729,
+    "rkd": -5
   },
   {
     "name": "Healpago",
@@ -11708,8 +11682,8 @@
     "lost": 9,
     "played": 19,
     "winrate": 52.6,
-    "rank": 730,
-    "rkd": -6
+    "rank": 729,
+    "rkd": -5
   },
   {
     "name": "Misfit",
@@ -11724,8 +11698,8 @@
     "lost": 3,
     "played": 10,
     "winrate": 70.0,
-    "rank": 730,
-    "rkd": -6
+    "rank": 729,
+    "rkd": -5
   },
   {
     "name": "Swiria",
@@ -11740,8 +11714,8 @@
     "lost": 2,
     "played": 6,
     "winrate": 66.7,
-    "rank": 730,
-    "rkd": -6
+    "rank": 729,
+    "rkd": -5
   },
   {
     "name": "김영주",
@@ -11756,8 +11730,8 @@
     "lost": 79,
     "played": 112,
     "winrate": 29.5,
-    "rank": 730,
-    "rkd": -6
+    "rank": 729,
+    "rkd": -5
   },
   {
     "name": "리버슨",
@@ -11772,8 +11746,8 @@
     "lost": 3,
     "played": 10,
     "winrate": 70.0,
-    "rank": 730,
-    "rkd": -6
+    "rank": 729,
+    "rkd": -5
   },
   {
     "name": "물빠앙",
@@ -11788,8 +11762,8 @@
     "lost": 2,
     "played": 6,
     "winrate": 66.7,
-    "rank": 730,
-    "rkd": -6
+    "rank": 729,
+    "rkd": -5
   },
   {
     "name": "분노한거추",
@@ -11804,8 +11778,8 @@
     "lost": 30,
     "played": 49,
     "winrate": 38.8,
-    "rank": 730,
-    "rkd": -6
+    "rank": 729,
+    "rkd": -5
   },
   {
     "name": "손마",
@@ -11820,8 +11794,8 @@
     "lost": 2,
     "played": 8,
     "winrate": 75.0,
-    "rank": 730,
-    "rkd": -6
+    "rank": 729,
+    "rkd": -5
   },
   {
     "name": "투기장유저찾아요",
@@ -11836,9 +11810,9 @@
     "lost": 5,
     "played": 9,
     "winrate": 44.4,
-    "rank": 730,
+    "rank": 729,
     "rd": 10,
-    "rkd": 70
+    "rkd": 71
   },
   {
     "name": "Tus",
@@ -11853,8 +11827,8 @@
     "lost": 14,
     "played": 26,
     "winrate": 46.2,
-    "rank": 740,
-    "rkd": -7
+    "rank": 739,
+    "rkd": -6
   },
   {
     "name": "꿩대신닭",
@@ -11869,8 +11843,8 @@
     "lost": 14,
     "played": 26,
     "winrate": 46.2,
-    "rank": 740,
-    "rkd": -7
+    "rank": 739,
+    "rkd": -6
   },
   {
     "name": "노스파플리즈",
@@ -11885,8 +11859,8 @@
     "lost": 4,
     "played": 10,
     "winrate": 60.0,
-    "rank": 740,
-    "rkd": -7
+    "rank": 739,
+    "rkd": -6
   },
   {
     "name": "담술",
@@ -11901,8 +11875,8 @@
     "lost": 7,
     "played": 15,
     "winrate": 53.3,
-    "rank": 740,
-    "rkd": -7
+    "rank": 739,
+    "rkd": -6
   },
   {
     "name": "드루리온",
@@ -11917,8 +11891,8 @@
     "lost": 1,
     "played": 4,
     "winrate": 75.0,
-    "rank": 740,
-    "rkd": -7
+    "rank": 739,
+    "rkd": -6
   },
   {
     "name": "로튼콥스",
@@ -11933,8 +11907,8 @@
     "lost": 4,
     "played": 10,
     "winrate": 60.0,
-    "rank": 740,
-    "rkd": -7
+    "rank": 739,
+    "rkd": -6
   },
   {
     "name": "방탄소년",
@@ -11949,8 +11923,8 @@
     "lost": 4,
     "played": 10,
     "winrate": 60.0,
-    "rank": 740,
-    "rkd": -7
+    "rank": 739,
+    "rkd": -6
   },
   {
     "name": "알로록",
@@ -11965,8 +11939,8 @@
     "lost": 6,
     "played": 14,
     "winrate": 57.1,
-    "rank": 740,
-    "rkd": -7
+    "rank": 739,
+    "rkd": -6
   },
   {
     "name": "인텐스",
@@ -11981,8 +11955,8 @@
     "lost": 0,
     "played": 4,
     "winrate": 100.0,
-    "rank": 740,
-    "rkd": -7
+    "rank": 739,
+    "rkd": -6
   },
   {
     "name": "쭐쭐이",
@@ -11997,8 +11971,8 @@
     "lost": 3,
     "played": 10,
     "winrate": 70.0,
-    "rank": 740,
-    "rkd": -7
+    "rank": 739,
+    "rkd": -6
   },
   {
     "name": "회드득",
@@ -12013,8 +11987,8 @@
     "lost": 77,
     "played": 118,
     "winrate": 34.7,
-    "rank": 740,
-    "rkd": -7
+    "rank": 739,
+    "rkd": -6
   },
   {
     "name": "Alar",
@@ -12029,8 +12003,8 @@
     "lost": 27,
     "played": 48,
     "winrate": 43.8,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "개소리그만하시개",
@@ -12045,8 +12019,8 @@
     "lost": 15,
     "played": 33,
     "winrate": 54.5,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "농심뼈해장국",
@@ -12061,8 +12035,8 @@
     "lost": 1,
     "played": 6,
     "winrate": 83.3,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "도트강",
@@ -12077,8 +12051,8 @@
     "lost": 4,
     "played": 10,
     "winrate": 60.0,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "돌풍전사",
@@ -12093,8 +12067,8 @@
     "lost": 7,
     "played": 12,
     "winrate": 41.7,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "러슬람",
@@ -12109,8 +12083,8 @@
     "lost": 13,
     "played": 26,
     "winrate": 50.0,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "마세짤",
@@ -12125,8 +12099,8 @@
     "lost": 5,
     "played": 12,
     "winrate": 58.3,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "무한법사",
@@ -12141,8 +12115,8 @@
     "lost": 4,
     "played": 10,
     "winrate": 60.0,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "암습",
@@ -12157,8 +12131,8 @@
     "lost": 13,
     "played": 30,
     "winrate": 56.7,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "이작크",
@@ -12173,8 +12147,8 @@
     "lost": 1,
     "played": 6,
     "winrate": 83.3,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "투기장이시즌풀셋",
@@ -12189,8 +12163,8 @@
     "lost": 12,
     "played": 19,
     "winrate": 36.8,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "팔방미인",
@@ -12205,8 +12179,8 @@
     "lost": 10,
     "played": 19,
     "winrate": 47.4,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "팔봉님",
@@ -12221,8 +12195,8 @@
     "lost": 17,
     "played": 29,
     "winrate": 41.4,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "푸딩딩",
@@ -12237,8 +12211,8 @@
     "lost": 10,
     "played": 20,
     "winrate": 50.0,
-    "rank": 751,
-    "rkd": -7
+    "rank": 750,
+    "rkd": -6
   },
   {
     "name": "Mindcontrol",
@@ -12253,8 +12227,8 @@
     "lost": 12,
     "played": 20,
     "winrate": 40.0,
-    "rank": 765,
-    "rkd": -6
+    "rank": 764,
+    "rkd": -5
   },
   {
     "name": "Overspeed",
@@ -12269,8 +12243,8 @@
     "lost": 9,
     "played": 14,
     "winrate": 35.7,
-    "rank": 765,
-    "rkd": -6
+    "rank": 764,
+    "rkd": -5
   },
   {
     "name": "짜라투스투라",
@@ -12285,8 +12259,8 @@
     "lost": 15,
     "played": 30,
     "winrate": 50.0,
-    "rank": 765,
-    "rkd": -6
+    "rank": 764,
+    "rkd": -5
   },
   {
     "name": "깨비사제",
@@ -12301,8 +12275,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 768,
-    "rkd": -6
+    "rank": 767,
+    "rkd": -5
   },
   {
     "name": "내가야수다",
@@ -12317,8 +12291,8 @@
     "lost": 12,
     "played": 18,
     "winrate": 33.3,
-    "rank": 768,
-    "rkd": -6
+    "rank": 767,
+    "rkd": -5
   },
   {
     "name": "냥꾸니형",
@@ -12333,8 +12307,8 @@
     "lost": 4,
     "played": 10,
     "winrate": 60.0,
-    "rank": 768,
-    "rkd": -6
+    "rank": 767,
+    "rkd": -5
   },
   {
     "name": "넌대드",
@@ -12349,8 +12323,8 @@
     "lost": 12,
     "played": 20,
     "winrate": 40.0,
-    "rank": 768,
-    "rkd": -6
+    "rank": 767,
+    "rkd": -5
   },
   {
     "name": "변신",
@@ -12365,8 +12339,8 @@
     "lost": 6,
     "played": 11,
     "winrate": 45.5,
-    "rank": 768,
-    "rkd": -6
+    "rank": 767,
+    "rkd": -5
   },
   {
     "name": "빛솔",
@@ -12381,8 +12355,8 @@
     "lost": 25,
     "played": 41,
     "winrate": 39.0,
-    "rank": 768,
-    "rkd": -6
+    "rank": 767,
+    "rkd": -5
   },
   {
     "name": "쌍따끄",
@@ -12397,8 +12371,8 @@
     "lost": 0,
     "played": 4,
     "winrate": 100.0,
-    "rank": 768,
-    "rkd": -6
+    "rank": 767,
+    "rkd": -5
   },
   {
     "name": "에스웍스",
@@ -12413,8 +12387,8 @@
     "lost": 9,
     "played": 15,
     "winrate": 40.0,
-    "rank": 768,
-    "rkd": -6
+    "rank": 767,
+    "rkd": -5
   },
   {
     "name": "운탁해",
@@ -12429,8 +12403,8 @@
     "lost": 4,
     "played": 8,
     "winrate": 50.0,
-    "rank": 768,
-    "rkd": -6
+    "rank": 767,
+    "rkd": -5
   },
   {
     "name": "찔찔이",
@@ -12445,8 +12419,25 @@
     "lost": 0,
     "played": 3,
     "winrate": 100.0,
-    "rank": 768,
-    "rkd": -6
+    "rank": 767,
+    "rkd": -5
+  },
+  {
+    "name": "Realflow",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "마법사",
+    "race": "언데드",
+    "faction": "HORDE",
+    "guild": "",
+    "rating": 1532,
+    "won": 13,
+    "lost": 18,
+    "played": 31,
+    "winrate": 41.9,
+    "rank": 777,
+    "rd": -6,
+    "rkd": -65
   },
   {
     "name": "노각",
@@ -12461,8 +12452,8 @@
     "lost": 1,
     "played": 6,
     "winrate": 83.3,
-    "rank": 778,
-    "rkd": -6
+    "rank": 777,
+    "rkd": -5
   },
   {
     "name": "짬프",
@@ -12477,8 +12468,8 @@
     "lost": 4,
     "played": 9,
     "winrate": 55.6,
-    "rank": 778,
-    "rkd": -6
+    "rank": 777,
+    "rkd": -5
   },
   {
     "name": "Larcenciell",
@@ -22689,6 +22680,23 @@
     "rkd": -7
   },
   {
+    "name": "쿼터마스터",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "드루이드",
+    "race": "나이트 엘프",
+    "faction": "ALLIANCE",
+    "guild": "HeyBrother",
+    "rating": 1500,
+    "won": 24,
+    "lost": 49,
+    "played": 73,
+    "winrate": 32.9,
+    "rank": 1136,
+    "rd": 23,
+    "rkd": 725
+  },
+  {
     "name": "키마",
     "realm": "fengus-ferocity",
     "realm_name": "펜구스의 흉포",
@@ -23277,8 +23285,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "다시출발",
@@ -23293,8 +23301,8 @@
     "lost": 12,
     "played": 20,
     "winrate": 40.0,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "데빌",
@@ -23309,8 +23317,8 @@
     "lost": 3,
     "played": 5,
     "winrate": 40.0,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "레드드레곤",
@@ -23325,8 +23333,8 @@
     "lost": 16,
     "played": 25,
     "winrate": 36.0,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "리무르",
@@ -23341,8 +23349,8 @@
     "lost": 27,
     "played": 44,
     "winrate": 38.6,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "바람의벗",
@@ -23357,8 +23365,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "박정의",
@@ -23373,8 +23381,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "술사융융",
@@ -23389,8 +23397,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "신장",
@@ -23405,8 +23413,8 @@
     "lost": 9,
     "played": 12,
     "winrate": 25.0,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "알디엘살라",
@@ -23421,8 +23429,8 @@
     "lost": 7,
     "played": 10,
     "winrate": 30.0,
-    "rank": 1454,
-    "rkd": -2
+    "rank": 1455,
+    "rkd": -1
   },
   {
     "name": "알아서해봄",
@@ -23437,8 +23445,8 @@
     "lost": 37,
     "played": 60,
     "winrate": 38.3,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "이든바람",
@@ -23453,8 +23461,8 @@
     "lost": 7,
     "played": 11,
     "winrate": 36.4,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "초대박간지녀옥뺑",
@@ -23469,8 +23477,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "카클라크",
@@ -23485,8 +23493,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "큐신",
@@ -23501,9 +23509,9 @@
     "lost": 7,
     "played": 17,
     "winrate": 58.8,
-    "rank": 1454,
+    "rank": 1455,
     "rd": 8,
-    "rkd": 116
+    "rkd": 115
   },
   {
     "name": "퇴폐한",
@@ -23518,8 +23526,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "한상궁",
@@ -23534,8 +23542,8 @@
     "lost": 4,
     "played": 8,
     "winrate": 50.0,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "호딩이씹쌔",
@@ -23550,8 +23558,8 @@
     "lost": 2,
     "played": 5,
     "winrate": 60.0,
-    "rank": 1454,
-    "rkd": -19
+    "rank": 1455,
+    "rkd": -20
   },
   {
     "name": "Ddruid",
@@ -23566,8 +23574,8 @@
     "lost": 3,
     "played": 5,
     "winrate": 40.0,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "강공",
@@ -23582,8 +23590,8 @@
     "lost": 2,
     "played": 5,
     "winrate": 60.0,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "나만봐",
@@ -23598,8 +23606,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "다크멘탈",
@@ -23614,8 +23622,8 @@
     "lost": 7,
     "played": 14,
     "winrate": 50.0,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "디투",
@@ -23630,8 +23638,8 @@
     "lost": 181,
     "played": 256,
     "winrate": 29.3,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "뚜옹",
@@ -23646,8 +23654,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "말라뮤트",
@@ -23662,8 +23670,8 @@
     "lost": 3,
     "played": 5,
     "winrate": 40.0,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "모닝글로리",
@@ -23678,8 +23686,8 @@
     "lost": 21,
     "played": 37,
     "winrate": 43.2,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "반듸",
@@ -23694,8 +23702,8 @@
     "lost": 56,
     "played": 62,
     "winrate": 9.7,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "반디빛",
@@ -23710,8 +23718,8 @@
     "lost": 71,
     "played": 81,
     "winrate": 12.3,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "옛날수제돈까스",
@@ -23726,8 +23734,8 @@
     "lost": 24,
     "played": 30,
     "winrate": 20.0,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "옛날왕돈까스",
@@ -23742,8 +23750,8 @@
     "lost": 24,
     "played": 30,
     "winrate": 20.0,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "인디안밥",
@@ -23758,8 +23766,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "죽격점때려보자",
@@ -23774,8 +23782,8 @@
     "lost": 1,
     "played": 3,
     "winrate": 66.7,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "짤짤핑",
@@ -23790,8 +23798,8 @@
     "lost": 2,
     "played": 4,
     "winrate": 50.0,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "히히잇",
@@ -23806,8 +23814,8 @@
     "lost": 8,
     "played": 15,
     "winrate": 46.7,
-    "rank": 1472,
-    "rkd": -21
+    "rank": 1473,
+    "rkd": -22
   },
   {
     "name": "Calmbbang",
@@ -23822,8 +23830,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1488,
-    "rkd": -21
+    "rank": 1489,
+    "rkd": -22
   },
   {
     "name": "Cider",
@@ -23838,8 +23846,8 @@
     "lost": 5,
     "played": 8,
     "winrate": 37.5,
-    "rank": 1488,
-    "rkd": -21
+    "rank": 1489,
+    "rkd": -22
   },
   {
     "name": "개태",
@@ -23854,8 +23862,8 @@
     "lost": 4,
     "played": 6,
     "winrate": 33.3,
-    "rank": 1488,
-    "rkd": -21
+    "rank": 1489,
+    "rkd": -22
   },
   {
     "name": "병진형",
@@ -23870,8 +23878,8 @@
     "lost": 1,
     "played": 3,
     "winrate": 66.7,
-    "rank": 1488,
-    "rkd": -21
+    "rank": 1489,
+    "rkd": -22
   },
   {
     "name": "야두",
@@ -23886,8 +23894,8 @@
     "lost": 4,
     "played": 10,
     "winrate": 60.0,
-    "rank": 1488,
-    "rkd": -21
+    "rank": 1489,
+    "rkd": -22
   },
   {
     "name": "오끼도끼",
@@ -23902,8 +23910,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1488,
-    "rkd": -21
+    "rank": 1489,
+    "rkd": -22
   },
   {
     "name": "움노대장",
@@ -23918,9 +23926,9 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1488,
+    "rank": 1489,
     "rd": 14,
-    "rkd": 264
+    "rkd": 263
   },
   {
     "name": "조지자",
@@ -23935,8 +23943,8 @@
     "lost": 2,
     "played": 5,
     "winrate": 60.0,
-    "rank": 1488,
-    "rkd": -21
+    "rank": 1489,
+    "rkd": -22
   },
   {
     "name": "Erg",
@@ -23951,8 +23959,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "Kkachill",
@@ -23967,8 +23975,8 @@
     "lost": 6,
     "played": 9,
     "winrate": 33.3,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "Sunny",
@@ -23983,8 +23991,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "Tbcc",
@@ -23999,8 +24007,8 @@
     "lost": 5,
     "played": 8,
     "winrate": 37.5,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "개망",
@@ -24015,8 +24023,8 @@
     "lost": 3,
     "played": 6,
     "winrate": 50.0,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "늙고돈없고아프고",
@@ -24031,8 +24039,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "버킹검",
@@ -24047,8 +24055,8 @@
     "lost": 1,
     "played": 3,
     "winrate": 66.7,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "에링",
@@ -24063,8 +24071,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "에브제니스",
@@ -24079,8 +24087,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "짭키라",
@@ -24095,8 +24103,8 @@
     "lost": 2,
     "played": 4,
     "winrate": 50.0,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "찡콩",
@@ -24111,8 +24119,8 @@
     "lost": 9,
     "played": 14,
     "winrate": 35.7,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "쵸단쵸단",
@@ -24127,8 +24135,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "평범한사람",
@@ -24143,8 +24151,8 @@
     "lost": 4,
     "played": 6,
     "winrate": 33.3,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "프루티",
@@ -24159,8 +24167,8 @@
     "lost": 3,
     "played": 6,
     "winrate": 50.0,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "한입",
@@ -24175,8 +24183,8 @@
     "lost": 2,
     "played": 4,
     "winrate": 50.0,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "헤니",
@@ -24191,8 +24199,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1496,
-    "rkd": -22
+    "rank": 1497,
+    "rkd": -23
   },
   {
     "name": "Anoldsw",
@@ -24207,8 +24215,8 @@
     "lost": 21,
     "played": 30,
     "winrate": 30.0,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "가이브",
@@ -24223,8 +24231,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "갯강구사냥꾼",
@@ -24239,8 +24247,8 @@
     "lost": 13,
     "played": 25,
     "winrate": 48.0,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "넬즐",
@@ -24255,8 +24263,8 @@
     "lost": 43,
     "played": 51,
     "winrate": 15.7,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "뫼신",
@@ -24271,8 +24279,8 @@
     "lost": 33,
     "played": 49,
     "winrate": 32.7,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "물똥방구",
@@ -24287,8 +24295,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "불타는오렌지",
@@ -24303,8 +24311,8 @@
     "lost": 46,
     "played": 50,
     "winrate": 8.0,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "붕기",
@@ -24319,8 +24327,8 @@
     "lost": 17,
     "played": 27,
     "winrate": 37.0,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "샤라스달",
@@ -24335,8 +24343,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "셀러니스",
@@ -24351,8 +24359,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "쑥술",
@@ -24367,8 +24375,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "완방",
@@ -24383,8 +24391,8 @@
     "lost": 43,
     "played": 52,
     "winrate": 17.3,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "월화드루",
@@ -24399,8 +24407,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "퀸승구",
@@ -24415,8 +24423,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "키스로보낸편지",
@@ -24431,8 +24439,8 @@
     "lost": 13,
     "played": 23,
     "winrate": 43.5,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "파란하늘법사",
@@ -24447,8 +24455,8 @@
     "lost": 22,
     "played": 31,
     "winrate": 29.0,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "푸른하늘사제",
@@ -24463,8 +24471,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "호러",
@@ -24479,8 +24487,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1512,
-    "rkd": -22
+    "rank": 1513,
+    "rkd": -23
   },
   {
     "name": "Hoki",
@@ -24495,8 +24503,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "Moobi",
@@ -24511,8 +24519,8 @@
     "lost": 15,
     "played": 25,
     "winrate": 40.0,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "Sang",
@@ -24527,8 +24535,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "김전투",
@@ -24543,8 +24551,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "린웨리",
@@ -24559,8 +24567,8 @@
     "lost": 19,
     "played": 20,
     "winrate": 5.0,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "불타는감귤",
@@ -24575,8 +24583,8 @@
     "lost": 28,
     "played": 30,
     "winrate": 6.7,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "비누투척자",
@@ -24591,8 +24599,8 @@
     "lost": 37,
     "played": 40,
     "winrate": 7.5,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "사람매듭",
@@ -24607,9 +24615,9 @@
     "lost": 13,
     "played": 15,
     "winrate": 13.3,
-    "rank": 1530,
+    "rank": 1531,
     "rd": 41,
-    "rkd": 504
+    "rkd": 503
   },
   {
     "name": "성기성기안성기",
@@ -24624,8 +24632,8 @@
     "lost": 5,
     "played": 9,
     "winrate": 44.4,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "손만잡고잘꺼죠",
@@ -24640,8 +24648,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "쓰리고광박피박",
@@ -24656,8 +24664,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "앤웨리",
@@ -24672,8 +24680,8 @@
     "lost": 20,
     "played": 21,
     "winrate": 4.8,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "잠들고싶어",
@@ -24688,8 +24696,8 @@
     "lost": 54,
     "played": 61,
     "winrate": 11.5,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "주수리교주",
@@ -24704,8 +24712,8 @@
     "lost": 7,
     "played": 10,
     "winrate": 30.0,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "창작의쾌락",
@@ -24720,8 +24728,8 @@
     "lost": 10,
     "played": 20,
     "winrate": 50.0,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "타우렌교주",
@@ -24736,8 +24744,8 @@
     "lost": 9,
     "played": 10,
     "winrate": 10.0,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "투요",
@@ -24752,8 +24760,8 @@
     "lost": 8,
     "played": 10,
     "winrate": 20.0,
-    "rank": 1530,
-    "rkd": -22
+    "rank": 1531,
+    "rkd": -23
   },
   {
     "name": "Galbi",
@@ -24768,8 +24776,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "Kisstherain",
@@ -24784,8 +24792,8 @@
     "lost": 20,
     "played": 30,
     "winrate": 33.3,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "가진돈다내놔요",
@@ -24800,8 +24808,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "곰곰하다",
@@ -24816,8 +24824,8 @@
     "lost": 9,
     "played": 10,
     "winrate": 10.0,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "놈리웨리",
@@ -24832,8 +24840,8 @@
     "lost": 18,
     "played": 20,
     "winrate": 10.0,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "딘웨리",
@@ -24848,8 +24856,8 @@
     "lost": 19,
     "played": 21,
     "winrate": 9.5,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "맥주맛설레임",
@@ -24864,8 +24872,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "복고",
@@ -24880,8 +24888,8 @@
     "lost": 8,
     "played": 13,
     "winrate": 38.5,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "부패의씨앗호떡",
@@ -24896,8 +24904,8 @@
     "lost": 12,
     "played": 19,
     "winrate": 36.8,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "불타는라임",
@@ -24912,8 +24920,8 @@
     "lost": 17,
     "played": 20,
     "winrate": 15.0,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "불타는포도",
@@ -24928,8 +24936,8 @@
     "lost": 17,
     "played": 20,
     "winrate": 15.0,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "성벽",
@@ -24944,8 +24952,8 @@
     "lost": 44,
     "played": 52,
     "winrate": 15.4,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "언다",
@@ -24960,8 +24968,8 @@
     "lost": 17,
     "played": 24,
     "winrate": 29.2,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "원미구고강동",
@@ -24976,8 +24984,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "이틀딱",
@@ -24992,8 +25000,8 @@
     "lost": 1,
     "played": 3,
     "winrate": 66.7,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "인조인간",
@@ -25008,8 +25016,8 @@
     "lost": 9,
     "played": 10,
     "winrate": 10.0,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "임무버블무버",
@@ -25024,8 +25032,8 @@
     "lost": 6,
     "played": 12,
     "winrate": 50.0,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "청렴왕김부패",
@@ -25040,8 +25048,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "피스로드",
@@ -25056,8 +25064,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "해뜰무렵",
@@ -25072,8 +25080,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "힘빛",
@@ -25088,8 +25096,8 @@
     "lost": 46,
     "played": 53,
     "winrate": 13.2,
-    "rank": 1547,
-    "rkd": -23
+    "rank": 1548,
+    "rkd": -24
   },
   {
     "name": "Cabol",
@@ -25104,8 +25112,8 @@
     "lost": 4,
     "played": 7,
     "winrate": 42.9,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "Dogzakdoo",
@@ -25120,8 +25128,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "Ghost",
@@ -25136,8 +25144,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "그린라이스",
@@ -25152,8 +25160,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "내뒤에숨어",
@@ -25168,8 +25176,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "눈물의법사",
@@ -25184,8 +25192,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "달콤한",
@@ -25200,8 +25208,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "멍테스큐",
@@ -25216,9 +25224,9 @@
     "lost": 14,
     "played": 22,
     "winrate": 36.4,
-    "rank": 1568,
+    "rank": 1569,
     "rd": 43,
-    "rkd": 492
+    "rkd": 491
   },
   {
     "name": "몽테스큐",
@@ -25233,9 +25241,9 @@
     "lost": 14,
     "played": 22,
     "winrate": 36.4,
-    "rank": 1568,
+    "rank": 1569,
     "rd": 43,
-    "rkd": 492
+    "rkd": 491
   },
   {
     "name": "배부르넹",
@@ -25250,8 +25258,8 @@
     "lost": 9,
     "played": 10,
     "winrate": 10.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "배아파",
@@ -25266,8 +25274,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "불타는산삼",
@@ -25282,8 +25290,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "불타는양파",
@@ -25298,8 +25306,8 @@
     "lost": 20,
     "played": 20,
     "winrate": 0.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "불타는유자",
@@ -25314,8 +25322,8 @@
     "lost": 46,
     "played": 50,
     "winrate": 8.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "빈털털이",
@@ -25330,8 +25338,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "뽀구몽콩",
@@ -25346,8 +25354,8 @@
     "lost": 9,
     "played": 10,
     "winrate": 10.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "샤니아트",
@@ -25362,8 +25370,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "실버스테르",
@@ -25378,8 +25386,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "아리쓰리",
@@ -25394,8 +25402,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "약오르지메롱",
@@ -25410,8 +25418,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "왓형",
@@ -25426,8 +25434,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "웨더",
@@ -25442,8 +25450,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "천상정천",
@@ -25458,8 +25466,8 @@
     "lost": 4,
     "played": 5,
     "winrate": 20.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "파파스머푸",
@@ -25474,8 +25482,8 @@
     "lost": 9,
     "played": 10,
     "winrate": 10.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "퍼플라이스",
@@ -25490,8 +25498,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "호두우",
@@ -25506,8 +25514,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "흑당라떼",
@@ -25522,8 +25530,8 @@
     "lost": 43,
     "played": 48,
     "winrate": 10.4,
-    "rank": 1568,
-    "rkd": -23
+    "rank": 1569,
+    "rkd": -24
   },
   {
     "name": "Elaine",
@@ -25538,8 +25546,8 @@
     "lost": 9,
     "played": 10,
     "winrate": 10.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "Free",
@@ -25554,9 +25562,9 @@
     "lost": 41,
     "played": 43,
     "winrate": 4.7,
-    "rank": 1595,
+    "rank": 1596,
     "rd": -22,
-    "rkd": -646
+    "rkd": -647
   },
   {
     "name": "Kenma",
@@ -25571,8 +25579,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "Musha",
@@ -25587,8 +25595,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "Nic",
@@ -25603,8 +25611,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "고은이형",
@@ -25619,8 +25627,8 @@
     "lost": 23,
     "played": 35,
     "winrate": 34.3,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "공포한따릉",
@@ -25635,8 +25643,8 @@
     "lost": 5,
     "played": 8,
     "winrate": 37.5,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "깨물어뿌까",
@@ -25651,9 +25659,9 @@
     "lost": 41,
     "played": 43,
     "winrate": 4.7,
-    "rank": 1595,
+    "rank": 1596,
     "rd": -22,
-    "rkd": -646
+    "rkd": -647
   },
   {
     "name": "낭만파궁사",
@@ -25668,8 +25676,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "냉기주논",
@@ -25684,8 +25692,8 @@
     "lost": 6,
     "played": 8,
     "winrate": 25.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "더미훈련용",
@@ -25700,8 +25708,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "드럼통",
@@ -25716,8 +25724,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "룡드루",
@@ -25732,8 +25740,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "무지개반",
@@ -25748,8 +25756,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "봄날의햇빛",
@@ -25764,8 +25772,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "뽀흑이",
@@ -25780,8 +25788,8 @@
     "lost": 9,
     "played": 16,
     "winrate": 43.8,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "삼초준다",
@@ -25796,8 +25804,8 @@
     "lost": 6,
     "played": 7,
     "winrate": 14.3,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "아비터",
@@ -25812,8 +25820,8 @@
     "lost": 3,
     "played": 5,
     "winrate": 40.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "위례",
@@ -25828,8 +25836,8 @@
     "lost": 2,
     "played": 5,
     "winrate": 60.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "이더리움클래식",
@@ -25844,8 +25852,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "이라이",
@@ -25860,8 +25868,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -2
+    "rank": 1596,
+    "rkd": -1
   },
   {
     "name": "일공이사",
@@ -25876,8 +25884,8 @@
     "lost": 17,
     "played": 29,
     "winrate": 41.4,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "일루시아",
@@ -25892,8 +25900,8 @@
     "lost": 8,
     "played": 13,
     "winrate": 38.5,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "임상구",
@@ -25908,8 +25916,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "질긴목숨",
@@ -25924,8 +25932,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "한갸인",
@@ -25940,8 +25948,8 @@
     "lost": 15,
     "played": 30,
     "winrate": 50.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "효천",
@@ -25956,8 +25964,8 @@
     "lost": 9,
     "played": 10,
     "winrate": 10.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "훈스냥꾼",
@@ -25972,8 +25980,8 @@
     "lost": 4,
     "played": 8,
     "winrate": 50.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "흑파고",
@@ -25988,8 +25996,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1595,
-    "rkd": -25
+    "rank": 1596,
+    "rkd": -26
   },
   {
     "name": "Gabo",
@@ -26004,8 +26012,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "Ravok",
@@ -26020,8 +26028,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "가르냥꾼",
@@ -26036,8 +26044,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "개도둑",
@@ -26052,9 +26060,9 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1624,
+    "rank": 1625,
     "rd": -22,
-    "rkd": -661
+    "rkd": -662
   },
   {
     "name": "나엘드류",
@@ -26069,8 +26077,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "냥쿠니",
@@ -26085,8 +26093,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "달랜드",
@@ -26101,8 +26109,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "도사드",
@@ -26117,8 +26125,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "드루먼쇼",
@@ -26133,8 +26141,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "룡룡",
@@ -26149,8 +26157,8 @@
     "lost": 6,
     "played": 9,
     "winrate": 33.3,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "리찌",
@@ -26165,8 +26173,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "맛다시",
@@ -26181,8 +26189,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "불타는소금",
@@ -26197,8 +26205,8 @@
     "lost": 35,
     "played": 42,
     "winrate": 16.7,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "불타는피망",
@@ -26213,8 +26221,8 @@
     "lost": 29,
     "played": 30,
     "winrate": 3.3,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "빈수레",
@@ -26229,8 +26237,8 @@
     "lost": 3,
     "played": 7,
     "winrate": 57.1,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "빡킹",
@@ -26245,8 +26253,8 @@
     "lost": 3,
     "played": 5,
     "winrate": 40.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "뿌옹",
@@ -26261,8 +26269,8 @@
     "lost": 4,
     "played": 6,
     "winrate": 33.3,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "샤링이",
@@ -26277,8 +26285,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "소생한잔",
@@ -26293,8 +26301,8 @@
     "lost": 3,
     "played": 5,
     "winrate": 40.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "어부바",
@@ -26309,8 +26317,8 @@
     "lost": 5,
     "played": 6,
     "winrate": 16.7,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "언데드교주",
@@ -26325,8 +26333,8 @@
     "lost": 9,
     "played": 10,
     "winrate": 10.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "여기다캤소",
@@ -26341,8 +26349,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "여기에요암사",
@@ -26357,8 +26365,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "응애언데드",
@@ -26373,8 +26381,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "인크레시아",
@@ -26389,8 +26397,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "자라키켄파치",
@@ -26405,8 +26413,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "제리고",
@@ -26421,8 +26429,8 @@
     "lost": 6,
     "played": 9,
     "winrate": 33.3,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "주수리수녀",
@@ -26437,8 +26445,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "토템깎기장인",
@@ -26453,8 +26461,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "하얀바이올렛",
@@ -26469,8 +26477,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "허여사",
@@ -26485,8 +26493,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "헤팔이",
@@ -26501,8 +26509,8 @@
     "lost": 5,
     "played": 9,
     "winrate": 44.4,
-    "rank": 1624,
-    "rkd": -27
+    "rank": 1625,
+    "rkd": -28
   },
   {
     "name": "Uu",
@@ -26517,8 +26525,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "Xion",
@@ -26533,8 +26541,8 @@
     "lost": 4,
     "played": 7,
     "winrate": 42.9,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "나들아씨",
@@ -26549,8 +26557,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "내면의야스",
@@ -26565,8 +26573,8 @@
     "lost": 23,
     "played": 34,
     "winrate": 32.4,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "논현동고릴라",
@@ -26581,8 +26589,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "뉴치",
@@ -26597,8 +26605,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "두타",
@@ -26613,8 +26621,8 @@
     "lost": 29,
     "played": 48,
     "winrate": 39.6,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "롤칸",
@@ -26629,8 +26637,8 @@
     "lost": 47,
     "played": 50,
     "winrate": 6.0,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "뤼애",
@@ -26645,8 +26653,8 @@
     "lost": 53,
     "played": 62,
     "winrate": 14.5,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "바조",
@@ -26661,8 +26669,8 @@
     "lost": 7,
     "played": 12,
     "winrate": 41.7,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "뱅알",
@@ -26677,8 +26685,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "신세계냥꾼",
@@ -26693,8 +26701,8 @@
     "lost": 7,
     "played": 11,
     "winrate": 36.4,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "아이슈",
@@ -26709,8 +26717,8 @@
     "lost": 16,
     "played": 27,
     "winrate": 40.7,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "왁리오",
@@ -26725,8 +26733,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "입닫아",
@@ -26741,8 +26749,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "잽사",
@@ -26757,8 +26765,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "지슈라",
@@ -26773,8 +26781,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "치우단지",
@@ -26789,8 +26797,8 @@
     "lost": 19,
     "played": 30,
     "winrate": 36.7,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "카이야",
@@ -26805,8 +26813,8 @@
     "lost": 4,
     "played": 7,
     "winrate": 42.9,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "펜구스술사",
@@ -26821,8 +26829,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1656,
-    "rkd": -28
+    "rank": 1657,
+    "rkd": -29
   },
   {
     "name": "Shodown",
@@ -26837,8 +26845,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "고술용",
@@ -26853,8 +26861,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "나비날개",
@@ -26869,8 +26877,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "날라차기",
@@ -26885,8 +26893,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "다프트펑크",
@@ -26901,8 +26909,8 @@
     "lost": 5,
     "played": 7,
     "winrate": 28.6,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "단비처럼",
@@ -26917,8 +26925,8 @@
     "lost": 8,
     "played": 10,
     "winrate": 20.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "단종",
@@ -26933,8 +26941,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "드몽이",
@@ -26949,8 +26957,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "레몬도적",
@@ -26965,8 +26973,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "레이디실버",
@@ -26981,8 +26989,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "로얄제리님",
@@ -26997,8 +27005,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "룡사제",
@@ -27013,8 +27021,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "마이코네",
@@ -27029,8 +27037,8 @@
     "lost": 9,
     "played": 13,
     "winrate": 30.8,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "무단",
@@ -27045,8 +27053,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "문장",
@@ -27061,8 +27069,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "문종",
@@ -27077,8 +27085,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "스톰해머",
@@ -27093,8 +27101,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "실버백",
@@ -27109,8 +27117,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "아월",
@@ -27125,8 +27133,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "암삼",
@@ -27141,8 +27149,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "암오",
@@ -27157,8 +27165,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "오다주셈",
@@ -27173,8 +27181,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "유상철",
@@ -27189,8 +27197,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "유키사보루",
@@ -27205,8 +27213,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "은비까비",
@@ -27221,8 +27229,8 @@
     "lost": 7,
     "played": 11,
     "winrate": 36.4,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "응애푸우",
@@ -27237,8 +27245,8 @@
     "lost": 15,
     "played": 23,
     "winrate": 34.8,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "장필구",
@@ -27253,8 +27261,8 @@
     "lost": 10,
     "played": 18,
     "winrate": 44.4,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "킹받쥬열받쥬",
@@ -27269,8 +27277,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "퍼플데드",
@@ -27285,8 +27293,8 @@
     "lost": 3,
     "played": 6,
     "winrate": 50.0,
-    "rank": 1676,
-    "rkd": -28
+    "rank": 1677,
+    "rkd": -29
   },
   {
     "name": "Deft",
@@ -27301,8 +27309,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "Youez",
@@ -27317,8 +27325,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "고정멤버",
@@ -27333,8 +27341,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "기대그이상",
@@ -27349,8 +27357,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "기사커리지",
@@ -27365,8 +27373,8 @@
     "lost": 1,
     "played": 2,
     "winrate": 50.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "김영춘",
@@ -27381,8 +27389,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "뉴데이",
@@ -27397,8 +27405,8 @@
     "lost": 4,
     "played": 5,
     "winrate": 20.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "룰칸",
@@ -27413,8 +27421,8 @@
     "lost": 48,
     "played": 52,
     "winrate": 7.7,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "마법팡팡변이뿅뿅",
@@ -27429,8 +27437,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "몬난이기사",
@@ -27445,8 +27453,8 @@
     "lost": 4,
     "played": 4,
     "winrate": 0.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "뭐하누",
@@ -27461,8 +27469,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "비맞은태양도",
@@ -27477,8 +27485,8 @@
     "lost": 6,
     "played": 11,
     "winrate": 45.5,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "썽그리",
@@ -27493,8 +27501,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "액슬로즈",
@@ -27509,8 +27517,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "우왹굳",
@@ -27525,8 +27533,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "은근슬쩍삼장",
@@ -27541,8 +27549,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "은정곤듀",
@@ -27557,8 +27565,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "징촉괴",
@@ -27573,8 +27581,8 @@
     "lost": 22,
     "played": 33,
     "winrate": 33.3,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "폭군원",
@@ -27589,8 +27597,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "플르",
@@ -27605,8 +27613,8 @@
     "lost": 52,
     "played": 62,
     "winrate": 16.1,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "회개",
@@ -27621,8 +27629,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "흙으로돌아가라",
@@ -27637,8 +27645,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1705,
-    "rkd": -28
+    "rank": 1706,
+    "rkd": -29
   },
   {
     "name": "Sunsword",
@@ -27653,8 +27661,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "갱킹",
@@ -27669,8 +27677,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "대표홍구다",
@@ -27685,8 +27693,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "대표회장",
@@ -27701,8 +27709,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "딴딴묵찍",
@@ -27717,8 +27725,8 @@
     "lost": 14,
     "played": 25,
     "winrate": 44.0,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "몽이",
@@ -27733,8 +27741,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "베어얌",
@@ -27749,8 +27757,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "스톰공무원라온",
@@ -27765,8 +27773,8 @@
     "lost": 9,
     "played": 10,
     "winrate": 10.0,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "썬더퓨리추적자",
@@ -27781,8 +27789,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "웡웡",
@@ -27797,8 +27805,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "장씨아줌마",
@@ -27813,8 +27821,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "총총",
@@ -27829,8 +27837,8 @@
     "lost": 28,
     "played": 30,
     "winrate": 6.7,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "총총파파",
@@ -27845,8 +27853,8 @@
     "lost": 28,
     "played": 30,
     "winrate": 6.7,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "쿠우",
@@ -27861,8 +27869,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "펠레일",
@@ -27877,8 +27885,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "펭귄의흉포",
@@ -27893,8 +27901,8 @@
     "lost": 12,
     "played": 17,
     "winrate": 29.4,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "프라한",
@@ -27909,8 +27917,8 @@
     "lost": 12,
     "played": 17,
     "winrate": 29.4,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "호블마",
@@ -27925,8 +27933,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1727,
-    "rkd": -28
+    "rank": 1728,
+    "rkd": -29
   },
   {
     "name": "Surjection",
@@ -27941,8 +27949,8 @@
     "lost": 105,
     "played": 137,
     "winrate": 23.4,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "Teddyy",
@@ -27957,8 +27965,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "느에엥",
@@ -27973,8 +27981,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "당죽",
@@ -27989,8 +27997,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "똑똑이다",
@@ -28005,8 +28013,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "로템",
@@ -28021,8 +28029,8 @@
     "lost": 7,
     "played": 11,
     "winrate": 36.4,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "마구쑤셔",
@@ -28037,8 +28045,8 @@
     "lost": 24,
     "played": 41,
     "winrate": 41.5,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "마뚱이",
@@ -28053,8 +28061,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "불멸의염장질",
@@ -28069,8 +28077,8 @@
     "lost": 19,
     "played": 32,
     "winrate": 40.6,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "사랑매듭",
@@ -28085,9 +28093,9 @@
     "lost": 32,
     "played": 46,
     "winrate": 30.4,
-    "rank": 1745,
+    "rank": 1746,
     "rd": -34,
-    "rkd": -862
+    "rkd": -863
   },
   {
     "name": "신궁냥해리",
@@ -28102,8 +28110,8 @@
     "lost": 3,
     "played": 5,
     "winrate": 40.0,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "오디간니",
@@ -28118,8 +28126,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "울프강",
@@ -28134,8 +28142,8 @@
     "lost": 17,
     "played": 22,
     "winrate": 22.7,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "월드",
@@ -28150,8 +28158,8 @@
     "lost": 7,
     "played": 11,
     "winrate": 36.4,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "이타",
@@ -28166,8 +28174,8 @@
     "lost": 14,
     "played": 22,
     "winrate": 36.4,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "티미",
@@ -28182,8 +28190,8 @@
     "lost": 4,
     "played": 6,
     "winrate": 33.3,
-    "rank": 1745,
-    "rkd": -2
+    "rank": 1746,
+    "rkd": -1
   },
   {
     "name": "회두루",
@@ -28198,8 +28206,8 @@
     "lost": 105,
     "played": 137,
     "winrate": 23.4,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "힐끔",
@@ -28214,8 +28222,8 @@
     "lost": 19,
     "played": 31,
     "winrate": 38.7,
-    "rank": 1745,
-    "rkd": -28
+    "rank": 1746,
+    "rkd": -29
   },
   {
     "name": "Slump",
@@ -28230,8 +28238,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "나엘",
@@ -28246,8 +28254,8 @@
     "lost": 14,
     "played": 16,
     "winrate": 12.5,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "냥꾼이교주",
@@ -28262,8 +28270,8 @@
     "lost": 9,
     "played": 10,
     "winrate": 10.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "놈물빵",
@@ -28278,8 +28286,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "다울라기리",
@@ -28294,8 +28302,8 @@
     "lost": 7,
     "played": 13,
     "winrate": 46.2,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "돌꽃",
@@ -28310,8 +28318,8 @@
     "lost": 7,
     "played": 13,
     "winrate": 46.2,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "디스마스",
@@ -28326,8 +28334,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "메드로아",
@@ -28342,8 +28350,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "비습연습중",
@@ -28358,8 +28366,8 @@
     "lost": 4,
     "played": 6,
     "winrate": 33.3,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "소울렌",
@@ -28374,8 +28382,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "오드리냥",
@@ -28390,8 +28398,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "왓샤",
@@ -28406,8 +28414,8 @@
     "lost": 3,
     "played": 3,
     "winrate": 0.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "왕머리교주",
@@ -28422,8 +28430,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "인터페이스",
@@ -28438,8 +28446,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "재민",
@@ -28454,8 +28462,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "제프백",
@@ -28470,8 +28478,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "젤다",
@@ -28486,8 +28494,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "키요냥꾼",
@@ -28502,8 +28510,8 @@
     "lost": 4,
     "played": 5,
     "winrate": 20.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "히어리",
@@ -28518,8 +28526,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1763,
-    "rkd": -30
+    "rank": 1764,
+    "rkd": -31
   },
   {
     "name": "Cmonaq",
@@ -28534,8 +28542,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "Hyera",
@@ -28550,8 +28558,8 @@
     "lost": 5,
     "played": 7,
     "winrate": 28.6,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "Johnperry",
@@ -28566,8 +28574,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "Qchodan",
@@ -28582,8 +28590,8 @@
     "lost": 10,
     "played": 16,
     "winrate": 37.5,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "Timberwolf",
@@ -28598,8 +28606,8 @@
     "lost": 7,
     "played": 10,
     "winrate": 30.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "Undeadxwl",
@@ -28614,8 +28622,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "강산에봄",
@@ -28630,8 +28638,8 @@
     "lost": 7,
     "played": 10,
     "winrate": 30.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "그늘숲의지배자",
@@ -28646,8 +28654,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "나는해물짬뽕",
@@ -28662,8 +28670,8 @@
     "lost": 6,
     "played": 8,
     "winrate": 25.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "달콤로리",
@@ -28678,8 +28686,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "덜달달",
@@ -28694,8 +28702,8 @@
     "lost": 23,
     "played": 36,
     "winrate": 36.1,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "드루용",
@@ -28710,8 +28718,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "모모몽테스큐",
@@ -28726,8 +28734,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "무심광",
@@ -28742,8 +28750,8 @@
     "lost": 3,
     "played": 5,
     "winrate": 40.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "방코",
@@ -28758,8 +28766,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "방특탱커",
@@ -28774,8 +28782,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "백두산고라니",
@@ -28790,8 +28798,8 @@
     "lost": 2,
     "played": 4,
     "winrate": 50.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "비너스별",
@@ -28806,8 +28814,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "빛윤슬",
@@ -28822,8 +28830,8 @@
     "lost": 3,
     "played": 5,
     "winrate": 40.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "수박먹자",
@@ -28838,8 +28846,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "쌍문동사제비트",
@@ -28854,8 +28862,8 @@
     "lost": 2,
     "played": 4,
     "winrate": 50.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "위엄",
@@ -28870,8 +28878,8 @@
     "lost": 25,
     "played": 37,
     "winrate": 32.4,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "은싱",
@@ -28886,8 +28894,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "응애딜러",
@@ -28902,8 +28910,8 @@
     "lost": 4,
     "played": 6,
     "winrate": 33.3,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "이다은",
@@ -28918,8 +28926,8 @@
     "lost": 7,
     "played": 10,
     "winrate": 30.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "작은천사",
@@ -28934,8 +28942,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "잡도리오야지",
@@ -28950,8 +28958,8 @@
     "lost": 7,
     "played": 10,
     "winrate": 30.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "차태현입니다",
@@ -28966,8 +28974,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "테크늄",
@@ -28982,8 +28990,8 @@
     "lost": 5,
     "played": 7,
     "winrate": 28.6,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "통수왕김배신",
@@ -28998,8 +29006,8 @@
     "lost": 10,
     "played": 11,
     "winrate": 9.1,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "풀악셀",
@@ -29014,8 +29022,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "회복중독자",
@@ -29030,8 +29038,8 @@
     "lost": 3,
     "played": 3,
     "winrate": 0.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "흑마사여",
@@ -29046,8 +29054,8 @@
     "lost": 10,
     "played": 10,
     "winrate": 0.0,
-    "rank": 1782,
-    "rkd": -30
+    "rank": 1783,
+    "rkd": -31
   },
   {
     "name": "Douner",
@@ -29062,8 +29070,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1815,
-    "rkd": -26
+    "rank": 1816,
+    "rkd": -27
   },
   {
     "name": "배샌",
@@ -29078,8 +29086,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1815,
-    "rkd": -26
+    "rank": 1816,
+    "rkd": -27
   },
   {
     "name": "여자오크사냥꾼",
@@ -29094,8 +29102,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1815,
-    "rkd": -26
+    "rank": 1816,
+    "rkd": -27
   },
   {
     "name": "자몽맛썬키스트",
@@ -29110,8 +29118,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1815,
-    "rkd": -26
+    "rank": 1816,
+    "rkd": -27
   },
   {
     "name": "참외즙",
@@ -29126,8 +29134,8 @@
     "lost": 2,
     "played": 4,
     "winrate": 50.0,
-    "rank": 1815,
-    "rkd": -26
+    "rank": 1816,
+    "rkd": -27
   },
   {
     "name": "참외창고",
@@ -29142,8 +29150,8 @@
     "lost": 2,
     "played": 4,
     "winrate": 50.0,
-    "rank": 1815,
-    "rkd": -26
+    "rank": 1816,
+    "rkd": -27
   },
   {
     "name": "청기와해장국",
@@ -29158,8 +29166,8 @@
     "lost": 5,
     "played": 8,
     "winrate": 37.5,
-    "rank": 1815,
-    "rkd": -26
+    "rank": 1816,
+    "rkd": -27
   },
   {
     "name": "케빈듀란트",
@@ -29174,8 +29182,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1815,
-    "rkd": -26
+    "rank": 1816,
+    "rkd": -27
   },
   {
     "name": "태크노전사",
@@ -29190,8 +29198,8 @@
     "lost": 4,
     "played": 7,
     "winrate": 42.9,
-    "rank": 1815,
-    "rkd": -26
+    "rank": 1816,
+    "rkd": -27
   },
   {
     "name": "투우",
@@ -29206,8 +29214,8 @@
     "lost": 12,
     "played": 18,
     "winrate": 33.3,
-    "rank": 1815,
-    "rkd": -26
+    "rank": 1816,
+    "rkd": -27
   },
   {
     "name": "푼슈",
@@ -29222,8 +29230,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1815,
-    "rkd": -26
+    "rank": 1816,
+    "rkd": -27
   },
   {
     "name": "흑뫄",
@@ -29238,8 +29246,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1815,
-    "rkd": -26
+    "rank": 1816,
+    "rkd": -27
   },
   {
     "name": "김조준",
@@ -29254,8 +29262,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1827,
-    "rkd": -26
+    "rank": 1828,
+    "rkd": -27
   },
   {
     "name": "까치우꼬",
@@ -29270,8 +29278,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1827,
-    "rkd": -26
+    "rank": 1828,
+    "rkd": -27
   },
   {
     "name": "드루와드르와",
@@ -29286,8 +29294,8 @@
     "lost": 3,
     "played": 3,
     "winrate": 0.0,
-    "rank": 1827,
-    "rkd": -26
+    "rank": 1828,
+    "rkd": -27
   },
   {
     "name": "뿡뿡맨",
@@ -29302,8 +29310,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1827,
-    "rkd": -26
+    "rank": 1828,
+    "rkd": -27
   },
   {
     "name": "슈가마법사",
@@ -29318,8 +29326,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1827,
-    "rkd": -26
+    "rank": 1828,
+    "rkd": -27
   },
   {
     "name": "츄우",
@@ -29334,8 +29342,8 @@
     "lost": 5,
     "played": 10,
     "winrate": 50.0,
-    "rank": 1827,
-    "rkd": -26
+    "rank": 1828,
+    "rkd": -27
   },
   {
     "name": "호우예",
@@ -29350,8 +29358,8 @@
     "lost": 42,
     "played": 55,
     "winrate": 23.6,
-    "rank": 1827,
-    "rkd": -26
+    "rank": 1828,
+    "rkd": -27
   },
   {
     "name": "Allday",
@@ -29366,8 +29374,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "Charming",
@@ -29382,8 +29390,8 @@
     "lost": 7,
     "played": 10,
     "winrate": 30.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "Oldcairo",
@@ -29398,8 +29406,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "Ryl",
@@ -29414,8 +29422,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "Teyler",
@@ -29430,8 +29438,8 @@
     "lost": 8,
     "played": 11,
     "winrate": 27.3,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "그림자도둑",
@@ -29446,8 +29454,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "나콩",
@@ -29462,8 +29470,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "달빛포도",
@@ -29478,8 +29486,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1834,
-    "rkd": -2
+    "rank": 1835,
+    "rkd": -1
   },
   {
     "name": "달빛푸우",
@@ -29494,8 +29502,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1834,
-    "rkd": -2
+    "rank": 1835,
+    "rkd": -1
   },
   {
     "name": "도넬",
@@ -29510,8 +29518,8 @@
     "lost": 5,
     "played": 8,
     "winrate": 37.5,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "말총머리컷기사",
@@ -29526,8 +29534,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "맞는게힐링",
@@ -29542,8 +29550,8 @@
     "lost": 13,
     "played": 25,
     "winrate": 48.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "무사주닝요",
@@ -29558,8 +29566,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "물돈",
@@ -29574,8 +29582,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "물소컷드루",
@@ -29590,8 +29598,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "박콩",
@@ -29606,8 +29614,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "부트네",
@@ -29622,8 +29630,8 @@
     "lost": 19,
     "played": 31,
     "winrate": 38.7,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "붓처",
@@ -29638,8 +29646,8 @@
     "lost": 7,
     "played": 10,
     "winrate": 30.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "삐약뺙",
@@ -29654,8 +29662,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "제발지휘크리",
@@ -29670,8 +29678,8 @@
     "lost": 4,
     "played": 5,
     "winrate": 20.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "주닝요흑마",
@@ -29686,8 +29694,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "호저면장",
@@ -29702,8 +29710,8 @@
     "lost": 7,
     "played": 10,
     "winrate": 30.0,
-    "rank": 1834,
-    "rkd": -26
+    "rank": 1835,
+    "rkd": -27
   },
   {
     "name": "Bespoke",
@@ -29718,8 +29726,8 @@
     "lost": 8,
     "played": 11,
     "winrate": 27.3,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "Headshot",
@@ -29734,8 +29742,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "나도해줘",
@@ -29750,8 +29758,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "도적참치캔",
@@ -29766,8 +29774,8 @@
     "lost": 11,
     "played": 19,
     "winrate": 42.1,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "도토리칼국수",
@@ -29782,8 +29790,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "라니엘리",
@@ -29798,8 +29806,8 @@
     "lost": 5,
     "played": 5,
     "winrate": 0.0,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "로랜스",
@@ -29814,8 +29822,8 @@
     "lost": 8,
     "played": 10,
     "winrate": 20.0,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "발작아재",
@@ -29830,8 +29838,8 @@
     "lost": 4,
     "played": 5,
     "winrate": 20.0,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "빽냥",
@@ -29846,8 +29854,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "소곰",
@@ -29862,8 +29870,8 @@
     "lost": 5,
     "played": 9,
     "winrate": 44.4,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "스파이더드루",
@@ -29878,8 +29886,8 @@
     "lost": 57,
     "played": 87,
     "winrate": 34.5,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "썬의드루",
@@ -29894,8 +29902,8 @@
     "lost": 9,
     "played": 11,
     "winrate": 18.2,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "이네",
@@ -29910,8 +29918,8 @@
     "lost": 4,
     "played": 9,
     "winrate": 55.6,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "전사라면삽니다",
@@ -29926,8 +29934,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "제에",
@@ -29942,8 +29950,8 @@
     "lost": 4,
     "played": 9,
     "winrate": 55.6,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "찐지갑용사",
@@ -29958,8 +29966,8 @@
     "lost": 5,
     "played": 8,
     "winrate": 37.5,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "티파니화이트",
@@ -29974,8 +29982,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1856,
-    "rkd": -28
+    "rank": 1857,
+    "rkd": -29
   },
   {
     "name": "Nuwa",
@@ -29990,8 +29998,8 @@
     "lost": 3,
     "played": 5,
     "winrate": 40.0,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "개존맛탱",
@@ -30006,8 +30014,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "결론은버킹검",
@@ -30022,8 +30030,8 @@
     "lost": 4,
     "played": 7,
     "winrate": 42.9,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "고양이모모",
@@ -30038,8 +30046,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "노란당근",
@@ -30054,8 +30062,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "노빠꾸상님자전사",
@@ -30070,8 +30078,8 @@
     "lost": 3,
     "played": 3,
     "winrate": 0.0,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "논투아",
@@ -30086,8 +30094,8 @@
     "lost": 8,
     "played": 12,
     "winrate": 33.3,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "뚜찌",
@@ -30102,8 +30110,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1873,
-    "rkd": -2
+    "rank": 1874,
+    "rkd": -1
   },
   {
     "name": "라데꾸",
@@ -30118,8 +30126,8 @@
     "lost": 17,
     "played": 27,
     "winrate": 37.0,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "라온이아빠",
@@ -30134,8 +30142,8 @@
     "lost": 4,
     "played": 7,
     "winrate": 42.9,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "무그",
@@ -30150,8 +30158,8 @@
     "lost": 3,
     "played": 5,
     "winrate": 40.0,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "비누분배자",
@@ -30166,8 +30174,8 @@
     "lost": 6,
     "played": 10,
     "winrate": 40.0,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "빠야",
@@ -30182,8 +30190,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "성전사조광근",
@@ -30198,8 +30206,8 @@
     "lost": 7,
     "played": 11,
     "winrate": 36.4,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "수호들후",
@@ -30214,8 +30222,8 @@
     "lost": 17,
     "played": 27,
     "winrate": 37.0,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "오크전사",
@@ -30230,8 +30238,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "은하수봉봉",
@@ -30246,8 +30254,8 @@
     "lost": 25,
     "played": 40,
     "winrate": 37.5,
-    "rank": 1873,
-    "rkd": -28
+    "rank": 1874,
+    "rkd": -29
   },
   {
     "name": "Exsence",
@@ -30262,8 +30270,8 @@
     "lost": 49,
     "played": 70,
     "winrate": 30.0,
-    "rank": 1890,
-    "rkd": -29
+    "rank": 1891,
+    "rkd": -30
   },
   {
     "name": "꿀떠기",
@@ -30278,8 +30286,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1890,
-    "rkd": -2
+    "rank": 1891,
+    "rkd": -1
   },
   {
     "name": "꿈꾸는날개",
@@ -30294,8 +30302,8 @@
     "lost": 3,
     "played": 3,
     "winrate": 0.0,
-    "rank": 1890,
-    "rkd": -29
+    "rank": 1891,
+    "rkd": -30
   },
   {
     "name": "나엘도적",
@@ -30310,8 +30318,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1890,
-    "rkd": -29
+    "rank": 1891,
+    "rkd": -30
   },
   {
     "name": "달콤치즈",
@@ -30326,8 +30334,8 @@
     "lost": 36,
     "played": 52,
     "winrate": 30.8,
-    "rank": 1890,
-    "rkd": -29
+    "rank": 1891,
+    "rkd": -30
   },
   {
     "name": "마학영",
@@ -30342,8 +30350,8 @@
     "lost": 7,
     "played": 10,
     "winrate": 30.0,
-    "rank": 1890,
-    "rkd": -29
+    "rank": 1891,
+    "rkd": -30
   },
   {
     "name": "별빛가넷",
@@ -30358,8 +30366,8 @@
     "lost": 4,
     "played": 6,
     "winrate": 33.3,
-    "rank": 1890,
-    "rkd": -29
+    "rank": 1891,
+    "rkd": -30
   },
   {
     "name": "슈슉슈슉슈",
@@ -30374,8 +30382,8 @@
     "lost": 2,
     "played": 3,
     "winrate": 33.3,
-    "rank": 1890,
-    "rkd": -29
+    "rank": 1891,
+    "rkd": -30
   },
   {
     "name": "아상이",
@@ -30390,24 +30398,8 @@
     "lost": 3,
     "played": 4,
     "winrate": 25.0,
-    "rank": 1890,
-    "rkd": -2
-  },
-  {
-    "name": "쿼터마스터",
-    "realm": "fengus-ferocity",
-    "realm_name": "펜구스의 흉포",
-    "class": "드루이드",
-    "race": "나이트 엘프",
-    "faction": "ALLIANCE",
-    "guild": "HeyBrother",
-    "rating": 1477,
-    "won": 24,
-    "lost": 49,
-    "played": 73,
-    "winrate": 32.9,
-    "rank": 1890,
-    "rkd": -29
+    "rank": 1891,
+    "rkd": -1
   },
   {
     "name": "한쿨도적",
@@ -30422,8 +30414,8 @@
     "lost": 12,
     "played": 18,
     "winrate": 33.3,
-    "rank": 1890,
-    "rkd": -29
+    "rank": 1891,
+    "rkd": -30
   },
   {
     "name": "힌두르교",
@@ -30438,8 +30430,8 @@
     "lost": 2,
     "played": 2,
     "winrate": 0.0,
-    "rank": 1890,
-    "rkd": -29
+    "rank": 1891,
+    "rkd": -30
   },
   {
     "name": "마상길",
@@ -30624,7 +30616,7 @@
     "class": "사제",
     "race": "블러드 엘프",
     "faction": "HORDE",
-    "guild": "무쌍",
+    "guild": "Lux",
     "rating": 1475,
     "won": 2,
     "lost": 5,
@@ -31608,8 +31600,7 @@
     "lost": 3,
     "played": 3,
     "winrate": 0.0,
-    "rank": 1969,
-    "rkd": -2
+    "rank": 1969
   },
   {
     "name": "비비디바비디뽕",
@@ -31640,8 +31631,7 @@
     "lost": 3,
     "played": 3,
     "winrate": 0.0,
-    "rank": 1969,
-    "rkd": -2
+    "rank": 1969
   },
   {
     "name": "커피콩볶아",
@@ -31784,8 +31774,7 @@
     "lost": 5,
     "played": 7,
     "winrate": 28.6,
-    "rank": 1979,
-    "rkd": -2
+    "rank": 1979
   },
   {
     "name": "후로게이",
@@ -32040,8 +32029,7 @@
     "lost": 4,
     "played": 5,
     "winrate": 20.0,
-    "rank": 2000,
-    "rkd": -2
+    "rank": 2000
   },
   {
     "name": "버터떡",
@@ -33673,8 +33661,7 @@
     "lost": 6,
     "played": 7,
     "winrate": 14.3,
-    "rank": 2103,
-    "rkd": -2
+    "rank": 2103
   },
   {
     "name": "도적농베",
