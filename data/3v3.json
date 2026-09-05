@@ -12,8 +12,7 @@
     "lost": 0,
     "played": 1,
     "winrate": 100.0,
-    "rank": 1,
-    "rd": 15
+    "rank": 1
   },
   {
     "name": "Lifebloom",
@@ -28,8 +27,7 @@
     "lost": 0,
     "played": 1,
     "winrate": 100.0,
-    "rank": 1,
-    "rd": 15
+    "rank": 1
   },
   {
     "name": "지성",
@@ -44,8 +42,22 @@
     "lost": 0,
     "played": 1,
     "winrate": 100.0,
-    "rank": 1,
-    "rd": 15
+    "rank": 1
+  },
+  {
+    "name": "Satz",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "도적",
+    "race": "언데드",
+    "faction": "HORDE",
+    "guild": "Unreal",
+    "rating": 1500,
+    "won": 0,
+    "lost": 0,
+    "played": 0,
+    "winrate": 0,
+    "rank": 4
   },
   {
     "name": "복길아빠",
@@ -55,6 +67,36 @@
     "race": "오크",
     "faction": "HORDE",
     "guild": "호드",
+    "rating": 1500,
+    "won": 0,
+    "lost": 0,
+    "played": 0,
+    "winrate": 0,
+    "rank": 4
+  },
+  {
+    "name": "서초개꿀동",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "사제",
+    "race": "언데드",
+    "faction": "HORDE",
+    "guild": "쌉 고 수",
+    "rating": 1500,
+    "won": 0,
+    "lost": 0,
+    "played": 0,
+    "winrate": 0,
+    "rank": 4
+  },
+  {
+    "name": "후추이",
+    "realm": "fengus-ferocity",
+    "realm_name": "펜구스의 흉포",
+    "class": "마법사",
+    "race": "언데드",
+    "faction": "HORDE",
+    "guild": "",
     "rating": 1500,
     "won": 0,
     "lost": 0,
@@ -105,7 +147,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 7
+    "rank": 10,
+    "rkd": -3
   },
   {
     "name": "김쇼크",
@@ -120,7 +163,8 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 7
+    "rank": 10,
+    "rkd": -3
   },
   {
     "name": "조블리",
@@ -135,6 +179,7 @@
     "lost": 1,
     "played": 1,
     "winrate": 0.0,
-    "rank": 7
+    "rank": 10,
+    "rkd": -3
   }
 ]
